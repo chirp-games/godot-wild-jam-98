@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://buppl3ljgcnji" path="res://game/MechBuilder/MechPieces/omni_sensor.gd" id="2_6sacl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6sacl"]
-radius = 285.24023
+radius = 457.15753
 
 [node name="MechPiece" unique_id=784979916 instance=ExtResource("1_7gqe4")]
 script = ExtResource("2_6sacl")

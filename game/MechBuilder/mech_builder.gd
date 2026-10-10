@@ -23,9 +23,6 @@ func _ready() -> void:
 	for receptacle: WireReceptacle in find_wire_receptacles():
 		receptacle.wire_started.connect(func(): _wire_started(receptacle))
 
-	for piece: MechPiece in find_mech_pieces():
-		piece.activate.connect(func(t: Enemy): _trigger(piece, t))
-
 func _process(delta: float) -> void:
 	var chains = []
 	
@@ -35,10 +32,26 @@ func _process(delta: float) -> void:
 			chains.push_back(c)
 	
 	for chain in chains:
-		for piece: MechPiece in chain:
-			if not piece.is_ready():
+		var active = false
+		var previous_was_charged = true
+		for i in range(len(chain)):
+			var piece = chain[i]
+			if i == 0 and piece.detected_target:
+				active = true
+			if piece.cooldown_charge >= piece.resource.cooldown:
+				continue
+			if active and previous_was_charged:
 				piece.cooldown_charge += delta
-				break
+				previous_was_charged = false
+			else:
+				piece.cooldown_charge = 0
+
+		if previous_was_charged == true and active:
+			# If everything was charged, fire!
+			create_projectile.emit(chain, chain[0].detected_target)
+			for p in chain:
+				p.cooldown_charge = 0
+
 
 func _wire_started(receptacle: WireReceptacle):
 	if currently_building_wire:
@@ -47,24 +60,6 @@ func _wire_started(receptacle: WireReceptacle):
 	%Wires.add_child(w)
 	w.a = receptacle
 	currently_building_wire = w
-
-func _trigger(piece: MechPiece, target: Enemy):
-	var chains: Array[Array] = []
-	
-	for p in find_energy_ports():
-		var c = find_chain(p)
-		if len(c) >= 1:
-			chains.push_back(c)
-	
-	for chain in chains:
-		for p: MechPiece in chain:
-			if p == piece:
-				# We found the chain!!
-				if chain.all(func(x: MechPiece): return x.is_ready()):
-					create_projectile.emit(chain as Array[MechPiece], target)
-					for c in chain:
-						c.cooldown_charge = 0.0
-				break
 
 ## Starting at a sensor, find all things connected to it. 
 ## Connects from BLUE to RED. Cannot go backwards from RED to BLUE.
@@ -81,7 +76,7 @@ func find_chain(blue_receptacle: WireReceptacle) -> Array[MechPiece]:
 		# Should get here for any connected wire
 		if other_side:
 			var connected_to_mech_piece = other_side.get_mech_piece()
-			return [connected_to_mech_piece] + find_chain(connected_to_mech_piece.get_blue_receptacle())
+			return find_chain(connected_to_mech_piece.get_blue_receptacle()) + [connected_to_mech_piece]
 
 	return []
 

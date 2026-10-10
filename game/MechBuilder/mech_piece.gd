@@ -9,9 +9,8 @@ class_name MechPiece
 @export var resource: MechPieceResource
 var cooldown_charge = 0.0
 
-
-## Signal that an enemy is detected that needs to be fired at!
-signal activate(target: Enemy)
+## Sensors should set this to a body when an enemy is in range
+var detected_target = null
 
 func _process(delta: float) -> void:
 	cooldown_bar.value = cooldown_charge / resource.cooldown

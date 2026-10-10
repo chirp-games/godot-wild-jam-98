@@ -10,7 +10,8 @@ distance = -307.0
 [node name="Game" type="Node2D" unique_id=1516163044]
 script = ExtResource("1_l1rk1")
 
-[node name="Placeholder" parent="." unique_id=720771102 instance=ExtResource("2_vasa2")]
+[node name="Player" parent="." unique_id=720771102 instance=ExtResource("2_vasa2")]
+unique_name_in_owner = true
 
 [node name="Enemy" parent="." unique_id=1736390898 instance=ExtResource("3_h7iqs")]
 position = Vector2(470, 222)
@@ -24,4 +25,4 @@ shape = SubResource("WorldBoundaryShape2D_6w6ra")
 [node name="BulletSpawner" type="Node2D" parent="." unique_id=2087136311]
 unique_name_in_owner = true
 
-[connection signal="create_projectile" from="Placeholder" to="." method="_on_placeholder_create_projectile"]
+[connection signal="create_projectile" from="Player" to="." method="_on_placeholder_create_projectile"]
