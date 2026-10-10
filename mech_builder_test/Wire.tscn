@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://ck517mhqm7tye" path="res://mech_builder_test/wire.gd" id="1_vu2bv"]
 
 [node name="Wire" type="Line2D" unique_id=1493990197 groups=["wire"]]
+width = 20.0
 script = ExtResource("1_vu2bv")
