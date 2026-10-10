@@ -2,30 +2,66 @@
 
 [ext_resource type="Script" uid="uid://7l1fiyfmwa0o" path="res://game/MechBuilder/mech_builder.gd" id="1_pp1pe"]
 [ext_resource type="PackedScene" uid="uid://chqqle2impvx3" path="res://game/MechBuilder/MechPieces/MechPiece.tscn" id="2_h8sgc"]
+[ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="2_lqtqk"]
 [ext_resource type="Resource" uid="uid://b3l4nffe6cyif" path="res://resources/mech_pieces/pieces/doubler.tres" id="3_y78uw"]
 [ext_resource type="PackedScene" uid="uid://bj7ri47ajwpf5" path="res://game/MechBuilder/MechPieces/omni-sensor.tscn" id="4_0dod8"]
+[ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="5_ps434"]
 
 [node name="MechBuilder" type="Node2D" unique_id=1104080060]
 script = ExtResource("1_pp1pe")
 
-[node name="A" parent="." unique_id=784979916 instance=ExtResource("2_h8sgc")]
-offset_left = 723.0
-offset_top = 35.0
-offset_right = 948.0
-offset_bottom = 163.0
-resource = ExtResource("3_y78uw")
-
-[node name="B" parent="." unique_id=942251005 instance=ExtResource("2_h8sgc")]
-offset_left = 986.0
-offset_top = 147.0
-offset_right = 1211.0
-offset_bottom = 275.0
-resource = ExtResource("3_y78uw")
-
-[node name="OmniSensor" parent="." unique_id=1999924456 instance=ExtResource("4_0dod8")]
-resource = ExtResource("3_y78uw")
-
 [node name="Wires" type="Node2D" parent="." unique_id=567382552]
 unique_name_in_owner = true
 
-[connection signal="gui_input" from="OmniSensor" to="OmniSensor" method="_on_gui_input"]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1505863446]
+visible = false
+texture = ExtResource("2_lqtqk")
+
+[node name="MechPiece" parent="." unique_id=784979916 instance=ExtResource("4_0dod8")]
+offset_left = -102.0
+offset_top = -102.0
+offset_right = -26.0
+offset_bottom = -80.0
+resource = ExtResource("3_y78uw")
+
+[node name="MechPiece2" parent="." unique_id=877573661 instance=ExtResource("2_h8sgc")]
+offset_left = 46.0
+offset_top = -91.0
+offset_right = 122.0
+offset_bottom = -69.0
+resource = ExtResource("3_y78uw")
+
+[node name="MechPiece3" parent="." unique_id=1915759885 instance=ExtResource("2_h8sgc")]
+offset_left = 26.0
+offset_top = -119.0
+offset_right = 102.0
+offset_bottom = -97.0
+resource = ExtResource("3_y78uw")
+
+[node name="WireReceptacle" parent="." unique_id=21922453 groups=["energy_port"] instance=ExtResource("5_ps434")]
+offset_left = -52.0
+offset_top = -52.0
+offset_right = -44.0
+offset_bottom = -44.0
+type = 1
+
+[node name="WireReceptacle2" parent="." unique_id=1364866300 groups=["energy_port"] instance=ExtResource("5_ps434")]
+offset_left = -30.0
+offset_top = -53.0
+offset_right = -22.0
+offset_bottom = -45.0
+type = 1
+
+[node name="WireReceptacle3" parent="." unique_id=1315036178 groups=["energy_port"] instance=ExtResource("5_ps434")]
+offset_left = -7.0
+offset_top = -53.0
+offset_right = 1.0
+offset_bottom = -45.0
+type = 1
+
+[node name="WireReceptacle4" parent="." unique_id=1352475008 groups=["energy_port"] instance=ExtResource("5_ps434")]
+offset_left = 16.0
+offset_top = -54.0
+offset_right = 24.0
+offset_bottom = -46.0
+type = 1

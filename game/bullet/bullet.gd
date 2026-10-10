@@ -10,4 +10,4 @@ var target_enemy: Enemy
 func _process(delta: float) -> void:
 	if not target_enemy:
 		return
-	position += position.direction_to(target_enemy.position).normalized() * 10
+	global_position += global_position.direction_to(target_enemy.global_position).normalized() * 10

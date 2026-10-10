@@ -18,8 +18,7 @@ texture = ExtResource("2_eje2a")
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="MechBuilder" parent="." unique_id=1104080060 instance=ExtResource("3_eje2a")]
-position = Vector2(-76.99999, -88.99999)
-scale = Vector2(0.3, 0.3)
+position = Vector2(1, -1)
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=707595143]
 unique_name_in_owner = true

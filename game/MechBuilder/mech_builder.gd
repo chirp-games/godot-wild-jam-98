@@ -15,6 +15,10 @@ func find_wires():
 func find_mech_pieces() -> Array[MechPiece]:
 	return get_tree().get_nodes_in_group("mech_piece") as Array[MechPiece]
 
+func find_energy_ports() -> Array[WireReceptacle]:
+	return get_tree().get_nodes_in_group("energy_port") as Array[WireReceptacle]
+
+
 func _ready() -> void:
 	for receptacle: WireReceptacle in find_wire_receptacles():
 		receptacle.wire_started.connect(func(): _wire_started(receptacle))
@@ -25,9 +29,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var chains = []
 	
-	for p in find_mech_pieces():
-		if p.is_start_of_chain():
-			chains.push_back(find_chain(p))
+	for p in find_energy_ports():
+		var c = find_chain(p)
+		if len(c) >= 1:
+			chains.push_back(c)
 	
 	for chain in chains:
 		for piece: MechPiece in chain:
@@ -43,20 +48,27 @@ func _wire_started(receptacle: WireReceptacle):
 	w.a = receptacle
 	currently_building_wire = w
 
-func _trigger(receptacle: MechPiece, target: Enemy):
-	var line: Array = find_chain(receptacle)
-	if line.all(func(x: MechPiece): return x.is_ready()):
-		create_projectile.emit(line as Array[MechPiece], target)
-		for c in line:
-			c.cooldown_charge = 0.0
+func _trigger(piece: MechPiece, target: Enemy):
+	var chains: Array[Array] = []
+	
+	for p in find_energy_ports():
+		var c = find_chain(p)
+		if len(c) >= 1:
+			chains.push_back(c)
+	
+	for chain in chains:
+		for p: MechPiece in chain:
+			if p == piece:
+				# We found the chain!!
+				if chain.all(func(x: MechPiece): return x.is_ready()):
+					create_projectile.emit(chain as Array[MechPiece], target)
+					for c in chain:
+						c.cooldown_charge = 0.0
+				break
 
 ## Starting at a sensor, find all things connected to it. 
 ## Connects from BLUE to RED. Cannot go backwards from RED to BLUE.
-func find_chain(mech_piece: MechPiece) -> Array[MechPiece]:
-	var blue_receptacle = mech_piece.get_blue_receptacle()
-	if not blue_receptacle:
-		return [mech_piece]
-	
+func find_chain(blue_receptacle: WireReceptacle) -> Array[MechPiece]:
 	for w in find_wires():
 		# If we connect
 		var other_side: WireReceptacle
@@ -68,10 +80,10 @@ func find_chain(mech_piece: MechPiece) -> Array[MechPiece]:
 		# We connected to something
 		# Should get here for any connected wire
 		if other_side:
-			var connected_to_mech_piece := other_side.get_mech_piece()
-			return [mech_piece] + find_chain(connected_to_mech_piece)
+			var connected_to_mech_piece = other_side.get_mech_piece()
+			return [connected_to_mech_piece] + find_chain(connected_to_mech_piece.get_blue_receptacle())
 
-	return [mech_piece]
+	return []
 
 func try_placing_wire():
 	if not currently_building_wire:

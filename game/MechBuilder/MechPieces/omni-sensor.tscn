@@ -4,17 +4,23 @@
 [ext_resource type="Script" uid="uid://buppl3ljgcnji" path="res://game/MechBuilder/MechPieces/omni_sensor.gd" id="2_6sacl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6sacl"]
-radius = 3365.048
+radius = 285.24023
 
 [node name="MechPiece" unique_id=784979916 instance=ExtResource("1_7gqe4")]
 script = ExtResource("2_6sacl")
 
-[node name="Red" parent="." index="0" unique_id=21922453]
+[node name="Blue" parent="." index="1" unique_id=1082237180]
 visible = false
 
 [node name="Detector" type="Area2D" parent="." index="2" unique_id=59519173]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" index="0" unique_id=809346460]
-position = Vector2(113, 68)
+position = Vector2(31, 10)
 shape = SubResource("CircleShape2D_6sacl")
+
+[node name="Sensor" type="Label" parent="." index="4" unique_id=1107852684]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Sensor"

@@ -26,9 +26,7 @@ func get_receptacles():
 	return out
 
 func get_blue_receptacle() -> WireReceptacle:
-	if blue.visible:
-		return blue
-	return null
+	return blue
 
 ## Mech pieces that can start a chain only have the blue port visible
 func is_start_of_chain():

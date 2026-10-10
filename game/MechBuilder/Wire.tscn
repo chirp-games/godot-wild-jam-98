@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ck517mhqm7tye" path="res://game/MechBuilder/wire.gd" id="1_82ipw"]
 
 [node name="Wire" type="Line2D" unique_id=1493990197 groups=["wire"]]
-width = 20.0
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
 script = ExtResource("1_82ipw")
-hover_margin = 20
+hover_margin = 5

@@ -18,7 +18,9 @@ enum Type {
 
 ## Return the mech piece this wire receptacle is attached to
 func get_mech_piece() -> MechPiece:
-	return get_parent()
+	if get_parent() is MechPiece:
+		return get_parent()
+	return null
 
 func _ready() -> void:
 	if type == Type.Red:

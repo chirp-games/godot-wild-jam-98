@@ -8,10 +8,9 @@ func _ready() -> void:
 
 func _on_placeholder_create_projectile(chain: Array, target: Enemy) -> void:
 	var b: BulletSpawner = BulletSpawner.new()
-	add_child(b)
+	%BulletSpawner.add_child(b)
 	b.target_enemy = target
 	b.global_position = chain[-1].global_position
-	
 	
 	for p: MechPiece in chain:
 		b = p.resource.effect.apply(b)

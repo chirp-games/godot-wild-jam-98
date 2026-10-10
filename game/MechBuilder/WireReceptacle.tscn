@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bhr5aumhw22ki" path="res://game/MechBuilder/wire_receptacle.gd" id="2_alqae"]
 
 [node name="WireReceptacle" type="TextureRect" unique_id=21922453 groups=["wire_receptacle"]]
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 8.0
+offset_bottom = 8.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("1_dubl6")
 expand_mode = 3
