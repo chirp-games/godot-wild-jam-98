@@ -16,83 +16,25 @@
 [ext_resource type="Texture2D" uid="uid://cilve6a6lgwy0" path="res://assets/mech/front_leg_top.png" id="14_w24bm"]
 [ext_resource type="Texture2D" uid="uid://dp6tseykdfxw1" path="res://assets/mech/front_leg_knee.png" id="15_22cju"]
 [ext_resource type="Texture2D" uid="uid://dak4wng1ttvt0" path="res://assets/mech/front_shoulder.png" id="16_wrff0"]
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_h3fx5"]
-enabled = false
-target_nodepath = NodePath("BackTarget")
-tip_nodepath = NodePath("Torso/Hip/BackLegUpper/BackLegLower/BackFoot")
-ccdik_data_chain_length = 3
-joint_data/0/bone_index = 4
-joint_data/0/bone2d_node = NodePath("Torso/Hip")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = true
-joint_data/0/constraint_angle_min = 0.0
-joint_data/0/constraint_angle_max = 99.999985
-joint_data/0/constraint_angle_invert = false
-joint_data/0/constraint_in_localspace = true
-joint_data/0/editor_draw_gizmo = true
-joint_data/1/bone_index = 5
-joint_data/1/bone2d_node = NodePath("Torso/Hip/BackLegUpper")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = true
-joint_data/1/constraint_angle_min = 279.99997
-joint_data/1/constraint_angle_max = 360.0
-joint_data/1/constraint_angle_invert = false
-joint_data/1/constraint_in_localspace = true
-joint_data/1/editor_draw_gizmo = true
-joint_data/2/bone_index = 6
-joint_data/2/bone2d_node = NodePath("Torso/Hip/BackLegUpper/BackLegLower")
-joint_data/2/rotate_from_joint = false
-joint_data/2/enable_constraint = true
-joint_data/2/constraint_angle_min = 0.0
-joint_data/2/constraint_angle_max = 79.99997
-joint_data/2/constraint_angle_invert = false
-joint_data/2/constraint_in_localspace = true
-joint_data/2/editor_draw_gizmo = true
-
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_heo5q"]
-enabled = false
-target_nodepath = NodePath("FrontTarget")
-tip_nodepath = NodePath("Torso/FrontLegUpper/FrontLegLower/FrontFoot")
-ccdik_data_chain_length = 2
-joint_data/0/bone_index = 1
-joint_data/0/bone2d_node = NodePath("Torso/FrontLegUpper")
-joint_data/0/rotate_from_joint = false
-joint_data/0/enable_constraint = true
-joint_data/0/constraint_angle_min = 279.99997
-joint_data/0/constraint_angle_max = 360.0
-joint_data/0/constraint_angle_invert = false
-joint_data/0/constraint_in_localspace = true
-joint_data/0/editor_draw_gizmo = true
-joint_data/1/bone_index = 2
-joint_data/1/bone2d_node = NodePath("Torso/FrontLegUpper/FrontLegLower")
-joint_data/1/rotate_from_joint = false
-joint_data/1/enable_constraint = true
-joint_data/1/constraint_angle_min = 0.0
-joint_data/1/constraint_angle_max = 60.0
-joint_data/1/constraint_angle_invert = false
-joint_data/1/constraint_in_localspace = true
-joint_data/1/editor_draw_gizmo = true
+[ext_resource type="Script" uid="uid://cn1jkdvg83ad" path="res://game/player/freeze_frame.gd" id="17_jyv1f"]
 
 [sub_resource type="SkeletonModification2DPhysicalBones" id="SkeletonModification2DPhysicalBones_mfhbq"]
-execution_mode = 1
-physical_bone_chain_length = 8
+physical_bone_chain_length = 9
 fetch_bones = null
 joint_0_nodepath = NodePath("Spine")
 joint_1_nodepath = NodePath("Spine/FrontLegUpper")
 joint_2_nodepath = NodePath("Spine/Hip")
-joint_3_nodepath = NodePath("Spine/FrontLegUpper/FrontLegLower")
-joint_4_nodepath = NodePath("Spine/Hip/BackLegUpper")
-joint_5_nodepath = NodePath("Spine/FrontLegUpper/FrontLegLower/FrontFoot")
-joint_6_nodepath = NodePath("Spine/Hip/BackLegUpper/BackLegLower")
-joint_7_nodepath = NodePath("Spine/Hip/BackLegUpper/BackLegLower/BackFoot")
+joint_3_nodepath = NodePath("Spine/Head")
+joint_4_nodepath = NodePath("Spine/FrontLegUpper/FrontLegLower")
+joint_5_nodepath = NodePath("Spine/Hip/BackLegUpper")
+joint_6_nodepath = NodePath("Spine/FrontLegUpper/FrontLegLower/FrontFoot")
+joint_7_nodepath = NodePath("Spine/Hip/BackLegUpper/BackLegLower")
+joint_8_nodepath = NodePath("Spine/Hip/BackLegUpper/BackLegLower/BackFoot")
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_gm6uc"]
 enabled = true
-modification_count = 4
-modifications/0 = SubResource("SkeletonModification2DCCDIK_h3fx5")
-modifications/1 = SubResource("SkeletonModification2DCCDIK_heo5q")
-modifications/2 = SubResource("SkeletonModification2DPhysicalBones_mfhbq")
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DPhysicalBones_mfhbq")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kaco7"]
 size = Vector2(45.156498, 19.066544)
@@ -115,6 +57,12 @@ size = Vector2(65.32082, 18.796524)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_laoed"]
 size = Vector2(57, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h3fx5"]
+size = Vector2(90, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yedbp"]
+size = Vector2(804, 28)
+
 [node name="Player" type="Node2D" unique_id=1202274876]
 z_index = 90
 
@@ -123,114 +71,8 @@ position = Vector2(0, 7)
 modification_stack = SubResource("SkeletonModificationStack2D_gm6uc")
 script = ExtResource("1_mfhbq")
 
-[node name="Spine" type="PhysicalBone2D" parent="Skeleton" unique_id=808232852]
-position = Vector2(40, -17)
-bone2d_nodepath = NodePath("../Torso")
-bone2d_index = 0
-simulate_physics = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Skeleton/Spine" unique_id=1294524556]
-position = Vector2(-40, 17)
-polygon = PackedVector2Array(-102, 10, -94, -37, -59.5, -51.5, 38.5, -53.5, 45, -5, 43, 4, 30, 23, 0, 40, -40, 46, -75, 39, -92, 28)
-
-[node name="FrontLegUpper" type="PhysicalBone2D" parent="Skeleton/Spine" unique_id=375271140]
-position = Vector2(11, 23)
-bone2d_nodepath = NodePath("../../Torso/FrontLegUpper")
-bone2d_index = 1
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/FrontLegUpper" unique_id=1133505504]
-node_a = NodePath("../..")
-node_b = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/FrontLegUpper" unique_id=803342897]
-position = Vector2(-21.626072, 5.7199564)
-rotation = -0.20107232
-shape = SubResource("RectangleShape2D_kaco7")
-
-[node name="FrontLegLower" type="PhysicalBone2D" parent="Skeleton/Spine/FrontLegUpper" unique_id=1060897954]
-position = Vector2(-44, 10)
-bone2d_nodepath = NodePath("../../../Torso/FrontLegUpper/FrontLegLower")
-bone2d_index = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower" unique_id=1332124651]
-position = Vector2(19, 19)
-rotation = 0.78669584
-shape = SubResource("RectangleShape2D_74rma")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower" unique_id=2132572924]
-node_a = NodePath("../..")
-node_b = NodePath("..")
-
-[node name="FrontFoot" type="PhysicalBone2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower" unique_id=526711555]
-position = Vector2(35, 40)
-bone2d_nodepath = NodePath("../../../../Torso/FrontLegUpper/FrontLegLower/FrontFoot")
-bone2d_index = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower/FrontFoot" unique_id=193061801]
-position = Vector2(30, 0)
-shape = SubResource("RectangleShape2D_r7wn0")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower/FrontFoot" unique_id=1068294014]
-node_a = NodePath("../..")
-node_b = NodePath("..")
-
-[node name="Hip" type="PhysicalBone2D" parent="Skeleton/Spine" unique_id=178193537]
-position = Vector2(-132, 11)
-bone2d_nodepath = NodePath("../../Torso/Hip")
-bone2d_index = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Hip" unique_id=709160953]
-position = Vector2(3, 2)
-shape = SubResource("CircleShape2D_kaco7")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Hip" unique_id=288117701]
-node_a = NodePath("../..")
-node_b = NodePath("..")
-
-[node name="BackLegUpper" type="PhysicalBone2D" parent="Skeleton/Spine/Hip" unique_id=1559069283]
-position = Vector2(65, 34)
-bone2d_nodepath = NodePath("../../../Torso/Hip/BackLegUpper")
-bone2d_index = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Hip/BackLegUpper" unique_id=911202]
-position = Vector2(-38, 8)
-rotation = -0.19120474
-shape = SubResource("RectangleShape2D_rh0cn")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Hip/BackLegUpper" unique_id=893503785]
-node_a = NodePath("../..")
-node_b = NodePath("..")
-
-[node name="BackLegLower" type="PhysicalBone2D" parent="Skeleton/Spine/Hip/BackLegUpper" unique_id=1461791939]
-position = Vector2(-79, 16)
-bone2d_nodepath = NodePath("../../../../Torso/Hip/BackLegUpper/BackLegLower")
-bone2d_index = 6
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower" unique_id=2427312]
-position = Vector2(32, 6)
-rotation = 0.10567293
-scale = Vector2(0.99999994, 0.99999994)
-shape = SubResource("RectangleShape2D_gl4q8")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower" unique_id=1824094392]
-node_a = NodePath("../..")
-node_b = NodePath("..")
-
-[node name="BackFoot" type="PhysicalBone2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower" unique_id=296062197]
-position = Vector2(64, 13)
-bone2d_nodepath = NodePath("../../../../../Torso/Hip/BackLegUpper/BackLegLower/BackFoot")
-bone2d_index = 7
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower/BackFoot" unique_id=910226304]
-position = Vector2(27.5, 0)
-shape = SubResource("RectangleShape2D_laoed")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower/BackFoot" unique_id=478208290]
-node_a = NodePath("../..")
-node_b = NodePath("..")
-
 [node name="Torso" type="Bone2D" parent="Skeleton" unique_id=434151818]
-position = Vector2(212, -73)
+position = Vector2(40, -17)
 rest = Transform2D(1, 0, 0, 1, 40, -17)
 metadata/_local_pose_override_enabled_ = true
 
@@ -245,6 +87,7 @@ texture = ExtResource("13_y6drd")
 [node name="FrontLegUpper" type="Bone2D" parent="Skeleton/Torso" unique_id=599549788]
 position = Vector2(11, 23)
 rest = Transform2D(1, 0, 0, 1, 11, 23)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FrontShoulder" type="Sprite2D" parent="Skeleton/Torso/FrontLegUpper" unique_id=1400500502]
 position = Vector2(1, -1)
@@ -257,6 +100,7 @@ texture = ExtResource("14_w24bm")
 [node name="FrontLegLower" type="Bone2D" parent="Skeleton/Torso/FrontLegUpper" unique_id=1626054352]
 position = Vector2(-44, 10)
 rest = Transform2D(1, 0, 0, 1, -44, 10)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FrontLegBottom" type="Sprite2D" parent="Skeleton/Torso/FrontLegUpper/FrontLegLower" unique_id=1599580255]
 position = Vector2(18, 21)
@@ -272,6 +116,7 @@ rest = Transform2D(1, 0, 0, 1, 35, 40)
 auto_calculate_length_and_angle = false
 length = 40.0
 bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FrontAnkle" type="Sprite2D" parent="Skeleton/Torso/FrontLegUpper/FrontLegLower/FrontFoot" unique_id=78723055]
 position = Vector2(7.5, -5)
@@ -284,6 +129,7 @@ texture = ExtResource("3_usp30")
 [node name="Hip" type="Bone2D" parent="Skeleton/Torso" unique_id=1639960972]
 position = Vector2(-132, 11)
 rest = Transform2D(1, 0, 0, 1, -132, 11)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Hip" type="Sprite2D" parent="Skeleton/Torso/Hip" unique_id=1658307396]
 position = Vector2(10, 2)
@@ -292,6 +138,7 @@ texture = ExtResource("7_epc1c")
 [node name="BackLegUpper" type="Bone2D" parent="Skeleton/Torso/Hip" unique_id=1768333170]
 position = Vector2(65, 34)
 rest = Transform2D(1, 0, 0, 1, 65, 34)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="BackLegKneeOne" type="Sprite2D" parent="Skeleton/Torso/Hip/BackLegUpper" unique_id=203887921]
 position = Vector2(1, 1)
@@ -304,6 +151,7 @@ texture = ExtResource("8_kjljb")
 [node name="BackLegLower" type="Bone2D" parent="Skeleton/Torso/Hip/BackLegUpper" unique_id=305870810]
 position = Vector2(-79, 16)
 rest = Transform2D(1, 0, 0, 1, -79, 16)
+metadata/_local_pose_override_enabled_ = true
 
 [node name="BackLegKnee2" type="Sprite2D" parent="Skeleton/Torso/Hip/BackLegUpper/BackLegLower" unique_id=1172838828]
 position = Vector2(3, 2)
@@ -319,6 +167,7 @@ rest = Transform2D(1, 0, 0, 1, 64, 13)
 auto_calculate_length_and_angle = false
 length = 50.0
 bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
 
 [node name="FrontAnkle" type="Sprite2D" parent="Skeleton/Torso/Hip/BackLegUpper/BackLegLower/BackFoot" unique_id=430912935]
 position = Vector2(4, -7)
@@ -334,20 +183,176 @@ rest = Transform2D(1, 0, 0, 1, 12, -2)
 auto_calculate_length_and_angle = false
 length = 80.0
 bone_angle = -4.999998
+metadata/_local_pose_override_enabled_ = true
 
 [node name="Head" type="Sprite2D" parent="Skeleton/Torso/Head" unique_id=473080905]
 position = Vector2(36, -19)
 texture = ExtResource("1_2mv0n")
 
-[node name="BackTarget" type="Marker2D" parent="Skeleton" unique_id=280282172]
-position = Vector2(-62, 88)
+[node name="Spine" type="PhysicalBone2D" parent="Skeleton" unique_id=808232852]
+position = Vector2(40, -17)
+collision_layer = 2
+bone2d_nodepath = NodePath("../Torso")
+bone2d_index = 0
+simulate_physics = true
+script = ExtResource("17_jyv1f")
 
-[node name="FrontTarget" type="Marker2D" parent="Skeleton" unique_id=840696397]
-position = Vector2(39, 137)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Skeleton/Spine" unique_id=1294524556]
+position = Vector2(-40, 17)
+polygon = PackedVector2Array(-102, 10, -94, -37, -59.5, -51.5, 38.5, -53.5, 45, -5, 43, 4, 30, 23, 0, 40, -40, 46, -75, 39, -92, 28)
+
+[node name="FrontLegUpper" type="PhysicalBone2D" parent="Skeleton/Spine" unique_id=375271140]
+position = Vector2(11, 23)
+collision_layer = 2
+bone2d_nodepath = NodePath("../../Torso/FrontLegUpper")
+bone2d_index = 1
+simulate_physics = true
+script = ExtResource("17_jyv1f")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/FrontLegUpper" unique_id=1133505504]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+motor_target_velocity = 1.3962634
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/FrontLegUpper" unique_id=803342897]
+position = Vector2(-21.626072, 5.7199564)
+rotation = -0.20107232
+shape = SubResource("RectangleShape2D_kaco7")
+
+[node name="FrontLegLower" type="PhysicalBone2D" parent="Skeleton/Spine/FrontLegUpper" unique_id=1060897954]
+position = Vector2(-44, 10)
+collision_layer = 2
+bone2d_nodepath = NodePath("../../../Torso/FrontLegUpper/FrontLegLower")
+bone2d_index = 2
+simulate_physics = true
+script = ExtResource("17_jyv1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower" unique_id=1332124651]
+position = Vector2(19, 19)
+rotation = 0.78669584
+shape = SubResource("RectangleShape2D_74rma")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower" unique_id=2132572924]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+motor_target_velocity = 1.3962634
+
+[node name="FrontFoot" type="PhysicalBone2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower" unique_id=526711555]
+position = Vector2(35, 40)
+collision_layer = 2
+bone2d_nodepath = NodePath("../../../../Torso/FrontLegUpper/FrontLegLower/FrontFoot")
+bone2d_index = 3
+simulate_physics = true
+script = ExtResource("17_jyv1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower/FrontFoot" unique_id=193061801]
+position = Vector2(30, 0)
+shape = SubResource("RectangleShape2D_r7wn0")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/FrontLegUpper/FrontLegLower/FrontFoot" unique_id=1068294014]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+motor_target_velocity = 1.3962634
+
+[node name="Hip" type="PhysicalBone2D" parent="Skeleton/Spine" unique_id=178193537]
+position = Vector2(-132, 11)
+collision_layer = 2
+bone2d_nodepath = NodePath("../../Torso/Hip")
+bone2d_index = 4
+simulate_physics = true
+script = ExtResource("17_jyv1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Hip" unique_id=709160953]
+position = Vector2(3, 2)
+shape = SubResource("CircleShape2D_kaco7")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Hip" unique_id=288117701]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+motor_target_velocity = 1.3962634
+
+[node name="BackLegUpper" type="PhysicalBone2D" parent="Skeleton/Spine/Hip" unique_id=1559069283]
+position = Vector2(65, 34)
+collision_layer = 2
+bone2d_nodepath = NodePath("../../../Torso/Hip/BackLegUpper")
+bone2d_index = 5
+simulate_physics = true
+script = ExtResource("17_jyv1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Hip/BackLegUpper" unique_id=911202]
+position = Vector2(-38, 8)
+rotation = -0.19120474
+shape = SubResource("RectangleShape2D_rh0cn")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Hip/BackLegUpper" unique_id=893503785]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="BackLegLower" type="PhysicalBone2D" parent="Skeleton/Spine/Hip/BackLegUpper" unique_id=1461791939]
+position = Vector2(-79, 16)
+collision_layer = 2
+bone2d_nodepath = NodePath("../../../../Torso/Hip/BackLegUpper/BackLegLower")
+bone2d_index = 6
+simulate_physics = true
+script = ExtResource("17_jyv1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower" unique_id=2427312]
+position = Vector2(32, 6)
+rotation = 0.10567293
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_gl4q8")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower" unique_id=1824094392]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="BackFoot" type="PhysicalBone2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower" unique_id=296062197]
+position = Vector2(64, 13)
+collision_layer = 2
+bone2d_nodepath = NodePath("../../../../../Torso/Hip/BackLegUpper/BackLegLower/BackFoot")
+bone2d_index = 7
+simulate_physics = true
+script = ExtResource("17_jyv1f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower/BackFoot" unique_id=910226304]
+position = Vector2(27.5, 0)
+shape = SubResource("RectangleShape2D_laoed")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Hip/BackLegUpper/BackLegLower/BackFoot" unique_id=478208290]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="Head" type="PhysicalBone2D" parent="Skeleton/Spine" unique_id=155870823]
+position = Vector2(12, -2)
+collision_layer = 2
+bone2d_nodepath = NodePath("../../Torso/Head")
+bone2d_index = 8
+simulate_physics = true
+script = ExtResource("17_jyv1f")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Skeleton/Spine/Head" unique_id=243217593]
+node_a = NodePath("../..")
+node_b = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Skeleton/Spine/Head" unique_id=1366250040]
+position = Vector2(36, -22)
+shape = SubResource("RectangleShape2D_h3fx5")
+
+[node name="BackTarget" type="Marker2D" parent="." unique_id=280282172]
+position = Vector2(-42, 64)
+
+[node name="FrontTarget" type="Marker2D" parent="." unique_id=840696397]
+position = Vector2(39, 144)
 
 [node name="Assembly" type="Sprite2D" parent="." unique_id=115939422]
-visible = false
 modulate = Color(1, 1, 1, 0.43529412)
+position = Vector2(134, -137)
 texture = ExtResource("5_eeltd")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1505775540]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=875768222]
+position = Vector2(0, 180)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1262673994]
+shape = SubResource("RectangleShape2D_yedbp")
