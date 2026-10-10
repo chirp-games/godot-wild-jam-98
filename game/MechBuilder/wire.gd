@@ -4,13 +4,14 @@ extends Line2D
 
 class_name Wire
 
-@export var a: MechPiece
-@export var b: MechPiece
+@export var a: WireReceptacle
+@export var b: WireReceptacle
 @export var hover_margin := 10
 var delete_started = false
 
 
 func _ready() -> void:
+	clear_points()
 	add_point(Vector2(0, 0))
 	add_point(Vector2(0, 0))
 
@@ -45,7 +46,7 @@ func is_deletable():
 func is_placable():
 	if b:
 		return true
-	for piece: MechPiece in get_tree().get_nodes_in_group("mech_piece"):
+	for piece: WireReceptacle in get_tree().get_nodes_in_group("wire_receptacle"):
 		if piece.get_global_rect().has_point(get_global_mouse_position()) and piece.type != a.type:
 			return true
 	return false

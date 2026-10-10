@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3hcqo1st3051"]
+
+[ext_resource type="Script" uid="uid://ck517mhqm7tye" path="res://game/MechBuilder/wire.gd" id="1_82ipw"]
+
+[node name="Wire" type="Line2D" unique_id=1493990197 groups=["wire"]]
+script = ExtResource("1_82ipw")

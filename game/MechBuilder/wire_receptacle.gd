@@ -1,6 +1,6 @@
-extends DragableTextureRect
+extends TextureRect
 
-class_name MechPiece
+class_name WireReceptacle
 
 ## Emitted when the player clicks to make a wire.
 signal wire_started
@@ -23,9 +23,9 @@ func activate():
 
 func _ready() -> void:
 	if type == Type.Male:
-		label.text = "Male"
+		self_modulate = Color(0.945, 0.0, 0.0, 1.0)
 	if type == Type.Female:
-		label.text = "Female"
+		self_modulate = Color(0.276, 0.476, 0.804, 1.0)
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
@@ -34,4 +34,3 @@ func _on_gui_input(event: InputEvent) -> void:
 		wire_started.emit()
 	if event.is_action_released("right_click"):
 		wire_ended.emit()
-	super._on_gui_input(event)

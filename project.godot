@@ -47,6 +47,7 @@ window/stretch/mode="canvas_items"
 statistic=""
 mech_piece=""
 wire=""
+wire_receptacle=""
 
 [gui]
 

@@ -1,0 +1,3 @@
+extends DragableTextureRect
+
+class_name MechPiece
