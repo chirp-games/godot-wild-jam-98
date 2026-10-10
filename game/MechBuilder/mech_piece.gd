@@ -6,14 +6,15 @@ class_name MechPiece
 @onready var blue: WireReceptacle = %Blue
 @onready var cooldown_bar: ProgressBar = %CooldownBar
 
-@export var cooldown = .5
+@export var resource: MechPieceResource
 var cooldown_charge = 0.0
+
 
 ## Signal that an enemy is detected that needs to be fired at!
 signal activate(target: Enemy)
 
 func _process(delta: float) -> void:
-	cooldown_bar.value = cooldown_charge / cooldown
+	cooldown_bar.value = cooldown_charge / resource.cooldown
 	super._process(delta)
 
 func get_receptacles():
@@ -35,4 +36,4 @@ func is_start_of_chain():
 
 ## Return true if the cooldown on this part is over
 func is_ready():
-	return cooldown_charge >= cooldown
+	return cooldown_charge >= resource.cooldown

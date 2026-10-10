@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7l1fiyfmwa0o" path="res://game/MechBuilder/mech_builder.gd" id="1_pp1pe"]
 [ext_resource type="PackedScene" uid="uid://chqqle2impvx3" path="res://game/MechBuilder/MechPieces/MechPiece.tscn" id="2_h8sgc"]
+[ext_resource type="Resource" uid="uid://b3l4nffe6cyif" path="res://resources/mech_pieces/pieces/doubler.tres" id="3_y78uw"]
 [ext_resource type="PackedScene" uid="uid://bj7ri47ajwpf5" path="res://game/MechBuilder/MechPieces/omni-sensor.tscn" id="4_0dod8"]
 
 [node name="MechBuilder" type="Node2D" unique_id=1104080060]
@@ -12,14 +13,17 @@ offset_left = 723.0
 offset_top = 35.0
 offset_right = 948.0
 offset_bottom = 163.0
+resource = ExtResource("3_y78uw")
 
 [node name="B" parent="." unique_id=942251005 instance=ExtResource("2_h8sgc")]
 offset_left = 986.0
 offset_top = 147.0
 offset_right = 1211.0
 offset_bottom = 275.0
+resource = ExtResource("3_y78uw")
 
 [node name="OmniSensor" parent="." unique_id=1999924456 instance=ExtResource("4_0dod8")]
+resource = ExtResource("3_y78uw")
 
 [node name="Wires" type="Node2D" parent="." unique_id=567382552]
 unique_name_in_owner = true
