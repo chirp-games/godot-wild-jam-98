@@ -1,6 +1,6 @@
-extends DragableTextureRect
+extends TextureRect
 
-class_name MechPiece
+class_name WireReceptacle
 
 ## Emitted when the player clicks to make a wire.
 signal wire_started
@@ -10,22 +10,21 @@ signal wire_ended
 ## Should only be activated by male ends.
 signal trigger
 
-@onready var label: Label = %Label
-
 enum Type {
-	Male,
-	Female,
+	Red,
+	Blue,
 }
-@export var type: Type = Type.Male
+@export var type: Type = Type.Red
 
-func activate():
-	print(get_path())
+## Return the mech piece this wire receptacle is attached to
+func get_mech_piece() -> MechPiece:
+	return get_parent()
 
 func _ready() -> void:
-	if type == Type.Male:
-		label.text = "Male"
-	if type == Type.Female:
-		label.text = "Female"
+	if type == Type.Red:
+		self_modulate = Color(0.945, 0.0, 0.0, 1.0)
+	if type == Type.Blue:
+		self_modulate = Color(0.276, 0.476, 0.804, 1.0)
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
@@ -34,4 +33,3 @@ func _on_gui_input(event: InputEvent) -> void:
 		wire_started.emit()
 	if event.is_action_released("right_click"):
 		wire_ended.emit()
-	super._on_gui_input(event)
