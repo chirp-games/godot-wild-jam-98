@@ -54,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _on_mech_builder_create_projectile(chain: Array[MechPiece], target: Enemy) -> void:
+func _on_mech_builder_create_projectile(chain: Array, target: Enemy) -> void:
 	create_projectile.emit(chain, target)
 	
 	

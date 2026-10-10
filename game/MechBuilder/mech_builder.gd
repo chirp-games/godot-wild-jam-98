@@ -2,7 +2,7 @@ extends Node2D
 
 const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
 
-signal create_projectile(chain: Array[MechPiece], target: Enemy)
+signal create_projectile(chain: Array, target: Enemy)
 
 var currently_building_wire: Wire
 
@@ -12,12 +12,28 @@ func find_wire_receptacles():
 func find_wires():
 	return get_tree().get_nodes_in_group("wire")
 
+func find_mech_pieces() -> Array[MechPiece]:
+	return get_tree().get_nodes_in_group("mech_piece") as Array[MechPiece]
+
 func _ready() -> void:
 	for receptacle: WireReceptacle in find_wire_receptacles():
 		receptacle.wire_started.connect(func(): _wire_started(receptacle))
 
-	for piece: MechPiece in get_tree().get_nodes_in_group("mech_piece"):
+	for piece: MechPiece in find_mech_pieces():
 		piece.activate.connect(func(t: Enemy): _trigger(piece, t))
+
+func _process(delta: float) -> void:
+	var chains = []
+	
+	for p in find_mech_pieces():
+		if p.is_start_of_chain():
+			chains.push_back(find_chain(p))
+	
+	for chain in chains:
+		for piece: MechPiece in chain:
+			if not piece.is_ready():
+				piece.cooldown_charge += delta
+				break
 
 func _wire_started(receptacle: WireReceptacle):
 	if currently_building_wire:
@@ -28,12 +44,15 @@ func _wire_started(receptacle: WireReceptacle):
 	currently_building_wire = w
 
 func _trigger(receptacle: MechPiece, target: Enemy):
-	var line = find_connected_line(receptacle)
-	create_projectile.emit(line, target)
+	var line: Array = find_chain(receptacle)
+	if line.all(func(x: MechPiece): return x.is_ready()):
+		create_projectile.emit(line as Array[MechPiece], target)
+		for c in line:
+			c.cooldown_charge = 0.0
 
 ## Starting at a sensor, find all things connected to it. 
 ## Connects from BLUE to RED. Cannot go backwards from RED to BLUE.
-func find_connected_line(mech_piece: MechPiece) -> Array[MechPiece]:
+func find_chain(mech_piece: MechPiece) -> Array[MechPiece]:
 	var blue_receptacle = mech_piece.get_blue_receptacle()
 	if not blue_receptacle:
 		return [mech_piece]
@@ -50,7 +69,7 @@ func find_connected_line(mech_piece: MechPiece) -> Array[MechPiece]:
 		# Should get here for any connected wire
 		if other_side:
 			var connected_to_mech_piece := other_side.get_mech_piece()
-			return [mech_piece] + find_connected_line(connected_to_mech_piece)
+			return [mech_piece] + find_chain(connected_to_mech_piece)
 
 	return [mech_piece]
 

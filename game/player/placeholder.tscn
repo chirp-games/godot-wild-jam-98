@@ -19,7 +19,7 @@ shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="MechBuilder" parent="." unique_id=1104080060 instance=ExtResource("3_eje2a")]
 position = Vector2(-76.99999, -88.99999)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.3, 0.3)
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=707595143]
 unique_name_in_owner = true

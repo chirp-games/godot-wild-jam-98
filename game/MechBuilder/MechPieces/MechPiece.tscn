@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://dd8kybajmmktc" path="res://game/MechBuilder/mech_piece.gd" id="1_i7vm1"]
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="3_osbyb"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fuuu"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7iqs"]
+bg_color = Color(0.19742897, 0.4142297, 1, 1)
+
 [node name="MechPiece" type="TextureRect" unique_id=784979916 groups=["mech_piece"]]
 offset_right = 225.0
 offset_bottom = 128.0
@@ -26,3 +32,15 @@ offset_top = 43.0
 offset_right = 207.0
 offset_bottom = 75.0
 type = 1
+
+[node name="CooldownBar" type="ProgressBar" parent="." unique_id=1653615765]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 52.0
+offset_top = 44.0
+offset_right = 172.0
+offset_bottom = 71.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4fuuu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_h7iqs")
+max_value = 1.0
+show_percentage = false
