@@ -44,7 +44,7 @@ joint_data/2/bone2d_node = NodePath("Torso/Hip/BackLegUpper/BackLegLower")
 joint_data/2/rotate_from_joint = false
 joint_data/2/enable_constraint = true
 joint_data/2/constraint_angle_min = 0.0
-joint_data/2/constraint_angle_max = 79.999985
+joint_data/2/constraint_angle_max = 79.99998
 joint_data/2/constraint_angle_invert = false
 joint_data/2/constraint_in_localspace = true
 joint_data/2/editor_draw_gizmo = true
@@ -217,7 +217,7 @@ position = Vector2(36, -19)
 texture = ExtResource("1_2mv0n")
 
 [node name="BackTarget" type="Marker2D" parent="Skeleton" unique_id=280282172]
-position = Vector2(-62, 88)
+position = Vector2(-53, 86)
 
 [node name="FrontTarget" type="Marker2D" parent="Skeleton" unique_id=840696397]
 position = Vector2(39, 137)
