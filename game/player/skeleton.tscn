@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://croela4nh3klu"]
+
+[ext_resource type="Texture2D" uid="uid://bxytylnqpxasj" path="res://assets/mech/head.png" id="1_2mv0n"]
+[ext_resource type="Texture2D" uid="uid://b7crndutr4kq8" path="res://assets/mech/front_ankle.png" id="2_gh012"]
+[ext_resource type="Texture2D" uid="uid://bj3fyx0dhbld2" path="res://assets/mech/foot.png" id="3_usp30"]
+[ext_resource type="Texture2D" uid="uid://cb84b3boggotd" path="res://assets/mech/back_ankle.png" id="4_0e4oy"]
+[ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="5_eeltd"]
+[ext_resource type="Texture2D" uid="uid://d3eywflvegv5t" path="res://assets/mech/body.png" id="6_088ty"]
+[ext_resource type="Texture2D" uid="uid://dvs4o1uw5ru4h" path="res://assets/mech/hip.png" id="7_epc1c"]
+[ext_resource type="Texture2D" uid="uid://cfwqd3d4nyki3" path="res://assets/mech/back_leg_top.png" id="8_kjljb"]
+[ext_resource type="Texture2D" uid="uid://5s1n2d16jkr0" path="res://assets/mech/back_leg_bottom.png" id="9_brh81"]
+[ext_resource type="Texture2D" uid="uid://b70bit4mx7nf" path="res://assets/mech/back_leg_knee_2.png" id="10_ib3u0"]
+[ext_resource type="Texture2D" uid="uid://dq0eguxmw17kj" path="res://assets/mech/back_leg_knee_one.png" id="11_bp242"]
+[ext_resource type="Texture2D" uid="uid://c0yfla8txxis6" path="res://assets/mech/front_leg_bottom.png" id="12_cgi3i"]
+[ext_resource type="Texture2D" uid="uid://bxd1xnm2hca4b" path="res://assets/mech/jaw.png" id="13_y6drd"]
+[ext_resource type="Texture2D" uid="uid://cilve6a6lgwy0" path="res://assets/mech/front_leg_top.png" id="14_w24bm"]
+[ext_resource type="Texture2D" uid="uid://dp6tseykdfxw1" path="res://assets/mech/front_leg_knee.png" id="15_22cju"]
+[ext_resource type="Texture2D" uid="uid://dak4wng1ttvt0" path="res://assets/mech/front_shoulder.png" id="16_wrff0"]
+
+[node name="Player" type="Node2D" unique_id=1202274876]
+
+[node name="Skeleton" type="Skeleton2D" parent="." unique_id=634421146]
+
+[node name="Hip" type="Bone2D" parent="Skeleton" unique_id=1354716127]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="Hip" type="Sprite2D" parent="Skeleton/Hip" unique_id=347799626]
+position = Vector2(9, 3)
+texture = ExtResource("7_epc1c")
+
+[node name="Torso" type="Bone2D" parent="Skeleton/Hip" unique_id=1890836690]
+position = Vector2(43, -7)
+rest = Transform2D(1, 0, 0, 1, 43, -7)
+
+[node name="Body" type="Sprite2D" parent="Skeleton/Hip/Torso" unique_id=1854293100]
+z_index = -1
+position = Vector2(21, 10)
+texture = ExtResource("6_088ty")
+
+[node name="Shoulders" type="Bone2D" parent="Skeleton/Hip/Torso" unique_id=1207513382]
+position = Vector2(101, -6)
+rest = Transform2D(1, 0, 0, 1, 101, -6)
+
+[node name="FrontLegUpper" type="Bone2D" parent="Skeleton/Hip/Torso/Shoulders" unique_id=714624909]
+position = Vector2(0, 24)
+rest = Transform2D(1, 0, 0, 1, 0, 24)
+
+[node name="FrontLegLower" type="Bone2D" parent="Skeleton/Hip/Torso/Shoulders/FrontLegUpper" unique_id=1265306782]
+position = Vector2(-48, 12)
+rest = Transform2D(1, 0, 0, 1, -48, 12)
+
+[node name="FrontFoot" type="Bone2D" parent="Skeleton/Hip/Torso/Shoulders/FrontLegUpper/FrontLegLower" unique_id=1854485686]
+position = Vector2(40, 38)
+rest = Transform2D(1, 0, 0, 1, 40, 38)
+auto_calculate_length_and_angle = false
+length = 50.0
+bone_angle = 0.0
+
+[node name="FrontAnkle" type="Sprite2D" parent="Skeleton/Hip/Torso/Shoulders/FrontLegUpper/FrontLegLower/FrontFoot" unique_id=958366085]
+position = Vector2(3, -5)
+texture = ExtResource("2_gh012")
+
+[node name="Foot2" type="Sprite2D" parent="Skeleton/Hip/Torso/Shoulders/FrontLegUpper/FrontLegLower/FrontFoot" unique_id=523995602]
+position = Vector2(25, 1)
+texture = ExtResource("3_usp30")
+
+[node name="FrontLegBottom" type="Sprite2D" parent="Skeleton/Hip/Torso/Shoulders/FrontLegUpper/FrontLegLower" unique_id=1979858614]
+position = Vector2(21, 21)
+texture = ExtResource("12_cgi3i")
+
+[node name="FrontLegKnee" type="Sprite2D" parent="Skeleton/Hip/Torso/Shoulders/FrontLegUpper/FrontLegLower" unique_id=1595479796]
+position = Vector2(4, 1)
+texture = ExtResource("15_22cju")
+
+[node name="FrontLegTop" type="Sprite2D" parent="Skeleton/Hip/Torso/Shoulders/FrontLegUpper" unique_id=1199935250]
+position = Vector2(-25, 7)
+texture = ExtResource("14_w24bm")
+
+[node name="FrontShoulder" type="Sprite2D" parent="Skeleton/Hip/Torso/Shoulders/FrontLegUpper" unique_id=1632702992]
+position = Vector2(0, 1)
+texture = ExtResource("16_wrff0")
+
+[node name="Head" type="Bone2D" parent="Skeleton/Hip/Torso/Shoulders" unique_id=1976044076]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+auto_calculate_length_and_angle = false
+length = 70.0
+bone_angle = 0.0
+
+[node name="Head" type="Sprite2D" parent="Skeleton/Hip/Torso/Shoulders/Head" unique_id=1912857352]
+position = Vector2(35, -18)
+texture = ExtResource("1_2mv0n")
+
+[node name="Jaw" type="Bone2D" parent="Skeleton/Hip/Torso/Shoulders" unique_id=845572108]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+auto_calculate_length_and_angle = false
+length = 70.0
+bone_angle = 9.999999
+
+[node name="Jaw" type="Sprite2D" parent="Skeleton/Hip/Torso/Shoulders/Jaw" unique_id=924610596]
+position = Vector2(35, 10)
+texture = ExtResource("13_y6drd")
+
+[node name="RearLegUpper" type="Bone2D" parent="Skeleton/Hip" unique_id=1050103298]
+position = Vector2(65, 36)
+rest = Transform2D(1, 0, 0, 1, 65, 36)
+
+[node name="RearLegLower" type="Bone2D" parent="Skeleton/Hip/RearLegUpper" unique_id=104826906]
+position = Vector2(-79, 14)
+rest = Transform2D(1, 0, 0, 1, -79, 14)
+
+[node name="RearFoot" type="Bone2D" parent="Skeleton/Hip/RearLegUpper/RearLegLower" unique_id=1882554828]
+position = Vector2(63, 14)
+rest = Transform2D(1, 0, 0, 1, 63, 14)
+auto_calculate_length_and_angle = false
+length = 50.0
+bone_angle = 0.0
+
+[node name="BackAnkle" type="Sprite2D" parent="Skeleton/Hip/RearLegUpper/RearLegLower/RearFoot" unique_id=1167093384]
+position = Vector2(5, -8)
+texture = ExtResource("4_0e4oy")
+
+[node name="Foot" type="Sprite2D" parent="Skeleton/Hip/RearLegUpper/RearLegLower/RearFoot" unique_id=2125881860]
+position = Vector2(25, -3)
+texture = ExtResource("3_usp30")
+
+[node name="BackLegBottom" type="Sprite2D" parent="Skeleton/Hip/RearLegUpper/RearLegLower" unique_id=960945227]
+position = Vector2(41, 6)
+texture = ExtResource("9_brh81")
+
+[node name="BackLegKnee2" type="Sprite2D" parent="Skeleton/Hip/RearLegUpper/RearLegLower" unique_id=2029111153]
+position = Vector2(3, 2)
+texture = ExtResource("10_ib3u0")
+
+[node name="BackLegTop" type="Sprite2D" parent="Skeleton/Hip/RearLegUpper" unique_id=1245358319]
+position = Vector2(-38, 7)
+texture = ExtResource("8_kjljb")
+
+[node name="BackLegKneeOne" type="Sprite2D" parent="Skeleton/Hip/RearLegUpper" unique_id=1490578675]
+position = Vector2(1, 0)
+texture = ExtResource("11_bp242")
+
+[node name="Assembly" type="Sprite2D" parent="." unique_id=115939422]
+visible = false
+position = Vector2(222, -151)
+texture = ExtResource("5_eeltd")
