@@ -19,13 +19,13 @@ func _process(_delta: float) -> void:
 	if not a:
 		return
 
-	set_point_position(0, a.get_global_rect().get_center())
+	set_point_position(0, to_local(a.get_global_rect().get_center()))
 
 	var end_point := get_global_mouse_position()
 	if b:
 		end_point = b.get_global_rect().get_center()
 
-	set_point_position(1, end_point)
+	set_point_position(1, to_local(end_point))
 
 	var make_red = false
 	if delete_started:

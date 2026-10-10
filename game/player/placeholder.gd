@@ -1,10 +1,31 @@
 extends CharacterBody2D
 
 
+@onready var player_camera: Camera2D = %PlayerCamera
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+var in_build_mode: bool = false
+
 var d = 1.
+
+
+func enter_build_mode():
+	in_build_mode = true
+	player_camera.zoom = Vector2(5.0, 5.0)
+
+func exit_build_mode():
+	in_build_mode = false
+	player_camera.zoom = Vector2(1.0, 1.0)
+
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("enter_build_mode"):
+		if not in_build_mode:
+			enter_build_mode()
+		else:
+			exit_build_mode()
 
 func _process(delts: float) -> void:
 	scale.x = d
