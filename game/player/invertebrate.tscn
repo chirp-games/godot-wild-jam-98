@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://bs4v6f15yrk"]
+
+[ext_resource type="Texture2D" uid="uid://d3eywflvegv5t" path="res://assets/mech/body.png" id="1_l3ji6"]
+[ext_resource type="Texture2D" uid="uid://dvs4o1uw5ru4h" path="res://assets/mech/hip.png" id="2_l3ji6"]
+[ext_resource type="Texture2D" uid="uid://cfwqd3d4nyki3" path="res://assets/mech/back_leg_top.png" id="3_8nmqh"]
+[ext_resource type="Texture2D" uid="uid://dq0eguxmw17kj" path="res://assets/mech/back_leg_knee_one.png" id="4_sohrd"]
+[ext_resource type="Texture2D" uid="uid://b70bit4mx7nf" path="res://assets/mech/back_leg_knee_2.png" id="5_sohrd"]
+[ext_resource type="Texture2D" uid="uid://5s1n2d16jkr0" path="res://assets/mech/back_leg_bottom.png" id="6_q5h14"]
+[ext_resource type="Texture2D" uid="uid://cb84b3boggotd" path="res://assets/mech/back_ankle.png" id="7_di7kf"]
+[ext_resource type="Texture2D" uid="uid://bj3fyx0dhbld2" path="res://assets/mech/foot.png" id="8_jjrw6"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_l3ji6"]
+points = PackedVector2Array(-66.4, 15, -69, -33, -47, -47.5, 64, -49, 68.4, -3)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
+radius = 68.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 42.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(35, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57qmd"]
+size = Vector2(60, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_57qmd"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0u6y"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3gngh"]
+radius = 9.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_g4v7s"]
+points = PackedVector2Array(-9, -9, -5, -12, 10.500004, -10.5, 28.500004, -15.5, 39.500004, -12.5, 46.500004, -7.5, 50.500004, -2.5, 58.500004, -0.5, 64.5, 9, 0, 9, -9, 0)
+
+[node name="Body" type="RigidBody2D" unique_id=937337465]
+mass = 120.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=570175741]
+texture = ExtResource("1_l3ji6")
+
+[node name="Shell" type="CollisionShape2D" parent="." unique_id=1612126273]
+shape = SubResource("ConvexPolygonShape2D_l3ji6")
+
+[node name="Belly" type="CollisionShape2D" parent="." unique_id=1004524622]
+position = Vector2(1, 6)
+rotation = -0.13264503
+scale = Vector2(1, 0.64)
+skew = 0.0052359877
+shape = SubResource("CircleShape2D_yf5fn")
+
+[node name="HipJoint" type="PinJoint2D" parent="." unique_id=2139627396]
+position = Vector2(-67, 0)
+node_a = NodePath("..")
+node_b = NodePath("Hip")
+
+[node name="Hip" type="RigidBody2D" parent="HipJoint" unique_id=2044445702]
+mass = 65.0
+
+[node name="Sprite2D" type="Sprite2D" parent="HipJoint/Hip" unique_id=864506883]
+position = Vector2(7.25, 0)
+texture = ExtResource("2_l3ji6")
+
+[node name="Joint" type="CollisionShape2D" parent="HipJoint/Hip" unique_id=1708273647]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Thigh" type="CollisionShape2D" parent="HipJoint/Hip" unique_id=917037419]
+position = Vector2(37.999996, 29)
+rotation = 0.13962634
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="Hindleg1" type="PinJoint2D" parent="HipJoint/Hip" unique_id=83640338]
+position = Vector2(55, 31)
+node_a = NodePath("..")
+node_b = NodePath("Hindleg1")
+
+[node name="Hindleg1" type="RigidBody2D" parent="HipJoint/Hip/Hindleg1" unique_id=2086156638]
+mass = 30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="HipJoint/Hip/Hindleg1/Hindleg1" unique_id=1193533871]
+position = Vector2(-29.330002, 6.1000004)
+texture = ExtResource("3_8nmqh")
+
+[node name="Kneecap" type="Sprite2D" parent="HipJoint/Hip/Hindleg1/Hindleg1" unique_id=1338795640]
+texture = ExtResource("4_sohrd")
+
+[node name="Leg" type="CollisionShape2D" parent="HipJoint/Hip/Hindleg1/Hindleg1" unique_id=375467240]
+position = Vector2(-29.330002, 6.0999985)
+rotation = -0.19198622
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_57qmd")
+
+[node name="Knee" type="CollisionShape2D" parent="HipJoint/Hip/Hindleg1/Hindleg1" unique_id=591753189]
+shape = SubResource("CircleShape2D_57qmd")
+
+[node name="Ankle" type="PinJoint2D" parent="HipJoint/Hip/Hindleg1/Hindleg1" unique_id=1589862041]
+position = Vector2(-58.802, 11.7)
+node_a = NodePath("..")
+node_b = NodePath("Ankle")
+
+[node name="Ankle" type="RigidBody2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle" unique_id=707673962]
+
+[node name="Leg" type="Sprite2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle" unique_id=863204578]
+position = Vector2(28.802002, 2.2999992)
+texture = ExtResource("6_q5h14")
+
+[node name="Joint" type="Sprite2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle" unique_id=1629344970]
+texture = ExtResource("5_sohrd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle" unique_id=77576831]
+position = Vector2(-1.197998, 9.299999)
+polygon = PackedVector2Array(0, -1, 1, -19, 48, -15, 55, -3, 60, -7, 59, 4)
+
+[node name="Ankle" type="CollisionShape2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle" unique_id=1582380573]
+shape = SubResource("CircleShape2D_d0u6y")
+
+[node name="Foot" type="PinJoint2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle" unique_id=637496077]
+position = Vector2(58.302, 7.8)
+node_a = NodePath("..")
+node_b = NodePath("Foot")
+
+[node name="Foot" type="RigidBody2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle/Foot" unique_id=399101811]
+
+[node name="Sprite2D2" type="Sprite2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle/Foot/Foot" unique_id=350738761]
+position = Vector2(1.5000038, -6.5)
+texture = ExtResource("7_di7kf")
+
+[node name="Sprite2D" type="Sprite2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle/Foot/Foot" unique_id=997278056]
+position = Vector2(27.5, -3)
+texture = ExtResource("8_jjrw6")
+
+[node name="Ankle" type="CollisionShape2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle/Foot/Foot" unique_id=1012999701]
+shape = SubResource("CircleShape2D_3gngh")
+
+[node name="Foot" type="CollisionShape2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle/Foot/Foot" unique_id=2097662674]
+shape = SubResource("ConvexPolygonShape2D_g4v7s")
+
+[node name="Marker2D" type="Marker2D" parent="HipJoint/Hip/Hindleg1/Hindleg1/Ankle/Ankle/Foot" unique_id=1225025334]
