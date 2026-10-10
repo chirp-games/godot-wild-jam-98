@@ -5,7 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="2_lqtqk"]
 [ext_resource type="Resource" uid="uid://b3l4nffe6cyif" path="res://resources/mech_pieces/pieces/doubler.tres" id="3_y78uw"]
 [ext_resource type="PackedScene" uid="uid://bj7ri47ajwpf5" path="res://game/MechBuilder/MechPieces/omni-sensor.tscn" id="4_0dod8"]
+[ext_resource type="Resource" uid="uid://dtyt06ananm1a" path="res://resources/mech_pieces/pieces/omni-sensor.tres" id="4_5ramo"]
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="5_ps434"]
+[ext_resource type="Resource" uid="uid://dggojrqhpdtuy" path="res://resources/mech_pieces/pieces/fire-effect.tres" id="7_1wrot"]
 
 [node name="MechBuilder" type="Node2D" unique_id=1104080060]
 script = ExtResource("1_pp1pe")
@@ -17,12 +19,12 @@ unique_name_in_owner = true
 visible = false
 texture = ExtResource("2_lqtqk")
 
-[node name="MechPiece" parent="." unique_id=784979916 instance=ExtResource("4_0dod8")]
+[node name="Sensor" parent="." unique_id=784979916 instance=ExtResource("4_0dod8")]
 offset_left = -102.0
 offset_top = -102.0
 offset_right = -26.0
 offset_bottom = -80.0
-resource = ExtResource("3_y78uw")
+resource = ExtResource("4_5ramo")
 
 [node name="MechPiece2" parent="." unique_id=877573661 instance=ExtResource("2_h8sgc")]
 offset_left = 46.0
@@ -36,7 +38,7 @@ offset_left = 26.0
 offset_top = -119.0
 offset_right = 102.0
 offset_bottom = -97.0
-resource = ExtResource("3_y78uw")
+resource = ExtResource("7_1wrot")
 
 [node name="WireReceptacle" parent="." unique_id=21922453 groups=["energy_port"] instance=ExtResource("5_ps434")]
 offset_left = -52.0

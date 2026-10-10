@@ -11,6 +11,6 @@ metadata/_custom_type_script = "uid://biu6m43oul3c3"
 [resource]
 script = ExtResource("1_a7bbg")
 name = "Doubler"
-cooldown = 0.5
+cooldown = 0.25
 effect = SubResource("Resource_pvf2v")
 metadata/_custom_type_script = "uid://dsofhq66sax7b"

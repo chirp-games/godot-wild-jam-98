@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 			var piece = chain[i]
 			if i == 0 and piece.detected_target:
 				active = true
-			if piece.cooldown_charge >= piece.resource.cooldown:
+			if piece.cooldown_charge >= piece.resource.cooldown and active:
 				continue
 			if active and previous_was_charged:
 				piece.cooldown_charge += delta
