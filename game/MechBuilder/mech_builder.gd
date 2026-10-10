@@ -2,6 +2,8 @@ extends Node2D
 
 const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
 
+signal create_projectile(chain: Array[MechPiece], target: Enemy)
+
 var currently_building_wire: Wire
 
 func find_wire_receptacles():
@@ -10,13 +12,12 @@ func find_wire_receptacles():
 func find_wires():
 	return get_tree().get_nodes_in_group("wire")
 
-
 func _ready() -> void:
 	for receptacle: WireReceptacle in find_wire_receptacles():
 		receptacle.wire_started.connect(func(): _wire_started(receptacle))
 
 	for piece: MechPiece in get_tree().get_nodes_in_group("mech_piece"):
-		piece.activate.connect(func(): _trigger(piece))
+		piece.activate.connect(func(t: Enemy): _trigger(piece, t))
 
 func _wire_started(receptacle: WireReceptacle):
 	if currently_building_wire:
@@ -26,9 +27,9 @@ func _wire_started(receptacle: WireReceptacle):
 	w.a = receptacle
 	currently_building_wire = w
 
-func _trigger(receptacle: MechPiece):
-	print("trigger")
-	print(find_connected_line(receptacle))
+func _trigger(receptacle: MechPiece, target: Enemy):
+	var line = find_connected_line(receptacle)
+	create_projectile.emit(line, target)
 
 ## Starting at a sensor, find all things connected to it. 
 ## Connects from BLUE to RED. Cannot go backwards from RED to BLUE.

@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var sprite: Sprite2D = %Sprite2D
+
+signal create_projectile(chain: Array[MechPiece], target: Enemy)
 
 @onready var player_camera: Camera2D = %PlayerCamera
 
@@ -27,9 +30,6 @@ func _input(event: InputEvent) -> void:
 		else:
 			exit_build_mode()
 
-func _process(delts: float) -> void:
-	scale.x = d
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -46,8 +46,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
+
 	if direction != 0:
 		d = direction
+		sprite.scale.x = d
 	
 	move_and_slide()
+
+
+func _on_mech_builder_create_projectile(chain: Array[MechPiece], target: Enemy) -> void:
+	create_projectile.emit(chain, target)
+	
+	

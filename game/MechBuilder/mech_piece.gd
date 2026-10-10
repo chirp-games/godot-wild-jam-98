@@ -6,7 +6,7 @@ class_name MechPiece
 @onready var blue: WireReceptacle = %Blue
 
 ## Signal that an enemy is detected that needs to be fired at!
-signal activate
+signal activate(target: Enemy)
 
 func get_receptacles():
 	var out: Array[WireReceptacle] = []
