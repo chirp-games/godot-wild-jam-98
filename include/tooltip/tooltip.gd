@@ -48,7 +48,7 @@ func _process(_delta: float):
 
 
 func position_main_tooltip():
-	var around_rect = get_node_global_bounding_box(around)
+	var around_rect := get_node_global_bounding_box(around)
 
 	var direction_priority_list: Array[Direction] = [direction_0, direction_1, direction_2, direction_3]
 
@@ -57,9 +57,9 @@ func position_main_tooltip():
 
 	tooltip.global_position = position_single_tooltip(get_tooltip_size(), around_rect, direction_priority_list)
 
-func position_single_tooltip(tooltip_size, around_node, direction_priority: Array[Direction]) -> Vector2:
+func position_single_tooltip(tooltip_size: Vector2, around_node: Rect2, direction_priority: Array[Direction]) -> Vector2:
 	for d in direction_priority:
-		var location = null
+		var location: Vector2
 		if d == Direction.LEFT:
 			location = try_place_left(tooltip_size, around_node)
 		if d == Direction.RIGHT:
@@ -70,7 +70,7 @@ func position_single_tooltip(tooltip_size, around_node, direction_priority: Arra
 			location = try_place_down(tooltip_size, around_node)
 
 		if location != null:
-			var tooltip_global_bounding_box = Rect2(location, tooltip_size)
+			var tooltip_global_bounding_box := Rect2(location, tooltip_size)
 			for do_not_overlap in avoid_overlap:
 				if get_node_global_bounding_box(do_not_overlap).intersects(tooltip_global_bounding_box):
 					location = null
@@ -82,7 +82,7 @@ func position_single_tooltip(tooltip_size, around_node, direction_priority: Arra
 	return Vector2(0, 0)
 
 
-func try_place_left(tooltip_size: Vector2, around: Rect2):
+func try_place_left(tooltip_size: Vector2, around: Rect2) -> Vector2:
 	var top_left_x = around.position.x - tooltip_size.x
 	var top_left_y = around.position.y + around.size.y / 2 - tooltip_size.y / 2
 
@@ -95,7 +95,7 @@ func try_place_left(tooltip_size: Vector2, around: Rect2):
 
 	return Vector2(top_left_x, top_left_y)
 
-func try_place_right(tooltip_size: Vector2, around: Rect2):
+func try_place_right(tooltip_size: Vector2, around: Rect2) -> Vector2:
 	var top_left_x = around.position.x + around.size.x
 	var top_left_y = around.position.y + around.size.y / 2 - tooltip_size.y / 2
 
@@ -121,12 +121,12 @@ func try_place_up(tooltip_size: Vector2, around: Rect2):
 
 	return Vector2(top_left_x, top_left_y)
 
-func try_place_down(tooltip_size: Vector2, around: Rect2):
+func try_place_down(tooltip_size: Vector2, around: Rect2) -> Vector2:
 	var top_left_x = around.position.x + around.size.x / 2 - tooltip_size.x / 2
 	var top_left_y = around.position.y + around.size.y 
 
 	if top_left_y + tooltip_size.y > get_viewport_size().size.y:
-		return null
+		return Vector2(0, 0)
 	if top_left_x < 0:
 		top_left_x = 0
 	if top_left_x + tooltip_size.x >= get_viewport_size().size.x:
@@ -134,7 +134,7 @@ func try_place_down(tooltip_size: Vector2, around: Rect2):
 
 	return Vector2(top_left_x, top_left_y)
 
-func get_node_global_bounding_box(node: Node):
+func get_node_global_bounding_box(node: Node) -> Rect2:
 	if node == null:
 		return Rect2()
 	var node_position: Vector2 = node.position
@@ -159,7 +159,7 @@ func get_viewport_size():
 		return Rect2(Vector2(0, 0), Vector2(1920, 1080))
 	return get_viewport().get_visible_rect()
 
-func get_tooltip_size():
+func get_tooltip_size() -> Vector2:
 	if tooltip:
 		return tooltip.size
 	return Vector2(0.,0.)

@@ -11,14 +11,13 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_222uh")
 
-[node name="Tooltip" parent="." unique_id=604278011 node_paths=PackedStringArray("tooltip", "avoid_overlap") instance=ExtResource("1_vjn1j")]
+[node name="Tooltip" parent="." unique_id=604278011 node_paths=PackedStringArray("tooltip") instance=ExtResource("1_vjn1j")]
 unique_name_in_owner = true
 layout_mode = 0
 direction_1 = 1
 direction_2 = 2
 direction_3 = 3
 tooltip = NodePath("MainTooltip")
-avoid_overlap = [null, null, null, null, null, null]
 
 [node name="MainTooltip" parent="Tooltip" unique_id=1640107277 instance=ExtResource("2_vufjc")]
 unique_name_in_owner = true
@@ -26,15 +25,14 @@ layout_mode = 0
 offset_right = 400.0
 offset_bottom = 80.0
 
-[node name="Hints" parent="." unique_id=2082494319 node_paths=PackedStringArray("around", "tooltip", "avoid_overlap") instance=ExtResource("1_vjn1j")]
+[node name="Hints" parent="." unique_id=2082494319 node_paths=PackedStringArray("around", "tooltip") instance=ExtResource("1_vjn1j")]
 unique_name_in_owner = true
 layout_mode = 0
-around = NodePath("../Tooltip/MainTooltip")
 direction_1 = 1
 direction_2 = 3
 direction_3 = 2
+around = NodePath("../Tooltip/MainTooltip")
 tooltip = NodePath("VBoxContainer")
-avoid_overlap = [null]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Hints" unique_id=1718395702]
 layout_mode = 0

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://chqqle2impvx3"]
+
+[ext_resource type="Script" uid="uid://dd8kybajmmktc" path="res://mech_builder_test/mech_piece.gd" id="1_i7vm1"]
+
+[node name="MechPiece" type="TextureRect" unique_id=784979916 groups=["mech_piece"]]
+script = ExtResource("1_i7vm1")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

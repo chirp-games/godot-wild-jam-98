@@ -36,7 +36,6 @@ gdscript/warnings/unsafe_call_argument=2
 gdscript/warnings/return_value_discarded=1
 gdscript/warnings/static_called_on_instance=2
 gdscript/warnings/missing_await=2
-gdscript/warnings/narrowing_conversion=2
 
 [display]
 
@@ -47,6 +46,8 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 statistic=""
+mech_piece=""
+wire=""
 
 [gui]
 
