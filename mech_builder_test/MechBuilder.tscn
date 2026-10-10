@@ -30,12 +30,21 @@ offset_top = 637.0
 offset_right = 1291.0
 offset_bottom = 765.0
 texture = ExtResource("1_pqhld")
+type = 1
 
 [node name="MechPieceC" parent="." unique_id=266490097 instance=ExtResource("2_h8sgc")]
 offset_left = 917.0
 offset_top = 493.0
 offset_right = 1045.0
 offset_bottom = 621.0
+texture = ExtResource("1_pqhld")
+type = 1
+
+[node name="MechPieceD" parent="." unique_id=1470958278 instance=ExtResource("2_h8sgc")]
+offset_left = 814.0
+offset_top = 674.0
+offset_right = 942.0
+offset_bottom = 802.0
 texture = ExtResource("1_pqhld")
 
 [node name="Wires" type="Node2D" parent="." unique_id=567382552]

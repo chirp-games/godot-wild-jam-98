@@ -7,6 +7,7 @@ var currently_building_wire: Wire
 func _ready() -> void:
 	for piece: MechPiece in get_tree().get_nodes_in_group("mech_piece"):
 		piece.wire_started.connect(func(): _wire_started(piece))
+		piece.trigger.connect(func(): _trigger(piece))
 
 func _wire_started(piece: MechPiece):
 	if currently_building_wire:
@@ -16,13 +17,21 @@ func _wire_started(piece: MechPiece):
 	w.a = piece
 	currently_building_wire = w
 
+func _trigger(piece: MechPiece):
+	if piece.type == MechPiece.Type.Female:
+		for w: Wire in get_tree().get_nodes_in_group("wire"):
+			if w.a == piece:
+				w.b.activate()
+			if w.b == piece:
+				w.a.activate()
+
 func try_placing_wire():
 	if not currently_building_wire:
 		return
 	for piece: MechPiece in get_tree().get_nodes_in_group("mech_piece"):
 		if currently_building_wire.a == piece:
 			continue
-		if piece.get_global_rect().has_point(get_global_mouse_position()):
+		if piece.get_global_rect().has_point(get_global_mouse_position()) and piece.type != currently_building_wire.a.type:
 			currently_building_wire.b = piece
 			currently_building_wire = null
 			return
