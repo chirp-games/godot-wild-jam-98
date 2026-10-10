@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://plucjclkftyk"]
+
+[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="1_ngjxm"]
+[ext_resource type="PackedScene" uid="uid://bh33wpnab0udv" path="res://game/player/placeholder.tscn" id="2_nvd21"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
+
+[node name="Test" type="Node2D" unique_id=1386858487]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1506663377]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1470402306]
+shape = SubResource("WorldBoundaryShape2D_g4v7s")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1602011461]
+
+[node name="Player" parent="." unique_id=823727328 instance=ExtResource("1_ngjxm")]
+position = Vector2(-1, -204)
+
+[node name="Placeholder" parent="." unique_id=720771102 instance=ExtResource("2_nvd21")]
+position = Vector2(342, -113)

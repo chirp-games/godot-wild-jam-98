@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bh33wpnab0udv"]
+
+[ext_resource type="Script" uid="uid://bjry6bx3b3btk" path="res://game/player/placeholder.gd" id="1_1tcf3"]
+[ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="2_eje2a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(268, 135)
+
+[node name="Placeholder" type="CharacterBody2D" unique_id=720771102]
+script = ExtResource("1_1tcf3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=58518269]
+texture = ExtResource("2_eje2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1781096782]
+shape = SubResource("RectangleShape2D_g4v7s")
