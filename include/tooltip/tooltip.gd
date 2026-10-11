@@ -71,7 +71,7 @@ func position_single_tooltip(tooltip_size: Vector2, around_node: Rect2, directio
 			location = try_place_down(tooltip_size, around_node)
 
 		if location != null:
-			var tooltip_global_bounding_box := Rect2(location, tooltip_size)
+			var tooltip_global_bounding_box := Rect2(location, tooltip_size).abs()
 			for do_not_overlap in avoid_overlap:
 				if get_node_global_bounding_box(do_not_overlap).intersects(tooltip_global_bounding_box):
 					location = null
@@ -150,7 +150,7 @@ func get_node_global_bounding_box(node: Node) -> Rect2:
 		node_size = node.get_global_rect()
 		node_top_left = node_size.position
 
-	return Rect2(node_top_left, node_size.size)
+	return Rect2(node_top_left, node_size.size).abs()
 
 
 func get_viewport_size():

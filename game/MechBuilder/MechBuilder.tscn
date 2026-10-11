@@ -5,71 +5,84 @@
 [ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="2_lqtqk"]
 [ext_resource type="Resource" uid="uid://b3l4nffe6cyif" path="res://resources/mech_pieces/pieces/doubler.tres" id="3_y78uw"]
 [ext_resource type="PackedScene" uid="uid://bj7ri47ajwpf5" path="res://game/MechBuilder/MechPieces/omni-sensor.tscn" id="4_0dod8"]
-[ext_resource type="Resource" uid="uid://dtyt06ananm1a" path="res://resources/mech_pieces/pieces/omni-sensor.tres" id="4_5ramo"]
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="5_ps434"]
-[ext_resource type="Resource" uid="uid://dggojrqhpdtuy" path="res://resources/mech_pieces/pieces/fire-effect.tres" id="7_1wrot"]
 [ext_resource type="Resource" uid="uid://dd2f3j8rykl14" path="res://resources/mech_pieces/pieces/biiig.tres" id="8_or6tb"]
+[ext_resource type="Script" uid="uid://b6y4hru6jxemy" path="res://game/MechBuilder/control.gd" id="10_ut74i"]
 
 [node name="MechBuilder" type="Node2D" unique_id=1104080060]
 script = ExtResource("1_pp1pe")
 
+[node name="Grid" type="Control" parent="." unique_id=1345887242]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -192.0
+offset_right = 64.0
+offset_bottom = -64.0
+script = ExtResource("10_ut74i")
+bg = Color(0, 0, 0, 1)
+fg = Color(1, 1, 1, 1)
+rows = 4
+columns = 4
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1505863446]
 texture = ExtResource("2_lqtqk")
 
-[node name="Sensor" parent="." unique_id=784979916 instance=ExtResource("4_0dod8")]
-offset_left = -102.0
-offset_top = -102.0
-offset_right = -26.0
-offset_bottom = -80.0
-resource = ExtResource("4_5ramo")
+[node name="Modules" type="Control" parent="." unique_id=188403923]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="MechPiece2" parent="." unique_id=877573661 instance=ExtResource("2_h8sgc")]
-offset_left = 46.0
-offset_top = -91.0
-offset_right = 122.0
-offset_bottom = -69.0
+[node name="MechPiece" parent="Modules" unique_id=747427618 instance=ExtResource("2_h8sgc")]
+layout_mode = 0
+offset_left = -141.0
+offset_top = -233.0
+offset_right = -77.0
+offset_bottom = -201.0
+resource = ExtResource("8_or6tb")
+
+[node name="MechPiece2" parent="Modules" unique_id=784979916 instance=ExtResource("2_h8sgc")]
+layout_mode = 0
+offset_left = -141.0
+offset_top = -196.0
+offset_right = -77.0
+offset_bottom = -164.0
 resource = ExtResource("3_y78uw")
 
-[node name="MechPiece3" parent="." unique_id=1915759885 instance=ExtResource("2_h8sgc")]
-offset_left = 26.0
-offset_top = -119.0
-offset_right = 102.0
-offset_bottom = -97.0
-resource = ExtResource("7_1wrot")
-
-[node name="MechPiece4" parent="." unique_id=510320489 instance=ExtResource("2_h8sgc")]
-offset_left = -53.0
-offset_top = -160.0
-offset_right = 23.0
-offset_bottom = -138.0
-resource = ExtResource("8_or6tb")
+[node name="Sensor" parent="Modules" unique_id=1268493720 instance=ExtResource("4_0dod8")]
+layout_mode = 0
+offset_left = -136.0
+offset_top = -151.0
+offset_right = -72.0
+offset_bottom = -119.0
 
 [node name="WireReceptacle" parent="." unique_id=21922453 groups=["energy_port"] instance=ExtResource("5_ps434")]
 offset_left = -52.0
-offset_top = -52.0
+offset_top = -54.0
 offset_right = -44.0
-offset_bottom = -44.0
+offset_bottom = -46.0
 type = 1
 
 [node name="WireReceptacle2" parent="." unique_id=1364866300 groups=["energy_port"] instance=ExtResource("5_ps434")]
-offset_left = -30.0
+offset_left = -22.0
 offset_top = -53.0
-offset_right = -22.0
+offset_right = -14.0
 offset_bottom = -45.0
 type = 1
 
 [node name="WireReceptacle3" parent="." unique_id=1315036178 groups=["energy_port"] instance=ExtResource("5_ps434")]
-offset_left = -7.0
+offset_left = 12.0
 offset_top = -53.0
-offset_right = 1.0
+offset_right = 20.0
 offset_bottom = -45.0
 type = 1
 
 [node name="WireReceptacle4" parent="." unique_id=1352475008 groups=["energy_port"] instance=ExtResource("5_ps434")]
-offset_left = 16.0
-offset_top = -54.0
-offset_right = 24.0
-offset_bottom = -46.0
+offset_left = 49.0
+offset_top = -52.0
+offset_right = 57.0
+offset_bottom = -44.0
 type = 1
 
 [node name="Wires" type="Node2D" parent="." unique_id=567382552]
