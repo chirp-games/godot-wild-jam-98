@@ -5,12 +5,19 @@ class_name MechPiece
 @onready var red: WireReceptacle = %Red
 @onready var blue: WireReceptacle = %Blue
 @onready var cooldown_bar: ProgressBar = %CooldownBar
+@onready var tooltip: DefaultTooltip = %Tooltip
 
 @export var resource: MechPieceResource
+
 var cooldown_charge = 0.0
 
 ## Sensors should set this to a body when an enemy is in range
 var detected_target = null
+
+func _ready() -> void:
+	grid_size = Vector2(32, 32)
+	tooltip.make_mech_piece_tooltip(resource.name)
+	super._ready()
 
 func _process(delta: float) -> void:
 	cooldown_bar.value = cooldown_charge / resource.cooldown

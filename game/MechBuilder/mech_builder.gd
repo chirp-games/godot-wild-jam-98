@@ -3,6 +3,7 @@ extends Node2D
 class_name MechBuilder
 
 const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
+const GRID_SIZE = Vector2(4, 4)
 
 signal create_projectile(chain: Array, target: Enemy)
 

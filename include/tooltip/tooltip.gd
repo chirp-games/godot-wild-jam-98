@@ -1,4 +1,5 @@
 @tool
+
 extends Control
 class_name Tooltip
 
@@ -59,7 +60,7 @@ func position_main_tooltip():
 
 func position_single_tooltip(tooltip_size: Vector2, around_node: Rect2, direction_priority: Array[Direction]) -> Vector2:
 	for d in direction_priority:
-		var location: Vector2
+		var location = null
 		if d == Direction.LEFT:
 			location = try_place_left(tooltip_size, around_node)
 		if d == Direction.RIGHT:
@@ -82,7 +83,7 @@ func position_single_tooltip(tooltip_size: Vector2, around_node: Rect2, directio
 	return Vector2(0, 0)
 
 
-func try_place_left(tooltip_size: Vector2, around: Rect2) -> Vector2:
+func try_place_left(tooltip_size: Vector2, around: Rect2):
 	var top_left_x = around.position.x - tooltip_size.x
 	var top_left_y = around.position.y + around.size.y / 2 - tooltip_size.y / 2
 
@@ -95,7 +96,7 @@ func try_place_left(tooltip_size: Vector2, around: Rect2) -> Vector2:
 
 	return Vector2(top_left_x, top_left_y)
 
-func try_place_right(tooltip_size: Vector2, around: Rect2) -> Vector2:
+func try_place_right(tooltip_size: Vector2, around: Rect2):
 	var top_left_x = around.position.x + around.size.x
 	var top_left_y = around.position.y + around.size.y / 2 - tooltip_size.y / 2
 

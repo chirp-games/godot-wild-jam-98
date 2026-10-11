@@ -52,9 +52,9 @@ func is_placable():
 	return false
 
 func is_hovered():
-	var p1 := Geometry2D.get_closest_point_to_segment(to_local(get_global_mouse_position()), get_point_position(0), get_point_position(1))
-	var p2 := to_local(get_global_mouse_position())
-	return (p1 - p2).abs() < Vector2(Vector2.ONE * hover_margin)
+	var p1 := Geometry2D.get_closest_point_to_segment(get_global_mouse_position(), get_point_position(0), get_point_position(1))
+	var p2 := get_global_mouse_position()
+	return (p1 - p2).length() < (Vector2.ONE * hover_margin).length()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):

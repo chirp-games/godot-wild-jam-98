@@ -2,7 +2,7 @@ extends TextureRect
 
 class_name DragableTextureRect
 
-
+var grid_size = Vector2(1, 1)
 var dragging := false
 var drag_offset := Vector2.ZERO
 
@@ -11,13 +11,13 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if dragging:
-		global_position = drag_offset + get_global_mouse_position()
+		position = floor((drag_offset + get_global_mouse_position()) / grid_size) * grid_size
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_click"):
 		scale *= 1.1
 		dragging = true
-		drag_offset = global_position - get_global_mouse_position()
+		drag_offset = floor((position - get_global_mouse_position()) / grid_size) * grid_size + grid_size
 
 	if event.is_action_released("left_click"):
 		scale *= 1. / 1.1

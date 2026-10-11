@@ -16,6 +16,9 @@ unique_name_in_owner = true
 [node name="Enemy" parent="." unique_id=1736390898 instance=ExtResource("3_h7iqs")]
 position = Vector2(470, 222)
 
+[node name="Enemy2" parent="." unique_id=2122325481 instance=ExtResource("3_h7iqs")]
+position = Vector2(687, 223)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=181635298]
 position = Vector2(-82, -6)
 

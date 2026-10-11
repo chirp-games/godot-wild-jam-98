@@ -8,12 +8,12 @@
 [ext_resource type="Resource" uid="uid://dtyt06ananm1a" path="res://resources/mech_pieces/pieces/omni-sensor.tres" id="4_5ramo"]
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="5_ps434"]
 [ext_resource type="Resource" uid="uid://dggojrqhpdtuy" path="res://resources/mech_pieces/pieces/fire-effect.tres" id="7_1wrot"]
+[ext_resource type="Resource" uid="uid://dd2f3j8rykl14" path="res://resources/mech_pieces/pieces/biiig.tres" id="8_or6tb"]
 
 [node name="MechBuilder" type="Node2D" unique_id=1104080060]
 script = ExtResource("1_pp1pe")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1505863446]
-visible = false
 texture = ExtResource("2_lqtqk")
 
 [node name="Sensor" parent="." unique_id=784979916 instance=ExtResource("4_0dod8")]
@@ -36,6 +36,13 @@ offset_top = -119.0
 offset_right = 102.0
 offset_bottom = -97.0
 resource = ExtResource("7_1wrot")
+
+[node name="MechPiece4" parent="." unique_id=510320489 instance=ExtResource("2_h8sgc")]
+offset_left = -53.0
+offset_top = -160.0
+offset_right = 23.0
+offset_bottom = -138.0
+resource = ExtResource("8_or6tb")
 
 [node name="WireReceptacle" parent="." unique_id=21922453 groups=["energy_port"] instance=ExtResource("5_ps434")]
 offset_left = -52.0

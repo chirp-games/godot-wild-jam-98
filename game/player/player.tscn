@@ -85,7 +85,7 @@ texture = ExtResource("4_0e4oy")
 
 [node name="FrontLegUpper" type="Bone2D" parent="Torso" unique_id=1151840382]
 position = Vector2(11, 23)
-rotation = -0.30781007
+rotation = -0.3078101
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, 11, 23)
 
@@ -99,7 +99,7 @@ texture = ExtResource("6_088ty")
 
 [node name="FrontLegLower" type="Bone2D" parent="Torso/FrontLegUpper" unique_id=1154740205]
 position = Vector2(-44.000008, 9.999981)
-rotation = 0.07896139
+rotation = 0.078961395
 scale = Vector2(1.0000002, 1.0000002)
 rest = Transform2D(1, 0, 0, 1, -44, 10)
 
@@ -152,8 +152,8 @@ texture = ExtResource("13_y6drd")
 
 [node name="BackLegLower" type="Bone2D" parent="Torso/Hip/BackLegUpper" unique_id=655366670]
 position = Vector2(-79.000015, 16.000004)
-rotation = 0.11050265
-scale = Vector2(0.99999976, 0.99999976)
+rotation = 0.110502645
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(1, 0, 0, 1, -79, 16)
 
 [node name="BackLegKnee2" type="Sprite2D" parent="Torso/Hip/BackLegUpper/BackLegLower" unique_id=1832405660]
