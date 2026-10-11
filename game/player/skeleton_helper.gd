@@ -9,31 +9,14 @@ extends Skeleton2D
 @onready var bs: PinJoint2D = %BackShoulder
 @onready var hp: PinJoint2D = %Hip
 @onready var hd: PinJoint2D = %Head
+@onready var fam: Marker2D = %FAM
 
 func _physics_process(delta: float) -> void:
 	
-	var direction := Input.get_axis("left", "right")
+	var direction := Input.get_axis("ui_left", "ui_right")
+	#print(($Spine/Hip as PhysicalBone2D).rotation)
 	if direction:
-		for joint in [fs,fk,fa,ba,bk,bs,hp,hd]:
-			joint.motor_enabled = true
-		hp.motor_target_velocity = 320
-		bk.motor_target_velocity = -440
-		bs.motor_target_velocity = 160
-		ba.motor_target_velocity = 40
-	else:
-		for joint in [fs,fk,fa,ba,bk,bs,hp,hd]:
-			joint.motor_enabled = true
-		for joint in []:
-			joint.motor_enabled = false
-		hp.motor_target_velocity = 80
-		bk.motor_target_velocity = -110
-		bs.motor_target_velocity = 40
-		ba.motor_target_velocity = 3
-		fk.motor_target_velocity = -50
-		fs.motor_target_velocity = 40
-		fa.motor_target_velocity = 50
-		hd.motor_target_velocity = -22
-	print(($Spine/Hip as PhysicalBone2D).rotation)
+		fam.position.x += direction
 
 func set_sprite_visibility(are_visible: bool) -> void:
 	for i in get_bone_count():

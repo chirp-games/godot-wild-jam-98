@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	
 	if direction != 0:
 		d = direction
 		sprite.scale.x = d
