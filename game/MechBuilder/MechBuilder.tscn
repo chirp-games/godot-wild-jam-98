@@ -12,9 +12,6 @@
 [node name="MechBuilder" type="Node2D" unique_id=1104080060]
 script = ExtResource("1_pp1pe")
 
-[node name="Wires" type="Node2D" parent="." unique_id=567382552]
-unique_name_in_owner = true
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1505863446]
 visible = false
 texture = ExtResource("2_lqtqk")
@@ -67,3 +64,11 @@ offset_top = -54.0
 offset_right = 24.0
 offset_bottom = -46.0
 type = 1
+
+[node name="Wires" type="Node2D" parent="." unique_id=567382552]
+unique_name_in_owner = true
+
+[node name="MechBuilderCamera" type="Camera2D" parent="." unique_id=1808098495]
+unique_name_in_owner = true
+position = Vector2(3, -145)
+zoom = Vector2(5, 5)

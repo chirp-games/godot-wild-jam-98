@@ -1,10 +1,16 @@
 extends Node2D
 
+class_name MechBuilder
+
 const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
 
 signal create_projectile(chain: Array, target: Enemy)
 
+@onready var mech_builder_camera: Camera2D = %MechBuilderCamera
 var currently_building_wire: Wire
+
+func make_camera_current():
+	mech_builder_camera.make_current()
 
 func find_wire_receptacles():
 	return get_tree().get_nodes_in_group("wire_receptacle")

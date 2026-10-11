@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var sprite: Sprite2D = %Sprite2D
+@onready var mech_builder: MechBuilder = %MechBuilder
 
 signal create_projectile(chain: Array[MechPiece], target: Enemy)
 
@@ -16,11 +17,14 @@ var d = 1.
 
 func enter_build_mode():
 	in_build_mode = true
-	player_camera.zoom = Vector2(5.0, 5.0)
+	mech_builder.make_camera_current()
 
 func exit_build_mode():
 	in_build_mode = false
-	player_camera.zoom = Vector2(1.0, 1.0)
+	player_camera.make_current()
+
+func _ready() -> void:
+	player_camera.make_current()
 
 
 func _input(event: InputEvent) -> void:

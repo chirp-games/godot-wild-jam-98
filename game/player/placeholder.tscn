@@ -14,13 +14,14 @@ script = ExtResource("1_1tcf3")
 unique_name_in_owner = true
 texture = ExtResource("2_eje2a")
 
+[node name="MechBuilder" parent="Sprite2D" unique_id=1104080060 instance=ExtResource("3_eje2a")]
+unique_name_in_owner = true
+position = Vector2(1, -1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1781096782]
 shape = SubResource("RectangleShape2D_g4v7s")
-
-[node name="MechBuilder" parent="." unique_id=1104080060 instance=ExtResource("3_eje2a")]
-position = Vector2(1, -1)
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=707595143]
 unique_name_in_owner = true
 
-[connection signal="create_projectile" from="MechBuilder" to="." method="_on_mech_builder_create_projectile"]
+[connection signal="create_projectile" from="Sprite2D/MechBuilder" to="." method="_on_mech_builder_create_projectile"]
