@@ -1,4 +1,4 @@
-extends PhysicalBone2D
+extends RigidBody2D
 
 func _ready() -> void:
 	freeze = true
