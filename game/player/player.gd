@@ -1,9 +1,14 @@
 extends RigidBody2D
 
+class_name Player
+
+@onready var game: Game = get_tree().get_first_node_in_group("game")
 @onready var skeleton: Skeleton2D = %Skeleton
 
 var on_floor
 var floor
+var can_enter_command_center_mode = false
+var in_command_center_mode = false
 var walking = 0.
 var walk_dir: float = 0.
 
@@ -15,6 +20,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	walking -= 1
 	var direction: float = Input.get_axis("l", "r")
+	
+	# Disable movement in command mode
+	if game and game.in_command_mode:
+		direction = 0
+	
 	if direction and direction != 0 and on_floor and walking <= 0:
 		walking = 60
 		if sign(direction) != walk_dir:

@@ -10,6 +10,7 @@ signal dropped
 var grid_size = Vector2(1, 1)
 var dragging := false
 var drag_offset := Vector2.ZERO
+var disable_dragging := false
 
 func _ready() -> void:
 	drag_area.input_event.connect(_on_gui_input)
@@ -18,11 +19,15 @@ func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	if disable_dragging:
+		return
 	if dragging:
 		position = floor((drag_offset + get_global_mouse_position()) / grid_size) * grid_size
 		velocity = Vector2.ZERO
 
 func _on_gui_input(viewport, event: InputEvent, shape) -> void:
+	if disable_dragging:
+		return
 	if event.is_action_pressed("left_click"):
 		scale *= 1.1
 		dragging = true

@@ -11,6 +11,9 @@ var connected = false
 
 signal create_attack(bullet_spawner: BulletSpawner)
 
+var cooldown = 0.0
+
+@onready var game: Game = get_tree().get_first_node_in_group("game")
 @onready var wire_recpetacle: WireReceptacle = %WireReceptacle
 
 func get_connected_tower():
@@ -23,7 +26,14 @@ func get_connected_tower():
 	return null
 
 func _process(delta: float) -> void:
-	pass
+	if game:
+		if game.in_command_mode:
+			disable_dragging = false
+		else:
+			disable_dragging = true
+
+	cooldown += delta
+	super._process(delta)
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -48,6 +58,9 @@ func get_receptacle() -> WireReceptacle:
 	return wire_recpetacle
 
 func try_attack(enemy: Enemy):
+	if cooldown < .5:
+		return
+	cooldown = 0.0
 	var b = BulletSpawner.new()
 	b.target_enemy = enemy
 	create_attack.emit(b)

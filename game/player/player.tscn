@@ -14,8 +14,5 @@ script = ExtResource("1_2mv0n")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135713207]
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1197127132]
-unique_name_in_owner = true
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1683531338]
 texture = ExtResource("3_a4w0n")
