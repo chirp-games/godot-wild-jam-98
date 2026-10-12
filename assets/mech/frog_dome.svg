@@ -24,15 +24,15 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="-2383.6569"
-     inkscape:cy="43.133513"
+     inkscape:zoom="8"
+     inkscape:cx="-2140.9375"
+     inkscape:cy="267.5625"
      inkscape:window-width="1920"
      inkscape:window-height="1029"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" /><defs
+     inkscape:current-layer="g406" /><defs
      id="defs1"><linearGradient
        id="linearGradient133"
        inkscape:collect="always"><stop
@@ -5820,7 +5820,7 @@
          d="m -571.43107,73.895207 2.22191,0.266706 -0.34234,1.311239 -2.41847,-0.165648 -0.0442,-1.038069 z"
          id="path10-78-7"
          sodipodi:nodetypes="cccccc"
-         inkscape:export-filename="..\godot-wild-jam-98\assets\small_mech\back_ankle.png"
+         inkscape:export-filename="..\small_mech\foot.png"
          inkscape:export-xdpi="100"
          inkscape:export-ydpi="100" /><g
          id="g72-9-6-3"
@@ -6097,7 +6097,7 @@
          rx="0.088379085"
          ry="0.15147606"
          transform="rotate(168.50878)"
-         inkscape:export-filename="..\godot-wild-jam-98\assets\mech\back_leg_top.png"
+         inkscape:export-filename="..\small_mech\back_leg_top.png"
          inkscape:export-xdpi="100"
          inkscape:export-ydpi="100" /><path
          id="rect5-7-0-8-0"
@@ -7223,7 +7223,7 @@
        d="m -589.763,15.984557 4.08208,-8.216752 4.07566,8.216752"
        id="path464" /><path
        sodipodi:type="star"
-       style="fill:#434d44;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       style="fill:#8fa690;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        id="path469"
        inkscape:flatsided="true"
        sodipodi:sides="3"
@@ -7284,7 +7284,7 @@
        d="m -562.47794,23.514703 4.08208,-8.216752 4.07566,8.216752"
        id="path464-7" /><path
        sodipodi:type="star"
-       style="fill:#434d44;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       style="fill:#8fa690;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        id="path469-0"
        inkscape:flatsided="true"
        sodipodi:sides="3"
@@ -7345,7 +7345,7 @@
        d="m -510.76078,34.73407 4.08208,-8.216752 4.07566,8.216752"
        id="path464-1" /><path
        sodipodi:type="star"
-       style="fill:#434d44;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       style="fill:#8fa690;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        id="path469-9"
        inkscape:flatsided="true"
        sodipodi:sides="3"
@@ -7406,7 +7406,7 @@
        d="m -475.95787,15.68774 4.08208,-8.2167516 4.07566,8.2167516"
        id="path464-9" /><path
        sodipodi:type="star"
-       style="fill:#434d44;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       style="fill:#8fa690;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        id="path469-8"
        inkscape:flatsided="true"
        sodipodi:sides="3"
@@ -7465,7 +7465,7 @@
        d="m -502.9154,2.5607393 4.08208,-8.216752 4.07566,8.216752"
        id="path464-6" /><path
        sodipodi:type="star"
-       style="fill:#434d44;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+       style="fill:#8fa690;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.470778;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
        id="path469-5"
        inkscape:flatsided="true"
        sodipodi:sides="3"
