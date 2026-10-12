@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://plucjclkftyk"]
 
-[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="1_ngjxm"]
-[ext_resource type="PackedScene" uid="uid://bh33wpnab0udv" path="res://game/player/placeholder.tscn" id="2_nvd21"]
+[ext_resource type="PackedScene" uid="uid://bcqcmbu10gh4t" path="res://game/player/player.tscn" id="3_exhww"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
 
@@ -14,8 +13,5 @@ shape = SubResource("WorldBoundaryShape2D_g4v7s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1602011461]
 
-[node name="Player" parent="." unique_id=823727328 instance=ExtResource("1_ngjxm")]
-position = Vector2(-1, -204)
-
-[node name="Placeholder" parent="." unique_id=720771102 instance=ExtResource("2_nvd21")]
-position = Vector2(342, -113)
+[node name="Player2" parent="." unique_id=1271694453 instance=ExtResource("3_exhww")]
+position = Vector2(-495, -160)
