@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bcqcmbu10gh4t"]
 
 [ext_resource type="Script" uid="uid://7qbhbxttbpqk" path="res://game/player/player.gd" id="1_2mv0n"]
-[ext_resource type="PackedScene" uid="uid://btiia38vrggsl" path="res://game/MechBuilder/MechBuilder.tscn" id="3_8soms"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="3_a4w0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
@@ -17,8 +16,6 @@ shape = SubResource("RectangleShape2D_g4v7s")
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1197127132]
 unique_name_in_owner = true
-
-[node name="MechBuilder" parent="." unique_id=1104080060 instance=ExtResource("3_8soms")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1683531338]
 texture = ExtResource("3_a4w0n")

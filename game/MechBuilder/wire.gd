@@ -56,6 +56,13 @@ func is_hovered():
 	var p2 := to_local(get_global_mouse_position())
 	return (p1 - p2).length() < (Vector2.ONE * hover_margin).length()
 
+func get_other_end(side) -> WireReceptacle:
+	if not a or not b:
+		return null
+	if a == side:
+		return b
+	return a
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("right_click"):
 		if is_deletable():

@@ -22,6 +22,13 @@ func get_mech_piece() -> MechPiece:
 		return get_parent()
 	return null
 
+func get_wires() -> Array[Wire]:
+	var wires: Array[Wire] = []
+	for wire: Wire in get_tree().get_nodes_in_group("wire"):
+		if wire.a == self or wire.b == self:
+			wires.push_back(wire)
+	return wires
+
 func _ready() -> void:
 	if type == Type.Red:
 		self_modulate = Color(0.945, 0.0, 0.0, 1.0)

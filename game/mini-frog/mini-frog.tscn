@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://yttymwbco8y"]
+
+[ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="1_5215t"]
+[ext_resource type="Script" uid="uid://5jbhnmmn4a6g" path="res://game/mini-frog/mini_frog.gd" id="1_r1jt1"]
+[ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="2_s5sjp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5sjp"]
+size = Vector2(91, 46)
+
+[node name="MiniFrog" type="CharacterBody2D" unique_id=1967870937 groups=["mini_frog"]]
+script = ExtResource("1_r1jt1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=916276045]
+position = Vector2(0, 0.9999962)
+scale = Vector2(0.4037037, 0.4037037)
+texture = ExtResource("1_5215t")
+
+[node name="WireReceptacle" parent="." unique_id=21922453 instance=ExtResource("2_s5sjp")]
+unique_name_in_owner = true
+offset_left = -12.0
+offset_top = -17.0
+offset_right = 4.0
+offset_bottom = -1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=259769772]
+position = Vector2(-2.5, 4)
+shape = SubResource("RectangleShape2D_s5sjp")

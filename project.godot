@@ -53,6 +53,9 @@ mech_piece=""
 wire=""
 wire_receptacle=""
 enemy=""
+tower=""
+mini_frog=""
+player=""
 
 [gui]
 
