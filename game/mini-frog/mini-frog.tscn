@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://yttymwbco8y"]
 
-[ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="1_5215t"]
 [ext_resource type="Script" uid="uid://5jbhnmmn4a6g" path="res://game/mini-frog/mini_frog.gd" id="1_r1jt1"]
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="2_s5sjp"]
+[ext_resource type="PackedScene" uid="uid://bmybhl3vbqmkd" path="res://game/player/mini_frog_skeleton.tscn" id="2_sqdhb"]
 [ext_resource type="Script" uid="uid://dshvdiw0hy7nd" path="res://include/comment/comment.gd" id="4_sqdhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5sjp"]
@@ -17,10 +17,7 @@ collision_mask = 2
 script = ExtResource("1_r1jt1")
 drag_area = NodePath("DragArea")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=916276045]
-position = Vector2(0, 0.9999962)
-scale = Vector2(0.4037037, 0.4037037)
-texture = ExtResource("1_5215t")
+[node name="MiniFrog" parent="." unique_id=1722012347 instance=ExtResource("2_sqdhb")]
 
 [node name="WireReceptacle" parent="." unique_id=21922453 instance=ExtResource("2_s5sjp")]
 unique_name_in_owner = true
