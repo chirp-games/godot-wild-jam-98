@@ -23,6 +23,9 @@ func _ready() -> void:
 	for frog: MiniFrog in find_mini_frogs():
 		frog.create_attack.connect(func(bullet_spawner: BulletSpawner): await _create_attack(frog, bullet_spawner))
 
+	for tower: Tower in find_towers():
+		tower.enemy_detected.connect(func(e: Enemy): _enemy_detected(tower, e))
+
 func _process(delta: float) -> void:
 	for frog: MiniFrog in find_mini_frogs():
 		var closest_tower = frogs_to_closest_tower.get(frog)
@@ -60,10 +63,12 @@ func create_wire(frog: MiniFrog, tower: Tower):
 	%Wires.add_child(w)
 
 func closest_tower_lost(frog: MiniFrog):
+	frog.connected = false
 	# When the frog is picked up, remove any current connections
 	for wire in find_wires():
 		if wire.a == frog.get_receptacle():
 			wire.queue_free()
 
 func closest_tower_found(frog: MiniFrog, tower: Tower):
+	frog.connected = true
 	create_wire(frog, tower)

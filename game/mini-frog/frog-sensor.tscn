@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bchxeoerbvkbw" path="res://game/mini-frog/frog_sensor.gd" id="1_jyjdm"]
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="2_ebv2v"]
 [ext_resource type="Texture2D" uid="uid://dp6tseykdfxw1" path="res://assets/mech/front_leg_knee.png" id="3_n3eep"]
+[ext_resource type="Script" uid="uid://dshvdiw0hy7nd" path="res://include/comment/comment.gd" id="5_3ngj0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6w6ra"]
 radius = 217.23029
@@ -30,9 +31,20 @@ texture = ExtResource("3_n3eep")
 
 [node name="EnemyDetectionArea" type="Area2D" parent="." unique_id=206502276]
 unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea" unique_id=1961742047]
 position = Vector2(0, -108)
 shape = SubResource("CircleShape2D_6w6ra")
+
+[node name="Comment" type="Label" parent="." unique_id=1565323643]
+offset_left = -564.0
+offset_top = -154.0
+offset_right = -228.0
+offset_bottom = -131.0
+text = "Enemy detection areas should go on layer 3"
+script = ExtResource("5_3ngj0")
+metadata/_custom_type_script = "uid://dshvdiw0hy7nd"
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]

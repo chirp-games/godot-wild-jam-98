@@ -6,6 +6,8 @@ class_name MiniFrog
 ## It should patrol around the point it is connected to
 
 var direction := 1.
+# Set to true by parent when it is connected
+var connected = false
 
 signal create_attack(bullet_spawner: BulletSpawner)
 
@@ -21,7 +23,7 @@ func get_connected_tower():
 	return null
 
 func _process(delta: float) -> void:
-	super._process(delta)
+	pass
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -29,15 +31,18 @@ func _physics_process(delta: float) -> void:
 	# Do not do anything when being dragged
 	if dragging:
 		return
-	
 	# Add gravity
 	velocity.y += 9.81
+
 	# AI
+	if connected:
+		ai()
+		move_and_slide()
+
+func ai():
 	if is_on_floor():
 		velocity = Vector2(direction * 200., -200.)
 		direction *= -1
-	
-	move_and_slide()
 
 func get_receptacle() -> WireReceptacle:
 	return wire_recpetacle
