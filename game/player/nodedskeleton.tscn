@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://croela4nh3klu"]
+[gd_scene format=3 uid="uid://bwurhutirk8nn"]
 
 [ext_resource type="Texture2D" uid="uid://bxytylnqpxasj" path="res://assets/mech/head.png" id="1_2mv0n"]
 [ext_resource type="Script" uid="uid://dki8ryurtdjvw" path="res://game/player/skeleton_helper.gd" id="1_mfhbq"]
