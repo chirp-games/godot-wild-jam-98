@@ -6,6 +6,8 @@
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="3_dpies"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="4_dpies"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="5_0vscf"]
+[ext_resource type="Texture2D" uid="uid://ctsyg0uh76545" path="res://assets/decoration/home.png" id="7_tyudi"]
+[ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="7_u4syw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bxnc0"]
 noise_type = 3
@@ -72,6 +74,15 @@ shader = ExtResource("5_0vscf")
 shader_parameter/bloom_spread = 0.34065932
 shader_parameter/bloom_intensity = 0.46642855
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xi1a2"]
+shader = ExtResource("7_u4syw")
+shader_parameter/wind_start_threshold = 0.0
+shader_parameter/wind_end_threshold = 2.7690001315275
+shader_parameter/wind_end_threshold_2 = 0.010000000475
+shader_parameter/wind_strength = 0.010000000475
+shader_parameter/wind_speed = 0.80000003148023
+shader_parameter/scale = 2.0
+
 [node name="VisualTest" type="Node2D" unique_id=747546459]
 
 [node name="CompleteBack" type="Parallax2D" parent="." unique_id=535920688]
@@ -131,3 +142,8 @@ scroll_scale = Vector2(0, 0)
 material = SubResource("ShaderMaterial_km8ha")
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="Home" type="Sprite2D" parent="." unique_id=1807397117]
+material = SubResource("ShaderMaterial_xi1a2")
+position = Vector2(1047, 425)
+texture = ExtResource("7_tyudi")
