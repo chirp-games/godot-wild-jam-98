@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="5_0vscf"]
 [ext_resource type="Texture2D" uid="uid://ctsyg0uh76545" path="res://assets/decoration/home.png" id="7_tyudi"]
 [ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="7_u4syw"]
+[ext_resource type="Texture2D" uid="uid://olpyrtqefs8v" path="res://assets/2d_lights_and_shadows_neutral_point_light.webp" id="9_cg7iu"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bxnc0"]
 noise_type = 3
@@ -147,3 +148,8 @@ offset_bottom = 1080.0
 material = SubResource("ShaderMaterial_xi1a2")
 position = Vector2(1047, 425)
 texture = ExtResource("7_tyudi")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=488502422]
+position = Vector2(880.99994, 561)
+scale = Vector2(0.24707027, 0.24707027)
+texture = ExtResource("9_cg7iu")
