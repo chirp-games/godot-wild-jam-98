@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b5pqkeu4bwhib"]
 
 [ext_resource type="Script" uid="uid://cnf5udhk03rug" path="res://game/game.gd" id="1_l1rk1"]
-[ext_resource type="PackedScene" uid="uid://bh33wpnab0udv" path="res://game/player/placeholder.tscn" id="2_vasa2"]
+[ext_resource type="PackedScene" uid="uid://bcqcmbu10gh4t" path="res://game/player/player.tscn" id="3_4fuuu"]
 [ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="3_h7iqs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6w6ra"]
@@ -9,9 +9,6 @@ distance = -307.0
 
 [node name="Game" type="Node2D" unique_id=1516163044]
 script = ExtResource("1_l1rk1")
-
-[node name="Player" parent="." unique_id=720771102 instance=ExtResource("2_vasa2")]
-unique_name_in_owner = true
 
 [node name="Enemy" parent="." unique_id=1736390898 instance=ExtResource("3_h7iqs")]
 position = Vector2(470, 222)
@@ -28,4 +25,4 @@ shape = SubResource("WorldBoundaryShape2D_6w6ra")
 [node name="BulletSpawner" type="Node2D" parent="." unique_id=2087136311]
 unique_name_in_owner = true
 
-[connection signal="create_projectile" from="Player" to="." method="_on_placeholder_create_projectile"]
+[node name="Player" parent="." unique_id=1271694453 groups=["player"] instance=ExtResource("3_4fuuu")]

@@ -20,7 +20,6 @@ func _physics_process(delta: float) -> void:
 		walking = 60
 		if sign(direction) != walk_dir:
 			walk_dir = sign(direction)
-	print(direction, " ", walk_dir, " ", walking)
 	if walking > 35:
 		self.apply_central_force(Vector2(525 * walk_dir,-1500))
 	

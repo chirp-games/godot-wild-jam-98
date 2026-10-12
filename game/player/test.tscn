@@ -13,5 +13,5 @@ shape = SubResource("WorldBoundaryShape2D_g4v7s")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1602011461]
 
-[node name="Player2" parent="." unique_id=1271694453 instance=ExtResource("3_exhww")]
+[node name="Player" parent="." unique_id=1271694453 instance=ExtResource("3_exhww")]
 position = Vector2(-495, -160)

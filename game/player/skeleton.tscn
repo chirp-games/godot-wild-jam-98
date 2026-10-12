@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://dq0eguxmw17kj" path="res://assets/mech/back_leg_knee_one.png" id="12_cgi3i"]
 [ext_resource type="Texture2D" uid="uid://cfwqd3d4nyki3" path="res://assets/mech/back_leg_top.png" id="13_y6drd"]
 [ext_resource type="Texture2D" uid="uid://b70bit4mx7nf" path="res://assets/mech/back_leg_knee_2.png" id="14_w24bm"]
-[ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="15_0k00j"]
 [ext_resource type="Texture2D" uid="uid://5s1n2d16jkr0" path="res://assets/mech/back_leg_bottom.png" id="15_22cju"]
 [ext_resource type="Texture2D" uid="uid://bxytylnqpxasj" path="res://assets/mech/head.png" id="16_wrff0"]
 
@@ -75,7 +74,7 @@ target_nodepath = NodePath("UpperJawTarget")
 
 [sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_ngjxm"]
 enabled = true
-modification_count = 6
+modification_count = 5
 modifications/0 = SubResource("SkeletonModification2DCCDIK_3ep63")
 modifications/1 = SubResource("SkeletonModification2DCCDIK_4v1xc")
 modifications/3 = SubResource("SkeletonModification2DLookAt_jyv1f")
@@ -140,11 +139,6 @@ _data = {
 [node name="Player" type="Skeleton2D" unique_id=823727328]
 modification_stack = SubResource("SkeletonModificationStack2D_ngjxm")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490080848]
-self_modulate = Color(1, 0, 1, 0.42745098)
-z_index = 100
-texture = ExtResource("15_0k00j")
-
 [node name="Spine" type="PhysicalBone2D" parent="." unique_id=407040942]
 bone2d_nodepath = NodePath("../Torso")
 bone2d_index = 0
@@ -155,7 +149,7 @@ polygon = PackedVector2Array(-102, 10, -94, -37, -59.5, -51.5, 38.5, -53.5, 45, 
 
 [node name="Torso" type="Bone2D" parent="." unique_id=409862218]
 position = Vector2(40, -17)
-rotation = 0.051207934
+rotation = 0.05120793
 scale = Vector2(0.9998356, 0.9998356)
 rest = Transform2D(1, 0, 0, 1, 40, -17)
 
