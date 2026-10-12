@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			closest_tower_lost(frog)
 			frogs_to_closest_tower[frog] = null
 
-		if frogs_to_closest_tower[frog]:
+		if frogs_to_closest_tower[frog] and frogs_to_closest_tower[frog] != closest_tower:
 			closest_tower_found(frog, frogs_to_closest_tower[frog])
 
 func _enemy_detected(tower: Tower, enemy: Enemy):
