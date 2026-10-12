@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends DragableCharacterBody
 
 class_name MiniFrog
 
@@ -6,7 +6,6 @@ class_name MiniFrog
 ## It should patrol around the point it is connected to
 
 var direction := 1.
-var just_connected := true
 
 signal create_attack(bullet_spawner: BulletSpawner)
 
@@ -22,14 +21,15 @@ func get_connected_tower():
 	return null
 
 func _process(delta: float) -> void:
-	var tower = get_connected_tower()
-	if tower and just_connected:
-		global_position = tower.global_position
-		just_connected = false
-	if not tower:
-		just_connected = true
+	super._process(delta)
 
 func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	
+	# Do not do anything when being dragged
+	if dragging:
+		return
+	
 	# Add gravity
 	velocity.y += 9.81
 	# AI
@@ -38,6 +38,9 @@ func _physics_process(delta: float) -> void:
 		direction *= -1
 	
 	move_and_slide()
+
+func get_receptacle() -> WireReceptacle:
+	return wire_recpetacle
 
 func try_attack(enemy: Enemy):
 	var b = BulletSpawner.new()

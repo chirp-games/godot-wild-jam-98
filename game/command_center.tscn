@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://rpoy2rwaecgm"]
+
+[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_0fws8"]
+[ext_resource type="Script" uid="uid://b0equb1lsvid7" path="res://game/command_center.gd" id="1_l4tar"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
+size = Vector2(59, 565.5)
+
+[node name="CommandCenter" type="Node2D" unique_id=1931686413]
+script = ExtResource("1_l4tar")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1033131960]
+position = Vector2(-9.000002, -201)
+scale = Vector2(0.609375, 3.1699216)
+texture = ExtResource("1_0fws8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=599097878]
+position = Vector2(3.000001, -453.00006)
+scale = Vector2(3.4804685, 2.3066406)
+texture = ExtResource("1_0fws8")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1378758993]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=502094763]
+position = Vector2(-10, -285)
+shape = SubResource("RectangleShape2D_6w6ra")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

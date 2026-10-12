@@ -2,9 +2,15 @@ extends Node2D
 
 var currently_building_wire: Wire
 const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
+const MAX_CONNECTION_DIST = 300
+
+var frogs_to_closest_tower: Dictionary[MiniFrog, Tower] = {}
 
 func find_wire_receptacles():
 	return get_tree().get_nodes_in_group("wire_receptacle")
+
+func find_wires():
+	return get_tree().get_nodes_in_group("wire")
 
 func find_towers():
 	return get_tree().get_nodes_in_group("tower")
@@ -14,33 +20,23 @@ func find_mini_frogs():
 
 
 func _ready() -> void:
-	for receptacle: WireReceptacle in find_wire_receptacles():
-		receptacle.wire_started.connect(func(): _wire_started(receptacle))
-	for tower: Tower in find_towers():
-		tower.enemy_detected.connect(func(enemy: Enemy): _enemy_detected(tower, enemy))
 	for frog: MiniFrog in find_mini_frogs():
 		frog.create_attack.connect(func(bullet_spawner: BulletSpawner): await _create_attack(frog, bullet_spawner))
 
-func _wire_started(receptacle: WireReceptacle):
-	if currently_building_wire:
-		return
-	var w: Wire = wire_scene.instantiate()
-	%Wires.add_child(w)
-	w.a = receptacle
-	currently_building_wire = w
+func _process(delta: float) -> void:
+	for frog: MiniFrog in find_mini_frogs():
+		var closest_tower = frogs_to_closest_tower.get(frog)
+		var new_closest_tower := get_closest_tower(frog)
+		
+		if closest_tower != new_closest_tower:
+			frogs_to_closest_tower[frog] = new_closest_tower
 
-func try_placing_wire():
-	if not currently_building_wire:
-		return
-	for receptacle: WireReceptacle in find_wire_receptacles():
-		if currently_building_wire.a == receptacle:
-			continue
-		if receptacle.get_global_rect().has_point(get_global_mouse_position()) and receptacle.type != currently_building_wire.a.type:
-			currently_building_wire.b = receptacle
-			currently_building_wire = null
-			return
-	currently_building_wire.queue_free()
-	currently_building_wire = null
+		if frog.global_position.distance_to(new_closest_tower.global_position) > MAX_CONNECTION_DIST:
+			closest_tower_lost(frog)
+			frogs_to_closest_tower[frog] = null
+
+		if frogs_to_closest_tower[frog]:
+			closest_tower_found(frog, frogs_to_closest_tower[frog])
 
 func _enemy_detected(tower: Tower, enemy: Enemy):
 	var frogs = tower.get_connected_frogs()
@@ -52,7 +48,22 @@ func _create_attack(frog: MiniFrog, bullet_spawner: BulletSpawner):
 	bullet_spawner.global_position = frog.global_position + Vector2(20, -10)
 	await bullet_spawner.fire_bullets()
 
+func get_closest_tower(frog: MiniFrog) -> Tower:
+	var towers = find_towers()
+	towers.sort_custom(func(x: Tower, y: Tower): return x.global_position.distance_squared_to(frog.global_position) < y.global_position.distance_squared_to(frog.global_position))
+	return towers.get(0)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_released("right_click", true):
-		try_placing_wire()
+func create_wire(frog: MiniFrog, tower: Tower):
+	var w: Wire = wire_scene.instantiate()
+	w.a = frog.get_receptacle()
+	w.b = tower.wire_receptacle
+	%Wires.add_child(w)
+
+func closest_tower_lost(frog: MiniFrog):
+	# When the frog is picked up, remove any current connections
+	for wire in find_wires():
+		if wire.a == frog.get_receptacle():
+			wire.queue_free()
+
+func closest_tower_found(frog: MiniFrog, tower: Tower):
+	create_wire(frog, tower)

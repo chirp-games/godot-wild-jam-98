@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chcx47tvajonj" path="res://game/frog_connections.gd" id="1_8g4b2"]
 [ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/mini-frog/mini-frog.tscn" id="1_61hrf"]
+[ext_resource type="PackedScene" uid="uid://rpoy2rwaecgm" path="res://game/command_center.tscn" id="2_2ln5f"]
 [ext_resource type="PackedScene" uid="uid://bnyja1vayqlh3" path="res://game/mini-frog/frog-sensor.tscn" id="2_aec48"]
 [ext_resource type="PackedScene" uid="uid://bcqcmbu10gh4t" path="res://game/player/player.tscn" id="3_tq3h0"]
 [ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="5_p252j"]
@@ -11,11 +12,10 @@
 [node name="FrogConnections" type="Node2D" unique_id=805289186]
 script = ExtResource("1_8g4b2")
 
-[node name="MiniFrog" parent="." unique_id=1328041036 instance=ExtResource("1_61hrf")]
-position = Vector2(105, -149)
+[node name="MiniFrog" parent="." unique_id=1967870937 instance=ExtResource("1_61hrf")]
 
-[node name="MiniFrog2" parent="." unique_id=501854547 instance=ExtResource("1_61hrf")]
-position = Vector2(81, -47)
+[node name="CommandCenter" parent="." unique_id=1931686413 instance=ExtResource("2_2ln5f")]
+position = Vector2(10, -5)
 
 [node name="FrogSensor" parent="." unique_id=83631577 groups=["tower"] instance=ExtResource("2_aec48")]
 position = Vector2(-366, 2)
@@ -29,7 +29,7 @@ position = Vector2(433, 1)
 shape = SubResource("WorldBoundaryShape2D_6w6ra")
 
 [node name="Player" parent="." unique_id=1271694453 groups=["player"] instance=ExtResource("3_tq3h0")]
-position = Vector2(8, -292)
+position = Vector2(8, -66)
 
 [node name="Wires" type="Node2D" parent="." unique_id=1126853350]
 unique_name_in_owner = true

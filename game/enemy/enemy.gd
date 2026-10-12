@@ -14,12 +14,9 @@ func _process(delta: float) -> void:
 
 
 func pathfind(player):
-	var direction = 0
-	if player.position.x < position.x:
-		direction = -1
-	else:
-		direction = 1
-	velocity.x = direction * 20
+	# Walk torwards the center of the map, that is where the home base is
+	var direction = -sign(position.x)
+	velocity.x = direction * 30
 
 	move_and_slide()
 	

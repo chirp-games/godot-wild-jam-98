@@ -4,6 +4,9 @@ class_name Tower
 
 signal enemy_detected(enemy: Enemy)
 
+const MINI_FROG_MECH = preload("res://game/mini-frog/mini-frog.tscn")
+const WIRE_SCENE = preload("res://game/MechBuilder/Wire.tscn")
+
 @onready var enemy_detection_area: Area2D = %EnemyDetectionArea
 @onready var wire_receptacle: WireReceptacle = %WireReceptacle
 
