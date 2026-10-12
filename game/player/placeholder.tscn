@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(268, 135)
 
-[node name="Placeholder" type="CharacterBody2D" unique_id=720771102]
+[node name="Placeholder" type="CharacterBody2D" unique_id=720771102 groups=["player"]]
 script = ExtResource("1_1tcf3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=58518269]
@@ -21,7 +21,7 @@ position = Vector2(1, -1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1781096782]
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="PlayerCamera" type="Camera2D" parent="." unique_id=707595143]
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=707595143 groups=["player"]]
 unique_name_in_owner = true
 
 [connection signal="create_projectile" from="Sprite2D/MechBuilder" to="." method="_on_mech_builder_create_projectile"]
