@@ -149,7 +149,7 @@ texture = ExtResource("7_tyudi")
 [node name="PointLight2D" type="PointLight2D" parent="Home" unique_id=488502422]
 position = Vector2(-192.00002, 125.999985)
 scale = Vector2(0.41528302, 0.41528302)
-energy = 0.52181876
+energy = 0.54075444
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -159,7 +159,7 @@ flicker_speed = 0.5
 [node name="PointLight2D2" type="PointLight2D" parent="Home" unique_id=1042436118]
 position = Vector2(-85.00002, 156.00003)
 scale = Vector2(0.41918966, 0.41918966)
-energy = 0.5734152
+energy = 0.5042046
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -169,7 +169,7 @@ flicker_speed = 0.3
 [node name="PointLight2D3" type="PointLight2D" parent="Home" unique_id=602449147]
 position = Vector2(120.000015, 201.00002)
 scale = Vector2(0.4621583, 0.4621583)
-energy = 0.48616412
+energy = 0.5847597
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -179,7 +179,7 @@ flicker_speed = 0.3
 [node name="PointLight2D4" type="PointLight2D" parent="Home" unique_id=1055404066]
 position = Vector2(150.00003, 73)
 scale = Vector2(0.41528335, 0.41528335)
-energy = 0.54968494
+energy = 0.52826595
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -189,7 +189,7 @@ flicker_speed = 0.3
 [node name="PointLight2D5" type="PointLight2D" parent="Home" unique_id=1832218817]
 position = Vector2(253.99994, 123.99997)
 scale = Vector2(0.42700163, 0.42700163)
-energy = 0.56196856
+energy = 0.5065837
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
