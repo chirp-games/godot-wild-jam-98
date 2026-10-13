@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://rpoy2rwaecgm"]
+
+[ext_resource type="Script" uid="uid://b0equb1lsvid7" path="res://game/command_center.gd" id="1_l4tar"]
+[ext_resource type="Texture2D" uid="uid://ctsyg0uh76545" path="res://assets/decoration/home.png" id="2_l4tar"]
+[ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="2_pqjsg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xeen4"]
+shader = ExtResource("2_pqjsg")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.36400001729
+shader_parameter/wind_strength = 0.0190000009025
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 1.0
+shader_parameter/scale = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
+size = Vector2(27, 565.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4tar"]
+size = Vector2(224, 233.75)
+
+[node name="CommandCenter" type="Node2D" unique_id=1931686413]
+script = ExtResource("1_l4tar")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=210705085]
+material = SubResource("ShaderMaterial_xeen4")
+position = Vector2(0, -369)
+texture = ExtResource("2_l4tar")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1378758993]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=502094763]
+position = Vector2(-1, -283)
+shape = SubResource("RectangleShape2D_6w6ra")
+
+[node name="EnterCommandMode" type="Area2D" parent="." unique_id=1192137931]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnterCommandMode" unique_id=913251393]
+position = Vector2(-2, -117.125)
+shape = SubResource("RectangleShape2D_l4tar")
+debug_color = Color(0.94628114, 0.19923896, 0.31826422, 0.41960785)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="EnterCommandMode" to="." method="_on_enter_command_mode_body_entered"]
+[connection signal="body_shape_exited" from="EnterCommandMode" to="." method="_on_enter_command_mode_body_shape_exited"]

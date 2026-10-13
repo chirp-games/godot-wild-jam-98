@@ -1,9 +1,14 @@
 extends RigidBody2D
 
+class_name Player
+
+@onready var game: Game = get_tree().get_first_node_in_group("game")
 @onready var skeleton: Skeleton2D = %Skeleton
 
 var on_floor
 var floor
+var can_enter_command_center_mode = false
+var in_command_center_mode = false
 var walking = 0.
 var walk_dir: float = 0.
 
@@ -11,17 +16,21 @@ var walk_dir: float = 0.
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	walking -= 1
 	var direction: float = Input.get_axis("l", "r")
+	
+	# Disable movement in command mode
+	if game and game.in_command_mode:
+		direction = 0
+	
 	if direction and direction != 0 and on_floor and walking <= 0:
 		walking = 60
 		if sign(direction) != walk_dir:
 			walk_dir = sign(direction)
 	if walking > 35:
-		self.apply_central_force(Vector2(525 * walk_dir,-1500))
+		self.apply_central_force(Vector2(700 * walk_dir,-1500))
 	
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:

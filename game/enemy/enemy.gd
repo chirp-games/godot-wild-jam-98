@@ -8,32 +8,34 @@ class_name Enemy
 
 var target: Node = null
 
+signal on_death
+
 func _process(delta: float) -> void:
 	($Health as Label).text = str(health)
 
-	var player: Node = get_tree().get_nodes_in_group("player").get(0)
+	# Gravity
+	velocity.y += 9.81
+
+	var player: Node = get_tree().get_first_node_in_group("player")
 
 	if player:
 		pathfind(player)
 
 
 func pathfind(player):
-	var direction = 0
-	if abs(player.position.x - position.x) > standing_range:
-		if player.position.x < position.x:
-			direction = -1
-		else:
-			direction = 1
-	else:
-		attack()
-	velocity.x = direction * 20
+	# Walk torwards the center of the map, that is where the home base is
+	var direction = -sign(position.x)
+	velocity.x = direction * 50
 
 	move_and_slide()
-	
+
+func hit_command_center():
+	queue_free()
 
 func damage(d: int):
 	health -= d
 	if health <= 0:
+		on_death.emit()
 		queue_free()
 
 func attack():

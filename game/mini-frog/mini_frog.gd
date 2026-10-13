@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends DragableCharacterBody
 
 class_name MiniFrog
 
@@ -6,10 +6,14 @@ class_name MiniFrog
 ## It should patrol around the point it is connected to
 
 var direction := 1.
-var just_connected := true
+# Set to true by parent when it is connected
+var connected = false
 
 signal create_attack(bullet_spawner: BulletSpawner)
 
+var cooldown = 0.0
+
+@onready var game: Game = get_tree().get_first_node_in_group("game")
 @onready var wire_recpetacle: WireReceptacle = %WireReceptacle
 
 func get_connected_tower():
@@ -22,24 +26,41 @@ func get_connected_tower():
 	return null
 
 func _process(delta: float) -> void:
-	var tower = get_connected_tower()
-	if tower and just_connected:
-		global_position = tower.global_position
-		just_connected = false
-	if not tower:
-		just_connected = true
+	if game:
+		if game.in_command_mode:
+			disable_dragging = false
+		else:
+			disable_dragging = true
+
+	cooldown += delta
+	super._process(delta)
 
 func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	
+	# Do not do anything when being dragged
+	if dragging:
+		return
 	# Add gravity
 	velocity.y += 9.81
+
 	# AI
+	if connected:
+		ai()
+		move_and_slide()
+
+func ai():
 	if is_on_floor():
 		velocity = Vector2(direction * 200., -200.)
 		direction *= -1
-	
-	move_and_slide()
+
+func get_receptacle() -> WireReceptacle:
+	return wire_recpetacle
 
 func try_attack(enemy: Enemy):
+	if cooldown < .5:
+		return
+	cooldown = 0.0
 	var b = BulletSpawner.new()
 	b.target_enemy = enemy
 	create_attack.emit(b)
