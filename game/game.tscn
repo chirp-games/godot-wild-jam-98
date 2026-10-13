@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/mini-frog/mini-frog.tscn" id="6_3vho3"]
 [ext_resource type="Texture2D" uid="uid://ceq120ettmjpo" path="res://assets/parallax/tree_1.png" id="6_4cobl"]
 [ext_resource type="Texture2D" uid="uid://brnrvjslkxknd" path="res://assets/parallax/tree2.png" id="7_ln7ps"]
+[ext_resource type="Texture2D" uid="uid://fmnba5nkkk33" path="res://assets/parallax/small_shrub.svg" id="7_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="8_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="9_u8s88"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
@@ -15,7 +16,6 @@
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
-[ext_resource type="Texture2D" uid="uid://b5pddenotjlyy" path="res://assets/parallax/cattail.png" id="16_ln7ps"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mhvfb"]
 noise_type = 3
@@ -111,6 +111,26 @@ void fragment() {
 	COLOR.rgb *= brightness;
 }"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dxwpq"]
+shader = SubResource("Shader_ln7ps")
+shader_parameter/wind_start_threshold = 0.0230000010925
+shader_parameter/wind_end_threshold = 0.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0190000009025
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 0.5499999877064
+shader_parameter/scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhvfb"]
+shader = SubResource("Shader_ln7ps")
+shader_parameter/wind_start_threshold = 0.0230000010925
+shader_parameter/wind_end_threshold = 0.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.01600000076
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 0.5499999877064
+shader_parameter/scale = 2.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pxxsx"]
 shader = SubResource("Shader_ln7ps")
 shader_parameter/wind_start_threshold = 0.1
@@ -121,20 +141,25 @@ shader_parameter/wind_speed = 1.0
 shader_parameter/brightness = 0.5499999877064
 shader_parameter/scale = 2.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_km8ha"]
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q52ks"]
 noise_type = 2
-seed = 43
-frequency = 0.0302
+seed = 22
+frequency = 0.0241
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dpies"]
+width = 200
+height = 100
 noise = SubResource("FastNoiseLite_q52ks")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jucfl"]
 shader = ExtResource("10_dxwpq")
-shader_parameter/haze_color = Color(0.74340004, 0.9, 0.378, 0.19215687)
+shader_parameter/haze_color = Color(0.96, 0.92192, 0.63359994, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_dpies")
 shader_parameter/noise_intensity = 0.1
-shader_parameter/noise_2_intensity = 0.0
+shader_parameter/noise_2_intensity = 0.1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jdpby"]
 
@@ -233,43 +258,47 @@ repeat_times = 5
 
 [node name="Tree1" type="Sprite2D" parent="CloseTree1" unique_id=1886354288]
 material = SubResource("ShaderMaterial_8bboj")
-position = Vector2(253.5, 595.5)
+position = Vector2(253.5, 598.6251)
+scale = Vector2(-1, 0.8378911)
 texture = ExtResource("6_4cobl")
 
 [node name="Tree3" type="Sprite2D" parent="CloseTree1" unique_id=959788819]
 material = SubResource("ShaderMaterial_8bboj")
-position = Vector2(692.5, 598.5)
+position = Vector2(692.5, 601.5)
+scale = Vector2(1, 0.8346582)
 texture = ExtResource("8_pxxsx")
 
 [node name="Tree5" type="Sprite2D" parent="CloseTree1" unique_id=404415644]
 material = SubResource("ShaderMaterial_8bboj")
-position = Vector2(863.5, 585.5)
+position = Vector2(863.5, 589.75)
+scale = Vector2(1, 0.8414062)
 texture = ExtResource("6_4cobl")
 
 [node name="Tree7" type="Sprite2D" parent="CloseTree1" unique_id=1510337094]
 material = SubResource("ShaderMaterial_8bboj")
-position = Vector2(1359.5, 585.5)
+position = Vector2(1359.5, 595.699)
+scale = Vector2(-1, 0.8575484)
 texture = ExtResource("8_pxxsx")
 
 [node name="ColorRect" type="ColorRect" parent="CloseTree1" unique_id=303853303]
 offset_right = 1919.0
-offset_bottom = 284.0
+offset_bottom = 330.0
 mouse_filter = 2
 color = Color(0.078431375, 0.10980392, 0.105882354, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="CloseTree1" unique_id=208427144]
 offset_left = 4.0
-offset_top = 896.0
+offset_top = 858.0
 offset_right = 1921.0
 offset_bottom = 1170.0
 mouse_filter = 2
 color = Color(0.078431375, 0.10980392, 0.105882354, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="CloseTree1" unique_id=1512602291]
-offset_left = 1016.0
-offset_top = 869.0
-offset_right = 1247.0
-offset_bottom = 916.0
+offset_left = 1077.0
+offset_top = 300.0
+offset_right = 1666.0
+offset_bottom = 347.0
 mouse_filter = 2
 color = Color(0.078431375, 0.10980392, 0.105882354, 1)
 
@@ -278,6 +307,33 @@ scroll_scale = Vector2(0.6, 0.5)
 scroll_offset = Vector2(-634, -470)
 repeat_size = Vector2(1200, 0)
 repeat_times = 5
+
+[node name="Shrub" type="Sprite2D" parent="CloseTree2" unique_id=1706083836]
+material = SubResource("ShaderMaterial_dxwpq")
+position = Vector2(699, 841)
+texture = ExtResource("7_pxxsx")
+
+[node name="Shrub2" type="Sprite2D" parent="CloseTree2" unique_id=974509893]
+material = SubResource("ShaderMaterial_dxwpq")
+position = Vector2(943, 835)
+texture = ExtResource("7_pxxsx")
+
+[node name="Shrub3" type="Sprite2D" parent="CloseTree2" unique_id=41220156]
+material = SubResource("ShaderMaterial_dxwpq")
+position = Vector2(250, 854)
+texture = ExtResource("7_pxxsx")
+
+[node name="Shrub4" type="Sprite2D" parent="CloseTree2" unique_id=792767795]
+material = SubResource("ShaderMaterial_mhvfb")
+position = Vector2(734, 291)
+rotation = -2.6179938
+texture = ExtResource("7_pxxsx")
+
+[node name="Shrub5" type="Sprite2D" parent="CloseTree2" unique_id=789316522]
+material = SubResource("ShaderMaterial_mhvfb")
+position = Vector2(871.00006, 258.00003)
+rotation = -2.6179938
+texture = ExtResource("7_pxxsx")
 
 [node name="Tree2" type="Sprite2D" parent="CloseTree2" unique_id=1631041399]
 material = SubResource("ShaderMaterial_pxxsx")
@@ -292,12 +348,27 @@ texture = ExtResource("9_u8s88")
 [node name="Tree6" type="Sprite2D" parent="CloseTree2" unique_id=832621013]
 material = SubResource("ShaderMaterial_pxxsx")
 position = Vector2(1583.5, 591.5)
-texture = ExtResource("7_ln7ps")
+texture = ExtResource("6_4cobl")
 
 [node name="Tree8" type="Sprite2D" parent="CloseTree2" unique_id=1110253461]
 material = SubResource("ShaderMaterial_pxxsx")
 position = Vector2(1152, 578)
-texture = ExtResource("9_u8s88")
+texture = ExtResource("8_pxxsx")
+
+[node name="ColorRect" type="ColorRect" parent="CloseTree2" unique_id=1733552278]
+material = SubResource("ShaderMaterial_km8ha")
+offset_top = -195.0
+offset_right = 1220.0
+offset_bottom = 284.0
+color = Color(0.042600002, 0.06, 0.057680003, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CloseTree2" unique_id=171787309]
+material = SubResource("ShaderMaterial_km8ha")
+offset_left = 37.0
+offset_top = 884.0
+offset_right = 1257.0
+offset_bottom = 1297.0
+color = Color(0.042600002, 0.06, 0.057680003, 1)
 
 [node name="Haze" type="Parallax2D" parent="." unique_id=1248213752]
 scroll_scale = Vector2(0, 1)
@@ -305,12 +376,14 @@ scroll_offset = Vector2(0, -814)
 
 [node name="Haze" type="TextureRect" parent="Haze" unique_id=1197512489]
 material = SubResource("ShaderMaterial_jucfl")
-offset_top = 706.0
-offset_right = 1941.6694
-offset_bottom = 985.0
+offset_left = 2.0
+offset_top = 605.0
+offset_right = 1943.6694
+offset_bottom = 884.0
 scale = Vector2(0.98883986, 1.3644013)
 mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_jdpby")
+expand_mode = 1
 
 [node name="World" type="Node2D" parent="." unique_id=2017723709]
 
@@ -356,17 +429,6 @@ rank = 2
 [node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1450001775]
 tile_map_data = PackedByteArray("AAD2/wAAAQABAAAAAAD2/wEAAQABAAEAAAD2/wIAAQABAAIAAAD3/wAAAQACAAAAAAD3/wEAAQACAAEAAAD3/wIAAQACAAIAAAD4/wAAAQADAAAAAAD4/wEAAQADAAEAAAD4/wIAAQADAAIAAAD5/wAAAQABAAAAAAD5/wEAAQABAAEAAAD5/wIAAQABAAIAAAD6/wAAAQACAAAAAAD6/wEAAQACAAEAAAD6/wIAAQACAAIAAAD7/wAAAQADAAAAAAD7/wEAAQADAAEAAAD7/wIAAQADAAIAAAD8/wAAAQABAAAAAAD8/wEAAQABAAEAAAD8/wIAAQABAAIAAAD9/wAAAQACAAAAAAD9/wEAAQACAAEAAAD9/wIAAQACAAIAAAD+/wAAAQADAAAAAAD+/wEAAQADAAEAAAD+/wIAAQADAAIAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAD//wIAAQABAAIAAAAAAAAAAQACAAAAAAAAAAEAAQACAAEAAAAAAAIAAQACAAIAAAABAAAAAQADAAAAAAABAAEAAQADAAEAAAABAAIAAQADAAIAAAACAAAAAQABAAAAAAACAAEAAQABAAEAAAACAAIAAQABAAIAAAADAAAAAQACAAAAAAADAAEAAQACAAEAAAADAAIAAQACAAIAAAAEAAAAAQADAAAAAAAEAAEAAQADAAEAAAAEAAIAAQADAAIAAAAFAAAAAQABAAAAAAAFAAEAAQABAAEAAAAFAAIAAQABAAIAAAAGAAAAAQACAAAAAAAGAAEAAQACAAEAAAAGAAIAAQACAAIAAAAHAAAAAQADAAAAAAAHAAEAAQADAAEAAAAHAAIAAQADAAIAAAAIAAAAAQABAAAAAAAIAAEAAQABAAEAAAAIAAIAAQABAAIAAAAJAAAAAQACAAAAAAAJAAEAAQACAAEAAAAJAAIAAQACAAIAAAAKAAAAAQADAAAAAAAKAAEAAQADAAEAAAAKAAIAAQADAAIAAAA=")
 tile_set = ExtResource("15_ln7ps")
-
-[node name="Front" type="Parallax2D" parent="." unique_id=1365840630]
-scroll_scale = Vector2(2, 1)
-scroll_offset = Vector2(-204, -814)
-repeat_size = Vector2(1000, 0)
-repeat_times = 3
-
-[node name="Cattail" type="Sprite2D" parent="Front" unique_id=1421372495]
-position = Vector2(534, 927)
-scale = Vector2(0.795082, 0.795082)
-texture = ExtResource("16_ln7ps")
 
 [node name="Water" type="Parallax2D" parent="." unique_id=2141431384]
 scroll_scale = Vector2(0, 1)
