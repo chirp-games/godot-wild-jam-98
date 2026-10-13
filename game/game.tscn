@@ -10,10 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://ceq120ettmjpo" path="res://assets/parallax/tree_1.png" id="6_4cobl"]
 [ext_resource type="Texture2D" uid="uid://brnrvjslkxknd" path="res://assets/parallax/tree2.png" id="7_ln7ps"]
 [ext_resource type="Texture2D" uid="uid://fmnba5nkkk33" path="res://assets/parallax/small_shrub.svg" id="7_pxxsx"]
+[ext_resource type="Texture2D" uid="uid://txtuancv088" path="res://assets/parallax/small_vine_2.png" id="8_pvdu1"]
 [ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="8_pxxsx"]
+[ext_resource type="Texture2D" uid="uid://ntm0pkw30y7j" path="res://assets/parallax/small_vine_1.png" id="9_cf130"]
 [ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="9_u8s88"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
+[ext_resource type="Texture2D" uid="uid://dh2qb6o85tc3q" path="res://assets/parallax/small_vine_3.png" id="10_posua"]
 [ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="13_jucfl"]
+[ext_resource type="Shader" uid="uid://dyu60a6tlb610" path="res://game/darken.gdshader" id="14_cf130"]
 [ext_resource type="Resource" uid="uid://cy4llnahlcc3g" path="res://resources/mechs/recruit.tres" id="15_58yx1"]
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
@@ -49,7 +53,8 @@ shader_parameter/noise = SubResource("NoiseTexture2D_f17yu")
 shader_parameter/debanding_intensity = 0.0730000034675
 
 [sub_resource type="Gradient" id="Gradient_1rw7n"]
-colors = PackedColorArray(0.08039999, 0.12, 0.112739995, 1, 0.1932, 0.28, 0.26408666, 1)
+offsets = PackedFloat32Array(0.24698795, 0.4759036, 0.6506024)
+colors = PackedColorArray(0.08235294, 0.12156863, 0.11372549, 1, 0.27299997, 0.35, 0.33588332, 1, 0.1932, 0.28, 0.26408666, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_leid8"]
 gradient = SubResource("Gradient_1rw7n")
@@ -155,6 +160,20 @@ shader_parameter/brightness = 0.5499999877064
 shader_parameter/scale = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_km8ha"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvdu1"]
+shader = ExtResource("14_cf130")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cf130"]
+shader = ExtResource("17_dxwpq")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0350000016625
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 0.51999998837696
+shader_parameter/scale = 2.0
+shader_parameter/invert = true
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q52ks"]
 noise_type = 2
@@ -450,7 +469,7 @@ texture = ExtResource("4_hb504")
 
 [node name="CloseTree1" type="Parallax2D" parent="." unique_id=465985807]
 scroll_scale = Vector2(0.5, 0.5)
-scroll_offset = Vector2(-1599, -470)
+scroll_offset = Vector2(-599, -583)
 repeat_size = Vector2(1000, 0)
 repeat_times = 5
 
@@ -478,6 +497,16 @@ position = Vector2(1359.5, 595.699)
 scale = Vector2(-1, 0.8575484)
 texture = ExtResource("8_pxxsx")
 
+[node name="SmallVine2" type="Sprite2D" parent="CloseTree1" unique_id=2120352549]
+position = Vector2(-1047, 595)
+rotation = 3.1415927
+scale = Vector2(1, -0.8575484)
+texture = ExtResource("8_pvdu1")
+
+[node name="SmallVine1" type="Sprite2D" parent="CloseTree1" unique_id=266328428]
+position = Vector2(-955, 655)
+texture = ExtResource("9_cf130")
+
 [node name="ColorRect" type="ColorRect" parent="CloseTree1" unique_id=303853303]
 offset_right = 1919.0
 offset_bottom = 330.0
@@ -500,9 +529,18 @@ offset_bottom = 347.0
 mouse_filter = 2
 color = Color(0.078431375, 0.10980392, 0.105882354, 1)
 
+[node name="SmallVine3" type="Sprite2D" parent="CloseTree1" unique_id=566219692]
+position = Vector2(-482, 634)
+rotation = -2.4269783
+texture = ExtResource("10_posua")
+
+[node name="SmallVine4" type="Sprite2D" parent="CloseTree1" unique_id=1033239258]
+position = Vector2(-454, 548)
+texture = ExtResource("9_cf130")
+
 [node name="CloseTree2" type="Parallax2D" parent="." unique_id=1591368731]
 scroll_scale = Vector2(0.6, 0.5)
-scroll_offset = Vector2(-634, -470)
+scroll_offset = Vector2(-634, -570)
 repeat_size = Vector2(1200, 0)
 repeat_times = 5
 
@@ -567,6 +605,24 @@ offset_top = 884.0
 offset_right = 1257.0
 offset_bottom = 1297.0
 color = Color(0.042600002, 0.06, 0.057680003, 1)
+
+[node name="SmallVine1" type="Sprite2D" parent="CloseTree2" unique_id=1017812546]
+material = SubResource("ShaderMaterial_pvdu1")
+position = Vector2(-917, 493)
+rotation = 0.120663226
+texture = ExtResource("9_cf130")
+
+[node name="SmallVine4" type="Sprite2D" parent="CloseTree2" unique_id=1666735384]
+material = SubResource("ShaderMaterial_cf130")
+position = Vector2(-515, 353.99997)
+rotation = -1.5146699
+texture = ExtResource("10_posua")
+
+[node name="SmallVine5" type="Sprite2D" parent="CloseTree2" unique_id=955592805]
+material = SubResource("ShaderMaterial_cf130")
+position = Vector2(-360, 266)
+rotation = -1.2331008
+texture = ExtResource("10_posua")
 
 [node name="Haze" type="Parallax2D" parent="." unique_id=1248213752]
 scroll_scale = Vector2(0, 1)
