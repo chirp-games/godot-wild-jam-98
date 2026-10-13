@@ -62,6 +62,7 @@ game=""
 
 timers/tooltip_delay_sec=0.0
 theme/custom="uid://bp35ok3gel4nx"
+theme/custom_font="uid://5ldt5s4j5ox3"
 
 [input]
 

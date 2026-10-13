@@ -34,7 +34,7 @@ func _ready():
 		bus_slider.value_changed.connect(bus_slider._on_value_changed)
 		
 		bus_slider_icon = TextureRect.new()
-		bus_slider_icon.texture = preload("res://assets/ui/gear_12.png")
+		bus_slider_icon.texture = preload("res://assets/ui/gear_12_28.png")
 		bus_slider_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		
 		bus_slider_icon.offset_transform_enabled = true

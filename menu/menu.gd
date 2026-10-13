@@ -7,6 +7,9 @@ extends Control
 
 func _ready() -> void:
 	title.text = ProjectSettings.get_setting("application/config/name")
+	if OS.has_feature("web"):
+		(%WebAlert as Control).show()
+		(%Quit as Control).hide()
 
 func start_pressed() -> void:
 	print("Starting the game")

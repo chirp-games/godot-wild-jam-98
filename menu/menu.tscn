@@ -62,6 +62,15 @@ text = "Quit"
 stop_on_down = false
 cog_scale = 1.675
 
+[node name="WebAlert" type="Label" parent="MainMenuContainer/MainMenu" unique_id=451587368]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "This is the web build! For better sound and performance, download your native export."
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="OptionsContainer" type="MarginContainer" parent="." unique_id=1329727717]
 layout_mode = 2
 size_flags_horizontal = 3
