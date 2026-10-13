@@ -11,3 +11,5 @@ enum MechClass {
 @export var name: String = "Mech"
 @export var mech_class: MechClass = MechClass.Recruit
 @export_multiline var description: String = ""
+
+@export var detection_software: MechDetectionSoftware

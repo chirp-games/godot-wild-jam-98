@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://j7rarfx4dtlc"]
+
+[ext_resource type="Texture2D" uid="uid://3cs8ptxvv18f" path="res://assets/ui/gear_12_empty.png" id="1_0dg7g"]
+[ext_resource type="Script" uid="uid://dtcn2lbr313dd" path="res://ui/button.gd" id="1_7krdg"]
+
+[sub_resource type="Gradient" id="Gradient_0dg7g"]
+offsets = PackedFloat32Array(0, 0.5, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b0sfs"]
+gradient = SubResource("Gradient_0dg7g")
+width = 60
+
+[sub_resource type="Gradient" id="Gradient_7krdg"]
+offsets = PackedFloat32Array(0, 0.5, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fxfmk"]
+gradient = SubResource("Gradient_7krdg")
+width = 60
+
+[node name="Button" type="Button" unique_id=1400283378]
+text = "This is a button"
+script = ExtResource("1_7krdg")
+stop_on_down = null
+
+[node name="Control" type="TextureRect" parent="." unique_id=1663196277]
+show_behind_parent = true
+clip_children = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.4, 0)
+offset_transform_visual_only = false
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_b0sfs")
+
+[node name="Left" type="TextureRect" parent="Control" unique_id=1079664072]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 60.0
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_rotation = 104.44229
+mouse_filter = 2
+texture = ExtResource("1_0dg7g")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Control2" type="TextureRect" parent="." unique_id=1305801543]
+clip_children = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.4, 0)
+offset_transform_visual_only = false
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_fxfmk")
+
+[node name="Right" type="TextureRect" parent="Control2" unique_id=1925819424]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 60.0
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_rotation = 104.44229
+mouse_filter = 2
+texture = ExtResource("1_0dg7g")
+expand_mode = 1
+stretch_mode = 6
+
+[connection signal="button_down" from="." to="." method="_mouse_down"]
+[connection signal="button_up" from="." to="." method="_mouse_up"]
+[connection signal="mouse_entered" from="." to="." method="_hovered"]
+[connection signal="mouse_exited" from="." to="." method="_unhovered"]
