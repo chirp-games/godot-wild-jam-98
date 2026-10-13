@@ -18,15 +18,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	walking -= 1
 	var direction: float = Input.get_axis("move_left", "move_right")
 	
 	if direction and direction != 0 and on_floor and walking <= 0:
-		walking = 60
 		if sign(direction) != walk_dir:
 			walk_dir = sign(direction)
-	if walking > 35:
-		self.apply_central_force(Vector2(700 * walk_dir,-1500))
+
+	if on_floor and direction != 0:
+		self.apply_central_impulse(Vector2(70 * walk_dir,-150))
 	
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
