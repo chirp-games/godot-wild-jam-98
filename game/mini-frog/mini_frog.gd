@@ -19,7 +19,6 @@ var cooldown = 0.0
 
 @onready var game: Game = get_tree().get_first_node_in_group("game")
 @onready var wire_recpetacle: WireReceptacle = %WireReceptacle
-@onready var enemy_detection_radius: Area2D = %EnemyDetectionRadius
 
 func _ready() -> void:
 	var rank_text := ""
@@ -30,9 +29,6 @@ func _ready() -> void:
 	if resource.mech_class == MechResource.MechClass.Commander:
 		rank_text = "Commander"
 	($RankLabel as Label).text = rank_text
-
-	if resource.mech_class != MechResource.MechClass.Commander:
-		enemy_detection_radius.hide()
 
 	super._ready()
 
@@ -57,10 +53,14 @@ func get_connected_frogs():
 func _process(delta: float) -> void:
 	cooldown += delta
 
-	if enemy_detection_radius.is_visible_in_tree():
-		for body in enemy_detection_radius.get_overlapping_bodies():
-			if body.is_in_group("enemy"):
-				enemy_detected.emit(body)
+	if resource.detection_software:
+		var enemies: Array[Enemy] = []
+		for e: Enemy in get_tree().get_nodes_in_group("enemy"):
+			enemies.push_back(e)
+		if len(enemies) > 0:
+			enemies = resource.detection_software.detect(global_position, enemies)
+			if len(enemies) > 0:
+				enemy_detected.emit(enemies.pick_random())
 
 	super._process(delta)
 

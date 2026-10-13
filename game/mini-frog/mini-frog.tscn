@@ -4,9 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="2_s5sjp"]
 [ext_resource type="PackedScene" uid="uid://bmybhl3vbqmkd" path="res://game/player/mini_frog_skeleton.tscn" id="2_sqdhb"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r1jt1"]
-radius = 266.48077
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5sjp"]
 size = Vector2(91, 46)
 
@@ -18,15 +15,6 @@ contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_r1jt1")
 drag_area = NodePath("DragArea")
-
-[node name="EnemyDetectionRadius" type="Area2D" parent="." unique_id=1961611933]
-unique_name_in_owner = true
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionRadius" unique_id=1649788708]
-shape = SubResource("CircleShape2D_r1jt1")
-debug_color = Color(1, 0.5896655, 0.55672896, 0.41960785)
 
 [node name="MiniFrog" parent="." unique_id=1722012347 instance=ExtResource("2_sqdhb")]
 
