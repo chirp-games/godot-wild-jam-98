@@ -61,12 +61,6 @@ func get_connected_frogs():
 	return frogs
 
 func _process(delta: float) -> void:
-	if game:
-		if game.in_command_mode:
-			disable_dragging = false
-		else:
-			disable_dragging = true
-
 	cooldown += delta
 
 	if enemy_detection_radius.is_visible_in_tree():

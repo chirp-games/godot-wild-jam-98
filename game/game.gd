@@ -17,7 +17,6 @@ const MAX_CONNECTION_DIST = 300
 
 var frogs_to_closest_commander: Dictionary[MiniFrog, MiniFrog] = {}
 var currently_building_wire: Wire
-var in_command_mode = false
 
 var material_currency = 0
 
@@ -63,11 +62,6 @@ func _process(delta: float) -> void:
 		if in_range and frogs_to_closest_commander[frog] and frogs_to_closest_commander[frog] != closest_commander:
 			closest_commander_found(frog, frogs_to_closest_commander[frog])
 
-	if in_command_mode:
-		player_camera.zoom = lerp(player_camera.zoom, Vector2(.5, .5), 5 * delta)
-	else:
-		player_camera.zoom = lerp(player_camera.zoom, Vector2(1, 1), 5 * delta)
-
 	health_label.text = "Health: " + str(command_center.health)
 	material_label.text = "Material: " + str(material_currency)
 
@@ -108,14 +102,6 @@ func enter_command_mode():
 
 func exit_command_mode():
 	pass
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("enter_command_mode") and player.can_enter_command_center_mode:
-		in_command_mode = not in_command_mode
-		if in_command_mode:
-			enter_command_mode()
-		else:
-			exit_command_mode()
 
 func _on_wave_spawner_spawn_enemy(e: PackedScene) -> void:
 	var new_enemy: Enemy = e.instantiate()

@@ -21,10 +21,6 @@ func _physics_process(delta: float) -> void:
 	walking -= 1
 	var direction: float = Input.get_axis("l", "r")
 	
-	# Disable movement in command mode
-	if game and game.in_command_mode:
-		direction = 0
-	
 	if direction and direction != 0 and on_floor and walking <= 0:
 		walking = 60
 		if sign(direction) != walk_dir:
