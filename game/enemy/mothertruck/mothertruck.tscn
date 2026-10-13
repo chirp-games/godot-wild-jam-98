@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://3xjpifd30ix7" path="res://game/enemy/mothertruck/mothertruck.gd" id="2_ok16d"]
 
 [node name="Mothertruck" unique_id=1736390898 instance=ExtResource("1_via3p")]
+collision_layer = 1
+collision_mask = 1
 script = ExtResource("2_ok16d")
 health = null
 value = null

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b5uwgy121hk5x"]
+
+[ext_resource type="Script" uid="uid://clc15qoic0vf1" path="res://game/enemy/scrap.gd" id="1_5a21y"]
+[ext_resource type="Texture2D" uid="uid://cb84b3boggotd" path="res://assets/mech/back_ankle.png" id="1_urena"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+
+[node name="Scrap" type="RigidBody2D" unique_id=1223644404]
+script = ExtResource("1_5a21y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=760036405]
+texture = ExtResource("1_urena")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396295042]
+shape = SubResource("RectangleShape2D_g4v7s")
