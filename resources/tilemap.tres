@@ -279,6 +279,7 @@ shader_parameter/wind_end_threshold = 2.000000095
 shader_parameter/wind_end_threshold_2 = 0.1
 shader_parameter/wind_strength = 0.1210000057475
 shader_parameter/wind_speed = 0.32600000896522996
+shader_parameter/brightness = 1.0
 shader_parameter/scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cg7iu"]
@@ -288,6 +289,7 @@ shader_parameter/wind_end_threshold = 0.0
 shader_parameter/wind_end_threshold_2 = 0.1
 shader_parameter/wind_strength = 0.2
 shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 1.0
 shader_parameter/scale = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewfi8"]

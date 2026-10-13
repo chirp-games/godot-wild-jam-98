@@ -6,13 +6,13 @@
 [ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="3_b686c"]
 [ext_resource type="PackedScene" uid="uid://bnyja1vayqlh3" path="res://game/mini-frog/frog-sensor.tscn" id="3_y36n6"]
 [ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="4_hb504"]
-[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="4_l8g03"]
 [ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/mini-frog/mini-frog.tscn" id="6_3vho3"]
 [ext_resource type="Texture2D" uid="uid://ceq120ettmjpo" path="res://assets/parallax/tree_1.png" id="6_4cobl"]
 [ext_resource type="Texture2D" uid="uid://brnrvjslkxknd" path="res://assets/parallax/tree2.png" id="7_ln7ps"]
 [ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="8_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="9_u8s88"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
+[ext_resource type="PackedScene" uid="uid://bcqcmbu10gh4t" path="res://game/player/player.tscn" id="12_4cobl"]
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
@@ -155,7 +155,7 @@ shader_parameter/low_water_color = Color(0.018000001, 0.08496666, 0.1, 1)
 shader_parameter/foam_mix_intensity = 0.0010000000475
 shader_parameter/mix_3_intensity = 0.0110000005225
 shader_parameter/mix_4_intensity = 0.04400000209
-shader_parameter/wave_amplitude = 0.010000000474974513
+shader_parameter/wave_amplitude = 0.01000000047497451
 shader_parameter/wave_frequency = 0.7853981633974483
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pxxsx"]
@@ -196,6 +196,7 @@ offset_top = 2.0
 offset_right = 284.0
 offset_bottom = 25.0
 text = "Material: 0"
+
 [node name="CompleteBack" type="Parallax2D" parent="." unique_id=455343732]
 scroll_scale = Vector2(0, 0)
 
@@ -206,6 +207,7 @@ offset_top = 1079.9557
 offset_right = 1079.9557
 offset_bottom = 2999.8608
 rotation = -1.5707964
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_leid8")
 metadata/_edit_lock_ = true
 
@@ -252,6 +254,7 @@ texture = ExtResource("8_pxxsx")
 [node name="ColorRect" type="ColorRect" parent="CloseTree1" unique_id=303853303]
 offset_right = 1919.0
 offset_bottom = 284.0
+mouse_filter = 2
 color = Color(0.078431375, 0.10980392, 0.105882354, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="CloseTree1" unique_id=208427144]
@@ -259,6 +262,7 @@ offset_left = 4.0
 offset_top = 896.0
 offset_right = 1921.0
 offset_bottom = 1170.0
+mouse_filter = 2
 color = Color(0.078431375, 0.10980392, 0.105882354, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="CloseTree1" unique_id=1512602291]
@@ -266,6 +270,7 @@ offset_left = 1016.0
 offset_top = 869.0
 offset_right = 1247.0
 offset_bottom = 916.0
+mouse_filter = 2
 color = Color(0.078431375, 0.10980392, 0.105882354, 1)
 
 [node name="CloseTree2" type="Parallax2D" parent="." unique_id=1591368731]
@@ -303,6 +308,7 @@ offset_top = 706.0
 offset_right = 1941.6694
 offset_bottom = 985.0
 scale = Vector2(0.98883986, 1.3644013)
+mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_jdpby")
 
 [node name="World" type="Node2D" parent="." unique_id=2017723709]
@@ -339,13 +345,12 @@ collision_mask = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D" unique_id=261182031]
 shape = SubResource("WorldBoundaryShape2D_6w6ra")
 
-[node name="Player" parent="World" unique_id=1271694453 groups=["player"] instance=ExtResource("4_l8g03")]
+[node name="Player" parent="World" unique_id=1271694453 groups=["player"] instance=ExtResource("12_4cobl")]
 unique_name_in_owner = true
-position = Vector2(8, -66)
 
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true
-position = Vector2(-6, -208)
+position = Vector2(2, -274)
 
 [node name="Wires" type="Node2D" parent="World" unique_id=1126853350]
 unique_name_in_owner = true
@@ -377,6 +382,7 @@ repeat_size = Vector2(1920, 0)
 material = SubResource("ShaderMaterial_ln7ps")
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_pxxsx")
 
 [node name="PostProcess" type="Parallax2D" parent="." unique_id=1313654772]
@@ -387,6 +393,7 @@ metadata/_edit_lock_ = true
 material = SubResource("ShaderMaterial_u8s88")
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [connection signal="spawn_enemy" from="WaveSpawner" to="." method="_on_wave_spawner_spawn_enemy"]
