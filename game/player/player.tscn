@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bcqcmbu10gh4t"]
+[gd_scene format=3 uid="uid://bopph1pdoh7y8"]
 
 [ext_resource type="Script" uid="uid://7qbhbxttbpqk" path="res://game/player/player.gd" id="1_2mv0n"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="3_a4w0n"]
@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(268, 135)
 
-[node name="Player" type="RigidBody2D" unique_id=1271694453]
+[node name="Player2" type="RigidBody2D" unique_id=1271694453]
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_2mv0n")

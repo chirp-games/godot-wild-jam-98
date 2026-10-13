@@ -1,4 +1,4 @@
-extends DragableCharacterBody
+extends DragableRgidBody
 
 class_name MiniFrog
 
@@ -83,13 +83,12 @@ func _physics_process(delta: float) -> void:
 	# AI
 	if connected:
 		ai()
-		move_and_slide()
 
 func ai():
 	if rank == Rank.Recruit:
 		direction = -sign(global_position.x - get_connected_commander().global_position.x)
-	if is_on_floor():
-		velocity = Vector2(direction * 200., -200.)
+	if on_floor:
+		apply_central_impulse(Vector2(direction * 200., -200.))
 		direction *= -1
 
 func get_receptacle() -> WireReceptacle:
