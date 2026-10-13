@@ -53,7 +53,7 @@ func get_connected_frogs():
 func _process(delta: float) -> void:
 	cooldown += delta
 
-	if resource.detection_software:
+	if resource.detection_software != null:
 		var enemies: Array[Enemy] = []
 		for e: Enemy in get_tree().get_nodes_in_group("enemy"):
 			enemies.push_back(e)

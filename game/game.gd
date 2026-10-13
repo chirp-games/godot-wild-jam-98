@@ -48,7 +48,7 @@ func _ready() -> void:
 
 	player_camera.make_current()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for frog: MiniFrog in find_mini_frogs():
 		var closest_commander = frogs_to_closest_commander.get(frog)
 		var new_closest_commander := get_closest_commander(frog)

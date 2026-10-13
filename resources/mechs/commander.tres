@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://w1r7li8jtpq7" path="res://resources/mechs/mech_resource.gd" id="1_72wpr"]
 [ext_resource type="Script" uid="uid://bxikynugca5gt" path="res://resources/mechs/detection_software/detect_range.gd" id="1_eyl2h"]
 [ext_resource type="Script" uid="uid://c2sbuewcb0enh" path="res://resources/mechs/mech_detection_software.gd" id="1_yw3c4"]
+[ext_resource type="Script" uid="uid://cxkdmrston01e" path="res://resources/mechs/detection_software/detect_closest.gd" id="3_dovdf"]
 [ext_resource type="Script" uid="uid://3tfn1o3rboam" path="res://resources/mechs/detection_software/detect_compose.gd" id="3_i6w2e"]
 
 [sub_resource type="Resource" id="Resource_1dod3"]
@@ -10,9 +11,13 @@ script = ExtResource("1_eyl2h")
 range_radius = 30
 metadata/_custom_type_script = "uid://bxikynugca5gt"
 
+[sub_resource type="Resource" id="Resource_posua"]
+script = ExtResource("3_dovdf")
+metadata/_custom_type_script = "uid://cxkdmrston01e"
+
 [sub_resource type="Resource" id="Resource_eyl2h"]
 script = ExtResource("3_i6w2e")
-detectors = Array[ExtResource("1_yw3c4")]([SubResource("Resource_1dod3"), null])
+detectors = Array[ExtResource("1_yw3c4")]([SubResource("Resource_1dod3"), SubResource("Resource_posua")])
 metadata/_custom_type_script = "uid://3tfn1o3rboam"
 
 [resource]

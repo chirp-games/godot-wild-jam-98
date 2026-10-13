@@ -17,6 +17,6 @@ func _on_enter_command_mode_body_entered(body: Node2D) -> void:
 		(body as Player).can_enter_command_center_mode = true
 
 
-func _on_enter_command_mode_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_enter_command_mode_body_shape_exited(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	if body.is_in_group("player"):
 		(body as Player).can_enter_command_center_mode = false

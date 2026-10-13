@@ -17,9 +17,9 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction: float = Input.get_axis("move_left", "move_right")
-	
+
 	if direction and direction != 0 and on_floor and walking <= 0:
 		if sign(direction) != walk_dir:
 			walk_dir = sign(direction)

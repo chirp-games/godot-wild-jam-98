@@ -16,7 +16,7 @@ signal on_death
 func _ready() -> void:
 	health = resource.health
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	($Health as Label).text = str(health)
 
 	# Gravity
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 		pathfind(player)
 
 
-func pathfind(player):
+func pathfind(_player):
 	# Walk torwards the center of the map, that is where the home base is
 	var direction = -sign(position.x)
 	velocity.x = direction * 50
