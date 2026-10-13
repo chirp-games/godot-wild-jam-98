@@ -11,8 +11,7 @@ class_name CogButton
 ## The cog's rotational velocity in [i]radians[/i] per second.
 @export var angular_velocity := 0. :
 	set(value) :
-		if angular_velocity == _actual_angular_velocity:
-			_actual_angular_velocity = value
+		_actual_angular_velocity = value
 		angular_velocity = value
 ## When true, the cog will stop rotating when held down.
 @export var stop_on_down := false
