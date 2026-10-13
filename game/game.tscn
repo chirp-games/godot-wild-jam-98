@@ -346,11 +346,9 @@ unique_name_in_owner = true
 
 [node name="FrogRecruit" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
 position = Vector2(-78, -210)
-collision_mask = 2
 
 [node name="FrogCommander" parent="World" unique_id=289002986 instance=ExtResource("6_3vho3")]
 position = Vector2(-319, -119)
-collision_mask = 2
 rank = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1450001775]

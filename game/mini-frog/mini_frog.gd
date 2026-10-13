@@ -73,9 +73,6 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 
-	# Add gravity
-	velocity.y += 9.81
-	
 	# Do not do anything when being dragged
 	if dragging:
 		return
