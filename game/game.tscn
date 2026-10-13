@@ -14,9 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="9_u8s88"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
 [ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="13_jucfl"]
+[ext_resource type="Resource" uid="uid://cy4llnahlcc3g" path="res://resources/mechs/recruit.tres" id="15_58yx1"]
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
+[ext_resource type="Resource" uid="uid://ccom41f5d1mrp" path="res://resources/mechs/commander.tres" id="16_hbvmx"]
 [ext_resource type="Shader" uid="uid://ysoos21s6m6" path="res://shaders/god_rays.gdshader" id="16_ln7ps"]
 [ext_resource type="Script" uid="uid://cjp3vfuktnxqt" path="res://game/vines.gd" id="17_5e03w"]
 [ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="17_dxwpq"]
@@ -615,10 +617,11 @@ unique_name_in_owner = true
 
 [node name="FrogRecruit" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
 position = Vector2(-78, -210)
+resource = ExtResource("15_58yx1")
 
 [node name="FrogCommander" parent="World" unique_id=289002986 instance=ExtResource("6_3vho3")]
 position = Vector2(-319, -119)
-rank = 2
+resource = ExtResource("16_hbvmx")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1450001775]
 tile_map_data = PackedByteArray("AAD2/wAAAQABAAAAAAD2/wEAAQABAAEAAAD2/wIAAQABAAIAAAD3/wAAAQACAAAAAAD3/wEAAQACAAEAAAD3/wIAAQACAAIAAAD4/wAAAQADAAAAAAD4/wEAAQADAAEAAAD4/wIAAQADAAIAAAD5/wAAAQABAAAAAAD5/wEAAQABAAEAAAD5/wIAAQABAAIAAAD6/wAAAQACAAAAAAD6/wEAAQACAAEAAAD6/wIAAQACAAIAAAD7/wAAAQADAAAAAAD7/wEAAQADAAEAAAD7/wIAAQADAAIAAAD8/wAAAQABAAAAAAD8/wEAAQABAAEAAAD8/wIAAQABAAIAAAD9/wAAAQACAAAAAAD9/wEAAQACAAEAAAD9/wIAAQACAAIAAAD+/wAAAQADAAAAAAD+/wEAAQADAAEAAAD+/wIAAQADAAIAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAD//wIAAQABAAIAAAAAAAAAAQACAAAAAAAAAAEAAQACAAEAAAAAAAIAAQACAAIAAAABAAAAAQADAAAAAAABAAEAAQADAAEAAAABAAIAAQADAAIAAAACAAAAAQABAAAAAAACAAEAAQABAAEAAAACAAIAAQABAAIAAAADAAAAAQACAAAAAAADAAEAAQACAAEAAAADAAIAAQACAAIAAAAEAAAAAQADAAAAAAAEAAEAAQADAAEAAAAEAAIAAQADAAIAAAAFAAAAAQABAAAAAAAFAAEAAQABAAEAAAAFAAIAAQABAAIAAAAGAAAAAQACAAAAAAAGAAEAAQACAAEAAAAGAAIAAQACAAIAAAAHAAAAAQADAAAAAAAHAAEAAQADAAEAAAAHAAIAAQADAAIAAAAIAAAAAQABAAAAAAAIAAEAAQABAAEAAAAIAAIAAQABAAIAAAAJAAAAAQACAAAAAAAJAAEAAQACAAEAAAAJAAIAAQACAAIAAAAKAAAAAQADAAAAAAAKAAEAAQADAAEAAAAKAAIAAQADAAIAAAA=")
@@ -802,3 +805,4 @@ metadata/_edit_use_anchors_ = true
 [connection signal="wave_ended" from="WaveSpawner" to="." method="_on_wave_spawner_wave_ended"]
 [connection signal="wave_started" from="WaveSpawner" to="." method="_on_wave_spawner_wave_started"]
 [connection signal="pressed" from="UI/StartWaveButton" to="WaveSpawner" method="_on_start_wave_button_pressed"]
+[connection signal="mech_built" from="UI/Scrapyard" to="." method="_on_scrapyard_mech_built"]

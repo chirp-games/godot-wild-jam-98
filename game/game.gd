@@ -3,6 +3,7 @@ extends Control
 class_name Game
 
 const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
+const player_mech_scene = preload("res://game/mini-frog/mini-frog.tscn")
 const MAX_CONNECTION_DIST = 300
 
 @onready var player: Player = %Player
@@ -28,10 +29,10 @@ func find_wires():
 	return get_tree().get_nodes_in_group("wire")
 
 func find_commanders():
-	return get_tree().get_nodes_in_group("mini_frog").filter(func(x): return x.rank == MiniFrog.Rank.Commander)
+	return get_tree().get_nodes_in_group("mini_frog").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Commander)
 
 func find_recruits():
-	return get_tree().get_nodes_in_group("mini_frog").filter(func(x): return x.rank == MiniFrog.Rank.Recruit)
+	return get_tree().get_nodes_in_group("mini_frog").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Recruit)
 
 
 func find_mini_frogs():
@@ -99,10 +100,10 @@ func closest_commander_found(frog: MiniFrog, commander: MiniFrog):
 	create_wire(frog, commander)
 
 func enter_scrapyard():
-	pass
+	scrapyard.show()
 
 func exit_scrapyard():
-	pass
+	scrapyard.hide()
 
 func _on_wave_spawner_spawn_enemy(e: PackedScene) -> void:
 	var new_enemy: Enemy = e.instantiate()
@@ -122,3 +123,9 @@ func _input(event: InputEvent) -> void:
 			enter_scrapyard()
 		else:
 			exit_scrapyard()
+
+
+func _on_scrapyard_mech_built(mech_resource: MechResource) -> void:
+	var m: MiniFrog = player_mech_scene.instantiate()
+	m.resource = mech_resource
+	$World.add_child(m)

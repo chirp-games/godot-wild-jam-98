@@ -5,12 +5,6 @@ class_name MiniFrog
 ## This is the mini frog AI
 ## It should patrol around the point it is connected to
 
-enum Rank {
-	Recruit,
-	Lieutenant,
-	Commander,
-}
-
 var direction := 1.
 # Set to true by parent when it is connected
 var connected = false
@@ -21,23 +15,23 @@ signal enemy_detected(enemy: Enemy)
 
 var cooldown = 0.0
 
+@export var resource: MechResource = null
+
 @onready var game: Game = get_tree().get_first_node_in_group("game")
 @onready var wire_recpetacle: WireReceptacle = %WireReceptacle
 @onready var enemy_detection_radius: Area2D = %EnemyDetectionRadius
 
-@export var rank: Rank
-
 func _ready() -> void:
 	var rank_text := ""
-	if rank == Rank.Recruit:
+	if resource.mech_class == MechResource.MechClass.Recruit:
 		rank_text = "Recruit"
-	if rank == Rank.Lieutenant:
+	if resource.mech_class == MechResource.MechClass.Lieutenant:
 		rank_text = "Lieutenant"
-	if rank == Rank.Commander:
+	if resource.mech_class == MechResource.MechClass.Commander:
 		rank_text = "Commander"
 	($RankLabel as Label).text = rank_text
-	
-	if rank != Rank.Commander:
+
+	if resource.mech_class == MechResource.MechClass.Commander:
 		enemy_detection_radius.hide()
 
 	super._ready()
@@ -82,7 +76,7 @@ func _physics_process(delta: float) -> void:
 		ai()
 
 func ai():
-	if rank == Rank.Recruit:
+	if resource.mech_class == MechResource.MechClass.Recruit:
 		direction = -sign(global_position.x - get_connected_commander().global_position.x)
 	if on_floor:
 		apply_central_impulse(Vector2(direction * 200., -200.))
