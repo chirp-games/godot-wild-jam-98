@@ -1,13 +1,169 @@
-[gd_scene format=3 uid="uid://bk407q7hh0dhd"]
+[gd_scene format=4 uid="uid://b5pqkeu4bwhib"]
 
 [ext_resource type="Script" uid="uid://chcx47tvajonj" path="res://game/game.gd" id="1_dakft"]
 [ext_resource type="PackedScene" uid="uid://rpoy2rwaecgm" path="res://game/command_center.tscn" id="2_u5opy"]
 [ext_resource type="Script" uid="uid://j2mrqcd0rruy" path="res://game/wave_spawner.gd" id="2_y36n6"]
+[ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="3_b686c"]
 [ext_resource type="PackedScene" uid="uid://bnyja1vayqlh3" path="res://game/mini-frog/frog-sensor.tscn" id="3_y36n6"]
-[ext_resource type="PackedScene" uid="uid://bcqcmbu10gh4t" path="res://game/player/player.tscn" id="4_l8g03"]
+[ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="4_hb504"]
+[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="4_l8g03"]
 [ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/mini-frog/mini-frog.tscn" id="6_3vho3"]
+[ext_resource type="Texture2D" uid="uid://ceq120ettmjpo" path="res://assets/parallax/tree_1.png" id="6_4cobl"]
+[ext_resource type="Texture2D" uid="uid://brnrvjslkxknd" path="res://assets/parallax/tree2.png" id="7_ln7ps"]
+[ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="8_pxxsx"]
+[ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="9_u8s88"]
+[ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
+[ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
+[ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
+[ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
+[ext_resource type="Texture2D" uid="uid://b5pddenotjlyy" path="res://assets/parallax/cattail.png" id="16_ln7ps"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mhvfb"]
+noise_type = 3
+seed = 10
+frequency = 0.0162
+fractal_octaves = 6
+fractal_lacunarity = 8.0
+fractal_weighted_strength = 0.25
+domain_warp_amplitude = 30.555
+domain_warp_frequency = 0.56
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f17yu"]
+noise = SubResource("FastNoiseLite_mhvfb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5e03w"]
+shader = ExtResource("3_b686c")
+shader_parameter/noise = SubResource("NoiseTexture2D_f17yu")
+shader_parameter/debanding_intensity = 0.0730000034675
+
+[sub_resource type="Gradient" id="Gradient_1rw7n"]
+colors = PackedColorArray(0.08039999, 0.12, 0.112739995, 1, 0.1932, 0.28, 0.26408666, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_leid8"]
+gradient = SubResource("Gradient_1rw7n")
+
+[sub_resource type="Shader" id="Shader_4cobl"]
+code = "//https://godotshaders.com/shader/2d-wind-sway-tree-grass-motion-shader-2/
+shader_type canvas_item;
+
+
+uniform float wind_start_threshold : hint_range(0,1) = 0.1;
+uniform float wind_end_threshold : hint_range(0,10) = 2;
+uniform float wind_end_threshold_2 : hint_range(0,2) = .1;
+uniform float wind_strength : hint_range(0,1.5) = .2;
+uniform float wind_speed  : hint_range(.2,5) = 1;
+uniform float brightness: hint_range(0.,1.,0.01) = 1.0;
+uniform float scale = 2.0;
+
+void vertex() {
+	VERTEX *= scale;
+}
+
+void fragment() {
+    vec2 uv = (UV - REGION_RECT.xy) / REGION_RECT.zw * scale;
+	uv -= (scale - 1.) / scale;
+	
+	float dist_amount = smoothstep(wind_start_threshold * pow((1.0 - uv.y), wind_end_threshold), wind_end_threshold_2, 1.-uv.y);
+    uv.x += sin(TIME * wind_speed) * pow((1.0 - uv.y), wind_end_threshold) * dist_amount  * wind_strength ;
+    
+	COLOR = texture(TEXTURE, uv * REGION_RECT.zw + REGION_RECT.xy);
+    vec2 border = step(vec2(0.0), uv) * step(uv, vec2(1.0));
+    COLOR.a *= border.x * border.y;
+	COLOR.rgb *= brightness;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8bboj"]
+shader = SubResource("Shader_4cobl")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 7.2750003455625
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0190000009025
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 1.0
+shader_parameter/scale = 2.0
+
+[sub_resource type="Shader" id="Shader_ln7ps"]
+code = "//https://godotshaders.com/shader/2d-wind-sway-tree-grass-motion-shader-2/
+shader_type canvas_item;
+
+
+uniform float wind_start_threshold : hint_range(0,1) = 0.1;
+uniform float wind_end_threshold : hint_range(0,10) = 2;
+uniform float wind_end_threshold_2 : hint_range(0,2) = .1;
+uniform float wind_strength : hint_range(0,1.5) = .2;
+uniform float wind_speed  : hint_range(.2,5) = 1;
+uniform float brightness: hint_range(0.,1.,0.01) = 1.0;
+uniform float scale = 2.0;
+
+void vertex() {
+	VERTEX *= scale;
+}
+
+void fragment() {
+    vec2 uv = (UV - REGION_RECT.xy) / REGION_RECT.zw * scale;
+	uv -= (scale - 1.) / scale;
+	
+	float dist_amount = smoothstep(wind_start_threshold * pow((1.0 - uv.y), wind_end_threshold), wind_end_threshold_2, 1.-uv.y);
+    uv.x += sin(TIME * wind_speed) * pow((1.0 - uv.y), wind_end_threshold) * dist_amount  * wind_strength ;
+    
+	COLOR = texture(TEXTURE, uv * REGION_RECT.zw + REGION_RECT.xy);
+    vec2 border = step(vec2(0.0), uv) * step(uv, vec2(1.0));
+    COLOR.a *= border.x * border.y;
+	COLOR.rgb *= brightness;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxxsx"]
+shader = SubResource("Shader_ln7ps")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 7.2750003455625
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0190000009025
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 0.5499999877064
+shader_parameter/scale = 2.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q52ks"]
+noise_type = 2
+seed = 43
+frequency = 0.0302
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dpies"]
+noise = SubResource("FastNoiseLite_q52ks")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jucfl"]
+shader = ExtResource("10_dxwpq")
+shader_parameter/haze_color = Color(0.74340004, 0.9, 0.378, 0.19215687)
+shader_parameter/noise = SubResource("NoiseTexture2D_dpies")
+shader_parameter/noise_intensity = 0.1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jdpby"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6w6ra"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ln7ps"]
+shader = ExtResource("15_ee6o4")
+shader_parameter/water_line = 0.8106594
+shader_parameter/foam_color = Color(0.89505, 0.9, 0.6029999, 0.972549)
+shader_parameter/foam_size = 0.002
+shader_parameter/subfoam_color = Color(0.1936, 0.22, 0.08799999, 0.972549)
+shader_parameter/subfoam_size = 0.004
+shader_parameter/top_water_color = Color(0.15517667, 0.26, 0.1534, 0.7019608)
+shader_parameter/top_water_size = 0.021978028
+shader_parameter/mid_water_color = Color(0.11270001, 0.23, 0.16939501, 0.8156863)
+shader_parameter/mid_water_size = 0.059835173
+shader_parameter/low_water_color = Color(0.018000001, 0.08496666, 0.1, 1)
+shader_parameter/foam_mix_intensity = 0.0010000000475
+shader_parameter/mix_3_intensity = 0.0110000005225
+shader_parameter/mix_4_intensity = 0.04400000209
+shader_parameter/wave_amplitude = 0.010000000474974513
+shader_parameter/wave_frequency = 0.7853981633974483
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pxxsx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u8s88"]
+shader = ExtResource("16_4cobl")
+shader_parameter/bloom_spread = 0.34065932
+shader_parameter/bloom_intensity = 0.46642855
 
 [node name="Game" type="Control" unique_id=59364628 groups=["game"]]
 layout_mode = 3
@@ -40,6 +196,114 @@ offset_top = 2.0
 offset_right = 284.0
 offset_bottom = 25.0
 text = "Material: 0"
+[node name="CompleteBack" type="Parallax2D" parent="." unique_id=455343732]
+scroll_scale = Vector2(0, 0)
+
+[node name="BGColor" type="TextureRect" parent="CompleteBack" unique_id=2011186105]
+material = SubResource("ShaderMaterial_5e03w")
+offset_left = 4.4408833e-05
+offset_top = 1079.9557
+offset_right = 1079.9557
+offset_bottom = 2999.8608
+rotation = -1.5707964
+texture = SubResource("GradientTexture2D_leid8")
+metadata/_edit_lock_ = true
+
+[node name="FarBack" type="Parallax2D" parent="." unique_id=1842166682]
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 3
+
+[node name="Rock" type="Sprite2D" parent="FarBack" unique_id=265085740]
+position = Vector2(489.00003, 576)
+scale = Vector2(0.40745986, 0.40745986)
+texture = ExtResource("4_hb504")
+
+[node name="Rock2" type="Sprite2D" parent="FarBack" unique_id=1021315532]
+position = Vector2(1210, 538)
+scale = Vector2(0.40745986, 0.40745986)
+texture = ExtResource("4_hb504")
+
+[node name="CloseTree1" type="Parallax2D" parent="." unique_id=465985807]
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-1599, -470)
+repeat_size = Vector2(1000, 0)
+repeat_times = 5
+
+[node name="Tree1" type="Sprite2D" parent="CloseTree1" unique_id=1886354288]
+material = SubResource("ShaderMaterial_8bboj")
+position = Vector2(253.5, 595.5)
+texture = ExtResource("6_4cobl")
+
+[node name="Tree3" type="Sprite2D" parent="CloseTree1" unique_id=959788819]
+material = SubResource("ShaderMaterial_8bboj")
+position = Vector2(692.5, 598.5)
+texture = ExtResource("8_pxxsx")
+
+[node name="Tree5" type="Sprite2D" parent="CloseTree1" unique_id=404415644]
+material = SubResource("ShaderMaterial_8bboj")
+position = Vector2(863.5, 585.5)
+texture = ExtResource("6_4cobl")
+
+[node name="Tree7" type="Sprite2D" parent="CloseTree1" unique_id=1510337094]
+material = SubResource("ShaderMaterial_8bboj")
+position = Vector2(1359.5, 585.5)
+texture = ExtResource("8_pxxsx")
+
+[node name="ColorRect" type="ColorRect" parent="CloseTree1" unique_id=303853303]
+offset_right = 1919.0
+offset_bottom = 284.0
+color = Color(0.078431375, 0.10980392, 0.105882354, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CloseTree1" unique_id=208427144]
+offset_left = 4.0
+offset_top = 896.0
+offset_right = 1921.0
+offset_bottom = 1170.0
+color = Color(0.078431375, 0.10980392, 0.105882354, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CloseTree1" unique_id=1512602291]
+offset_left = 1016.0
+offset_top = 869.0
+offset_right = 1247.0
+offset_bottom = 916.0
+color = Color(0.078431375, 0.10980392, 0.105882354, 1)
+
+[node name="CloseTree2" type="Parallax2D" parent="." unique_id=1591368731]
+scroll_scale = Vector2(0.6, 0.5)
+scroll_offset = Vector2(-634, -470)
+repeat_size = Vector2(1200, 0)
+repeat_times = 5
+
+[node name="Tree2" type="Sprite2D" parent="CloseTree2" unique_id=1631041399]
+material = SubResource("ShaderMaterial_pxxsx")
+position = Vector2(582.5, 588.5)
+texture = ExtResource("7_ln7ps")
+
+[node name="Tree4" type="Sprite2D" parent="CloseTree2" unique_id=961241314]
+material = SubResource("ShaderMaterial_pxxsx")
+position = Vector2(100.5, 590.5)
+texture = ExtResource("9_u8s88")
+
+[node name="Tree6" type="Sprite2D" parent="CloseTree2" unique_id=832621013]
+material = SubResource("ShaderMaterial_pxxsx")
+position = Vector2(1583.5, 591.5)
+texture = ExtResource("7_ln7ps")
+
+[node name="Tree8" type="Sprite2D" parent="CloseTree2" unique_id=1110253461]
+material = SubResource("ShaderMaterial_pxxsx")
+position = Vector2(1152, 578)
+texture = ExtResource("9_u8s88")
+
+[node name="Haze" type="Parallax2D" parent="." unique_id=1248213752]
+scroll_scale = Vector2(0, 0)
+
+[node name="Haze" type="TextureRect" parent="Haze" unique_id=1197512489]
+material = SubResource("ShaderMaterial_jucfl")
+offset_top = 706.0
+offset_right = 1941.6694
+offset_bottom = 985.0
+scale = Vector2(0.98883986, 1.3644013)
+texture = SubResource("PlaceholderTexture2D_jdpby")
 
 [node name="World" type="Node2D" parent="." unique_id=2017723709]
 
@@ -88,6 +352,42 @@ unique_name_in_owner = true
 
 [node name="MiniFrog" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
 position = Vector2(-78, -210)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1450001775]
+tile_map_data = PackedByteArray("AAD2/wAAAQABAAAAAAD2/wEAAQABAAEAAAD2/wIAAQABAAIAAAD3/wAAAQACAAAAAAD3/wEAAQACAAEAAAD3/wIAAQACAAIAAAD4/wAAAQADAAAAAAD4/wEAAQADAAEAAAD4/wIAAQADAAIAAAD5/wAAAQABAAAAAAD5/wEAAQABAAEAAAD5/wIAAQABAAIAAAD6/wAAAQACAAAAAAD6/wEAAQACAAEAAAD6/wIAAQACAAIAAAD7/wAAAQADAAAAAAD7/wEAAQADAAEAAAD7/wIAAQADAAIAAAD8/wAAAQABAAAAAAD8/wEAAQABAAEAAAD8/wIAAQABAAIAAAD9/wAAAQACAAAAAAD9/wEAAQACAAEAAAD9/wIAAQACAAIAAAD+/wAAAQADAAAAAAD+/wEAAQADAAEAAAD+/wIAAQADAAIAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAD//wIAAQABAAIAAAAAAAAAAQACAAAAAAAAAAEAAQACAAEAAAAAAAIAAQACAAIAAAABAAAAAQADAAAAAAABAAEAAQADAAEAAAABAAIAAQADAAIAAAACAAAAAQABAAAAAAACAAEAAQABAAEAAAACAAIAAQABAAIAAAADAAAAAQACAAAAAAADAAEAAQACAAEAAAADAAIAAQACAAIAAAAEAAAAAQADAAAAAAAEAAEAAQADAAEAAAAEAAIAAQADAAIAAAAFAAAAAQABAAAAAAAFAAEAAQABAAEAAAAFAAIAAQABAAIAAAAGAAAAAQACAAAAAAAGAAEAAQACAAEAAAAGAAIAAQACAAIAAAAHAAAAAQADAAAAAAAHAAEAAQADAAEAAAAHAAIAAQADAAIAAAAIAAAAAQABAAAAAAAIAAEAAQABAAEAAAAIAAIAAQABAAIAAAAJAAAAAQACAAAAAAAJAAEAAQACAAEAAAAJAAIAAQACAAIAAAAKAAAAAQADAAAAAAAKAAEAAQADAAEAAAAKAAIAAQADAAIAAAA=")
+tile_set = ExtResource("15_ln7ps")
+
+[node name="Front" type="Parallax2D" parent="." unique_id=1365840630]
+scroll_scale = Vector2(2, 1)
+scroll_offset = Vector2(-204, -814)
+repeat_size = Vector2(1000, 0)
+repeat_times = 3
+
+[node name="Cattail" type="Sprite2D" parent="Front" unique_id=1421372495]
+position = Vector2(534, 927)
+scale = Vector2(0.795082, 0.795082)
+texture = ExtResource("16_ln7ps")
+
+[node name="Water" type="Parallax2D" parent="." unique_id=2141431384]
+scroll_scale = Vector2(0, 1)
+scroll_offset = Vector2(0, -814)
+repeat_size = Vector2(1920, 0)
+
+[node name="Water" type="TextureRect" parent="Water" unique_id=524147455]
+material = SubResource("ShaderMaterial_ln7ps")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("PlaceholderTexture2D_pxxsx")
+
+[node name="PostProcess" type="Parallax2D" parent="." unique_id=1313654772]
+scroll_scale = Vector2(0, 0)
+metadata/_edit_lock_ = true
+
+[node name="BloomShader" type="ColorRect" parent="PostProcess" unique_id=1589626492]
+material = SubResource("ShaderMaterial_u8s88")
+offset_right = 1920.0
+offset_bottom = 1080.0
+metadata/_edit_lock_ = true
 
 [connection signal="spawn_enemy" from="WaveSpawner" to="." method="_on_wave_spawner_spawn_enemy"]
 [connection signal="wave_ended" from="WaveSpawner" to="." method="_on_wave_spawner_wave_ended"]

@@ -7,6 +7,7 @@ uniform float wind_end_threshold : hint_range(0,10) = 2;
 uniform float wind_end_threshold_2 : hint_range(0,2) = .1;
 uniform float wind_strength : hint_range(0,1.5) = .2;
 uniform float wind_speed  : hint_range(.2,5) = 1;
+uniform float brightness: hint_range(0.,1.,0.01) = 1.0;
 uniform float scale = 2.0;
 
 void vertex() {
@@ -23,4 +24,5 @@ void fragment() {
 	COLOR = texture(TEXTURE, uv * REGION_RECT.zw + REGION_RECT.xy);
     vec2 border = step(vec2(0.0), uv) * step(uv, vec2(1.0));
     COLOR.a *= border.x * border.y;
+	COLOR.rgb *= brightness;
 }

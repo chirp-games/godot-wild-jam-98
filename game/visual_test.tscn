@@ -27,19 +27,19 @@ fractal_weighted_strength = 0.25
 domain_warp_amplitude = 30.555
 domain_warp_frequency = 0.56
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f17yu"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_sbv18"]
 noise = SubResource("FastNoiseLite_bxnc0")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bxnc0"]
 shader = ExtResource("1_5nsiw")
-shader_parameter/noise = SubResource("NoiseTexture2D_f17yu")
+shader_parameter/noise = SubResource("NoiseTexture2D_sbv18")
 shader_parameter/debanding_intensity = 0.0730000034675
 
-[sub_resource type="Gradient" id="Gradient_1rw7n"]
+[sub_resource type="Gradient" id="Gradient_yvd18"]
 colors = PackedColorArray(0.08039999, 0.12, 0.112739995, 1, 0.1932, 0.28, 0.26408666, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_km8ha"]
-gradient = SubResource("Gradient_1rw7n")
+gradient = SubResource("Gradient_yvd18")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qnjrr"]
 shader = ExtResource("7_u4syw")
@@ -55,13 +55,13 @@ noise_type = 2
 seed = 43
 frequency = 0.0302
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dpies"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bjvph"]
 noise = SubResource("FastNoiseLite_tyudi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dpies"]
 shader = ExtResource("4_dpies")
 shader_parameter/haze_color = Color(0.74340004, 0.9, 0.378, 0.19215687)
-shader_parameter/noise = SubResource("NoiseTexture2D_dpies")
+shader_parameter/noise = SubResource("NoiseTexture2D_bjvph")
 shader_parameter/noise_intensity = 0.1
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0vscf"]
@@ -232,7 +232,7 @@ texture = ExtResource("7_tyudi")
 position = Vector2(-192.00002, 125.999985)
 scale = Vector2(0.41528302, 0.41528302)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.52966857
+energy = 0.54373217
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -243,7 +243,7 @@ flicker_speed = 0.5
 position = Vector2(-85.00002, 156.00003)
 scale = Vector2(0.41918966, 0.41918966)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.51851887
+energy = 0.61028564
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -254,7 +254,7 @@ flicker_speed = 0.3
 position = Vector2(120.000015, 201.00002)
 scale = Vector2(0.4621583, 0.4621583)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5815343
+energy = 0.58235806
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -265,7 +265,7 @@ flicker_speed = 0.3
 position = Vector2(150.00003, 73)
 scale = Vector2(0.41528335, 0.41528335)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.6158953
+energy = 0.58678776
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -276,7 +276,7 @@ flicker_speed = 0.3
 position = Vector2(253.99994, 123.99997)
 scale = Vector2(0.42700163, 0.42700163)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5326433
+energy = 0.55869234
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -285,7 +285,7 @@ flicker_speed = 0.3
 
 [node name="Front" type="Parallax2D" parent="." unique_id=1870766607]
 
-[node name="Cattail" type="Sprite2D" parent="." unique_id=105912452]
+[node name="Cattail" type="Sprite2D" parent="Front" unique_id=105912452]
 position = Vector2(534, 927)
 scale = Vector2(0.795082, 0.795082)
 texture = ExtResource("16_sbv18")
