@@ -15,6 +15,7 @@
 [ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="7_u4syw"]
 [ext_resource type="Texture2D" uid="uid://dm32dgjl12xyh" path="res://assets/2d_lights_large_falloff.webp" id="9_ubbs2"]
 [ext_resource type="Script" uid="uid://cec0x7dhrff5x" path="res://game/flicker_light.gd" id="10_5aypt"]
+[ext_resource type="Texture2D" uid="uid://b5pddenotjlyy" path="res://assets/parallax/cattail.png" id="16_sbv18"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bxnc0"]
 noise_type = 3
@@ -231,7 +232,7 @@ texture = ExtResource("7_tyudi")
 position = Vector2(-192.00002, 125.999985)
 scale = Vector2(0.41528302, 0.41528302)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5737449
+energy = 0.52966857
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -242,7 +243,7 @@ flicker_speed = 0.5
 position = Vector2(-85.00002, 156.00003)
 scale = Vector2(0.41918966, 0.41918966)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5266159
+energy = 0.51851887
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -253,7 +254,7 @@ flicker_speed = 0.3
 position = Vector2(120.000015, 201.00002)
 scale = Vector2(0.4621583, 0.4621583)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5493311
+energy = 0.5815343
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -264,7 +265,7 @@ flicker_speed = 0.3
 position = Vector2(150.00003, 73)
 scale = Vector2(0.41528335, 0.41528335)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.51061976
+energy = 0.6158953
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -275,9 +276,16 @@ flicker_speed = 0.3
 position = Vector2(253.99994, 123.99997)
 scale = Vector2(0.42700163, 0.42700163)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5742319
+energy = 0.5326433
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
 max_energy = 0.8
 flicker_speed = 0.3
+
+[node name="Front" type="Parallax2D" parent="." unique_id=1870766607]
+
+[node name="Cattail" type="Sprite2D" parent="." unique_id=105912452]
+position = Vector2(534, 927)
+scale = Vector2(0.795082, 0.795082)
+texture = ExtResource("16_sbv18")
