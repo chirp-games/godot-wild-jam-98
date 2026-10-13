@@ -1,6 +1,6 @@
 extends Node2D
 
-const default_enemy = preload("res://game/enemy/Enemy.tscn")
+const default_enemy = preload("res://resources/enemy/basic_enemy.tres")
 
 var wave_finished_spawning = false
 

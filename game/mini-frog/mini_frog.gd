@@ -31,7 +31,7 @@ func _ready() -> void:
 		rank_text = "Commander"
 	($RankLabel as Label).text = rank_text
 
-	if resource.mech_class == MechResource.MechClass.Commander:
+	if resource.mech_class != MechResource.MechClass.Commander:
 		enemy_detection_radius.hide()
 
 	super._ready()

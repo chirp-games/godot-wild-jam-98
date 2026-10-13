@@ -4,6 +4,7 @@ class_name Game
 
 const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
 const player_mech_scene = preload("res://game/mini-frog/mini-frog.tscn")
+const enemy_scene = preload("res://game/enemy/Enemy.tscn")
 const MAX_CONNECTION_DIST = 300
 
 @onready var player: Player = %Player
@@ -106,8 +107,9 @@ func enter_scrapyard():
 func exit_scrapyard():
 	scrapyard.hide()
 
-func _on_wave_spawner_spawn_enemy(e: PackedScene) -> void:
-	var new_enemy: Enemy = e.instantiate()
+func _on_wave_spawner_spawn_enemy(e: EnemyResource) -> void:
+	var new_enemy: Enemy = enemy_scene.instantiate()
+	new_enemy.resource = e
 	new_enemy.global_position = [left_portal, right_portal].pick_random().global_position
 	new_enemy.on_death.connect(func(): material_currency += 10)
 	add_child(new_enemy)
