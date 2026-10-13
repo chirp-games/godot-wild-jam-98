@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bafj8ae1uqoim"]
 
 [ext_resource type="PackedScene" uid="uid://dw44nkfq07cdo" path="res://game/scrapyard/mech_info_button.tscn" id="1_jayy1"]
+[ext_resource type="Script" uid="uid://bevtl5205y468" path="res://game/scrapyard/pick_a_mech.gd" id="1_x3aqm"]
 [ext_resource type="Resource" uid="uid://cy4llnahlcc3g" path="res://resources/mechs/recruit.tres" id="2_cbtaj"]
 [ext_resource type="Resource" uid="uid://ccom41f5d1mrp" path="res://resources/mechs/commander.tres" id="3_x3aqm"]
 [ext_resource type="Resource" uid="uid://sl1v5cnd6egr" path="res://resources/mechs/lieutenant.tres" id="4_fstop"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_x3aqm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1568910129]
 layout_mode = 2

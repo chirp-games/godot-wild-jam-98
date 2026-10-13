@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://chcx47tvajonj" path="res://game/game.gd" id="1_dakft"]
 [ext_resource type="PackedScene" uid="uid://rpoy2rwaecgm" path="res://game/command_center.tscn" id="2_u5opy"]
 [ext_resource type="Script" uid="uid://j2mrqcd0rruy" path="res://game/wave_spawner.gd" id="2_y36n6"]
+[ext_resource type="PackedScene" uid="uid://b2cah2f4royhc" path="res://game/scrapyard/scrapyard.tscn" id="3_4cobl"]
 [ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="3_b686c"]
 [ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="4_hb504"]
 [ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/mini-frog/mini-frog.tscn" id="6_3vho3"]
@@ -12,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="8_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="9_u8s88"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
-[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/skeleton.tscn" id="12_4cobl"]
+[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="13_4cobl"]
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
@@ -222,6 +223,9 @@ offset_right = 284.0
 offset_bottom = 25.0
 text = "Material: 0"
 
+[node name="Scrapyard" parent="UI" unique_id=601508854 instance=ExtResource("3_4cobl")]
+unique_name_in_owner = true
+
 [node name="CompleteBack" type="Parallax2D" parent="." unique_id=455343732]
 scroll_scale = Vector2(0, 0)
 
@@ -407,8 +411,7 @@ collision_mask = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D" unique_id=261182031]
 shape = SubResource("WorldBoundaryShape2D_6w6ra")
 
-[node name="Player" parent="World" unique_id=1271694453 groups=["player"] instance=ExtResource("12_4cobl")]
-unique_name_in_owner = true
+[node name="Player" parent="World" unique_id=1271694453 instance=ExtResource("13_4cobl")]
 
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true

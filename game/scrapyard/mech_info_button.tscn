@@ -9,8 +9,12 @@ offset_bottom = 208.0
 size_flags_vertical = 0
 script = ExtResource("1_x808q")
 
+[node name="Button" type="Button" parent="." unique_id=54654747]
+layout_mode = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1677189471]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Name" type="Label" parent="VBoxContainer" unique_id=665597714]
 unique_name_in_owner = true
@@ -20,6 +24,7 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=680304282]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("1_h2a11")
 
 [node name="Description" type="Label" parent="VBoxContainer" unique_id=2096097380]
@@ -27,3 +32,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Mech Description Here"
 autowrap_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

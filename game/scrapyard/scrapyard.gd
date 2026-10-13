@@ -1,34 +1,12 @@
-extends PanelContainer
+extends CenterContainer
 
+@onready var pick_a_mech: PanelContainer = %PickAMech
 
-@onready var commander_percent_chance_lbael = %CommanderPercentChance
-@onready var lieuetentant_precent_chance_label = %LiuetenantPercentChance
-@onready var recruit_percent_chance_label = %RecruitPercentChance
+signal mech_built(mech: MechResource)
 
-## Given a certain amount of points, what should the base reward chance be
-## NOTE: This may be further modified by special enemy scrap options in the future
-func calculate_reward_percent(points: int) -> Array[float]:
-	var commander_chance = min(int(points / 3.), 100)
-	var lieutentant_chance = min(max(points - int(points / 3.), 0), 100 - commander_chance)
-	var recruit_chance = max(100 - commander_chance - lieutentant_chance, 0)
+func _on_scrapyard_scrap_pressed() -> void:
+	pick_a_mech.show()
 
-	return [commander_chance / 100., lieutentant_chance / 100., recruit_chance / 100.]
-
-func get_total_points() -> int:
-	var total_points := 0
-	for s: ScrapEnemyComponent in %"Scrap Menu".get_children():
-		total_points += s.get_total_points()
-	return total_points
-
-
-func _process(_delta: float) -> void:
-	var p := calculate_reward_percent(get_total_points())
-	commander_percent_chance_lbael.text = str(int(p[0] * 100)) + "%"
-	lieuetentant_precent_chance_label.text = str(int(p[1] * 100)) + "%"
-	recruit_percent_chance_label.text = str(int(p[2] * 100)) + "%"
-	
-
-## When the player presses scrap, they get 1 of 3 rewards to pick from.
-## Its a pick 3! Yay!
-func _on_scrap_button_pressed() -> void:
-	pass # Replace with function body.
+func _on_pick_a_mech_option_selected(mech: MechResource) -> void:
+	pick_a_mech.hide()
+	mech_built.emit(mech)

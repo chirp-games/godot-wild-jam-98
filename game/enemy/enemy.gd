@@ -5,10 +5,14 @@ class_name Enemy
 @export var health = 10
 @export var value = 10
 @export var standing_range = 100
+@export var resource: EnemyResource
 
 var target: Node = null
 
 signal on_death
+
+func _ready() -> void:
+	health = resource.health
 
 func _process(delta: float) -> void:
 	($Health as Label).text = str(health)

@@ -1,17 +1,13 @@
 [gd_scene format=3 uid="uid://bg6qxxtnsd2jg"]
 
 [ext_resource type="Script" uid="uid://ceimp6wv6hs8x" path="res://game/scrapyard/scrap_enemy_component.gd" id="1_icqfm"]
-[ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="2_vokbk"]
-
-[sub_resource type="Resource" id="Resource_icqfm"]
-script = ExtResource("2_vokbk")
-metadata/_custom_type_script = "uid://c3hxujw0yjsue"
+[ext_resource type="Resource" uid="uid://cv3gnyerisjbv" path="res://resources/enemy/basic_enemy.tres" id="2_vokbk"]
 
 [node name="ScrapEnemyComponent" type="PanelContainer" unique_id=1257101338]
 offset_right = 241.0
 offset_bottom = 31.0
 script = ExtResource("1_icqfm")
-enemy = SubResource("Resource_icqfm")
+enemy = ExtResource("2_vokbk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=181314982]
 layout_mode = 2
