@@ -188,7 +188,7 @@ shader_parameter/wave_frequency = 0.7853981633974483
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u8s88"]
 shader = ExtResource("16_4cobl")
 shader_parameter/bloom_spread = 0.34065932
-shader_parameter/bloom_intensity = 0.46642855
+shader_parameter/bloom_intensity = 0.08181315
 
 [node name="Game" type="Control" unique_id=59364628 groups=["game"]]
 layout_mode = 3
