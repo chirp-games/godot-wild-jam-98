@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bx44mcijex6wb"]
+
+[ext_resource type="Script" uid="uid://dr8a5ahvjjsnx" path="res://game/enemy/explosion.gd" id="1_3qgfw"]
+[ext_resource type="Texture2D" uid="uid://byj2p5cc4q42m" path="res://assets/enemy/nuke_explosion.png" id="2_0tfo5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 500.0
+
+[node name="Explosion" type="Area2D" unique_id=806042050]
+monitorable = false
+script = ExtResource("1_3qgfw")
+
+[node name="Radius" type="CollisionShape2D" parent="." unique_id=1045345913]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=227132518]
+texture = ExtResource("2_0tfo5")

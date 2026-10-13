@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cninfngmt3d3k"]
+
+[ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_h0fgd"]
+[ext_resource type="Texture2D" uid="uid://cxwxw5mb6gt6m" path="res://assets/enemy/gun_robot.png" id="2_kffsk"]
+[ext_resource type="Script" uid="uid://bdt4tej7f5q0g" path="res://game/enemy/gunbot/gunbot.gd" id="2_qstc5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qstc5"]
+size = Vector2(80, 170)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qstc5"]
+radius = 750.0
+
+[node name="Gunbot" unique_id=1736390898 instance=ExtResource("1_h0fgd")]
+script = ExtResource("2_qstc5")
+
+[node name="Sprite2D" parent="." index="0" unique_id=705184273]
+position = Vector2(-26.5, -101)
+texture = ExtResource("2_kffsk")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=522520049]
+position = Vector2(0, -85)
+shape = SubResource("RectangleShape2D_qstc5")
+
+[node name="AggroDetection" parent="." index="3" unique_id=248274435]
+monitorable = false
+
+[node name="CollisionShape2D" parent="AggroDetection" index="0" unique_id=1626251780]
+shape = SubResource("CircleShape2D_qstc5")

@@ -4,12 +4,15 @@ class_name Enemy
 
 @export var health = 10
 @export var value = 10
+@export var movement_speed = 150
 @export var standing_range = 100
+@export var attack_interval = 0.5
 @export var resource: EnemyResource
 
 @onready var scrap = preload("res://game/enemy/scrap.tscn")
 
 var target: Node = null
+var attack_cooldown: float = 0
 
 signal on_death
 
@@ -18,20 +21,22 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	($Health as Label).text = str(health)
+	
+	attack_cooldown -= delta
 
 	# Gravity
 	velocity.y += 9.81
 
-	var player: Node = get_tree().get_first_node_in_group("player")
-
-	if player:
-		pathfind(player)
+	pathfind()
 
 
-func pathfind(player):
+func pathfind():
 	# Walk torwards the center of the map, that is where the home base is
 	var direction = -sign(position.x)
-	velocity.x = direction * 50
+	if target and attack_cooldown <= 0:
+		attack()
+	else:
+		velocity.x = -sign(position.x) * movement_speed
 
 	move_and_slide()
 
@@ -52,7 +57,7 @@ func damage(d: int):
 		queue_free()
 
 func attack():
-	pass
+	attack_cooldown += attack_interval
 
 func set_target(player: Node):
 	target = player

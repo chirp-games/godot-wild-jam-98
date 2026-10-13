@@ -13,6 +13,7 @@ shader_parameter/wind_strength = 0.0190000009025
 shader_parameter/wind_speed = 1.0
 shader_parameter/brightness = 1.0
 shader_parameter/scale = 2.0
+shader_parameter/invert = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
 size = Vector2(27, 565.5)
@@ -20,8 +21,9 @@ size = Vector2(27, 565.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4tar"]
 size = Vector2(224, 233.75)
 
-[node name="CommandCenter" type="Node2D" unique_id=1931686413]
+[node name="CommandCenter" type="Node2D" unique_id=1931686413 groups=["ally"]]
 script = ExtResource("1_l4tar")
+health = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=210705085]
 material = SubResource("ShaderMaterial_xeen4")

@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v1xc"]
 size = Vector2(140, 140)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 400.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1736390898 groups=["enemy"]]
 collision_layer = 4
 collision_mask = 4
@@ -25,3 +28,9 @@ offset_right = 48.0
 offset_bottom = 40.0
 theme_override_font_sizes/font_size = 64
 text = "10"
+
+[node name="AggroDetection" type="Area2D" parent="." unique_id=248274435]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroDetection" unique_id=1626251780]
+shape = SubResource("CircleShape2D_g4v7s")

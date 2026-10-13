@@ -1,12 +1,11 @@
-extends Node2D
+extends DamageableEntity
 
 class_name CommandCenter
 
-@onready var health := 100
 @onready var area2d: Node2D = %Hitbox
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy_bullet"):
 		print("Attacked by enemy!")
 		health -= (body as Enemy).health
 		(body as Enemy).hit_command_center()

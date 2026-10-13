@@ -58,6 +58,8 @@ tower=""
 mini_frog=""
 player=""
 game=""
+bullet=""
+ally=""
 
 [gui]
 
