@@ -13,7 +13,7 @@ func start_wave():
 	wave_started.emit()
 	for i in range(5):
 		spawn_enemy.emit(default_enemy)
-		await get_tree().create_timer(.5).timeout
+		await get_tree().create_timer(2).timeout
 	wave_finished_spawning = true
 
 func _process(_delta: float) -> void:

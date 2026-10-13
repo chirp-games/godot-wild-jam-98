@@ -42,10 +42,10 @@ shape = SubResource("CircleShape2D_6w6ra")
 
 [node name="Comment" type="Label" parent="." unique_id=1565323643]
 layout_mode = 0
-offset_left = -497.0
-offset_top = 18.0
-offset_right = -161.0
-offset_bottom = 41.0
+offset_left = -360.0
+offset_top = -191.0
+offset_right = -24.0
+offset_bottom = -168.0
 text = "Enemy detection areas should go on layer 3"
 script = ExtResource("5_3ngj0")
 metadata/_custom_type_script = "uid://dshvdiw0hy7nd"

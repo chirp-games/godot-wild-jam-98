@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://rpoy2rwaecgm" path="res://game/command_center.tscn" id="2_u5opy"]
 [ext_resource type="Script" uid="uid://j2mrqcd0rruy" path="res://game/wave_spawner.gd" id="2_y36n6"]
 [ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="3_b686c"]
-[ext_resource type="PackedScene" uid="uid://bnyja1vayqlh3" path="res://game/mini-frog/frog-sensor.tscn" id="3_y36n6"]
 [ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="4_hb504"]
 [ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/mini-frog/mini-frog.tscn" id="6_3vho3"]
 [ext_resource type="Texture2D" uid="uid://ceq120ettmjpo" path="res://assets/parallax/tree_1.png" id="6_4cobl"]
@@ -12,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="8_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="9_u8s88"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
-[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="12_4cobl"]
+[ext_resource type="PackedScene" uid="uid://bcqcmbu10gh4t" path="res://game/player/player.tscn" id="12_4cobl"]
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
@@ -327,21 +326,9 @@ position = Vector2(1354, -184)
 [node name="CommandCenter" parent="World" unique_id=1931686413 instance=ExtResource("2_u5opy")]
 unique_name_in_owner = true
 
-[node name="FrogSensor" parent="World" unique_id=83631577 groups=["tower"] instance=ExtResource("3_y36n6")]
-offset_left = -456.0
-offset_top = -172.0
-offset_right = -413.0
-offset_bottom = -1.0
-
-[node name="FrogSensor2" parent="World" unique_id=1087751236 groups=["tower"] instance=ExtResource("3_y36n6")]
-offset_left = 420.0
-offset_top = -168.0
-offset_right = 463.0
-offset_bottom = 3.0
-
 [node name="StaticBody2D" type="StaticBody2D" parent="World" unique_id=1114635765]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D" unique_id=261182031]
 shape = SubResource("WorldBoundaryShape2D_6w6ra")
@@ -356,8 +343,12 @@ position = Vector2(2, -274)
 [node name="Wires" type="Node2D" parent="World" unique_id=1126853350]
 unique_name_in_owner = true
 
-[node name="MiniFrog" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
+[node name="FrogRecruit" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
 position = Vector2(-78, -210)
+
+[node name="FrogCommander" parent="World" unique_id=289002986 instance=ExtResource("6_3vho3")]
+position = Vector2(-319, -119)
+rank = 2
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1450001775]
 tile_map_data = PackedByteArray("AAD2/wAAAQABAAAAAAD2/wEAAQABAAEAAAD2/wIAAQABAAIAAAD3/wAAAQACAAAAAAD3/wEAAQACAAEAAAD3/wIAAQACAAIAAAD4/wAAAQADAAAAAAD4/wEAAQADAAEAAAD4/wIAAQADAAIAAAD5/wAAAQABAAAAAAD5/wEAAQABAAEAAAD5/wIAAQABAAIAAAD6/wAAAQACAAAAAAD6/wEAAQACAAEAAAD6/wIAAQACAAIAAAD7/wAAAQADAAAAAAD7/wEAAQADAAEAAAD7/wIAAQADAAIAAAD8/wAAAQABAAAAAAD8/wEAAQABAAEAAAD8/wIAAQABAAIAAAD9/wAAAQACAAAAAAD9/wEAAQACAAEAAAD9/wIAAQACAAIAAAD+/wAAAQADAAAAAAD+/wEAAQADAAEAAAD+/wIAAQADAAIAAAD//wAAAQABAAAAAAD//wEAAQABAAEAAAD//wIAAQABAAIAAAAAAAAAAQACAAAAAAAAAAEAAQACAAEAAAAAAAIAAQACAAIAAAABAAAAAQADAAAAAAABAAEAAQADAAEAAAABAAIAAQADAAIAAAACAAAAAQABAAAAAAACAAEAAQABAAEAAAACAAIAAQABAAIAAAADAAAAAQACAAAAAAADAAEAAQACAAEAAAADAAIAAQACAAIAAAAEAAAAAQADAAAAAAAEAAEAAQADAAEAAAAEAAIAAQADAAIAAAAFAAAAAQABAAAAAAAFAAEAAQABAAEAAAAFAAIAAQABAAIAAAAGAAAAAQACAAAAAAAGAAEAAQACAAEAAAAGAAIAAQACAAIAAAAHAAAAAQADAAAAAAAHAAEAAQADAAEAAAAHAAIAAQADAAIAAAAIAAAAAQABAAAAAAAIAAEAAQABAAEAAAAIAAIAAQABAAIAAAAJAAAAAQACAAAAAAAJAAEAAQACAAEAAAAJAAIAAQACAAIAAAAKAAAAAQADAAAAAAAKAAEAAQADAAEAAAAKAAIAAQADAAIAAAA=")
