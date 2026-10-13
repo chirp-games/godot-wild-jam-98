@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b5sp57cl6uwgw"]
+
+[ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_via3p"]
+[ext_resource type="Script" uid="uid://3xjpifd30ix7" path="res://game/enemy/mothertruck/mothertruck.gd" id="2_ok16d"]
+
+[node name="Mothertruck" unique_id=1736390898 instance=ExtResource("1_via3p")]
+script = ExtResource("2_ok16d")
+health = null
+value = null
+standing_range = null

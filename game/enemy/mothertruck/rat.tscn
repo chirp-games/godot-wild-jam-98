@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://duqi7gslxeegg"]
+
+[ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_7cf1f"]
+[ext_resource type="Script" uid="uid://cf2m5xpgxrbjj" path="res://game/enemy/mothertruck/rat.gd" id="2_xn5u5"]
+
+[node name="Rat" unique_id=1736390898 instance=ExtResource("1_7cf1f")]
+script = ExtResource("2_xn5u5")
