@@ -16,6 +16,16 @@
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
+[ext_resource type="Shader" uid="uid://ysoos21s6m6" path="res://shaders/god_rays.gdshader" id="16_ln7ps"]
+[ext_resource type="Script" uid="uid://cjp3vfuktnxqt" path="res://game/vines.gd" id="17_5e03w"]
+[ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="17_dxwpq"]
+[ext_resource type="Texture2D" uid="uid://oxo860p4axb" path="res://assets/parallax/vine_1.png" id="17_ln7ps"]
+[ext_resource type="Texture2D" uid="uid://dgtmj0aqja482" path="res://assets/parallax/vine_2.png" id="17_pxxsx"]
+[ext_resource type="Texture2D" uid="uid://c4o24aopopcv" path="res://assets/parallax/big_vine_1.png" id="19_u8s88"]
+[ext_resource type="Texture2D" uid="uid://b2o5swy44dkpi" path="res://assets/parallax/vine_3.png" id="20_mhvfb"]
+[ext_resource type="Texture2D" uid="uid://by6pa8mytt1b1" path="res://assets/parallax/front_leaves_4.png" id="22_q52ks"]
+[ext_resource type="Texture2D" uid="uid://2vj2ql3stxk2" path="res://assets/parallax/front_leaves_2.png" id="23_8bboj"]
+[ext_resource type="Texture2D" uid="uid://lv0ldkh6ow3v" path="res://assets/parallax/front_leaves_3.png" id="24_q52ks"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mhvfb"]
 noise_type = 3
@@ -185,10 +195,191 @@ shader_parameter/wave_frequency = 0.7853981633974483
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pxxsx"]
 
+[sub_resource type="Shader" id="Shader_pxxsx"]
+code = "/*
+Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/god-rays
+
+Feel free to use, improve and change this shader according to your needs
+and consider sharing the modified result on godotshaders.com.
+*/
+
+shader_type canvas_item;
+
+uniform float angle = -0.3;
+uniform float position = -0.2;
+uniform float spread : hint_range(0.0, 1.0) = 0.5;
+uniform float cutoff : hint_range(-1.0, 1.0) = 0.1;
+uniform float falloff : hint_range(0.0, 1.0) = 0.2;
+uniform float edge_fade : hint_range(0.0, 1.0) = 0.15;
+
+uniform float speed = 1.0;
+uniform float ray1_density = 8.0;
+uniform float ray2_density = 30.0;
+uniform float ray2_intensity : hint_range(0.0, 1.0) = 0.3;
+
+uniform vec4 color: source_color = vec4(1.0, 0.9, 0.65, 0.8);
+
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
+
+uniform bool hdr = false;
+uniform float seed = 5.0;
+
+// Random and noise functions from Book of Shader's chapter on Noise.
+float random(vec2 _uv) {
+    return fract(sin(dot(_uv.xy,
+                         vec2(12.9898, 78.233))) *
+        43758.5453123);
+}
+
+float noise (in vec2 uv) {
+    vec2 i = floor(uv);
+    vec2 f = fract(uv);
+
+    // Four corners in 2D of a tile
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+
+
+    // Smooth Interpolation
+
+    // Cubic Hermine Curve. Same as SmoothStep()
+    vec2 u = f * f * (3.0-2.0 * f);
+
+    // Mix 4 coorners percentages
+    return mix(a, b, u.x) +
+            (c - a)* u.y * (1.0 - u.x) +
+            (d - b) * u.x * u.y;
+}
+
+mat2 rotate(float _angle){
+    return mat2(vec2(cos(_angle), -sin(_angle)),
+                vec2(sin(_angle), cos(_angle)));
+}
+
+vec4 screen(vec4 base, vec4 blend){
+	return 1.0 - (1.0 - base) * (1.0 - blend);
+}
+
+void fragment()
+{
+	
+	// Rotate, skew and move the UVs
+	vec2 transformed_uv = ( rotate(angle) * (UV - position) )  / ( (UV.y + spread) - (UV.y * spread) );
+	
+	// Animate the ray according the the new transformed UVs
+	vec2 ray1 = vec2(transformed_uv.x * ray1_density + sin(TIME * 0.1 * speed) * (ray1_density * 0.2) + seed, 1.0);
+	vec2 ray2 = vec2(transformed_uv.x * ray2_density + sin(TIME * 0.2 * speed) * (ray1_density * 0.2) + seed, 1.0);
+	
+	// Cut off the ray's edges
+	float cut = step(cutoff, transformed_uv.x) * step(cutoff, 1.0 - transformed_uv.x);
+	ray1 *= cut;
+	ray2 *= cut;
+	
+	// Apply the noise pattern (i.e. create the rays)
+	float rays;
+	
+	if (hdr){
+		// This is not really HDR, but check this to not clamp the two merged rays making 
+		// their values go over 1.0. Can make for some nice effect
+		rays = noise(ray1) + (noise(ray2) * ray2_intensity);
+	}
+	else{
+		 rays = clamp(noise(ray1) + (noise(ray2) * ray2_intensity), 0., 1.);
+	}
+	
+	// Fade out edges
+	rays *= smoothstep(0.0, falloff, (1.0 - UV.y)); // Bottom
+	rays *= smoothstep(0.0 + cutoff, edge_fade + cutoff, transformed_uv.x); // Left
+	rays *= smoothstep(0.0 + cutoff, edge_fade + cutoff, 1.0 - transformed_uv.x); // Right
+	
+	// Color to the rays
+	vec3 shine = vec3(rays) * color.rgb;
+
+	// Try different blending modes for a nicer effect. \"Screen\" is included in the code,
+	// but take a look at https://godotshaders.com/snippet/blending-modes/ for more.
+	// With \"Screen\" blend mode:
+	shine = screen(texture(SCREEN_TEXTURE, SCREEN_UV), vec4(color)).rgb;
+	
+	COLOR = vec4(shine, rays * color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4cobl"]
+shader = SubResource("Shader_pxxsx")
+shader_parameter/angle = -0.115
+shader_parameter/position = -0.055
+shader_parameter/spread = 0.390000018525
+shader_parameter/cutoff = 0.342000063745
+shader_parameter/falloff = 0.758000036005
+shader_parameter/edge_fade = 0.30400001444
+shader_parameter/speed = 2.632
+shader_parameter/ray1_density = 8.66
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.21200001007
+shader_parameter/color = Color(0.91, 0.819, 0.6825, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 8.86
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dourk"]
+shader = ExtResource("16_ln7ps")
+shader_parameter/angle = -0.115
+shader_parameter/position = -0.055
+shader_parameter/spread = 0.2030000096425
+shader_parameter/cutoff = 0.3200000626999999
+shader_parameter/falloff = 0.406000019285
+shader_parameter/edge_fade = 0.238000011305
+shader_parameter/speed = 3.142
+shader_parameter/ray1_density = 8.66
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3770000179075
+shader_parameter/color = Color(0.9098039, 0.81960785, 0.68235296, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_leid8"]
+shader = SubResource("Shader_pxxsx")
+shader_parameter/angle = -0.115
+shader_parameter/position = -0.055
+shader_parameter/spread = 0.0550000026125
+shader_parameter/cutoff = 0.25400005956500005
+shader_parameter/falloff = 0.8110000385225
+shader_parameter/edge_fade = 0.3590000170525
+shader_parameter/speed = 2.632
+shader_parameter/ray1_density = 8.66
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.21200001007
+shader_parameter/color = Color(0.91, 0.819, 0.6825, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 7.505
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q52ks"]
+shader = ExtResource("17_dxwpq")
+shader_parameter/wind_start_threshold = 0.034000001615
+shader_parameter/wind_end_threshold = 1.0110000480225
+shader_parameter/wind_end_threshold_2 = 0.3410000161975
+shader_parameter/wind_strength = 0.010000000475
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 1.0
+shader_parameter/scale = 1.0
+shader_parameter/invert = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jdpby"]
+shader = ExtResource("17_dxwpq")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 1.0
+shader_parameter/scale = 2.0
+shader_parameter/invert = true
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u8s88"]
 shader = ExtResource("16_4cobl")
 shader_parameter/bloom_spread = 0.34065932
-shader_parameter/bloom_intensity = 0.08181315
+shader_parameter/bloom_intensity = 0.30884612560272195
 
 [node name="Game" type="Control" unique_id=59364628 groups=["game"]]
 layout_mode = 3
@@ -432,6 +623,7 @@ tile_set = ExtResource("15_ln7ps")
 scroll_scale = Vector2(0, 1)
 scroll_offset = Vector2(0, -814)
 repeat_size = Vector2(1920, 0)
+metadata/_edit_lock_ = true
 
 [node name="Water" type="TextureRect" parent="Water" unique_id=524147455]
 material = SubResource("ShaderMaterial_ln7ps")
@@ -439,17 +631,167 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_pxxsx")
+metadata/_edit_use_anchors_ = true
 
-[node name="PostProcess" type="Parallax2D" parent="." unique_id=1313654772]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="." unique_id=1522606822]
+copy_mode = 2
+rect = Rect2(0, 0, 1920, 1080)
+
+[node name="Rays" type="Parallax2D" parent="BackBufferCopy" unique_id=1504600414]
+scroll_scale = Vector2(1.2, 0)
+scroll_offset = Vector2(-400, 123)
+repeat_size = Vector2(2400, 0)
+repeat_times = 3
+
+[node name="ColorRect3" type="ColorRect" parent="BackBufferCopy/Rays" unique_id=281960144]
+material = SubResource("ShaderMaterial_4cobl")
+anchors_preset = -1
+anchor_left = 1.3638889
+anchor_top = 1.0972222
+anchor_right = 1.3638889
+anchor_bottom = 1.0972222
+offset_left = 2999.0
+offset_top = -538.0
+offset_right = 4079.0
+offset_bottom = 542.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="BackBufferCopy/Rays" unique_id=1487681753]
+material = SubResource("ShaderMaterial_4cobl")
+anchors_preset = -1
+anchor_left = 1.3638889
+anchor_top = 1.0972222
+anchor_right = 1.3638889
+anchor_bottom = 1.0972222
+offset_left = 2999.0
+offset_top = -538.0
+offset_right = 4079.0
+offset_bottom = 542.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="BackBufferCopy/Rays" unique_id=207702435]
+material = SubResource("ShaderMaterial_dourk")
+offset_left = 2238.0
+offset_top = -402.0
+offset_right = 3318.0
+offset_bottom = 678.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="BackBufferCopy/Rays" unique_id=443536797]
+material = SubResource("ShaderMaterial_dourk")
+offset_left = 3582.0
+offset_top = -482.0
+offset_right = 4662.0
+offset_bottom = 598.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="BackBufferCopy/Rays" unique_id=2127710510]
+material = SubResource("ShaderMaterial_leid8")
+offset_left = 1595.0
+offset_top = -570.0
+offset_right = 2675.0
+offset_bottom = 510.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Front" type="Parallax2D" parent="." unique_id=867993143]
+scroll_scale = Vector2(1.1, 0)
+repeat_times = 3
+script = ExtResource("17_5e03w")
+
+[node name="Vine2" type="Sprite2D" parent="Front" unique_id=790063900]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(1385.0001, 303)
+scale = Vector2(0.28294104, 0.28294104)
+texture = ExtResource("17_pxxsx")
+
+[node name="Vine1" type="Sprite2D" parent="Front" unique_id=2034039916]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(673.00024, 215)
+scale = Vector2(0.28749996, 0.28749996)
+texture = ExtResource("17_ln7ps")
+
+[node name="Vine4" type="Sprite2D" parent="Front" unique_id=1709811218]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(-813, 227)
+scale = Vector2(0.28749996, 0.28749996)
+texture = ExtResource("17_ln7ps")
+
+[node name="Vine3" type="Sprite2D" parent="Front" unique_id=1577538606]
+material = SubResource("ShaderMaterial_jdpby")
+position = Vector2(1940.0001, 232)
+scale = Vector2(0.27654886, 0.27654886)
+texture = ExtResource("20_mhvfb")
+
+[node name="Vine5" type="Sprite2D" parent="Front" unique_id=460992920]
+material = SubResource("ShaderMaterial_jdpby")
+position = Vector2(399.00003, 219)
+scale = Vector2(0.27654886, 0.27654886)
+texture = ExtResource("20_mhvfb")
+
+[node name="FrontLeaves" type="Parallax2D" parent="." unique_id=546151895]
+scroll_scale = Vector2(1.2, 0)
+scroll_offset = Vector2(0, 1)
+
+[node name="FrontLeaves1" type="Sprite2D" parent="FrontLeaves" unique_id=2069594876]
+position = Vector2(361, 83)
+texture = ExtResource("22_q52ks")
+
+[node name="FrontLeaves2" type="Sprite2D" parent="FrontLeaves" unique_id=805494218]
+position = Vector2(1302.5093, 93.09326)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves3" type="Sprite2D" parent="FrontLeaves" unique_id=1839858968]
+position = Vector2(851.50934, 91.09326)
+rotation = -0.11778388
+scale = Vector2(0.92162156, 0.9216216)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves4" type="Sprite2D" parent="FrontLeaves" unique_id=2056500251]
+position = Vector2(1101.5093, 43.09326)
+texture = ExtResource("24_q52ks")
+
+[node name="FrontLeaves5" type="Sprite2D" parent="FrontLeaves" unique_id=1061357810]
+position = Vector2(697, 61)
+texture = ExtResource("24_q52ks")
+
+[node name="FrontLeaves6" type="Sprite2D" parent="FrontLeaves" unique_id=1062918066]
+position = Vector2(1649, 86.00001)
+texture = ExtResource("22_q52ks")
+
+[node name="FrontLeaves8" type="Sprite2D" parent="FrontLeaves" unique_id=1038324190]
+position = Vector2(1874, 96.00002)
+rotation = -0.11778388
+scale = Vector2(0.92162156, 0.9216216)
+texture = ExtResource("23_8bboj")
+
+[node name="SuperFront" type="Parallax2D" parent="." unique_id=2060727534]
+scroll_scale = Vector2(1.7, 0)
+repeat_size = Vector2(1500, 0)
+repeat_times = 3
+
+[node name="BigVine1" type="Sprite2D" parent="SuperFront" unique_id=479671152]
+position = Vector2(948.00006, 263)
+scale = Vector2(0.25719416, 0.25719416)
+texture = ExtResource("19_u8s88")
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="." unique_id=75376384]
+copy_mode = 2
+
+[node name="PostProcess" type="Parallax2D" parent="BackBufferCopy2" unique_id=1313654772]
 scroll_scale = Vector2(0, 0)
 metadata/_edit_lock_ = true
 
-[node name="BloomShader" type="ColorRect" parent="PostProcess" unique_id=1589626492]
+[node name="BloomShader" type="ColorRect" parent="BackBufferCopy2/PostProcess" unique_id=1589626492]
 material = SubResource("ShaderMaterial_u8s88")
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
-metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="spawn_enemy" from="WaveSpawner" to="." method="_on_wave_spawner_spawn_enemy"]
 [connection signal="wave_ended" from="WaveSpawner" to="." method="_on_wave_spawner_wave_ended"]
