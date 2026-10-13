@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 func attack():
 	if cooldown <= 0:
-		var spawn = rat.instantiate()
+		var spawn: Enemy = rat.instantiate()
 		spawn.position = position
 		spawn.set_target(target)
 		cooldown = DELAY

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bxsqhcwlse41p"]
+[gd_scene format=3 uid="uid://c3ihm64euwh6s"]
 
 [ext_resource type="Script" uid="uid://dnpi7iigp0yg7" path="res://game/scrapyard/scrap_enemy_menu.gd" id="1_wvw0o"]
 [ext_resource type="PackedScene" uid="uid://bg6qxxtnsd2jg" path="res://game/scrapyard/scrap_enemy_component.tscn" id="2_7e8jc"]
