@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 class_name Game
 
@@ -8,6 +8,9 @@ const MAX_CONNECTION_DIST = 300
 @onready var player: Player = %Player
 @onready var command_center_camera: Camera2D = %CommandCenterCamera
 @onready var player_camera: Camera2D = %PlayerCamera
+@onready var start_wave_button: Button = %StartWaveButton
+@onready var left_portal: Marker2D = %LeftPortal
+@onready var right_portal: Marker2D = %RightPortal
 
 var frogs_to_closest_tower: Dictionary[MiniFrog, Tower] = {}
 var currently_building_wire: Wire
@@ -94,3 +97,14 @@ func _input(event: InputEvent) -> void:
 			enter_command_mode()
 		else:
 			exit_command_mode()
+
+func _on_wave_spawner_spawn_enemy(e: PackedScene) -> void:
+	var new_enemy: Enemy = e.instantiate()
+	new_enemy.global_position = [left_portal, right_portal].pick_random().global_position
+	add_child(new_enemy)
+
+func _on_wave_spawner_wave_ended() -> void:
+	start_wave_button.show()
+
+func _on_wave_spawner_wave_started() -> void:
+	start_wave_button.hide()

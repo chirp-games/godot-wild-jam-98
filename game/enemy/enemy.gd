@@ -7,7 +7,10 @@ class_name Enemy
 func _process(delta: float) -> void:
 	($Health as Label).text = str(health)
 
-	var player: Node = get_tree().get_nodes_in_group("player").get(0)
+	# Gravity
+	velocity.y += 9.81
+
+	var player: Node = get_tree().get_first_node_in_group("player")
 
 	if player:
 		pathfind(player)
@@ -16,7 +19,7 @@ func _process(delta: float) -> void:
 func pathfind(player):
 	# Walk torwards the center of the map, that is where the home base is
 	var direction = -sign(position.x)
-	velocity.x = direction * 30
+	velocity.x = direction * 50
 
 	move_and_slide()
 	
