@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bb7q8gqd4vjsm"]
 
 [ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://menu/menu.gd" id="1_6nwqt"]
-[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_j0t7f"]
+[ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="2_pbjm4"]
 [ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="3_6nwqt"]
+[ext_resource type="PackedScene" uid="uid://j7rarfx4dtlc" path="res://ui/button.tscn" id="3_svuvw"]
 
-[node name="Menu" type="CenterContainer" unique_id=1814581019]
+[node name="Menu" type="HBoxContainer" unique_id=1858154579]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,71 +15,80 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_6nwqt")
 
-[node name="MainMenu" type="VBoxContainer" parent="." unique_id=694086296]
+[node name="MainMenuContainer" type="MarginContainer" parent="." unique_id=1895535117]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="MainMenu" type="VBoxContainer" parent="MainMenuContainer" unique_id=694086296]
 layout_mode = 2
 size_flags_horizontal = 4
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu" unique_id=210091936]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenuContainer/MainMenu" unique_id=210091936]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MainMenu/HBoxContainer" unique_id=1483326455]
+[node name="TextureRect" type="TextureRect" parent="MainMenuContainer/MainMenu/HBoxContainer" unique_id=1483326455]
 layout_mode = 2
-texture = ExtResource("1_j0t7f")
+texture = ExtResource("2_pbjm4")
 expand_mode = 3
-flip_h = true
 
-[node name="Label" type="Label" parent="MainMenu/HBoxContainer" unique_id=1949245247]
+[node name="Title" type="Label" parent="MainMenuContainer/MainMenu/HBoxContainer" unique_id=1949245247]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 120
 text = "Template Game!"
 
-[node name="Start" type="Button" parent="MainMenu" unique_id=444583248]
+[node name="Start" parent="MainMenuContainer/MainMenu" unique_id=1400283378 instance=ExtResource("3_svuvw")]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 36
-text = "Start"
+text = "Start Game"
+angular_velocity = 0.2
+stop_on_down = true
+cog_scale = 1.675
 
-[node name="Options" type="Button" parent="MainMenu" unique_id=1103541891]
+[node name="Control" type="Control" parent="MainMenuContainer/MainMenu" unique_id=1999058529]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 36
-text = "Options"
 
-[node name="Quit" type="Button" parent="MainMenu" unique_id=954322013]
+[node name="Quit" parent="MainMenuContainer/MainMenu" unique_id=1842892987 instance=ExtResource("3_svuvw")]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 36
 text = "Quit"
+stop_on_down = false
+cog_scale = 1.675
 
-[node name="Options" type="VBoxContainer" parent="." unique_id=1639444495]
-visible = false
+[node name="OptionsContainer" type="MarginContainer" parent="." unique_id=1329727717]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
 
-[node name="Volume" type="GridContainer" parent="Options" unique_id=444030584]
+[node name="Options" type="VBoxContainer" parent="OptionsContainer" unique_id=1639444495]
 layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Volume" type="GridContainer" parent="OptionsContainer/Options" unique_id=444030584]
+layout_mode = 2
+theme_override_constants/h_separation = 16
 columns = 2
 script = ExtResource("3_6nwqt")
 
-[node name="Label" type="Label" parent="Options/Volume" unique_id=1855535925]
-layout_mode = 2
-text = "Show tutorial"
-
-[node name="CenterContainer" type="CenterContainer" parent="Options/Volume" unique_id=1867961415]
+[node name="CenterContainer" type="CenterContainer" parent="OptionsContainer/Options" unique_id=1867961415]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="CheckBox" type="CheckBox" parent="Options/Volume/CenterContainer" unique_id=1036761615]
+[node name="CheckBox" type="CheckBox" parent="OptionsContainer/Options/CenterContainer" unique_id=1036761615]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Show Tutorial"
 
-[node name="Back" type="Button" parent="Options" unique_id=723106391]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Go Back"
-
-[connection signal="pressed" from="MainMenu/Start" to="." method="start_pressed"]
-[connection signal="pressed" from="MainMenu/Options" to="." method="options_pressed"]
-[connection signal="pressed" from="MainMenu/Quit" to="." method="quit_pressed"]
-[connection signal="set_show_tutorial" from="Options/Volume" to="Options/Volume/CenterContainer/CheckBox" method="set_pressed_no_signal"]
-[connection signal="toggled" from="Options/Volume/CenterContainer/CheckBox" to="Options/Volume" method="show_tutorial_changed"]
-[connection signal="pressed" from="Options/Back" to="." method="options_back_pressed"]
+[connection signal="pressed" from="MainMenuContainer/MainMenu/Start" to="." method="start_pressed"]
+[connection signal="pressed" from="MainMenuContainer/MainMenu/Quit" to="." method="quit_pressed"]
+[connection signal="set_show_tutorial" from="OptionsContainer/Options/Volume" to="OptionsContainer/Options/CenterContainer/CheckBox" method="set_pressed_no_signal"]
+[connection signal="toggled" from="OptionsContainer/Options/CenterContainer/CheckBox" to="OptionsContainer/Options/Volume" method="show_tutorial_changed"]
