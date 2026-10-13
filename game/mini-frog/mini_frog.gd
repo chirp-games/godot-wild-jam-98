@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	# AI
-	if connected:
+	if get_connected_commander() != null:
 		ai()
 
 func ai():

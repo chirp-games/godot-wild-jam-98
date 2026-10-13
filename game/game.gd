@@ -53,16 +53,18 @@ func _process(delta: float) -> void:
 		var new_closest_commander := get_closest_commander(frog)
 		
 		var in_range = frog.global_position.distance_to(new_closest_commander.global_position) <= MAX_CONNECTION_DIST
-		
+
 		if closest_commander != new_closest_commander and in_range:
 			frogs_to_closest_commander[frog] = new_closest_commander
 
 		if frog.dragging and not in_range:
 			closest_commander_lost(frog)
 			frogs_to_closest_commander[frog] = null
+		
+		if frogs_to_closest_commander[frog] != closest_commander and (frog.dragging or frog.get_connected_commander() == null):
+			closest_commander_lost(frog)
+			closest_commander_found(frog, new_closest_commander)
 
-		if in_range and frogs_to_closest_commander[frog] and frogs_to_closest_commander[frog] != closest_commander:
-			closest_commander_found(frog, frogs_to_closest_commander[frog])
 
 	health_label.text = "Health: " + str(command_center.health)
 	material_label.text = "Material: " + str(material_currency)
@@ -90,14 +92,12 @@ func create_wire(frog: MiniFrog, commander: MiniFrog):
 	%Wires.add_child(w)
 
 func closest_commander_lost(frog: MiniFrog):
-	frog.connected = false
 	# When the frog is picked up, remove any current connections
 	for wire in find_wires():
 		if wire.a == frog.get_receptacle() or wire.b == frog.get_receptacle():
 			wire.queue_free()
 
 func closest_commander_found(frog: MiniFrog, commander: MiniFrog):
-	frog.connected = true
 	create_wire(frog, commander)
 
 func enter_scrapyard():
