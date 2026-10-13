@@ -2,10 +2,15 @@
 
 [ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="1_5nsiw"]
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="2_f17yu"]
+[ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="2_sbv18"]
+[ext_resource type="Texture2D" uid="uid://ceq120ettmjpo" path="res://assets/parallax/tree_1.png" id="2_us7vy"]
 [ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="3_0vscf"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="3_dpies"]
+[ext_resource type="Texture2D" uid="uid://brnrvjslkxknd" path="res://assets/parallax/tree2.png" id="3_qnjrr"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="4_dpies"]
+[ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="4_sbv18"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="5_0vscf"]
+[ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="5_yvd18"]
 [ext_resource type="Texture2D" uid="uid://ctsyg0uh76545" path="res://assets/decoration/home.png" id="7_tyudi"]
 [ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="7_u4syw"]
 [ext_resource type="Texture2D" uid="uid://dm32dgjl12xyh" path="res://assets/2d_lights_large_falloff.webp" id="9_ubbs2"]
@@ -30,10 +35,19 @@ shader_parameter/noise = SubResource("NoiseTexture2D_f17yu")
 shader_parameter/debanding_intensity = 0.0730000034675
 
 [sub_resource type="Gradient" id="Gradient_1rw7n"]
-colors = PackedColorArray(0.045599997, 0.08, 0.07369333, 1, 0.138, 0.2, 0.18863334, 1)
+colors = PackedColorArray(0.08039999, 0.12, 0.112739995, 1, 0.1932, 0.28, 0.26408666, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_km8ha"]
 gradient = SubResource("Gradient_1rw7n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnjrr"]
+shader = ExtResource("7_u4syw")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 7.2750003455625
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0190000009025
+shader_parameter/wind_speed = 1.0
+shader_parameter/scale = 2.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tyudi"]
 noise_type = 2
@@ -53,7 +67,7 @@ shader_parameter/noise_intensity = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vscf"]
 shader = ExtResource("2_f17yu")
-shader_parameter/water_line = 0.7886814
+shader_parameter/water_line = 0.8765935
 shader_parameter/foam_color = Color(0.89505, 0.9, 0.6029999, 0.972549)
 shader_parameter/foam_size = 0.002
 shader_parameter/subfoam_color = Color(0.1936, 0.22, 0.08799999, 0.972549)
@@ -98,59 +112,126 @@ offset_right = 1079.9557
 offset_bottom = 2999.8608
 rotation = -1.5707964
 texture = SubResource("GradientTexture2D_km8ha")
+metadata/_edit_lock_ = true
+
+[node name="FarBack" type="Parallax2D" parent="." unique_id=1297396073]
+scroll_scale = Vector2(0.2, 0.2)
+
+[node name="Rock" type="Sprite2D" parent="FarBack" unique_id=788301960]
+position = Vector2(489.00003, 576)
+scale = Vector2(0.40745986, 0.40745986)
+texture = ExtResource("2_sbv18")
+
+[node name="Rock2" type="Sprite2D" parent="FarBack" unique_id=526781848]
+position = Vector2(1210, 538)
+scale = Vector2(0.40745986, 0.40745986)
+texture = ExtResource("2_sbv18")
+
+[node name="CloseTree" type="Parallax2D" parent="." unique_id=367064045]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1600, 0)
+
+[node name="Tree1" type="Sprite2D" parent="CloseTree" unique_id=27742635]
+material = SubResource("ShaderMaterial_qnjrr")
+position = Vector2(253.5, 595.5)
+texture = ExtResource("2_us7vy")
+
+[node name="Tree2" type="Sprite2D" parent="CloseTree" unique_id=1611078129]
+material = SubResource("ShaderMaterial_qnjrr")
+position = Vector2(531.5, 588.5)
+texture = ExtResource("3_qnjrr")
+
+[node name="Tree3" type="Sprite2D" parent="CloseTree" unique_id=1546585673]
+material = SubResource("ShaderMaterial_qnjrr")
+position = Vector2(692.5, 598.5)
+texture = ExtResource("4_sbv18")
+
+[node name="Tree4" type="Sprite2D" parent="CloseTree" unique_id=1244000443]
+material = SubResource("ShaderMaterial_qnjrr")
+position = Vector2(100.5, 590.5)
+texture = ExtResource("5_yvd18")
+
+[node name="Tree5" type="Sprite2D" parent="CloseTree" unique_id=1184046149]
+material = SubResource("ShaderMaterial_qnjrr")
+position = Vector2(863.5, 585.5)
+texture = ExtResource("2_us7vy")
+
+[node name="Tree6" type="Sprite2D" parent="CloseTree" unique_id=8713321]
+material = SubResource("ShaderMaterial_qnjrr")
+position = Vector2(1563.5, 591.5)
+texture = ExtResource("3_qnjrr")
+
+[node name="Tree7" type="Sprite2D" parent="CloseTree" unique_id=175016175]
+material = SubResource("ShaderMaterial_qnjrr")
+position = Vector2(1359.5, 585.5)
+texture = ExtResource("4_sbv18")
+
+[node name="Tree8" type="Sprite2D" parent="CloseTree" unique_id=2073845902]
+material = SubResource("ShaderMaterial_qnjrr")
+position = Vector2(1151.5, 598.5)
+texture = ExtResource("5_yvd18")
+
+[node name="ColorRect" type="ColorRect" parent="CloseTree" unique_id=1469354498]
+offset_right = 1917.0
+offset_bottom = 286.0
+color = Color(0.078431375, 0.10980392, 0.105882354, 1)
 
 [node name="Haze" type="Parallax2D" parent="." unique_id=1944497428]
 scroll_scale = Vector2(0, 0)
 
 [node name="Haze" type="TextureRect" parent="Haze" unique_id=1408903837]
 material = SubResource("ShaderMaterial_dpies")
-offset_top = 666.0
+offset_top = 706.0
 offset_right = 1941.6694
-offset_bottom = 945.0
+offset_bottom = 985.0
 scale = Vector2(0.98883986, 1.3644013)
 texture = SubResource("PlaceholderTexture2D_0vscf")
 
 [node name="World" type="Node2D" parent="." unique_id=317879837]
 
 [node name="TileMap" type="TileMapLayer" parent="World" unique_id=1023410849]
-tile_map_data = PackedByteArray("AAAIAAgAAQADAAAAAAAIAAkAAQADAAEAAAAJAAgAAQABAAAAAAAJAAkAAQABAAEAAAAKAAgAAQACAAAAAAAKAAkAAQACAAEAAAAMAAoAAQABAAIAAAANAAoAAQACAAIAAAAOAAoAAQADAAIAAAAJAAoAAQABAAIAAAAKAAoAAQACAAIAAAAIAAoAAQADAAIAAAALAAgAAQADAAAAAAALAAkAAQADAAEAAAAGAAgAAQABAAAAAAAGAAkAAQABAAEAAAAHAAgAAQACAAAAAAAHAAkAAQACAAEAAAADAAgAAQABAAAAAAADAAkAAQABAAEAAAAEAAgAAQACAAAAAAAEAAkAAQACAAEAAAAFAAgAAQADAAAAAAAFAAkAAQADAAEAAAAAAAgAAQABAAAAAAAAAAkAAQABAAEAAAABAAgAAQACAAAAAAABAAkAAQACAAEAAAACAAgAAQADAAAAAAACAAkAAQADAAEAAAAMAAgAAQABAAAAAAAMAAkAAQABAAEAAAANAAgAAQACAAAAAAANAAkAAQACAAEAAAAOAAgAAQADAAAAAAAOAAkAAQADAAEAAAAPAAgAAQABAAAAAAAPAAkAAQABAAEAAAAQAAgAAQACAAAAAAAQAAkAAQACAAEAAAARAAgAAQADAAAAAAARAAkAAQADAAEAAAALAAoAAQADAAIAAAAGAAoAAQABAAIAAAAHAAoAAQACAAIAAAADAAoAAQABAAIAAAAEAAoAAQACAAIAAAAFAAoAAQADAAIAAAAAAAoAAQABAAIAAAABAAoAAQACAAIAAAACAAoAAQADAAIAAAAPAAoAAQABAAIAAAAQAAoAAQACAAIAAAARAAoAAQADAAIAAAASAAoAAQABAAIAAAATAAoAAQACAAIAAAAUAAoAAQADAAIAAAASAAgAAQABAAAAAAASAAkAAQABAAEAAAATAAgAAQACAAAAAAATAAkAAQACAAEAAAAUAAgAAQADAAAAAAAUAAkAAQADAAEAAAA=")
+tile_map_data = PackedByteArray("AAAKAAkAAQACAAAAAAALAAkAAQADAAAAAAACAAkAAQADAAAAAAAUAAkAAQADAAAAAAAAAAkAAQABAAAAAAAAAAoAAQABAAEAAAABAAkAAQACAAAAAAABAAoAAQACAAEAAAACAAoAAQADAAEAAAADAAkAAQABAAAAAAADAAoAAQABAAEAAAAEAAkAAQACAAAAAAAEAAoAAQACAAEAAAAFAAkAAQADAAAAAAAFAAoAAQADAAEAAAAGAAkAAQABAAAAAAAGAAoAAQABAAEAAAAHAAkAAQACAAAAAAAHAAoAAQACAAEAAAAIAAkAAQADAAAAAAAIAAoAAQADAAEAAAAJAAkAAQABAAAAAAAJAAoAAQABAAEAAAAKAAoAAQACAAEAAAALAAoAAQADAAEAAAAMAAkAAQABAAAAAAAMAAoAAQABAAEAAAANAAkAAQACAAAAAAANAAoAAQACAAEAAAAOAAkAAQADAAAAAAAOAAoAAQADAAEAAAAPAAkAAQABAAAAAAAPAAoAAQABAAEAAAAQAAkAAQACAAAAAAAQAAoAAQACAAEAAAARAAkAAQADAAAAAAARAAoAAQADAAEAAAASAAkAAQABAAAAAAASAAoAAQABAAEAAAATAAkAAQACAAAAAAATAAoAAQACAAEAAAAUAAoAAQADAAEAAAA=")
 tile_set = ExtResource("3_dpies")
 
 [node name="guy" type="TextureRect" parent="World" unique_id=1208322902]
 offset_left = 607.0
-offset_top = 679.0
+offset_top = 773.0
 offset_right = 875.0
-offset_bottom = 814.0
+offset_bottom = 908.0
 texture = ExtResource("3_0vscf")
 stretch_mode = 2
 
 [node name="Water" type="Parallax2D" parent="." unique_id=1670569329]
 repeat_size = Vector2(1920, 0)
+metadata/_edit_lock_ = true
 
 [node name="Water" type="TextureRect" parent="Water" unique_id=958806818]
 material = SubResource("ShaderMaterial_0vscf")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("PlaceholderTexture2D_5nsiw")
+metadata/_edit_lock_ = true
 
 [node name="PostProcess" type="Parallax2D" parent="." unique_id=2054854311]
 scroll_scale = Vector2(0, 0)
+metadata/_edit_lock_ = true
 
 [node name="BloomShader" type="ColorRect" parent="PostProcess" unique_id=257964227]
 material = SubResource("ShaderMaterial_km8ha")
 offset_right = 1920.0
 offset_bottom = 1080.0
+metadata/_edit_lock_ = true
 
 [node name="Home" type="Sprite2D" parent="." unique_id=1807397117]
 material = SubResource("ShaderMaterial_xi1a2")
-position = Vector2(1047, 425)
+position = Vector2(1047, 524)
 texture = ExtResource("7_tyudi")
 
 [node name="PointLight2D" type="PointLight2D" parent="Home" unique_id=488502422]
 position = Vector2(-192.00002, 125.999985)
 scale = Vector2(0.41528302, 0.41528302)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5811662
+energy = 0.5737449
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -161,7 +242,7 @@ flicker_speed = 0.5
 position = Vector2(-85.00002, 156.00003)
 scale = Vector2(0.41918966, 0.41918966)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5814989
+energy = 0.5266159
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -172,7 +253,7 @@ flicker_speed = 0.3
 position = Vector2(120.000015, 201.00002)
 scale = Vector2(0.4621583, 0.4621583)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5708325
+energy = 0.5493311
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -183,7 +264,7 @@ flicker_speed = 0.3
 position = Vector2(150.00003, 73)
 scale = Vector2(0.41528335, 0.41528335)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5390487
+energy = 0.51061976
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
@@ -194,7 +275,7 @@ flicker_speed = 0.3
 position = Vector2(253.99994, 123.99997)
 scale = Vector2(0.42700163, 0.42700163)
 color = Color(1, 0.65583336, 0.41000003, 1)
-energy = 0.5103518
+energy = 0.5742319
 texture = ExtResource("9_ubbs2")
 script = ExtResource("10_5aypt")
 min_energy = 0.3
