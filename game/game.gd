@@ -7,6 +7,7 @@ const MAX_CONNECTION_DIST = 300
 
 @onready var player: Player = %Player
 @onready var command_center: CommandCenter = %CommandCenter
+@onready var scrapyard: Control = %Scrapyard
 @onready var command_center_camera: Camera2D = %CommandCenterCamera
 @onready var player_camera: Camera2D = %PlayerCamera
 @onready var start_wave_button: Button = %StartWaveButton
@@ -97,10 +98,10 @@ func closest_commander_found(frog: MiniFrog, commander: MiniFrog):
 	frog.connected = true
 	create_wire(frog, commander)
 
-func enter_command_mode():
+func enter_scrapyard():
 	pass
 
-func exit_command_mode():
+func exit_scrapyard():
 	pass
 
 func _on_wave_spawner_spawn_enemy(e: PackedScene) -> void:
@@ -114,3 +115,10 @@ func _on_wave_spawner_wave_ended() -> void:
 
 func _on_wave_spawner_wave_started() -> void:
 	start_wave_button.hide()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("enter_scrapyard"):
+		if not scrapyard.visible:
+			enter_scrapyard()
+		else:
+			exit_scrapyard()

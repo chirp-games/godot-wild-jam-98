@@ -25,7 +25,7 @@ script = ExtResource("1_l4tar")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=210705085]
 material = SubResource("ShaderMaterial_xeen4")
-position = Vector2(0, -369)
+position = Vector2(0, -447)
 texture = ExtResource("2_l4tar")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1378758993]
