@@ -52,6 +52,11 @@ func _process(delta: float) -> void:
 		if frogs_to_closest_tower[frog] and frogs_to_closest_tower[frog] != closest_tower:
 			closest_tower_found(frog, frogs_to_closest_tower[frog])
 
+	if in_command_mode:
+		player_camera.zoom = lerp(player_camera.zoom, Vector2(.5, .5), 5 * delta)
+	else:
+		player_camera.zoom = lerp(player_camera.zoom, Vector2(1, 1), 5 * delta)
+
 func _enemy_detected(tower: Tower, enemy: Enemy):
 	var frogs = tower.get_connected_frogs()
 	for frog: MiniFrog in frogs:
@@ -85,10 +90,10 @@ func closest_tower_found(frog: MiniFrog, tower: Tower):
 	create_wire(frog, tower)
 
 func enter_command_mode():
-	command_center_camera.make_current()
+	pass
 
 func exit_command_mode():
-	player_camera.make_current()
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("enter_command_mode") and player.can_enter_command_center_mode:

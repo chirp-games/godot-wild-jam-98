@@ -25,6 +25,20 @@ offset_right = 92.0
 offset_bottom = 31.0
 text = "Start Wave"
 
+[node name="Health" type="Label" parent="UI" unique_id=1120788100]
+offset_left = 98.0
+offset_top = 3.0
+offset_right = 193.0
+offset_bottom = 26.0
+text = "Heath: 100"
+
+[node name="Material" type="Label" parent="UI" unique_id=1950466054]
+offset_left = 189.0
+offset_top = 2.0
+offset_right = 284.0
+offset_bottom = 25.0
+text = "Material: 0"
+
 [node name="World" type="Node2D" parent="." unique_id=2017723709]
 
 [node name="Portals" type="Node2D" parent="World" unique_id=1540646284]
@@ -65,10 +79,6 @@ position = Vector2(8, -66)
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true
 position = Vector2(-6, -208)
-
-[node name="CommandCenterCamera" type="Camera2D" parent="World" unique_id=1137200469]
-unique_name_in_owner = true
-zoom = Vector2(0.5, 0.5)
 
 [node name="Wires" type="Node2D" parent="World" unique_id=1126853350]
 unique_name_in_owner = true

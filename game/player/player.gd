@@ -30,7 +30,7 @@ func _physics_process(delta: float) -> void:
 		if sign(direction) != walk_dir:
 			walk_dir = sign(direction)
 	if walking > 35:
-		self.apply_central_force(Vector2(525 * walk_dir,-1500))
+		self.apply_central_force(Vector2(700 * walk_dir,-1500))
 	
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
