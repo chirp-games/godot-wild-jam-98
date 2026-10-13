@@ -300,7 +300,8 @@ position = Vector2(1152, 578)
 texture = ExtResource("9_u8s88")
 
 [node name="Haze" type="Parallax2D" parent="." unique_id=1248213752]
-scroll_scale = Vector2(0, 0)
+scroll_scale = Vector2(0, 1)
+scroll_offset = Vector2(0, -814)
 
 [node name="Haze" type="TextureRect" parent="Haze" unique_id=1197512489]
 material = SubResource("ShaderMaterial_jucfl")
