@@ -4,6 +4,8 @@ class_name Enemy
 
 @export var health = 10
 
+signal on_death
+
 func _process(delta: float) -> void:
 	($Health as Label).text = str(health)
 
@@ -22,9 +24,12 @@ func pathfind(player):
 	velocity.x = direction * 50
 
 	move_and_slide()
-	
+
+func hit_command_center():
+	queue_free()
 
 func damage(d: int):
 	health -= d
 	if health <= 0:
+		on_death.emit()
 		queue_free()

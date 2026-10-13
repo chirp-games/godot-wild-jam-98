@@ -6,15 +6,20 @@ const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
 const MAX_CONNECTION_DIST = 300
 
 @onready var player: Player = %Player
+@onready var command_center: CommandCenter = %CommandCenter
 @onready var command_center_camera: Camera2D = %CommandCenterCamera
 @onready var player_camera: Camera2D = %PlayerCamera
 @onready var start_wave_button: Button = %StartWaveButton
 @onready var left_portal: Marker2D = %LeftPortal
 @onready var right_portal: Marker2D = %RightPortal
+@onready var health_label: Label = %Health
+@onready var material_label: Label = %Material
 
 var frogs_to_closest_tower: Dictionary[MiniFrog, Tower] = {}
 var currently_building_wire: Wire
 var in_command_mode = false
+
+var material_currency = 0
 
 func find_wire_receptacles():
 	return get_tree().get_nodes_in_group("wire_receptacle")
@@ -56,6 +61,9 @@ func _process(delta: float) -> void:
 		player_camera.zoom = lerp(player_camera.zoom, Vector2(.5, .5), 5 * delta)
 	else:
 		player_camera.zoom = lerp(player_camera.zoom, Vector2(1, 1), 5 * delta)
+
+	health_label.text = "Health: " + str(command_center.health)
+	material_label.text = "Material: " + str(material_currency)
 
 func _enemy_detected(tower: Tower, enemy: Enemy):
 	var frogs = tower.get_connected_frogs()
@@ -106,6 +114,7 @@ func _input(event: InputEvent) -> void:
 func _on_wave_spawner_spawn_enemy(e: PackedScene) -> void:
 	var new_enemy: Enemy = e.instantiate()
 	new_enemy.global_position = [left_portal, right_portal].pick_random().global_position
+	new_enemy.on_death.connect(func(): material_currency += 10)
 	add_child(new_enemy)
 
 func _on_wave_spawner_wave_ended() -> void:

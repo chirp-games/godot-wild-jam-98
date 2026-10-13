@@ -26,6 +26,7 @@ offset_bottom = 31.0
 text = "Start Wave"
 
 [node name="Health" type="Label" parent="UI" unique_id=1120788100]
+unique_name_in_owner = true
 offset_left = 98.0
 offset_top = 3.0
 offset_right = 193.0
@@ -33,6 +34,7 @@ offset_bottom = 26.0
 text = "Heath: 100"
 
 [node name="Material" type="Label" parent="UI" unique_id=1950466054]
+unique_name_in_owner = true
 offset_left = 189.0
 offset_top = 2.0
 offset_right = 284.0
@@ -52,6 +54,7 @@ unique_name_in_owner = true
 position = Vector2(1354, -184)
 
 [node name="CommandCenter" parent="World" unique_id=1931686413 instance=ExtResource("2_u5opy")]
+unique_name_in_owner = true
 
 [node name="FrogSensor" parent="World" unique_id=83631577 groups=["tower"] instance=ExtResource("3_y36n6")]
 offset_left = -456.0

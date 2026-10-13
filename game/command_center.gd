@@ -1,11 +1,15 @@
 extends Node2D
 
+class_name CommandCenter
+
+@onready var health := 100
 @onready var area2d: Node2D = %Hitbox
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		print("Attacked by enemy!")
-		body.queue_free()
+		health -= (body as Enemy).health
+		(body as Enemy).hit_command_center()
 
 
 func _on_enter_command_mode_body_entered(body: Node2D) -> void:
