@@ -65,6 +65,7 @@ func _process(delta: float) -> void:
 
 	health_label.text = "Health: " + str(command_center.health)
 	material_label.text = "Material: " + str(material_currency)
+	player_camera.global_position.y = -350
 
 func _enemy_detected(commander: MiniFrog, enemy: Enemy):
 	var frogs = commander.get_connected_frogs()
