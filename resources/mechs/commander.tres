@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MechResource" format=3 uid="uid://ccom41f5d1mrp"]
+
+[ext_resource type="Script" uid="uid://w1r7li8jtpq7" path="res://resources/mechs/mech_resource.gd" id="1_72wpr"]
+
+[resource]
+script = ExtResource("1_72wpr")
+name = "Basic Commander"
+mech_class = 2
+description = "A mech the other mechs follow. Tells them who to fire at."
+metadata/_custom_type_script = "uid://w1r7li8jtpq7"

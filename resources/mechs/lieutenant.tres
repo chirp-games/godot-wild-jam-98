@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MechResource" format=3 uid="uid://sl1v5cnd6egr"]
+
+[ext_resource type="Script" uid="uid://w1r7li8jtpq7" path="res://resources/mechs/mech_resource.gd" id="1_5ybgx"]
+
+[resource]
+script = ExtResource("1_5ybgx")
+name = "Baisc Lieutenant"
+description = "Does nothing, but in the future will buff Recruits."
+metadata/_custom_type_script = "uid://w1r7li8jtpq7"
