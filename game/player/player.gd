@@ -19,7 +19,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	walking -= 1
-	var direction: float = Input.get_axis("l", "r")
+	var direction: float = Input.get_axis("move_left", "move_right")
 	
 	if direction and direction != 0 and on_floor and walking <= 0:
 		walking = 60

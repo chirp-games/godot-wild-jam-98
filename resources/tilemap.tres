@@ -281,6 +281,7 @@ shader_parameter/wind_strength = 0.1210000057475
 shader_parameter/wind_speed = 0.32600000896522996
 shader_parameter/brightness = 1.0
 shader_parameter/scale = 1.0
+shader_parameter/invert = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cg7iu"]
 shader = ExtResource("4_d4wx4")
@@ -291,6 +292,7 @@ shader_parameter/wind_strength = 0.2
 shader_parameter/wind_speed = 1.0
 shader_parameter/brightness = 1.0
 shader_parameter/scale = 1.0
+shader_parameter/invert = false
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewfi8"]
 texture = ExtResource("5_6a4wx")

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="8_pxxsx"]
 [ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="9_u8s88"]
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
-[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="13_4cobl"]
+[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="13_jucfl"]
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
@@ -416,6 +416,7 @@ text = "Material: 0"
 
 [node name="Scrapyard" parent="UI" unique_id=601508854 instance=ExtResource("3_4cobl")]
 unique_name_in_owner = true
+visible = false
 
 [node name="CompleteBack" type="Parallax2D" parent="." unique_id=455343732]
 scroll_scale = Vector2(0, 0)
@@ -602,7 +603,8 @@ collision_mask = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D" unique_id=261182031]
 shape = SubResource("WorldBoundaryShape2D_6w6ra")
 
-[node name="Player" parent="World" unique_id=1271694453 instance=ExtResource("13_4cobl")]
+[node name="Player" parent="World" unique_id=1271694453 groups=["player"] instance=ExtResource("13_jucfl")]
+position = Vector2(0, -75)
 
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true
