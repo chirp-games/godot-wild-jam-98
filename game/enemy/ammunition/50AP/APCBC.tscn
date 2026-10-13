@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b1yuv7aqmf8ih"]
+
+[ext_resource type="Script" uid="uid://d2c8fpt2gqr5a" path="res://game/enemy/ammunition/50AP/APCBC.gd" id="1_ggxnk"]
+[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_jgq85"]
+[ext_resource type="Texture2D" uid="uid://b70bit4mx7nf" path="res://assets/mech/back_leg_knee_2.png" id="2_7pc1g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 5.0
+
+[node name="Apcbc" type="CharacterBody2D" unique_id=561317559 groups=["bullet"]]
+script = ExtResource("1_ggxnk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956352831]
+scale = Vector2(0.2, 0.077)
+texture = ExtResource("1_jgq85")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1502798176]
+position = Vector2(-10, 0)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("2_7pc1g")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=696455229]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2059324293]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_g4v7s")

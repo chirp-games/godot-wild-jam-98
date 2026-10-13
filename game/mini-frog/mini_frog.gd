@@ -92,3 +92,8 @@ func try_attack(enemy: Enemy):
 	var b = BulletSpawner.new()
 	b.target_enemy = enemy
 	create_attack.emit(b)
+
+func damage(d: int):
+	health -= d
+	if health <= 0:
+		queue_free()
