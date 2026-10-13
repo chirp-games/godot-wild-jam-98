@@ -17,9 +17,9 @@ func start_wave():
 	wave_finished_spawning = true
 
 func _process(_delta: float) -> void:
-	if wave_finished_spawning and len(get_tree().get_nodes_in_group("enemy")):
+	if wave_finished_spawning and len(get_tree().get_nodes_in_group("enemy")) == 0:
 		wave_ended.emit()
-	wave_finished_spawning = false
+		wave_finished_spawning = false
 
 func _on_start_wave_button_pressed() -> void:
 	await start_wave()
