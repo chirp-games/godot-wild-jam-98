@@ -3,9 +3,13 @@
 [ext_resource type="Script" uid="uid://5jbhnmmn4a6g" path="res://game/mini-frog/mini_frog.gd" id="1_r1jt1"]
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="2_s5sjp"]
 [ext_resource type="PackedScene" uid="uid://bmybhl3vbqmkd" path="res://game/player/mini_frog_skeleton.tscn" id="2_sqdhb"]
+[ext_resource type="Script" uid="uid://s2gywk4it0w5" path="res://game/take_damage.gd" id="4_sqdhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5sjp"]
 size = Vector2(91, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqdhb"]
+size = Vector2(129, 56)
 
 [node name="MiniFrog" type="RigidBody2D" unique_id=637464119 node_paths=PackedStringArray("drag_area") groups=["mini_frog"]]
 collision_layer = 2
@@ -42,3 +46,12 @@ offset_left = -52.0
 offset_top = -31.0
 offset_right = 86.0
 offset_bottom = 35.0
+
+[node name="TakeDamage" type="Area2D" parent="." unique_id=795559934]
+script = ExtResource("4_sqdhb")
+damaged_by_group = &"enemy_attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamage" unique_id=1429971710]
+position = Vector2(17.5, 1)
+shape = SubResource("RectangleShape2D_sqdhb")
+debug_color = Color(1, 0.5120321, 0.42882767, 0.41960785)

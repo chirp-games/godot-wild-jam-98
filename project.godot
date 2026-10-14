@@ -60,6 +60,8 @@ player=""
 game=""
 bullet=""
 ally=""
+player_attack=""
+enemy_attack=""
 
 [gui]
 

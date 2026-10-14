@@ -661,15 +661,14 @@ collision_mask = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D" unique_id=261182031]
 shape = SubResource("WorldBoundaryShape2D_6w6ra")
 
-[node name="Player" parent="World" unique_id=1271694453 instance=ExtResource("18_cf130")]
+[node name="Wires" type="Node2D" parent="World" unique_id=1126853350]
 unique_name_in_owner = true
+
+[node name="Player" parent="World" unique_id=1271694453 instance=ExtResource("18_cf130")]
 
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true
 position = Vector2(2, -429)
-
-[node name="Wires" type="Node2D" parent="World" unique_id=1126853350]
-unique_name_in_owner = true
 
 [node name="FrogRecruit" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
 position = Vector2(-78, -210)

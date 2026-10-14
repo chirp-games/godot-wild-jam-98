@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2c8fpt2gqr5a" path="res://game/enemy/ammunition/50AP/APCBC.gd" id="1_ggxnk"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_jgq85"]
 [ext_resource type="Texture2D" uid="uid://b70bit4mx7nf" path="res://assets/mech/back_leg_knee_2.png" id="2_7pc1g"]
+[ext_resource type="Script" uid="uid://c1ixcffp2wlms" path="res://game/deal_damage.gd" id="4_w5cgc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 5.0
@@ -19,7 +20,8 @@ position = Vector2(-10, 0)
 scale = Vector2(0.333, 0.333)
 texture = ExtResource("2_7pc1g")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=696455229]
+[node name="Area2D" type="Area2D" parent="." unique_id=696455229 groups=["enemy_attack"]]
+script = ExtResource("4_w5cgc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2059324293]
 rotation = 1.5707964

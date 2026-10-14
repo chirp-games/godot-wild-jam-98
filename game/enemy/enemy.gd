@@ -18,8 +18,10 @@ signal on_death
 
 func _ready() -> void:
 	health = resource.health
+	($TakeDamage as TakeDamage).health = health
 
 func _process(delta: float) -> void:
+	health = ($TakeDamage as TakeDamage).health
 	($Health as Label).text = str(health)
 	
 	attack_cooldown -= delta

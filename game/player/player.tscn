@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(268, 135)
 
-[node name="Player2" type="RigidBody2D" unique_id=1271694453]
+[node name="Player" type="RigidBody2D" unique_id=1271694453]
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_2mv0n")

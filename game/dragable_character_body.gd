@@ -1,4 +1,4 @@
-extends DamageableEntity
+extends RigidBody2D
 
 class_name DragableRgidBody
 

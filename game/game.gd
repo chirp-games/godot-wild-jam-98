@@ -67,7 +67,7 @@ func _process(_delta: float) -> void:
 			closest_commander_found(frog, new_closest_commander)
 
 
-	health_label.text = "Health: " + str(command_center.health)
+	health_label.text = "Health: " + str(command_center.get_health())
 	material_label.text = "Material: " + str(material_currency)
 	player_camera.global_position.y = -350
 

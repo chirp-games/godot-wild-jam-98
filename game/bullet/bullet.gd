@@ -5,7 +5,12 @@ class_name Bullet
 ## Bullets are modified from each item in the chain, from the sensor to the last gun
 
 var target_enemy: Enemy
-var damage := 1
+var damage := 1:
+	get():
+		return damage
+	set(v):
+		($Area2D as DealDamage).base_damage = v
+		damage = v
 
 func _process(_delta: float) -> void:
 	if not target_enemy:
@@ -13,7 +18,5 @@ func _process(_delta: float) -> void:
 	global_position += global_position.direction_to(target_enemy.global_position).normalized() * 10
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
-		(body as Enemy).damage(damage)
-		queue_free()
+func _on_area_2d_deal_damage(_body: Node2D) -> void:
+	queue_free()

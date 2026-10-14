@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b38yaljmd0i5m" path="res://game/bullet/bullet.gd" id="1_87drx"]
 [ext_resource type="Texture2D" uid="uid://dp6tseykdfxw1" path="res://assets/mech/front_leg_knee.png" id="1_ufnsw"]
+[ext_resource type="Script" uid="uid://c1ixcffp2wlms" path="res://game/deal_damage.gd" id="2_600de"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_87drx"]
 radius = 17.262676
@@ -9,9 +10,10 @@ radius = 17.262676
 [node name="Bullet" type="Node2D" unique_id=1211418936]
 script = ExtResource("1_87drx")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1240622642]
-collision_layer = 4
-collision_mask = 4
+[node name="Area2D" type="Area2D" parent="." unique_id=1240622642 groups=["player_attack"]]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("2_600de")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=631788154]
 shape = SubResource("CircleShape2D_87drx")
@@ -21,3 +23,4 @@ debug_color = Color(0.9843137, 0, 0, 0.41960785)
 texture = ExtResource("1_ufnsw")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="deal_damage" from="Area2D" to="." method="_on_area_2d_deal_damage"]

@@ -3,7 +3,6 @@ extends RigidBody2D
 class_name Player
 
 @onready var game: Game = get_tree().get_first_node_in_group("game")
-@onready var skeleton: Skeleton2D = %Skeleton
 
 var on_floor
 var floor
