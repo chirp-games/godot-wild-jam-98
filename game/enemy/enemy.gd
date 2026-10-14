@@ -1,10 +1,10 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 class_name Enemy
 
 var health
 var value
-var speed
+var speed: float
 var attack_interval
 var grounded
 @export var resource: EnemyResource
@@ -30,22 +30,16 @@ func _process(delta: float) -> void:
 	
 	attack_cooldown -= delta
 
-	# Gravity
-	if grounded:
-		velocity.y += 9.81
-
 	pathfind(delta)
 
 
 func pathfind(_delta: float):
 	# Walk torwards the center of the map, that is where the home base is
 	var _direction = -sign(position.x)
-	if target and attack_cooldown <= 0 and velocity.length() == 0:
-		attack()
-	else:
-		velocity.x = -sign(position.x) * speed
 
-	move_and_slide()
+	var x_vel: float = -sign(position.x) * speed
+	apply_central_force(Vector2(x_vel, 0.0))
+
 
 func hit_command_center():
 	queue_free()
