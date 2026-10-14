@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b54dbclw7x5cg"]
+
+[ext_resource type="Script" uid="uid://b7wnhgnfbfve" path="res://game/enemy/laser.gd" id="1_gn0xy"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_g4v7s"]
+
+[node name="Laser" type="Area2D" unique_id=1263703314]
+script = ExtResource("1_gn0xy")
+
+[node name="Beam" type="CollisionShape2D" parent="." unique_id=1929189579]
+unique_name_in_owner = true
+shape = SubResource("SegmentShape2D_g4v7s")
+
+[node name="Line" type="Line2D" parent="." unique_id=1156673944]
+unique_name_in_owner = true
+default_color = Color(1, 0, 0, 1)

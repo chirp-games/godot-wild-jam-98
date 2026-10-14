@@ -1,14 +1,15 @@
 extends DealDamage
+class_name Explosion
 
 var lifetime: float
 var timer: float = 0.
 
 var damaged: Array = []
 
-func _init(size: float, damage: int):
+func setup(size: float, damage: int):
 	self.scale = Vector2.ONE * size
 	self.base_damage = damage
-	self.lifetime = damage / 60
+	self.lifetime = damage / 60.
 	self.timer = lifetime
 
 func _process(delta: float) -> void:

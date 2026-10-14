@@ -2,11 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_via3p"]
 [ext_resource type="Script" uid="uid://3xjpifd30ix7" path="res://game/enemy/mothertruck/mothertruck.gd" id="2_ok16d"]
+[ext_resource type="Resource" uid="uid://d2rc28d0ttaiy" path="res://resources/enemy/mothertruck.tres" id="3_ok16d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ok16d"]
+radius = 1500.0
 
 [node name="Mothertruck" unique_id=1736390898 instance=ExtResource("1_via3p")]
 collision_layer = 1
 collision_mask = 1
 script = ExtResource("2_ok16d")
-health = null
-value = null
-standing_range = null
+resource = ExtResource("3_ok16d")
+
+[node name="CollisionShape2D" parent="AggroDetection" parent_id_path=PackedInt32Array(248274435) index="0" unique_id=1626251780]
+shape = SubResource("CircleShape2D_ok16d")

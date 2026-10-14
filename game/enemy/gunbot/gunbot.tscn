@@ -10,6 +10,9 @@ size = Vector2(80, 170)
 [sub_resource type="CircleShape2D" id="CircleShape2D_qstc5"]
 radius = 750.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy61f"]
+size = Vector2(80, 170)
+
 [node name="Gunbot" unique_id=1736390898 instance=ExtResource("1_h0fgd")]
 script = ExtResource("2_qstc5")
 
@@ -21,8 +24,9 @@ texture = ExtResource("2_kffsk")
 position = Vector2(0, -85)
 shape = SubResource("RectangleShape2D_qstc5")
 
-[node name="AggroDetection" parent="." index="3" unique_id=248274435]
-monitorable = false
-
-[node name="CollisionShape2D" parent="AggroDetection" index="0" unique_id=1626251780]
+[node name="CollisionShape2D" parent="AggroDetection" parent_id_path=PackedInt32Array(248274435) index="0" unique_id=1626251780]
 shape = SubResource("CircleShape2D_qstc5")
+
+[node name="CollisionShape2D" parent="TakeDamage" parent_id_path=PackedInt32Array(1976776874) index="0" unique_id=1340069219]
+position = Vector2(0, -85)
+shape = SubResource("RectangleShape2D_xy61f")

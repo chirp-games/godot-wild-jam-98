@@ -6,11 +6,12 @@ var health
 var value
 var speed
 var attack_interval
+var grounded
 @export var resource: EnemyResource
 
 @onready var scrap = preload("res://game/enemy/scrap.tscn")
 
-var target: Node = null
+var target: Node2D = null
 var attack_cooldown: float = 0
 
 signal on_death
@@ -21,6 +22,7 @@ func _ready() -> void:
 	value = resource.scrap_value
 	speed = resource.movement_speed
 	attack_interval = resource.attack_interval
+	grounded = resource.grounded
 
 func _process(delta: float) -> void:
 	health = ($TakeDamage as TakeDamage).health
@@ -29,7 +31,8 @@ func _process(delta: float) -> void:
 	attack_cooldown -= delta
 
 	# Gravity
-	velocity.y += 9.81
+	if grounded:
+		velocity.y += 9.81
 
 	pathfind()
 

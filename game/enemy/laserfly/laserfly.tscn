@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c6ifa7ejcoy36"]
+
+[ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_jopa0"]
+[ext_resource type="Script" uid="uid://bkvc7qq0w6ewh" path="res://game/enemy/laserfly/laserfly.gd" id="2_705lu"]
+[ext_resource type="Texture2D" uid="uid://dsynckyhmg2e6" path="res://assets/enemy/laser_fly.png" id="2_q058c"]
+[ext_resource type="Resource" uid="uid://cjqv5hx6og1rn" path="res://resources/enemy/laserfly.tres" id="3_dkid8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q058c"]
+size = Vector2(121, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqrfo"]
+size = Vector2(121, 92)
+
+[node name="Laserfly" unique_id=1736390898 instance=ExtResource("1_jopa0")]
+script = ExtResource("2_705lu")
+resource = ExtResource("3_dkid8")
+
+[node name="Sprite2D" parent="." index="0" unique_id=705184273]
+texture = ExtResource("2_q058c")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=522520049]
+shape = SubResource("RectangleShape2D_q058c")
+
+[node name="CollisionShape2D" parent="TakeDamage" parent_id_path=PackedInt32Array(1976776874) index="0" unique_id=1340069219]
+shape = SubResource("RectangleShape2D_wqrfo")
+
+[node name="Marker2D" type="Marker2D" parent="." index="6" unique_id=2081051006]
+position = Vector2(-46, 31)

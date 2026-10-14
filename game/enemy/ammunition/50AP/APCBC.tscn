@@ -8,7 +8,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
 radius = 5.0
 
-[node name="Apcbc" type="CharacterBody2D" unique_id=561317559 groups=["bullet"]]
+[node name="Apcbc" type="CharacterBody2D" unique_id=561317559 groups=["bullet", "enemy_attack"]]
 script = ExtResource("1_ggxnk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956352831]
@@ -20,9 +20,9 @@ position = Vector2(-10, 0)
 scale = Vector2(0.333, 0.333)
 texture = ExtResource("2_7pc1g")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=696455229 groups=["enemy_attack"]]
+[node name="DealDamage" type="Area2D" parent="." unique_id=696455229 groups=["enemy_attack"]]
 script = ExtResource("4_w5cgc")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2059324293]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamage" unique_id=2059324293]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_g4v7s")

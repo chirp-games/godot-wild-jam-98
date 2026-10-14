@@ -7,7 +7,7 @@ func _process(delta: float) -> void:
 	if cargo > 0:
 		super(delta)
 	else:
-		velocity.x = sign(position.x) * movement_speed
+		velocity.x = sign(position.x) * speed
 
 func attack():
 	var spawn: Enemy = rat.instantiate()

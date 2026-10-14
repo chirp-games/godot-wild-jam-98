@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://dfjc68kwj1hwl"]
+
+[ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="1_ytabn"]
+
+[resource]
+script = ExtResource("1_ytabn")
+name = "Howitzer"
+scrap_value = 40
+health = 200
+movement_speed = 75
+attack_interval = 5.0
+metadata/_custom_type_script = "uid://c3hxujw0yjsue"

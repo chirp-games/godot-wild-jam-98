@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://cjqv5hx6og1rn"]
+
+[ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="1_x4n6i"]
+
+[resource]
+script = ExtResource("1_x4n6i")
+name = "Laser Fly"
+scrap_value = 4
+health = 15
+movement_speed = 500
+attack_interval = 0.125
+grounded = false
+metadata/_custom_type_script = "uid://c3hxujw0yjsue"

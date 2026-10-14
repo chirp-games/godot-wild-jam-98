@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://d2rc28d0ttaiy"]
+
+[ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="1_kupov"]
+
+[resource]
+script = ExtResource("1_kupov")
+name = "Kamikaze Drone Delivery Vehicle"
+scrap_value = 25
+health = 250
+movement_speed = 1000
+attack_interval = 0.6
+metadata/_custom_type_script = "uid://c3hxujw0yjsue"
