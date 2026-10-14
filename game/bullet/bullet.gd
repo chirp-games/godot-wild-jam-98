@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 class_name Bullet
 
@@ -12,11 +12,11 @@ var damage := 1:
 		($Area2D as DealDamage).base_damage = v
 		damage = v
 
-func _process(_delta: float) -> void:
+func _ready() -> void:
 	if not target_enemy:
 		return
-	global_position += global_position.direction_to(target_enemy.global_position).normalized() * 10
-
+	var direction := global_position.direction_to(target_enemy.global_position).normalized()
+	apply_central_impulse(1000 * direction)
 
 func _on_area_2d_deal_damage(_body: Node2D) -> void:
 	queue_free()

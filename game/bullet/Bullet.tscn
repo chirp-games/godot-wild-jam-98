@@ -4,10 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://dp6tseykdfxw1" path="res://assets/mech/front_leg_knee.png" id="1_ufnsw"]
 [ext_resource type="Script" uid="uid://c1ixcffp2wlms" path="res://game/deal_damage.gd" id="2_600de"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_600de"]
+friction = 0.0
+bounce = 1.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_87drx"]
 radius = 17.262676
 
-[node name="Bullet" type="Node2D" unique_id=1211418936]
+[sub_resource type="CircleShape2D" id="CircleShape2D_600de"]
+radius = 17.0
+
+[node name="Bullet" type="RigidBody2D" unique_id=2124296293]
+collision_layer = 8
+collision_mask = 8
+physics_material_override = SubResource("PhysicsMaterial_600de")
+gravity_scale = 0.0
 script = ExtResource("1_87drx")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1240622642 groups=["player_attack"]]
@@ -22,5 +33,8 @@ debug_color = Color(0.9843137, 0, 0, 0.41960785)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1545504594]
 texture = ExtResource("1_ufnsw")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=918801658]
+shape = SubResource("CircleShape2D_600de")
+debug_color = Color(0.80487096, 0.41028404, 0.20617199, 0.41960785)
+
 [connection signal="deal_damage" from="Area2D" to="." method="_on_area_2d_deal_damage"]

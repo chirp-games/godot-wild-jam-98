@@ -666,6 +666,7 @@ unique_name_in_owner = true
 
 [node name="Player" parent="World" unique_id=1381983228 instance=ExtResource("18_cf130")]
 unique_name_in_owner = true
+position = Vector2(1, 0)
 
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true
