@@ -2,8 +2,8 @@ extends Control
 
 class_name Game
 
-const wire_scene = preload("res://game/MechBuilder/Wire.tscn")
-const player_mech_scene = preload("res://game/mini-frog/mini-frog.tscn")
+const wire_scene = preload("res://game/frog_mechs/Wire.tscn")
+const player_mech_scene = preload("res://game/frog_mechs/frog_mech.tscn")
 const enemy_scene = preload("res://game/enemy/Enemy.tscn")
 const MAX_CONNECTION_DIST = 300
 

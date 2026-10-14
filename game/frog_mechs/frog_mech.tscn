@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://yttymwbco8y"]
 
-[ext_resource type="Script" uid="uid://5jbhnmmn4a6g" path="res://game/mini-frog/mini_frog.gd" id="1_r1jt1"]
-[ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/MechBuilder/WireReceptacle.tscn" id="2_s5sjp"]
+[ext_resource type="Script" uid="uid://5jbhnmmn4a6g" path="res://game/frog_mechs/frog_mech.gd" id="1_r1jt1"]
+[ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/frog_mechs/WireReceptacle.tscn" id="2_s5sjp"]
 [ext_resource type="PackedScene" uid="uid://bmybhl3vbqmkd" path="res://game/player/mini_frog_skeleton.tscn" id="2_sqdhb"]
 [ext_resource type="Script" uid="uid://s2gywk4it0w5" path="res://game/take_damage.gd" id="4_sqdhb"]
 

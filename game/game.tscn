@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2cah2f4royhc" path="res://game/scrapyard/scrapyard.tscn" id="3_4cobl"]
 [ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="3_b686c"]
 [ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="4_hb504"]
-[ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/mini-frog/mini-frog.tscn" id="6_3vho3"]
+[ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/frog_mechs/frog_mech.tscn" id="6_3vho3"]
 [ext_resource type="Texture2D" uid="uid://ceq120ettmjpo" path="res://assets/parallax/tree_1.png" id="6_4cobl"]
 [ext_resource type="Texture2D" uid="uid://brnrvjslkxknd" path="res://assets/parallax/tree2.png" id="7_ln7ps"]
 [ext_resource type="Texture2D" uid="uid://fmnba5nkkk33" path="res://assets/parallax/small_shrub.svg" id="7_pxxsx"]
@@ -27,7 +27,7 @@
 [ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="17_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://oxo860p4axb" path="res://assets/parallax/vine_1.png" id="17_ln7ps"]
 [ext_resource type="Texture2D" uid="uid://dgtmj0aqja482" path="res://assets/parallax/vine_2.png" id="17_pxxsx"]
-[ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/player.tscn" id="18_cf130"]
+[ext_resource type="PackedScene" uid="uid://06c0brfsvj6n" path="res://game/player/player.tscn" id="18_cf130"]
 [ext_resource type="Texture2D" uid="uid://c4o24aopopcv" path="res://assets/parallax/big_vine_1.png" id="19_u8s88"]
 [ext_resource type="Texture2D" uid="uid://b2o5swy44dkpi" path="res://assets/parallax/vine_3.png" id="20_mhvfb"]
 [ext_resource type="Texture2D" uid="uid://by6pa8mytt1b1" path="res://assets/parallax/front_leaves_4.png" id="22_q52ks"]
@@ -664,7 +664,8 @@ shape = SubResource("WorldBoundaryShape2D_6w6ra")
 [node name="Wires" type="Node2D" parent="World" unique_id=1126853350]
 unique_name_in_owner = true
 
-[node name="Player" parent="World" unique_id=1271694453 instance=ExtResource("18_cf130")]
+[node name="Player" parent="World" unique_id=1381983228 instance=ExtResource("18_cf130")]
+unique_name_in_owner = true
 
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true

@@ -16,12 +16,6 @@ enum Type {
 }
 @export var type: Type = Type.Red
 
-## Return the mech piece this wire receptacle is attached to
-func get_mech_piece() -> MechPiece:
-	if get_parent() is MechPiece:
-		return get_parent()
-	return null
-
 func get_wires() -> Array[Wire]:
 	var wires: Array[Wire] = []
 	for wire: Wire in get_tree().get_nodes_in_group("wire"):
