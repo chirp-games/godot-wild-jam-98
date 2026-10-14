@@ -33,6 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://by6pa8mytt1b1" path="res://assets/parallax/front_leaves_4.png" id="22_q52ks"]
 [ext_resource type="Texture2D" uid="uid://2vj2ql3stxk2" path="res://assets/parallax/front_leaves_2.png" id="23_8bboj"]
 [ext_resource type="Texture2D" uid="uid://lv0ldkh6ow3v" path="res://assets/parallax/front_leaves_3.png" id="24_q52ks"]
+[ext_resource type="Texture2D" uid="uid://bfrxacswkq3bi" path="res://assets/parallax/bottom_lily_2.png" id="34_gvtgv"]
+[ext_resource type="Texture2D" uid="uid://n8nkevkd5s3s" path="res://assets/parallax/bottom_lily_1.png" id="35_5ywmu"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mhvfb"]
 noise_type = 3
@@ -810,6 +812,16 @@ position = Vector2(399.00003, 219)
 scale = Vector2(0.27654886, 0.27654886)
 texture = ExtResource("20_mhvfb")
 
+[node name="BottomLily1" type="Sprite2D" parent="Front" unique_id=1833151629]
+position = Vector2(410, 995)
+scale = Vector2(0.25232556, 0.25232556)
+texture = ExtResource("35_5ywmu")
+
+[node name="BottomLily2" type="Sprite2D" parent="Front" unique_id=95874074]
+position = Vector2(513, 1027)
+scale = Vector2(0.26362455, 0.26362458)
+texture = ExtResource("34_gvtgv")
+
 [node name="FrontLeaves" type="Parallax2D" parent="." unique_id=546151895]
 scroll_scale = Vector2(1.2, 0)
 scroll_offset = Vector2(0, 1)
@@ -869,6 +881,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [connection signal="spawn_enemy" from="WaveSpawner" to="." method="_on_wave_spawner_spawn_enemy"]
 [connection signal="wave_ended" from="WaveSpawner" to="." method="_on_wave_spawner_wave_ended"]
