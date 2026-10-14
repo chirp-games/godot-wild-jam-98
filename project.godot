@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [audio]
 
 buses/default_bus_layout="uid://c3bctvykx7ims"
+driver/mix_rate.web=44100
 
 [autoload]
 
@@ -38,7 +39,6 @@ gdscript/warnings/unsafe_property_access=2
 gdscript/warnings/unsafe_method_access=2
 gdscript/warnings/unsafe_cast=2
 gdscript/warnings/unsafe_call_argument=2
-gdscript/warnings/return_value_discarded=1
 gdscript/warnings/static_called_on_instance=2
 gdscript/warnings/missing_await=2
 

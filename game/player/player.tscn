@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://06c0brfsvj6n"]
 
 [ext_resource type="Script" uid="uid://7qbhbxttbpqk" path="res://game/player/player.gd" id="1_2mv0n"]
-[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="3_a4w0n"]
+[ext_resource type="PackedScene" uid="uid://croela4nh3klu" path="res://game/player/skeleton.tscn" id="2_8soms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(268, 135)
@@ -11,8 +11,9 @@ contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_2mv0n")
 
+[node name="Player" parent="." unique_id=1202274876 instance=ExtResource("2_8soms")]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135713207]
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1683531338]
-texture = ExtResource("3_a4w0n")
+[connection signal="landed" from="." to="." method="on_landed"]

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dx1hymwkw060t"]
+
+[ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_whxdc"]
+[ext_resource type="Script" uid="uid://bbobjknr5yix6" path="res://game/enemy/shahed/shahed.gd" id="2_6ltfo"]
+[ext_resource type="Resource" uid="uid://cmydjlgt0dgs2" path="res://resources/enemy/shahed.tres" id="2_y76ss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y76ss"]
+size = Vector2(200, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whxdc"]
+size = Vector2(200, 30)
+
+[node name="KD" unique_id=1736390898 instance=ExtResource("1_whxdc")]
+script = ExtResource("2_6ltfo")
+resource = ExtResource("2_y76ss")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=522520049]
+shape = SubResource("RectangleShape2D_y76ss")
+
+[node name="CollisionShape2D" parent="TakeDamage" parent_id_path=PackedInt32Array(1976776874) index="0" unique_id=1340069219]
+shape = SubResource("RectangleShape2D_whxdc")
