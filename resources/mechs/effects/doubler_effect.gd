@@ -1,4 +1,4 @@
-extends MechPieceEffectResource
+extends MechEffectResource
 
 class_name ExtraBulletsEffect
 

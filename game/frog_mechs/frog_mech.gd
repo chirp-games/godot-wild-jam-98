@@ -1,6 +1,6 @@
 extends DragableRgidBody
 
-class_name MiniFrog
+class_name FrogMech
 
 ## This is the mini frog AI
 ## It should patrol around the point it is connected to
@@ -19,6 +19,7 @@ var cooldown = 0.0
 
 @onready var game: Game = get_tree().get_first_node_in_group("game")
 @onready var wire_recpetacle: WireReceptacle = %WireReceptacle
+@onready var cooldown_bar: ProgressBar = %Cooldown
 
 func _ready() -> void:
 	var rank_text := ""
@@ -28,6 +29,7 @@ func _ready() -> void:
 		rank_text = "Lieutenant"
 	if resource.mech_class == MechResource.MechClass.Commander:
 		rank_text = "Commander"
+		cooldown_bar.show()
 	($RankLabel as Label).text = rank_text
 
 	super._ready()
@@ -51,7 +53,8 @@ func get_connected_frogs():
 	return frogs
 
 func _process(delta: float) -> void:
-	cooldown += delta
+	if resource.mech_class == MechResource.MechClass.Commander:
+		cooldown_bar.value = cooldown / get_total_cooldown()
 
 	if resource.detection_software != null:
 		var enemies: Array[Enemy] = []
@@ -60,9 +63,23 @@ func _process(delta: float) -> void:
 		if len(enemies) > 0:
 			enemies = resource.detection_software.detect(global_position, enemies)
 			if len(enemies) > 0:
-				enemy_detected.emit(enemies.pick_random())
+				# Only increment delta when enemy is in range
+				cooldown += delta
+				if cooldown > get_total_cooldown():
+					enemy_detected.emit(enemies.pick_random())
+					cooldown = 0
+			else:
+				cooldown = 0
+		else:
+			cooldown = 0
 
 	super._process(delta)
+
+func get_total_cooldown():
+	var total = 0.0
+	for c in get_connected_frogs().map(func(x): return x.resource.cooldown_ratio):
+		total += c
+	return total * .25
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
@@ -86,9 +103,6 @@ func get_receptacle() -> WireReceptacle:
 	return wire_recpetacle
 
 func try_attack(enemy: Enemy):
-	if cooldown < .5:
-		return
-	cooldown = 0.0
 	var b = BulletSpawner.new()
 	b.target_enemy = enemy
 	create_attack.emit(b)

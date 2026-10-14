@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dw44nkfq07cdo" path="res://game/scrapyard/mech_info_button.tscn" id="1_jayy1"]
 [ext_resource type="Script" uid="uid://bevtl5205y468" path="res://game/scrapyard/pick_a_mech.gd" id="1_x3aqm"]
-[ext_resource type="Resource" uid="uid://cy4llnahlcc3g" path="res://resources/mechs/recruit.tres" id="2_cbtaj"]
-[ext_resource type="Resource" uid="uid://ccom41f5d1mrp" path="res://resources/mechs/commander.tres" id="3_x3aqm"]
-[ext_resource type="Resource" uid="uid://sl1v5cnd6egr" path="res://resources/mechs/lieutenant.tres" id="4_fstop"]
+[ext_resource type="Resource" uid="uid://cy4llnahlcc3g" path="res://resources/mechs/mechs/recruit.tres" id="2_cbtaj"]
+[ext_resource type="Resource" uid="uid://ccom41f5d1mrp" path="res://resources/mechs/mechs/commander.tres" id="3_x3aqm"]
+[ext_resource type="Resource" uid="uid://sl1v5cnd6egr" path="res://resources/mechs/mechs/lieutenant.tres" id="4_fstop"]
 
 [node name="PickAMech" type="PanelContainer" unique_id=1761832225]
 anchors_preset = 15

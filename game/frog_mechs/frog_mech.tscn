@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://yttymwbco8y"]
 
-[ext_resource type="Script" uid="uid://5jbhnmmn4a6g" path="res://game/frog_mechs/frog_mech.gd" id="1_r1jt1"]
-[ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/frog_mechs/WireReceptacle.tscn" id="2_s5sjp"]
-[ext_resource type="PackedScene" uid="uid://bmybhl3vbqmkd" path="res://game/player/mini_frog_skeleton.tscn" id="2_sqdhb"]
-[ext_resource type="Script" uid="uid://s2gywk4it0w5" path="res://game/take_damage.gd" id="4_sqdhb"]
+[ext_resource type="Script" uid="uid://5jbhnmmn4a6g" path="res://game/frog_mechs/frog_mech.gd" id="1_p7050"]
+[ext_resource type="PackedScene" uid="uid://bmybhl3vbqmkd" path="res://game/player/mini_frog_skeleton.tscn" id="2_x6hcd"]
+[ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/frog_mechs/WireReceptacle.tscn" id="3_k5vyl"]
+[ext_resource type="Script" uid="uid://s2gywk4it0w5" path="res://game/take_damage.gd" id="4_pnbhl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5sjp"]
 size = Vector2(91, 46)
@@ -17,12 +17,12 @@ collision_mask = 8
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 5
-script = ExtResource("1_r1jt1")
+script = ExtResource("1_p7050")
 drag_area = NodePath("DragArea")
 
-[node name="MiniFrog" parent="." unique_id=1722012347 instance=ExtResource("2_sqdhb")]
+[node name="MiniFrog" parent="." unique_id=1722012347 instance=ExtResource("2_x6hcd")]
 
-[node name="WireReceptacle" parent="." unique_id=21922453 instance=ExtResource("2_s5sjp")]
+[node name="WireReceptacle" parent="." unique_id=21922453 instance=ExtResource("3_k5vyl")]
 unique_name_in_owner = true
 offset_left = -12.0
 offset_top = -17.0
@@ -34,12 +34,22 @@ position = Vector2(-2.5, 4)
 shape = SubResource("RectangleShape2D_s5sjp")
 
 [node name="RankLabel" type="Label" parent="." unique_id=1272259650]
-offset_left = -68.0
-offset_top = -65.0
-offset_right = 70.0
-offset_bottom = -42.0
+offset_left = -51.0
+offset_top = -61.0
+offset_right = 87.0
+offset_bottom = -38.0
 text = "Rank"
 horizontal_alignment = 1
+
+[node name="Cooldown" type="ProgressBar" parent="." unique_id=204259404]
+unique_name_in_owner = true
+visible = false
+offset_left = -33.0
+offset_top = -86.0
+offset_right = 76.0
+offset_bottom = -62.0
+max_value = 1.0
+show_percentage = false
 
 [node name="DragArea" type="PanelContainer" parent="." unique_id=898136738]
 offset_left = -52.0
@@ -48,7 +58,7 @@ offset_right = 86.0
 offset_bottom = 35.0
 
 [node name="TakeDamage" type="Area2D" parent="." unique_id=795559934]
-script = ExtResource("4_sqdhb")
+script = ExtResource("4_pnbhl")
 damaged_by_group = &"enemy_attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamage" unique_id=1429971710]
