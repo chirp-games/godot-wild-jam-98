@@ -23,6 +23,3 @@ shape = SubResource("RectangleShape2D_q058c")
 
 [node name="CollisionShape2D" parent="TakeDamage" parent_id_path=PackedInt32Array(1976776874) index="0" unique_id=1340069219]
 shape = SubResource("RectangleShape2D_wqrfo")
-
-[node name="Marker2D" type="Marker2D" parent="." index="6" unique_id=2081051006]
-position = Vector2(-46, 31)

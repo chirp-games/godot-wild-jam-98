@@ -34,13 +34,13 @@ func _process(delta: float) -> void:
 	if grounded:
 		velocity.y += 9.81
 
-	pathfind()
+	pathfind(delta)
 
 
-func pathfind():
+func pathfind(_delta: float):
 	# Walk torwards the center of the map, that is where the home base is
 	var _direction = -sign(position.x)
-	if target and attack_cooldown <= 0:
+	if target and attack_cooldown <= 0 and velocity.length() == 0:
 		attack()
 	else:
 		velocity.x = -sign(position.x) * speed

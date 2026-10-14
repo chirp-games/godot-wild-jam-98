@@ -22,6 +22,7 @@ texture = ExtResource("2_7pc1g")
 
 [node name="DealDamage" type="Area2D" parent="." unique_id=696455229 groups=["enemy_attack"]]
 script = ExtResource("4_w5cgc")
+base_damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamage" unique_id=2059324293]
 rotation = 1.5707964

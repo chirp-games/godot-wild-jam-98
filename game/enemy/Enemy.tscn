@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://c3r5sf1ub7eyg" path="res://game/enemy/enemy.gd" id="1_2c8go"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="2_4fyss"]
 [ext_resource type="Script" uid="uid://s2gywk4it0w5" path="res://game/take_damage.gd" id="3_kaq3b"]
-[ext_resource type="Script" uid="uid://c1ixcffp2wlms" path="res://game/deal_damage.gd" id="4_jaqe3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v1xc"]
 size = Vector2(140, 140)
@@ -13,9 +12,6 @@ radius = 400.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
 size = Vector2(141, 140)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jaqe3"]
-size = Vector2(140, 142)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1736390898 groups=["enemy", "enemy_attack"]]
 collision_layer = 4
@@ -52,12 +48,3 @@ damaged_by_group = &"player_attack"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamage" unique_id=1340069219]
 shape = SubResource("RectangleShape2D_6w6ra")
 debug_color = Color(0.78649646, 0.41803548, 0.30692336, 0.41960785)
-
-[node name="DealDamage" type="Area2D" parent="." unique_id=1515900642 groups=["enemy_attack"]]
-collision_layer = 7
-collision_mask = 7
-script = ExtResource("4_jaqe3")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamage" unique_id=1208150123]
-position = Vector2(-3, -2)
-shape = SubResource("RectangleShape2D_jaqe3")
