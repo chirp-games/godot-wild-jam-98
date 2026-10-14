@@ -26,7 +26,7 @@ joint_data/0/bone2d_node = NodePath("Torso/Hip")
 joint_data/0/rotate_from_joint = false
 joint_data/0/enable_constraint = true
 joint_data/0/constraint_angle_min = 0.0
-joint_data/0/constraint_angle_max = 49.999996
+joint_data/0/constraint_angle_max = 49.999992
 joint_data/0/constraint_angle_invert = false
 joint_data/0/constraint_in_localspace = true
 joint_data/0/editor_draw_gizmo = true
@@ -34,7 +34,7 @@ joint_data/1/bone_index = 5
 joint_data/1/bone2d_node = NodePath("Torso/Hip/BackLegUpper")
 joint_data/1/rotate_from_joint = false
 joint_data/1/enable_constraint = true
-joint_data/1/constraint_angle_min = 349.99997
+joint_data/1/constraint_angle_min = 349.99994
 joint_data/1/constraint_angle_max = 360.0
 joint_data/1/constraint_angle_invert = false
 joint_data/1/constraint_in_localspace = true
@@ -347,13 +347,11 @@ _data = {
 
 [node name="Player" type="Node2D" unique_id=1202274876]
 z_index = 90
-position = Vector2(-300, 0)
 
-[node name="Skeleton" type="Skeleton2D" parent="." unique_id=634421146 node_paths=PackedStringArray("bone")]
-position = Vector2(300, 7)
+[node name="Skeleton" type="Skeleton2D" parent="." unique_id=634421146]
+position = Vector2(0, 7)
 modification_stack = SubResource("SkeletonModificationStack2D_gm6uc")
 script = ExtResource("1_mfhbq")
-bone = NodePath("Torso/Head")
 
 [node name="Torso" type="Bone2D" parent="Skeleton" unique_id=434151818]
 position = Vector2(40, -17)

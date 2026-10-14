@@ -44,7 +44,7 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("move_up") and on_floor:
-		apply_central_impulse(Vector2(0, -300))
+		apply_central_impulse(Vector2(0, -700))
 		($Player/AnimationPlayer as AnimationPlayer).play("jump")
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:

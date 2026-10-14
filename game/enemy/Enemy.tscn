@@ -13,10 +13,10 @@ radius = 400.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
 size = Vector2(141, 140)
 
-[node name="Enemy" type="RigidBody2D" unique_id=337951837 groups=["enemy", "enemy_attack"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=1388627917 groups=["enemy", "enemy_attack"]]
 collision_layer = 4
 collision_mask = 8
-lock_rotation = true
+floor_stop_on_slope = false
 script = ExtResource("1_2c8go")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=705184273]

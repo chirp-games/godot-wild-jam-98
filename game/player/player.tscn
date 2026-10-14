@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://croela4nh3klu" path="res://game/player/skeleton.tscn" id="2_8soms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(268, 135)
+size = Vector2(200, 111)
 
 [node name="Player" type="RigidBody2D" unique_id=1271694453]
+collision_mask = 9
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 5
@@ -15,6 +16,7 @@ script = ExtResource("1_2mv0n")
 [node name="Player" parent="." unique_id=1202274876 instance=ExtResource("2_8soms")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135713207]
+position = Vector2(13, 16.5)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [connection signal="landed" from="." to="." method="on_landed"]
