@@ -2,11 +2,10 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@export var health = 10
-@export var value = 10
-@export var movement_speed = 150
-@export var standing_range = 100
-@export var attack_interval = 0.5
+var health
+var value
+var speed
+var attack_interval
 @export var resource: EnemyResource
 
 @onready var scrap = preload("res://game/enemy/scrap.tscn")
@@ -19,6 +18,9 @@ signal on_death
 func _ready() -> void:
 	health = resource.health
 	($TakeDamage as TakeDamage).health = health
+	value = resource.scrap_value
+	speed = resource.movement_speed
+	attack_interval = resource.attack_interval
 
 func _process(delta: float) -> void:
 	health = ($TakeDamage as TakeDamage).health
@@ -38,7 +40,7 @@ func pathfind():
 	if target and attack_cooldown <= 0:
 		attack()
 	else:
-		velocity.x = -sign(position.x) * movement_speed
+		velocity.x = -sign(position.x) * speed
 
 	move_and_slide()
 
