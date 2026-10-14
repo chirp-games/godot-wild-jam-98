@@ -53,7 +53,7 @@ joint_data/3/bone2d_node = NodePath("Torso/Hip/BackLegUpper/BackLegLower/BackFoo
 joint_data/3/rotate_from_joint = false
 joint_data/3/enable_constraint = true
 joint_data/3/constraint_angle_min = 0.0
-joint_data/3/constraint_angle_max = 60.0
+joint_data/3/constraint_angle_max = 0.0
 joint_data/3/constraint_angle_invert = false
 joint_data/3/constraint_in_localspace = false
 joint_data/3/editor_draw_gizmo = true
@@ -164,22 +164,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:position")
+tracks/4/path = NodePath("Skeleton:modification_stack:modifications/0:joint_data/3/constraint_angle_max")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Skeleton:modification_stack:modifications/0:joint_data/3/constraint_angle_max")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -196,10 +184,10 @@ tracks/0/path = NodePath("Skeleton:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 7), Vector2(150, -72), Vector2(300, 7)]
+"values": [Vector2(0, 7), Vector2(0, -72), Vector2(0, 7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -240,22 +228,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:position")
-tracks/4/interp = 2
+tracks/4/path = NodePath("Skeleton:modification_stack:modifications/0:joint_data/3/constraint_angle_max")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-150, 79), Vector2(-300, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Skeleton:modification_stack:modifications/0:joint_data/3/constraint_angle_max")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -275,7 +251,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 7), Vector2(-150, -72), Vector2(-300, 7)]
+"values": [Vector2(0, 7), Vector2(0, -72), Vector2(0, 7)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -316,22 +292,10 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:position")
-tracks/4/interp = 2
+tracks/4/path = NodePath("Skeleton:modification_stack:modifications/0:joint_data/3/constraint_angle_max")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(150, 79), Vector2(300, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Skeleton:modification_stack:modifications/0:joint_data/3/constraint_angle_max")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -481,13 +445,13 @@ modulate = Color(1, 1, 1, 0.43529412)
 texture = ExtResource("5_eeltd")
 
 [node name="BackTarget" type="Marker2D" parent="." unique_id=280282172]
-position = Vector2(308, 64)
+position = Vector2(8, 64)
 
 [node name="FootTarget" type="Node2D" parent="BackTarget" unique_id=1341460690]
 position = Vector2(50, 0)
 
 [node name="FrontTarget" type="Marker2D" parent="." unique_id=840696397]
-position = Vector2(392, 63)
+position = Vector2(92, 63)
 
 [node name="FootTarget" type="Node2D" parent="FrontTarget" unique_id=1917515887]
 position = Vector2(50, 0)

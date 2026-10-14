@@ -5,13 +5,13 @@
 [ext_resource type="Script" uid="uid://s2gywk4it0w5" path="res://game/take_damage.gd" id="3_kaq3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v1xc"]
-size = Vector2(140, 140)
+size = Vector2(66, 65)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 radius = 400.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
-size = Vector2(141, 140)
+size = Vector2(68, 66)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1388627917 groups=["enemy", "enemy_attack"]]
 collision_layer = 4
@@ -20,9 +20,11 @@ floor_stop_on_slope = false
 script = ExtResource("1_2c8go")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=705184273]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4fyss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=522520049]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4v1xc")
 
 [node name="Health" type="Label" parent="." unique_id=359780345]
