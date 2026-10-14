@@ -670,6 +670,10 @@ unique_name_in_owner = true
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true
 position = Vector2(2, -429)
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 1.0
+drag_bottom_margin = 1.0
 
 [node name="FrogRecruit" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
 position = Vector2(-78, -210)
