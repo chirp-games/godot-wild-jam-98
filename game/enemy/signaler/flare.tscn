@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://dfmrpqkgx67y"]
 
 [ext_resource type="Script" uid="uid://bgs62r7o2uooj" path="res://game/enemy/signaler/flare.gd" id="1_urnf3"]
-[ext_resource type="Texture2D" uid="uid://byj2p5cc4q42m" path="res://assets/enemy/nuke_explosion.png" id="2_urnf3"]
 
 [node name="Flare" type="Node2D" unique_id=1536752728 groups=["flare"]]
 script = ExtResource("1_urnf3")
 
-[node name="Explosion" type="Sprite2D" parent="." unique_id=1045420802]
+[node name="Flare" type="Line2D" parent="." unique_id=256265214]
 self_modulate = Color(0.6784314, 0, 0, 0.3882353)
 position = Vector2(0, 3)
 scale = Vector2(0.6637576, 0.65619147)
-texture = ExtResource("2_urnf3")
+points = PackedVector2Array(0, 0, 0, -10000)
+width = 20.0
+default_color = Color(1, 0.08627451, 0, 1)
 
 [node name="DecayTimer" type="Timer" parent="." unique_id=1370721961]
 wait_time = 5.0

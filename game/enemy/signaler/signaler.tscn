@@ -8,19 +8,7 @@
 script = ExtResource("2_15cit")
 resource = ExtResource("3_ivohm")
 
-[node name="ReinforcementsTimer" type="Timer" parent="." index="5" unique_id=403903349]
-unique_name_in_owner = true
-one_shot = true
-autostart = true
-
-[node name="SummonTimer" type="Timer" parent="." index="6" unique_id=1778490155]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
-
-[node name="Flare" parent="." index="7" unique_id=1536752728 instance_placeholder="res://game/enemy/signaler/flare.tscn"]
+[node name="Flare" parent="." index="5" unique_id=1536752728 instance_placeholder="res://game/enemy/signaler/flare.tscn"]
 unique_name_in_owner = true
 
-[connection signal="timeout" from="ReinforcementsTimer" to="." method="_on_reinforcements_timer_timeout"]
-[connection signal="timeout" from="SummonTimer" to="." method="_on_time_to_summon_timeout"]
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
