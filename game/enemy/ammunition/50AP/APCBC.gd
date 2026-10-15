@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 5000
+@export var SPEED = 2400
 
 func _physics_process(_delta: float) -> void:
 	velocity.x = sign(position.x) * SPEED

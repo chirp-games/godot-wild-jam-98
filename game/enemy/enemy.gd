@@ -65,5 +65,8 @@ func damage(d: int):
 func attack():
 	attack_cooldown += attack_interval
 
+func entity_detected(body: Node2D):
+	body
+
 func set_target(player: Node):
 	target = player
