@@ -7,7 +7,7 @@ var locked = false
 
 func pathfind(delta: float):
 	var θ: float = Vector2(-cos(rotation) * signf(global_position.x),-sin(rotation)).angle_to(target.global_position.direction_to(global_position))
-	if !locked and target and θ <= PI/6:
+	if !locked and target and θ <= PI/24:
 		locked = true
 	
 	if locked:

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dcwekyxssl1a2"]
+
+[ext_resource type="Script" uid="uid://dxt6shx5ulr4e" path="res://game/enemy/ammunition/artillery/155mm/bomblet.gd" id="1_djlv7"]
+[ext_resource type="Texture2D" uid="uid://b70bit4mx7nf" path="res://assets/mech/back_leg_knee_2.png" id="2_djlv7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0g146"]
+radius = 4.0
+
+[node name="Bomblet" type="CharacterBody2D" unique_id=561317559 groups=["bullet", "enemy_attack"]]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_djlv7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956352831]
+scale = Vector2(0.266, 0.266)
+texture = ExtResource("2_djlv7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2059324293]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_0g146")

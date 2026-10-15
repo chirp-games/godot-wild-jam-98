@@ -4,20 +4,22 @@
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="1_jgq85"]
 [ext_resource type="Texture2D" uid="uid://b70bit4mx7nf" path="res://assets/mech/back_leg_knee_2.png" id="2_7pc1g"]
 [ext_resource type="Script" uid="uid://c1ixcffp2wlms" path="res://game/deal_damage.gd" id="4_w5cgc"]
+[ext_resource type="Texture2D" uid="uid://cxwxw5mb6gt6m" path="res://assets/enemy/gun_robot.png" id="5_ej1ln"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
-radius = 5.0
+radius = 0.63
+height = 5.0
 
 [node name="Apcbc" type="CharacterBody2D" unique_id=561317559 groups=["bullet", "enemy_attack"]]
 script = ExtResource("1_ggxnk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956352831]
-scale = Vector2(0.2, 0.077)
+scale = Vector2(0.035, 0.01)
 texture = ExtResource("1_jgq85")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1502798176]
-position = Vector2(-10, 0)
-scale = Vector2(0.333, 0.333)
+position = Vector2(-1.85, 0)
+scale = Vector2(0.042, 0.042)
 texture = ExtResource("2_7pc1g")
 
 [node name="DealDamage" type="Area2D" parent="." unique_id=696455229 groups=["enemy_attack"]]
@@ -27,3 +29,10 @@ base_damage = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DealDamage" unique_id=2059324293]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_g4v7s")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=56151992]
+visible = false
+position = Vector2(73, -16)
+texture = ExtResource("5_ej1ln")
+
+[connection signal="deal_damage" from="DealDamage" to="." method="hit"]

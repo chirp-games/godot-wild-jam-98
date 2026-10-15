@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://1sg4xsqqn3je"]
+
+[ext_resource type="Script" uid="uid://bkt0qahlpwef1" path="res://game/enemy/ammunition/artillery/155mm/155_mm.gd" id="1_0g146"]
+[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="2_budt5"]
+
+[node name="105mm" type="CharacterBody2D" unique_id=561317559 groups=["bullet", "enemy_attack"]]
+script = ExtResource("1_0g146")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956352831]
+position = Vector2(5, 0)
+scale = Vector2(0.3, 0.121)
+texture = ExtResource("2_budt5")
+
+[node name="Fuze" type="Marker2D" parent="." unique_id=6379827]
+position = Vector2(-14, 0)
