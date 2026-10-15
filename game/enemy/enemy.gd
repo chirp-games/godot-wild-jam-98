@@ -11,6 +11,8 @@ var grounded
 @export var resource: EnemyResource
 @onready var scrap = preload("res://game/enemy/scrap.tscn")
 @onready var parachute: Sprite2D = %Parachute
+@onready var stun_timer: Timer = %StunTimer
+@onready var stun_label: Label = %Stunned
 
 var target: Node2D = null
 var attack_cooldown: float = 0
@@ -40,12 +42,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		# enemies with a parachute should fall slower
 		velocity.y += 4.0
-	attack_cooldown -= delta
+	
+	if is_stunned():
+		stun_label.show()
+	else:
+		stun_label.hide()
+	
+	if not is_stunned():
+		attack_cooldown -= delta
 
 	if parachute.visible and is_on_floor():
 		parachute.hide()
 
-	pathfind(delta)
+	if not is_stunned():
+		pathfind(delta)
 	move_and_slide()
 
 func pathfind(_delta: float):
@@ -95,6 +105,13 @@ func _on_aggro_detected(area: Area2D) -> void:
 	
 	if (area as TakeDamage).damaged_by_group == "enemy_attack":
 		target_select(area)
+
+func is_stunned():
+	return not stun_timer.is_stopped()
+
+# Called when the player jumps near this enemy
+func stun():
+	stun_timer.start()
 
 func target_select(area: Area2D) -> void:
 	if !target:

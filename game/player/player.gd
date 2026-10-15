@@ -71,8 +71,9 @@ func attack():
 	for e: Enemy in get_tree().get_nodes_in_group("enemy"):
 		var dist = global_position.distance_to(e.global_position)
 		if dist < 500:
+			e.stun()
 			print("apply force")
-			var force: float = lerp(1500.,0., dist / 500)
+			var force: float = lerp(500.,0., dist / 500)
 			var d: float = sign((e.global_position - global_position).x)
 			e.apply_central_impulse(Vector2(force * d, -force / 3.))
 			

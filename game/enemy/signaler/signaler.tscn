@@ -23,3 +23,4 @@ unique_name_in_owner = true
 
 [connection signal="timeout" from="ReinforcementsTimer" to="." method="_on_reinforcements_timer_timeout"]
 [connection signal="timeout" from="SummonTimer" to="." method="_on_time_to_summon_timeout"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]

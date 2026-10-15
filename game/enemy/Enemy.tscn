@@ -59,5 +59,17 @@ damaged_by_group = &"player_attack"
 shape = SubResource("RectangleShape2D_6w6ra")
 debug_color = Color(0.78649646, 0.41803548, 0.30692336, 0.41960785)
 
+[node name="StunTimer" type="Timer" parent="." unique_id=1525568241]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Stunned" type="Label" parent="." unique_id=412432975]
+unique_name_in_owner = true
+offset_left = -32.0
+offset_top = -58.0
+offset_right = 29.0
+offset_bottom = -38.0
+text = "Stunned"
+
 [connection signal="area_entered" from="AggroDetection" to="." method="_on_aggro_detected"]
 [connection signal="death" from="TakeDamage" to="." method="_on_take_damage_death"]

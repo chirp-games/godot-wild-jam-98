@@ -20,3 +20,13 @@ func _on_reinforcements_timer_timeout() -> void:
 
 func _on_time_to_summon_timeout() -> void:
 	summon_reinforcements.emit()
+
+func stun():
+	reinforecments_timer.paused = true
+	summon_timer.paused = true
+	super.stun()
+
+
+func _on_stun_timer_timeout() -> void:
+	reinforecments_timer.paused = false
+	summon_timer.paused = false
