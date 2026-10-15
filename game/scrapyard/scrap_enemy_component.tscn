@@ -15,7 +15,7 @@ layout_mode = 2
 [node name="UnitsInStorage" type="Label" parent="HBoxContainer" unique_id=475418329]
 unique_name_in_owner = true
 layout_mode = 2
-text = "10p"
+text = "0"
 
 [node name="RemoveQuantity" type="Button" parent="HBoxContainer" unique_id=1054561616]
 layout_mode = 2

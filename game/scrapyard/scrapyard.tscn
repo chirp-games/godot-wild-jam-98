@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2cah2f4royhc"]
 
 [ext_resource type="Script" uid="uid://csh78yxh8aprx" path="res://game/scrapyard/scrapyard.gd" id="1_ny768"]
-[ext_resource type="PackedScene" uid="uid://bxsqhcwlse41p" path="res://game/scrapyard/scrap_enemy_menu.tscn" id="2_b7uvi"]
+[ext_resource type="PackedScene" uid="uid://c3ihm64euwh6s" path="res://game/scrapyard/scrap_enemy_menu.tscn" id="2_b7uvi"]
 [ext_resource type="PackedScene" uid="uid://bafj8ae1uqoim" path="res://game/scrapyard/pick_a_mech.tscn" id="2_suprx"]
 
 [node name="Scrapyard" type="CenterContainer" unique_id=601508854]

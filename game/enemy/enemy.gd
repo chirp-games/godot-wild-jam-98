@@ -67,3 +67,9 @@ func attack():
 
 func set_target(player: Node):
 	target = player
+
+
+func _on_take_damage_death() -> void:
+	on_death.emit()
+	# This is where a death animation can go
+	queue_free()
