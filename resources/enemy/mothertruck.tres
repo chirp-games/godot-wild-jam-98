@@ -4,8 +4,7 @@
 
 [resource]
 script = ExtResource("1_kupov")
-name = "Kamikaze Drone Delivery Vehicle"
-scrap_value = 25
+name = "Mothertruck"
 health = 250
 movement_speed = 1000
 attack_interval = 0.6
