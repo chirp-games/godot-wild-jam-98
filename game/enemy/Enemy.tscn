@@ -52,4 +52,5 @@ damaged_by_group = &"player_attack"
 shape = SubResource("RectangleShape2D_6w6ra")
 debug_color = Color(0.78649646, 0.41803548, 0.30692336, 0.41960785)
 
+[connection signal="area_entered" from="AggroDetection" to="." method="_on_aggro_detected"]
 [connection signal="death" from="TakeDamage" to="." method="_on_take_damage_death"]

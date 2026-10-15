@@ -17,8 +17,9 @@ var attack_cooldown: float = 0
 signal on_death
 
 func _ready() -> void:
-	health = resource.health
+	($TakeDamage as TakeDamage).parent_resource = resource
 	($TakeDamage as TakeDamage).health = health
+	health = resource.health
 	value = resource.scrap_value
 	speed = resource.movement_speed
 	attack_interval = resource.attack_interval
@@ -76,3 +77,15 @@ func _on_take_damage_death() -> void:
 	on_death.emit()
 	# This is where a death animation can go
 	queue_free()
+
+
+func _on_aggro_detected(area: Area2D) -> void:
+	if not area is TakeDamage:
+		return
+	
+	if (area as TakeDamage).damaged_by_group == "enemy_attack":
+		target_select(area)
+
+func target_select(area: Area2D) -> void:
+	if !target:
+		target = area

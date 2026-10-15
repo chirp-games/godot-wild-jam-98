@@ -8,6 +8,8 @@ signal death
 @export var health: int
 @export var damaged_by_group: StringName
 
+var parent_resource: Resource
+
 func _ready() -> void:
 	area_entered.connect(_damage)
 

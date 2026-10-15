@@ -25,6 +25,7 @@ func _ready() -> void:
 	if resource.mech_class == MechResource.MechClass.Commander:
 		cooldown_bar.show()
 	($RankLabel as Label).text = resource.name
+	($TakeDamage as TakeDamage).parent_resource = resource
 
 	super._ready()
 
