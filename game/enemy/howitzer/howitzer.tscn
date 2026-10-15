@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://7fkuy7vtw8y8"]
+
+[ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_ffw6u"]
+[ext_resource type="Script" uid="uid://3ywc1v5rrx62" path="res://game/enemy/howitzer/howitzer.gd" id="2_elsyq"]
+[ext_resource type="Resource" uid="uid://dfjc68kwj1hwl" path="res://resources/enemy/howitzer.tres" id="3_ibkle"]
+
+[node name="Howitzer" unique_id=1388627917 instance=ExtResource("1_ffw6u")]
+script = ExtResource("2_elsyq")
+resource = ExtResource("3_ibkle")

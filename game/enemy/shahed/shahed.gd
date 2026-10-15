@@ -21,13 +21,11 @@ func pathfind(delta: float):
 		velocity = velocity.length() * Vector2(-cos(rotation) * signf(global_position.x), -sin(rotation))
 	else:
 		velocity = Vector2.LEFT * -sign(global_position.x) * speed
-	
-	move_and_slide()
 
 func _physics_process(delta: float):
 	if is_on_floor():
 		attack()
-	delta
+	super(delta)
 
 func attack():
 	var explosion: Explosion = EXPLOSION.instantiate()
