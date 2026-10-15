@@ -2,6 +2,8 @@ extends Control
 
 class_name Game
 
+signal enemy_corpse_amount_updated(new_amount: Dictionary[EnemyResource, int])
+
 const wire_scene = preload("res://game/frog_mechs/Wire.tscn")
 const player_mech_scene = preload("res://game/frog_mechs/frog_mech.tscn")
 const enemy_scene = preload("res://game/enemy/Enemy.tscn")
@@ -19,8 +21,8 @@ const MAX_CONNECTION_DIST = 300
 @onready var material_label: Label = %Material
 
 var frogs_to_closest_commander: Dictionary[FrogMech, FrogMech] = {}
+var enemy_corpses_collected: Dictionary[EnemyResource, int] = {}
 var currently_building_wire: Wire
-
 var material_currency = 0
 
 func find_wire_receptacles():
@@ -35,7 +37,6 @@ func find_commanders():
 func find_recruits():
 	return get_tree().get_nodes_in_group("mini_frog").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Recruit)
 
-
 func find_mini_frogs():
 	return get_tree().get_nodes_in_group("mini_frog")
 
@@ -47,6 +48,9 @@ func _ready() -> void:
 		commander.enemy_detected.connect(func(e: Enemy): _enemy_detected(commander, e))
 
 	player_camera.make_current()
+
+	for e in Resources.enemies:
+		enemy_corpses_collected.get_or_add(e, 0)
 
 func _process(_delta: float) -> void:
 	for frog: FrogMech in find_mini_frogs():
@@ -61,11 +65,10 @@ func _process(_delta: float) -> void:
 		if frog.dragging and not in_range:
 			closest_commander_lost(frog)
 			frogs_to_closest_commander[frog] = null
-		
-		if frogs_to_closest_commander[frog] != closest_commander and (frog.dragging or frog.get_connected_commander() == null):
+
+		if frogs_to_closest_commander.get(frog) and frogs_to_closest_commander[frog] != closest_commander and (frog.dragging or frog.get_connected_commander() == null):
 			closest_commander_lost(frog)
 			closest_commander_found(frog, new_closest_commander)
-
 
 	health_label.text = "Health: " + str(command_center.get_health())
 	material_label.text = "Material: " + str(material_currency)
@@ -110,24 +113,28 @@ func _on_wave_spawner_spawn_enemy(e: EnemyResource) -> void:
 	var new_enemy: Enemy = enemy_scene.instantiate()
 	new_enemy.resource = e
 	new_enemy.global_position = [left_portal, right_portal].pick_random().global_position
-	new_enemy.on_death.connect(func(): material_currency += 10)
+	new_enemy.on_death.connect(func(): 
+		enemy_corpses_collected[new_enemy.resource] += 1
+		enemy_corpse_amount_updated.emit(enemy_corpses_collected)
+	)
 	add_child(new_enemy)
 
 func _on_wave_spawner_wave_ended() -> void:
 	start_wave_button.show()
+	scrapyard.show()
 
 func _on_wave_spawner_wave_started() -> void:
 	start_wave_button.hide()
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("enter_scrapyard"):
-		if not scrapyard.visible:
-			enter_scrapyard()
-		else:
-			exit_scrapyard()
-
+	scrapyard.hide()
 
 func _on_scrapyard_mech_built(mech_resource: MechResource) -> void:
 	var m: FrogMech = player_mech_scene.instantiate()
 	m.resource = mech_resource
 	$World.add_child(m)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("enter_scrapyard"):
+		if scrapyard.visible:
+			exit_scrapyard()
+		else:
+			enter_scrapyard()

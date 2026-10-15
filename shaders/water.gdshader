@@ -1,5 +1,5 @@
 shader_type canvas_item;
-uniform float water_line: hint_range(0.0, 1.0, 0.0);
+uniform float water_line: hint_range(0.0, 1.0, 0.0) = 0.8106594;
 uniform vec4 foam_color: source_color;
 uniform float foam_size: hint_range(0.0, 1.0, 0.0);
 uniform vec4 subfoam_color: source_color;
@@ -16,6 +16,12 @@ uniform float mix_4_intensity: hint_range(0.0, 1.0, 0.001);
 
 uniform float wave_amplitude: hint_range(0.0, 5.0, 0.0);
 uniform float wave_frequency: hint_range(0.0, 5.0, 0.0);
+
+uniform float reflection_squish: hint_range(0.0, 4.0, 0.0);
+uniform float reflection_opacity: hint_range(0.0, 5.0, 0.0);
+
+
+uniform sampler2D screen_texture : hint_screen_texture;
 
 //https://iquilezles.org/articles/smin/
 vec2 smin( float a, float b, float k )
@@ -63,6 +69,14 @@ void fragment() {
 	vec4 mix_5 = mix(vec4(foam_color.rgb,0.0),mix_4,mixed_foam_sky.y);
 
 	COLOR = mix_5;
+	
+	if (p.y > water_line) {	
+		float wx = water_line;
+		float dist = 1.0-abs(water_line-UV.y)/(1.-water_line);
+		vec4 c = textureProj(screen_texture, vec3(UV.x+sin(UV.y*500.+TIME*5.)*0.001,(wx-abs(UV.y-wx)*reflection_squish),(UV.y+1.-wx)),0.6);
+		c = c*c*dist*dist*reflection_opacity;
+		COLOR += c;
+	}
 }
 
 //void light() {

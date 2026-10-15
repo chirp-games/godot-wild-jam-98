@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c3ihm64euwh6s"]
 
 [ext_resource type="Script" uid="uid://dnpi7iigp0yg7" path="res://game/scrapyard/scrap_enemy_menu.gd" id="1_wvw0o"]
-[ext_resource type="PackedScene" uid="uid://bg6qxxtnsd2jg" path="res://game/scrapyard/scrap_enemy_component.tscn" id="2_7e8jc"]
 
 [node name="Scrapyard" type="PanelContainer" unique_id=7092206]
 script = ExtResource("1_wvw0o")
@@ -14,12 +13,30 @@ layout_mode = 2
 
 [node name="Scrap Menu" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=632628857]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 
-[node name="ScrapEnemyComponent" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=410389457 instance=ExtResource("2_7e8jc")]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=532528302]
+layout_mode = 2
+text = "Enemy Scraps"
+horizontal_alignment = 1
+
+[node name="HFlowContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=833846490]
 layout_mode = 2
 
-[node name="ScrapEnemyComponent2" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=389130544 instance=ExtResource("2_7e8jc")]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Scrap Menu/HFlowContainer" unique_id=1059529146]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "In Storage"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Scrap Menu/HFlowContainer" unique_id=741175801]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scrap"
+horizontal_alignment = 2
+
+[node name="ScrapEnemyComponent" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=410389457 instance_placeholder="res://game/scrapyard/scrap_enemy_component.tscn"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1781401496]

@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_1dod3"]
 script = ExtResource("1_eyl2h")
-range_radius = 300
+range_radius = 1000
 metadata/_custom_type_script = "uid://bxikynugca5gt"
 
 [sub_resource type="Resource" id="Resource_posua"]

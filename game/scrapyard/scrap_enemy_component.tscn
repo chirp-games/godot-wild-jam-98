@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://cv3gnyerisjbv" path="res://resources/enemy/basic_enemy.tres" id="2_vokbk"]
 
 [node name="ScrapEnemyComponent" type="PanelContainer" unique_id=1257101338]
+custom_minimum_size = Vector2(300, 0)
 offset_right = 241.0
 offset_bottom = 31.0
 script = ExtResource("1_icqfm")
@@ -11,43 +12,57 @@ enemy = ExtResource("2_vokbk")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=181314982]
 layout_mode = 2
+theme_override_constants/separation = 8
 
 [node name="UnitsInStorage" type="Label" parent="HBoxContainer" unique_id=475418329]
 unique_name_in_owner = true
 layout_mode = 2
-text = "10p"
+text = "0"
+horizontal_alignment = 1
 
-[node name="RemoveQuantity" type="Button" parent="HBoxContainer" unique_id=1054561616]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer" unique_id=59148355]
+layout_mode = 2
+
+[node name="RemoveQuantity" type="Button" parent="HBoxContainer/HBoxContainer" unique_id=1054561616]
 layout_mode = 2
 text = "<"
 
-[node name="EnemyName" type="Label" parent="HBoxContainer" unique_id=1653174794]
+[node name="EnemyName" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=1653174794]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Enemy Scrap"
 
-[node name="UnitSellAmount" type="Label" parent="HBoxContainer" unique_id=480875673]
+[node name="UnitSellAmount" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=480875673]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "10p"
 
-[node name="AddQuantity" type="Button" parent="HBoxContainer" unique_id=1902995884]
+[node name="AddQuantity" type="Button" parent="HBoxContainer/HBoxContainer" unique_id=1902995884]
 layout_mode = 2
 text = ">"
 
-[node name="Divider" type="Panel" parent="HBoxContainer" unique_id=824629387]
-custom_minimum_size = Vector2(5, 0)
+[node name="Divider" type="Panel" parent="HBoxContainer" unique_id=1915146240]
+custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
 
-[node name="ScrapAmount" type="Label" parent="HBoxContainer" unique_id=166465201]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer" unique_id=46402681]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrapAmount" type="Label" parent="HBoxContainer/HBoxContainer2" unique_id=166465201]
 unique_name_in_owner = true
 layout_mode = 2
 text = "-"
+horizontal_alignment = 1
 
-[node name="TotalScrapPoints" type="Label" parent="HBoxContainer" unique_id=197429203]
+[node name="TotalScrapPoints" type="Label" parent="HBoxContainer/HBoxContainer2" unique_id=197429203]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0p"
+size_flags_horizontal = 10
+text = "$0"
 
-[connection signal="pressed" from="HBoxContainer/RemoveQuantity" to="." method="_on_remove_quantity_pressed"]
-[connection signal="pressed" from="HBoxContainer/AddQuantity" to="." method="_on_add_quantity_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/RemoveQuantity" to="." method="_on_remove_quantity_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/AddQuantity" to="." method="_on_add_quantity_pressed"]

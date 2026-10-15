@@ -51,3 +51,5 @@ damaged_by_group = &"player_attack"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamage" unique_id=1340069219]
 shape = SubResource("RectangleShape2D_6w6ra")
 debug_color = Color(0.78649646, 0.41803548, 0.30692336, 0.41960785)
+
+[connection signal="death" from="TakeDamage" to="." method="_on_take_damage_death"]

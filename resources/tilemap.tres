@@ -116,6 +116,8 @@ shader_parameter/mix_3_intensity = 0.0110000005225
 shader_parameter/mix_4_intensity = 0.04400000209
 shader_parameter/wave_amplitude = 0.01
 shader_parameter/wave_frequency = 0.7252747
+shader_parameter/reflection_squish = 0.0
+shader_parameter/reflection_opacity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u4syw"]
 texture = ExtResource("3_fpq5v")

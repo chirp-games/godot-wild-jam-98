@@ -3,6 +3,7 @@ extends Area2D
 class_name TakeDamage
 
 signal damage_taken(amount: int)
+signal death
 
 @export var health: int
 @export var damaged_by_group: StringName
@@ -17,5 +18,6 @@ func _damage(body: CollisionObject2D):
 	var damage = (body as DealDamage).calculate_damage(self)
 	health -= damage
 	damage_taken.emit(damage)
-	if health < 0:
-		get_parent().queue_free()
+	
+	if health <= 0:
+		death.emit()
