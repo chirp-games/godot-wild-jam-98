@@ -17,9 +17,9 @@ var attack_cooldown: float = 0
 signal on_death
 
 func _ready() -> void:
+	health = resource.health
 	($TakeDamage as TakeDamage).parent_resource = resource
 	($TakeDamage as TakeDamage).health = health
-	health = resource.health
 	value = resource.scrap_value
 	speed = resource.movement_speed
 	attack_interval = resource.attack_interval

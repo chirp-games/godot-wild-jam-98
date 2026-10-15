@@ -5,7 +5,7 @@ class_name TakeDamage
 signal damage_taken(amount: int)
 signal death
 
-@export var health: int
+@export var health: int = 0
 @export var damaged_by_group: StringName
 
 var parent_resource: Resource
