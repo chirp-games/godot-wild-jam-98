@@ -109,14 +109,18 @@ func enter_scrapyard():
 func exit_scrapyard():
 	scrapyard.hide()
 
-func _on_wave_spawner_spawn_enemy(e: PackedScene) -> void:
+func _on_wave_spawner_spawn_enemy(new_enemy: Enemy, around_enemy: Enemy) -> void:
 	# Enemies are scenes with a resource assigned to them
-	var new_enemy: Enemy = e.instantiate()
-	new_enemy.global_position = [left_portal, right_portal].pick_random().global_position
+	if not around_enemy:
+		new_enemy.global_position = [left_portal, right_portal].pick_random().global_position
+	else:
+		new_enemy.global_position = Vector2(around_enemy.global_position.x + randi_range(-200, 200), -700)
+	
 	new_enemy.on_death.connect(func(): 
 		enemy_corpses_collected[new_enemy.resource] += 1
 		enemy_corpse_amount_updated.emit(enemy_corpses_collected)
 	)
+	# probably make a better place to add this as a child
 	add_child(new_enemy)
 
 func _on_wave_spawner_wave_ended() -> void:

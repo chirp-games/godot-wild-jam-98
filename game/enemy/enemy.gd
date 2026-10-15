@@ -7,13 +7,15 @@ var value
 var speed: float = 500
 var attack_interval
 var grounded
-@export var resource: EnemyResource
 
+@export var resource: EnemyResource
 @onready var scrap = preload("res://game/enemy/scrap.tscn")
 
 var target: Node2D = null
 var attack_cooldown: float = 0
 
+## Summon reinforcements for a given wave
+signal summon_reinforcements
 signal on_death
 
 func _ready() -> void:
