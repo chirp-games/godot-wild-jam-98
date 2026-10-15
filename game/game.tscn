@@ -17,7 +17,6 @@
 [ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="10_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://dh2qb6o85tc3q" path="res://assets/parallax/small_vine_3.png" id="10_posua"]
 [ext_resource type="Shader" uid="uid://dyu60a6tlb610" path="res://game/darken.gdshader" id="14_cf130"]
-[ext_resource type="Resource" uid="uid://cy4llnahlcc3g" path="res://resources/mechs/mechs/recruit.tres" id="15_58yx1"]
 [ext_resource type="Shader" uid="uid://blxjv5yfwh6mj" path="res://shaders/water.gdshader" id="15_ee6o4"]
 [ext_resource type="TileSet" uid="uid://5qtnbpaek4t" path="res://resources/tilemap.tres" id="15_ln7ps"]
 [ext_resource type="Shader" uid="uid://bqh61nf6bhria" path="res://shaders/bloom.gdshader" id="16_4cobl"]
@@ -29,7 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://dgtmj0aqja482" path="res://assets/parallax/vine_2.png" id="17_pxxsx"]
 [ext_resource type="PackedScene" uid="uid://06c0brfsvj6n" path="res://game/player/player.tscn" id="18_cf130"]
 [ext_resource type="Texture2D" uid="uid://c4o24aopopcv" path="res://assets/parallax/big_vine_1.png" id="19_u8s88"]
+[ext_resource type="Resource" uid="uid://b4andh72n12pq" path="res://resources/mechs/mechs/big_bullet.tres" id="20_cf130"]
 [ext_resource type="Texture2D" uid="uid://b2o5swy44dkpi" path="res://assets/parallax/vine_3.png" id="20_mhvfb"]
+[ext_resource type="Resource" uid="uid://difal6ueki7a0" path="res://resources/mechs/mechs/shotgun.tres" id="21_posua"]
 [ext_resource type="Texture2D" uid="uid://by6pa8mytt1b1" path="res://assets/parallax/front_leaves_4.png" id="22_q52ks"]
 [ext_resource type="Texture2D" uid="uid://2vj2ql3stxk2" path="res://assets/parallax/front_leaves_2.png" id="23_8bboj"]
 [ext_resource type="Texture2D" uid="uid://lv0ldkh6ow3v" path="res://assets/parallax/front_leaves_3.png" id="24_q52ks"]
@@ -682,10 +683,14 @@ drag_bottom_margin = 1.0
 
 [node name="FrogRecruit" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
 position = Vector2(-78, -210)
-resource = ExtResource("15_58yx1")
+resource = ExtResource("20_cf130")
+
+[node name="FrogRecruit2" parent="World" unique_id=637464119 instance=ExtResource("6_3vho3")]
+position = Vector2(118, -174)
+resource = ExtResource("21_posua")
 
 [node name="FrogCommander" parent="World" unique_id=289002986 instance=ExtResource("6_3vho3")]
-position = Vector2(-319, -119)
+position = Vector2(-139, -112)
 resource = ExtResource("16_hbvmx")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World" unique_id=1450001775]

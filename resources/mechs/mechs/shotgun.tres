@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="MechResource" format=3 uid="uid://difal6ueki7a0"]
+
+[ext_resource type="Script" uid="uid://b25werxv3cmv" path="res://resources/mechs/mech_effect_resource.gd" id="1_gmdpe"]
+[ext_resource type="Script" uid="uid://w1r7li8jtpq7" path="res://resources/mechs/mech_resource.gd" id="2_8srmr"]
+[ext_resource type="Script" uid="uid://biu6m43oul3c3" path="res://resources/mechs/effects/extra_bullets_effect.gd" id="2_n6p4n"]
+[ext_resource type="Script" uid="uid://d011ch803a1me" path="res://resources/mechs/effects/damage_effect.gd" id="3_gmdpe"]
+[ext_resource type="Script" uid="uid://jycidc5wc3a0" path="res://resources/mechs/effects/effect_list.gd" id="4_6bd7j"]
+
+[sub_resource type="Resource" id="Resource_posua"]
+script = ExtResource("2_n6p4n")
+extra_bullets = 2
+metadata/_custom_type_script = "uid://biu6m43oul3c3"
+
+[sub_resource type="Resource" id="Resource_gvtgv"]
+script = ExtResource("3_gmdpe")
+damage = -1
+metadata/_custom_type_script = "uid://d011ch803a1me"
+
+[sub_resource type="Resource" id="Resource_cf130"]
+script = ExtResource("4_6bd7j")
+effects = Array[ExtResource("1_gmdpe")]([SubResource("Resource_posua"), SubResource("Resource_gvtgv")])
+metadata/_custom_type_script = "uid://jycidc5wc3a0"
+
+[resource]
+script = ExtResource("2_8srmr")
+name = "Shotgun"
+description = "Shoots 3 bullets that deal 1 less damage."
+cooldown_ratio = 1
+effect = SubResource("Resource_cf130")
+metadata/_custom_type_script = "uid://w1r7li8jtpq7"

@@ -22,15 +22,9 @@ var cooldown = 0.0
 @onready var cooldown_bar: ProgressBar = %Cooldown
 
 func _ready() -> void:
-	var rank_text := ""
-	if resource.mech_class == MechResource.MechClass.Recruit:
-		rank_text = "Recruit"
-	if resource.mech_class == MechResource.MechClass.Lieutenant:
-		rank_text = "Lieutenant"
 	if resource.mech_class == MechResource.MechClass.Commander:
-		rank_text = "Commander"
 		cooldown_bar.show()
-	($RankLabel as Label).text = rank_text
+	($RankLabel as Label).text = resource.name
 
 	super._ready()
 
@@ -103,6 +97,7 @@ func get_receptacle() -> WireReceptacle:
 	return wire_recpetacle
 
 func try_attack(enemy: Enemy):
-	var b = BulletSpawner.new()
+	var b := BulletSpawner.new()
+	resource.effect.apply(b)
 	b.target_enemy = enemy
 	create_attack.emit(b)

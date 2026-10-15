@@ -14,7 +14,8 @@ var target_enemy: Enemy
 func fire_bullets():
 	for i in range(amount):
 		var b: Bullet = bullet.instantiate()
-		b.target_enemy = target_enemy
+		if target_enemy != null:
+			b.target_enemy = target_enemy
 		b.damage = damage
 		b.scale = Vector2.ONE * damage
 

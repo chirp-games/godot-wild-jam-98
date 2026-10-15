@@ -5,5 +5,4 @@
 [resource]
 script = ExtResource("1_hll22")
 name = "Basic Enemy"
-health = 2
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"
