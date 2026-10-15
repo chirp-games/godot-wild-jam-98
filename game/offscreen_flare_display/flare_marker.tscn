@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ctuitnjrlu2ep"]
+
+[ext_resource type="Texture2D" uid="uid://388ng2ur1tyq" path="res://assets/enemy/kamikaze_drone.png" id="1_1lgmq"]
+
+[node name="FlareMarker" type="Sprite2D" unique_id=1173701709]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_1lgmq")

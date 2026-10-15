@@ -64,6 +64,7 @@ bullet=""
 ally=""
 player_attack=""
 enemy_attack=""
+flare=""
 
 [gui]
 

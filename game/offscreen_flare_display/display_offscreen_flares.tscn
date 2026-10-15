@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://2uosi0lfnj5h"]
+
+[ext_resource type="Script" uid="uid://da4md6qsso23c" path="res://game/offscreen_flare_display/display_offscreen_flares.gd" id="1_w1siv"]
+
+[node name="DisplayOffscreenFlares" type="Control" unique_id=306875867]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_w1siv")
+
+[node name="FlareMarker" parent="." unique_id=1173701709 instance_placeholder="res://game/offscreen_flare_display/flare_marker.tscn"]
+unique_name_in_owner = true
