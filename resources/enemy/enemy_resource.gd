@@ -8,3 +8,4 @@ class_name EnemyResource
 @export var movement_speed: int = 100
 @export var attack_interval: float = 0.5
 @export var grounded: bool = true
+@export var has_parachute: bool = true

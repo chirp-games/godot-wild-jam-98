@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c3r5sf1ub7eyg" path="res://game/enemy/enemy.gd" id="1_2c8go"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="2_4fyss"]
 [ext_resource type="Script" uid="uid://s2gywk4it0w5" path="res://game/take_damage.gd" id="3_kaq3b"]
+[ext_resource type="Texture2D" uid="uid://b6jhkuqrsicis" path="res://assets/enemy/parachute.png" id="4_jaqe3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v1xc"]
 size = Vector2(66, 65)
@@ -18,6 +19,12 @@ collision_layer = 4
 collision_mask = 8
 floor_stop_on_slope = false
 script = ExtResource("1_2c8go")
+
+[node name="Parachute" type="Sprite2D" parent="." unique_id=537602416]
+unique_name_in_owner = true
+position = Vector2(5, -268)
+scale = Vector2(0.5969388, 0.6707068)
+texture = ExtResource("4_jaqe3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=705184273]
 scale = Vector2(0.5, 0.5)

@@ -648,11 +648,11 @@ expand_mode = 1
 
 [node name="LeftPortal" type="Marker2D" parent="World/Portals" unique_id=1596849403]
 unique_name_in_owner = true
-position = Vector2(-1354, -184)
+position = Vector2(-1263, -670)
 
 [node name="RightPortal" type="Marker2D" parent="World/Portals" unique_id=967867649]
 unique_name_in_owner = true
-position = Vector2(1354, -184)
+position = Vector2(1354, -670)
 
 [node name="CommandCenter" parent="World" unique_id=1931686413 instance=ExtResource("2_u5opy")]
 unique_name_in_owner = true

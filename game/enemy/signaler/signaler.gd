@@ -16,6 +16,7 @@ func pathfind(_delta: float):
 func _on_reinforcements_timer_timeout() -> void:
 	summon_timer.start()
 	flare_instance = flare.create_instance()
+	reinforecments_timer.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_time_to_summon_timeout() -> void:
 	summon_reinforcements.emit()

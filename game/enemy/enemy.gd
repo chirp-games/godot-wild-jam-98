@@ -10,6 +10,7 @@ var grounded
 
 @export var resource: EnemyResource
 @onready var scrap = preload("res://game/enemy/scrap.tscn")
+@onready var parachute: Sprite2D = %Parachute
 
 var target: Node2D = null
 var attack_cooldown: float = 0
@@ -20,6 +21,8 @@ signal on_death
 
 func _ready() -> void:
 	health = resource.health
+	if not resource.has_parachute:
+		parachute.hide()
 	($TakeDamage as TakeDamage).parent_resource = resource
 	($TakeDamage as TakeDamage).health = health
 	value = resource.scrap_value
@@ -27,24 +30,29 @@ func _ready() -> void:
 	attack_interval = resource.attack_interval
 	grounded = resource.grounded
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	health = ($TakeDamage as TakeDamage).health
 	($Health as Label).text = str(health)
-	
+
 	# gravity
-	velocity.y += 9.81
-	
+	if not parachute.visible:
+		velocity.y += 9.81
+	else:
+		# enemies with a parachute should fall slower
+		velocity.y += 4.0
 	attack_cooldown -= delta
 
-	pathfind(delta)
+	if parachute.visible and is_on_floor():
+		parachute.hide()
 
+	pathfind(delta)
+	move_and_slide()
 
 func pathfind(_delta: float):
 	# Walk torwards the center of the map, that is where the home base is
 	speed = 5
 	var x_vel: float = -sign(position.x) * speed
 	velocity += Vector2(x_vel, 0)
-	move_and_slide()
 
 func apply_central_impulse(impulse):
 	velocity += impulse
