@@ -38,7 +38,7 @@ func update_ui():
 	
 	if scrap_quantity > 0:
 		scrap_amount_label.text = str(scrap_quantity)
-		total_scrap_points.text = str(get_total_points())
+		total_scrap_points.text = str(get_total_points()) + "p"
 	else:
 		scrap_amount_label.text = "-"
 		total_scrap_points.text = ""
@@ -51,5 +51,5 @@ func _on_remove_quantity_pressed() -> void:
 		scrap_quantity -= 1
 
 func _on_add_quantity_pressed() -> void:
-	if amount_in_storage > 0:
+	if scrap_quantity < amount_in_storage:
 		scrap_quantity += 1

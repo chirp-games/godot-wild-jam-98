@@ -15,7 +15,7 @@ var walk_dir: float = 0.
 var just_landed = true
 
 func on_landed() -> void:
-	print("touchdown")
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,7 +67,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		i += 1
 
 func attack():
-	print("attacking")
 	## Attacks deal damage to enemies and apply knockback to them
 	for e: Enemy in get_tree().get_nodes_in_group("enemy"):
 		var dist = global_position.distance_to(e.global_position)

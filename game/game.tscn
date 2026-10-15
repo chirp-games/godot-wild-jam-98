@@ -34,8 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://by6pa8mytt1b1" path="res://assets/parallax/front_leaves_4.png" id="22_q52ks"]
 [ext_resource type="Texture2D" uid="uid://2vj2ql3stxk2" path="res://assets/parallax/front_leaves_2.png" id="23_8bboj"]
 [ext_resource type="Texture2D" uid="uid://lv0ldkh6ow3v" path="res://assets/parallax/front_leaves_3.png" id="24_q52ks"]
-[ext_resource type="Texture2D" uid="uid://bfrxacswkq3bi" path="res://assets/parallax/bottom_lily_2.png" id="34_gvtgv"]
-[ext_resource type="Texture2D" uid="uid://n8nkevkd5s3s" path="res://assets/parallax/bottom_lily_1.png" id="35_5ywmu"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mhvfb"]
 noise_type = 3
@@ -202,7 +200,7 @@ shader_parameter/noise_2_intensity = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ln7ps"]
 shader = ExtResource("15_ee6o4")
-shader_parameter/water_line = 0.7776924
+shader_parameter/water_line = 0.8106594
 shader_parameter/foam_color = Color(0.89505, 0.9, 0.6029999, 0.972549)
 shader_parameter/foam_size = 0.002
 shader_parameter/subfoam_color = Color(0.1936, 0.22, 0.08799999, 0.972549)
@@ -217,8 +215,8 @@ shader_parameter/mix_3_intensity = 0.0110000005225
 shader_parameter/mix_4_intensity = 0.04400000209
 shader_parameter/wave_amplitude = 0.01000000047497451
 shader_parameter/wave_frequency = 0.7853981633974483
-shader_parameter/reflection_squish = 3.0
-shader_parameter/reflection_opacity = 0.34065932
+shader_parameter/reflection_squish = 0.0
+shader_parameter/reflection_opacity = 0.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pxxsx"]
 
@@ -705,15 +703,13 @@ tile_set = ExtResource("15_ln7ps")
 tile_map_data = PackedByteArray("AADf/wIAAQABAAIAAADg/wIAAQACAAIAAADh/wIAAQADAAIAAADi/wIAAQAEAAIAAADf/wEAAQABAAIAAADg/wEAAQACAAIAAADh/wEAAQADAAIAAADi/wEAAQAEAAIAAADf/wAAAQABAAIAAADg/wAAAQACAAIAAADh/wAAAQADAAIAAADi/wAAAQAEAAIAAADf////AQABAAIAAADg////AQACAAIAAADh////AQADAAIAAADi////AQAEAAIAAADf//7/AQABAAIAAADg//7/AQACAAIAAADh//7/AQADAAIAAADi//7/AQAEAAIAAADf//3/AQABAAIAAADg//3/AQACAAIAAADh//3/AQADAAIAAADi//3/AQAEAAIAAADf//z/AQABAAIAAADg//z/AQACAAIAAADh//z/AQADAAIAAADi//z/AQAEAAIAAADf//v/AQABAAIAAADg//v/AQACAAIAAADh//v/AQADAAIAAADi//v/AQAEAAIAAADf//r/AQABAAIAAADg//r/AQACAAIAAADh//r/AQADAAIAAADi//r/AQAEAAIAAADf//n/AQABAAIAAADg//n/AQACAAIAAADh//n/AQADAAIAAADi//n/AQAEAAIAAADf//j/AQABAAIAAADg//j/AQACAAIAAADh//j/AQADAAIAAADi//j/AQAEAAIAAADf//b/AQABAAIAAADg//b/AQACAAIAAADh//b/AQADAAIAAADi//b/AQAEAAIAAADf//f/AQABAAIAAADg//f/AQACAAIAAADh//f/AQADAAIAAADi//f/AQAEAAIAAADf/wMAAQABAAIAAADg/wMAAQACAAIAAADh/wMAAQADAAIAAADi/wMAAQAEAAIAAADf/wQAAQABAAIAAADg/wQAAQACAAIAAADh/wQAAQADAAIAAADi/wQAAQAEAAIAAADf/wUAAQABAAIAAADg/wUAAQACAAIAAADh/wUAAQADAAIAAADi/wUAAQAEAAIAAADf/wYAAQABAAIAAADg/wYAAQACAAIAAADh/wYAAQADAAIAAADi/wYAAQAEAAIAAAAdAAMAAQAAAAIAAAAeAAMAAQABAAIAAAAfAAMAAQACAAIAAAAgAAMAAQADAAIAAAAdAAIAAQAAAAIAAAAeAAIAAQABAAIAAAAfAAIAAQACAAIAAAAgAAIAAQADAAIAAAAdAAEAAQAAAAIAAAAeAAEAAQABAAIAAAAfAAEAAQACAAIAAAAgAAEAAQADAAIAAAAdAAAAAQAAAAIAAAAeAAAAAQABAAIAAAAfAAAAAQACAAIAAAAgAAAAAQADAAIAAAAdAP//AQAAAAIAAAAeAP//AQABAAIAAAAfAP//AQACAAIAAAAgAP//AQADAAIAAAAdAP7/AQAAAAIAAAAeAP7/AQABAAIAAAAfAP7/AQACAAIAAAAgAP7/AQADAAIAAAAdAP3/AQAAAAIAAAAeAP3/AQABAAIAAAAfAP3/AQACAAIAAAAgAP3/AQADAAIAAAAdAPz/AQAAAAIAAAAeAPz/AQABAAIAAAAfAPz/AQACAAIAAAAgAPz/AQADAAIAAAAdAPv/AQAAAAIAAAAeAPv/AQABAAIAAAAfAPv/AQACAAIAAAAgAPv/AQADAAIAAAAdAPr/AQAAAAIAAAAeAPr/AQABAAIAAAAfAPr/AQACAAIAAAAgAPr/AQADAAIAAAAdAPn/AQAAAAIAAAAeAPn/AQABAAIAAAAfAPn/AQACAAIAAAAgAPn/AQADAAIAAAAdAPj/AQAAAAIAAAAeAPj/AQABAAIAAAAfAPj/AQACAAIAAAAgAPj/AQADAAIAAAAdAPf/AQAAAAIAAAAeAPf/AQABAAIAAAAfAPf/AQACAAIAAAAgAPf/AQADAAIAAAAdAPb/AQAAAAIAAAAeAPb/AQABAAIAAAAfAPb/AQACAAIAAAAgAPb/AQADAAIAAAAdAAQAAQAAAAIAAAAeAAQAAQABAAIAAAAfAAQAAQACAAIAAAAgAAQAAQADAAIAAAAdAAUAAQAAAAIAAAAeAAUAAQABAAIAAAAfAAUAAQACAAIAAAAgAAUAAQADAAIAAAAdAAYAAQAAAAIAAAAeAAYAAQABAAIAAAAfAAYAAQACAAIAAAAgAAYAAQADAAIAAAAMAP//AQACAAIAAAAMAP7/AQAGAAUAAAAMAP3/AQAGAAQAAAANAP3/AQAHAAQAAAANAP7/AQAHAAUAAAANAP//AQACAAIAAAAOAP//AQACAAIAAAAOAP7/AQAIAAUAAAAOAP3/AQAIAAQAAAAPAP7/AQAGAAQAAAAQAP7/AQAHAAQAAAARAP7/AQAIAAQAAAARAP//AQAIAAUAAAAQAP//AQAHAAUAAAAPAP//AQAGAAUAAAATAP//AQAGAAQAAAAUAP//AQAHAAQAAAAVAP//AQAIAAQAAAATAAAAAQAGAAUAAAAUAAAAAQAHAAUAAAAVAAAAAQAIAAUAAAASAP//AQABAAAAAAAGAPr/AQACAAEAAAAGAPv/AQACAAEAAAAHAPv/AQACAAEAAAAIAPv/AQACAAEAAAAJAPv/AQACAAEAAAAJAPr/AQACAAEAAAAIAPr/AQACAAEAAAAHAPr/AQACAAEAAAAIAPn/AQACAAEAAAAHAPn/AQACAAEAAAAGAPn/AQACAAEAAAAJAPn/AQACAAEAAAAFAPn/AQACAAEAAAAFAPr/AQACAAEAAAAFAPv/AQACAAEAAAAWAPn/AQACAAEAAAAWAPr/AQACAAEAAAAWAPv/AQACAAEAAAAXAPv/AQACAAEAAAAYAPv/AQACAAEAAAAZAPv/AQACAAEAAAAZAPr/AQACAAEAAAAZAPn/AQACAAEAAAAYAPn/AQACAAEAAAAYAPr/AQACAAEAAAAXAPr/AQACAAEAAAAXAPn/AQACAAEAAAAaAPr/AQACAAEAAAAaAPv/AQACAAEAAAAaAPn/AQACAAEAAAAVAPn/AQACAAEAAAAVAPr/AQACAAEAAAAVAPv/AQACAAEAAAAUAPv/AQACAAEAAAAUAPr/AQACAAEAAAAUAPn/AQACAAEAAAA=")
 tile_set = ExtResource("15_ln7ps")
 
-[node name="BackBufferCopy3" type="BackBufferCopy" parent="." unique_id=2034193360]
-
-[node name="Water" type="Parallax2D" parent="BackBufferCopy3" unique_id=2141431384]
+[node name="Water" type="Parallax2D" parent="." unique_id=2141431384]
 scroll_scale = Vector2(0, 1)
 scroll_offset = Vector2(0, -814)
 repeat_size = Vector2(1920, 0)
 metadata/_edit_lock_ = true
 
-[node name="Water" type="TextureRect" parent="BackBufferCopy3/Water" unique_id=524147455]
+[node name="Water" type="TextureRect" parent="Water" unique_id=524147455]
 material = SubResource("ShaderMaterial_ln7ps")
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -821,16 +817,6 @@ position = Vector2(399.00003, 219)
 scale = Vector2(0.27654886, 0.27654886)
 texture = ExtResource("20_mhvfb")
 
-[node name="BottomLily1" type="Sprite2D" parent="Front" unique_id=1833151629]
-position = Vector2(410, 995)
-scale = Vector2(0.25232556, 0.25232556)
-texture = ExtResource("35_5ywmu")
-
-[node name="BottomLily2" type="Sprite2D" parent="Front" unique_id=95874074]
-position = Vector2(513, 1027)
-scale = Vector2(0.26362455, 0.26362458)
-texture = ExtResource("34_gvtgv")
-
 [node name="FrontLeaves" type="Parallax2D" parent="." unique_id=546151895]
 scroll_scale = Vector2(1.2, 0)
 scroll_offset = Vector2(0, 1)
@@ -890,7 +876,6 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [connection signal="spawn_enemy" from="WaveSpawner" to="." method="_on_wave_spawner_spawn_enemy"]
 [connection signal="wave_ended" from="WaveSpawner" to="." method="_on_wave_spawner_wave_ended"]

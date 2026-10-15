@@ -35,6 +35,8 @@ func create_instances_for_all_enemies():
 
 func get_total_points() -> int:
 	var total_points := 0
+	for s: ScrapEnemyComponent in scrap_enemy_components.values():
+		total_points += s.get_total_points()
 	return total_points
 
 

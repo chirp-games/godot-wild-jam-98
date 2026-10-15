@@ -21,6 +21,20 @@ layout_mode = 2
 text = "Enemy Scraps"
 horizontal_alignment = 1
 
+[node name="HFlowContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=833846490]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Scrap Menu/HFlowContainer" unique_id=1059529146]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "In Storage"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Scrap Menu/HFlowContainer" unique_id=741175801]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Scrap"
+horizontal_alignment = 2
+
 [node name="ScrapEnemyComponent" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=410389457 instance_placeholder="res://game/scrapyard/scrap_enemy_component.tscn"]
 unique_name_in_owner = true
 layout_mode = 2
