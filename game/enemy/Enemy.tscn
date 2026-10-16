@@ -34,6 +34,7 @@ texture = ExtResource("2_4fyss")
 shape = SubResource("RectangleShape2D_4v1xc")
 
 [node name="Health" type="Label" parent="." unique_id=359780345]
+visible = false
 offset_left = -40.0
 offset_top = -42.0
 offset_right = 48.0

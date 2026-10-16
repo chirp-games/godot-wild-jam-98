@@ -3,6 +3,8 @@ extends Resource
 class_name EnemyResource
 
 @export var name: String = "Enemy Name"
+@export var texture: Texture2D
+@export var texture_scale: Vector2 = Vector2(1, 1)
 @export var scrap_value: int = 10
 @export var health: int = 10
 @export var movement_speed: int = 100

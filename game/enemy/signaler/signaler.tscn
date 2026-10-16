@@ -3,10 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_60swe"]
 [ext_resource type="Script" uid="uid://bxdvgviv5okeu" path="res://game/enemy/signaler/signaler.gd" id="2_15cit"]
 [ext_resource type="Resource" uid="uid://bpsxdjujmbs0q" path="res://resources/enemy/signaler.tres" id="3_ivohm"]
+[ext_resource type="Texture2D" uid="uid://ciw2ulqqhuy77" path="res://assets/enemy/signaler.png" id="4_rq3vk"]
 
 [node name="Enemy" unique_id=1388627917 instance=ExtResource("1_60swe")]
 script = ExtResource("2_15cit")
 resource = ExtResource("3_ivohm")
+
+[node name="Sprite2D" parent="." index="1" unique_id=705184273]
+texture = ExtResource("4_rq3vk")
 
 [node name="Flare" parent="." index="5" unique_id=1536752728 instance_placeholder="res://game/enemy/signaler/flare.tscn"]
 unique_name_in_owner = true

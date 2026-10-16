@@ -23,6 +23,8 @@ class_name ScrapEnemyComponent
 @onready var scrap_amount_label: Label = %ScrapAmount
 @onready var total_scrap_points: Label = %TotalScrapPoints
 
+signal add_corpse
+
 func _ready() -> void:
 	update_ui()
 
@@ -53,3 +55,4 @@ func _on_remove_quantity_pressed() -> void:
 func _on_add_quantity_pressed() -> void:
 	if scrap_quantity < amount_in_storage:
 		scrap_quantity += 1
+		add_corpse.emit()

@@ -7,13 +7,25 @@ class_name DragableRgidBody
 signal picked_up
 signal dropped
 
+signal right_click
+signal drag_area_mouse_entered
+signal drag_area_mouse_exited
+
 var dragging := false
 var disable_dragging := false
 var on_floor = false
+var can_right_click = false
 var floor
 
 func _ready() -> void:
 	drag_area.gui_input.connect(_on_gui_input)
+	drag_area.mouse_entered.connect(func():
+		drag_area_mouse_entered.emit()
+	)
+	drag_area.mouse_exited.connect(func():
+		can_right_click = false
+		drag_area_mouse_exited.emit()
+	)
 	drag_area.self_modulate.a = 0
 
 func _process(_delta: float) -> void:
@@ -39,6 +51,14 @@ func _on_gui_input(event: InputEvent) -> void:
 		dropped.emit()
 		gravity_scale = 1.0
 		dragging = false
+
+	if event.is_action_pressed("right_click"):
+		can_right_click = true
+
+	if event.is_action_released("right_click"):
+		if can_right_click:
+			right_click.emit()
+			can_right_click = false
 
 	angular_damp = 100.
 		

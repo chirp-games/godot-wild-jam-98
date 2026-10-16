@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://bpsxdjujmbs0q"]
 
 [ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="1_doeyv"]
+[ext_resource type="Texture2D" uid="uid://ciw2ulqqhuy77" path="res://assets/enemy/signaler.png" id="2_tnryh"]
 
 [resource]
 script = ExtResource("1_doeyv")
 name = "Signaler"
+texture = ExtResource("2_tnryh")
 health = 50
 movement_speed = 0
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"

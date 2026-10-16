@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c3ihm64euwh6s"]
 
 [ext_resource type="Script" uid="uid://dnpi7iigp0yg7" path="res://game/scrapyard/scrap_enemy_menu.gd" id="1_wvw0o"]
+[ext_resource type="PackedScene" uid="uid://c4wos5po7vd15" path="res://game/scrapyard/scrap_pit.tscn" id="2_wvw0o"]
 
 [node name="Scrapyard" type="PanelContainer" unique_id=7092206]
 script = ExtResource("1_wvw0o")
@@ -39,57 +40,16 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=1781401496]
+[node name="Rewards" type="AspectRatioContainer" parent="VBoxContainer/HBoxContainer" unique_id=1478288161]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer" unique_id=552803821]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=910357188]
-layout_mode = 2
-text = "Rewards:"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2" unique_id=1415903636]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer" unique_id=1808674036]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=174532394]
-layout_mode = 2
-text = "Commander -"
-
-[node name="CommanderPercentChance" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer" unique_id=1961473619]
+[node name="ScrapPit" parent="VBoxContainer/HBoxContainer/Rewards" unique_id=625930550 instance=ExtResource("2_wvw0o")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "0%"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer" unique_id=829762451]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1068241498]
-layout_mode = 2
-text = "Lieuetentant -"
-
-[node name="LiuetenantPercentChance" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer2" unique_id=1195137706]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0%"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer" unique_id=1052734723]
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer3" unique_id=1394207563]
-layout_mode = 2
-text = "Recruit -"
-
-[node name="RecruitPercentChance" type="Label" parent="VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer2/VBoxContainer/HBoxContainer3" unique_id=527864120]
-unique_name_in_owner = true
-layout_mode = 2
-text = "0%"
 
 [node name="ScrapButton" type="Button" parent="VBoxContainer" unique_id=2108309080]
 layout_mode = 2
 text = "Scrap!"
 
+[connection signal="remove_enemy" from="VBoxContainer/HBoxContainer/Rewards/ScrapPit" to="." method="_on_scrap_pit_remove_enemy"]
 [connection signal="pressed" from="VBoxContainer/ScrapButton" to="." method="_on_scrap_button_pressed"]

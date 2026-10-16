@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://pbxaya5itfan"]
+
+[ext_resource type="Script" uid="uid://djq427f2ky1qx" path="res://game/scrapyard/scrap_enemy_corpse.gd" id="1_dt337"]
+[ext_resource type="Texture2D" uid="uid://n4uceh0cx0es" path="res://assets/enemy/rat.png" id="1_ku5lw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6w6ra"]
+radius = 16.0
+
+[node name="ScrapEnemyCorpse" type="RigidBody2D" unique_id=333085797 node_paths=PackedStringArray("drag_area")]
+collision_layer = 128
+collision_mask = 128
+input_pickable = true
+script = ExtResource("1_dt337")
+drag_area = NodePath("DragArea")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=340417561]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ku5lw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1737552035]
+shape = SubResource("CircleShape2D_6w6ra")
+
+[node name="DragArea" type="TextureRect" parent="." unique_id=1322790737]
+offset_left = -40.0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 24.0
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="right_click" from="." to="." method="_on_right_click"]

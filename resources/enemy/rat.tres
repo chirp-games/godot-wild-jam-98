@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://cer77t43aibqc"]
 
 [ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="1_1tgnk"]
+[ext_resource type="Texture2D" uid="uid://n4uceh0cx0es" path="res://assets/enemy/rat.png" id="2_716fj"]
 
 [resource]
 script = ExtResource("1_1tgnk")
 name = "Bomb Rat"
+texture = ExtResource("2_716fj")
 scrap_value = 5
 movement_speed = 600
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"
