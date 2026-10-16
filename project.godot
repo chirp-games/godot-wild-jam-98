@@ -146,6 +146,14 @@ enter_command_mode={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Frog Mech"
+2d_physics/layer_3="Enemies"
+2d_physics/layer_4="Terrain"
+2d_physics/layer_8="Scrap UI"
+
 [physics]
 
 2d/solver/solver_iterations=2400
