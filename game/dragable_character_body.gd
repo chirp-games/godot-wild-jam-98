@@ -26,7 +26,6 @@ func _ready() -> void:
 		can_right_click = false
 		drag_area_mouse_exited.emit()
 	)
-	drag_area.self_modulate.a = 0
 
 func _process(_delta: float) -> void:
 	pass

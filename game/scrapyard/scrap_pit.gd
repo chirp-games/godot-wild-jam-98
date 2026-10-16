@@ -7,6 +7,8 @@ signal remove_enemy(enemy: EnemyResource)
 
 @onready var scrap_enemy_corpse: InstancePlaceholder = %ScrapEnemyCorpse
 
+var corpses: Array[ScrapEnemyCorpse] = []
+
 func get_pvector_extents(p:PackedVector2Array)->Vector4: 
 	var minX:float = p[0].x
 	var maxX:float = p[0].x 
@@ -38,6 +40,12 @@ func add_enemy(enemy: EnemyResource):
 	)
 	corpse.global_position = %AddCorpse.global_position
 	corpse.global_position.x += randf_range(-30, 30)
+	corpses.push_back(corpse)
+
+func empty_pit():
+	for c in corpses:
+		c.queue_free()
+	corpses = []
 
 func _ready() -> void:
 	custom_minimum_size = get_polygon_size($StaticBody2D.get_child(0).polygon)

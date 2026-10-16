@@ -4,27 +4,35 @@
 [ext_resource type="Texture2D" uid="uid://n4uceh0cx0es" path="res://assets/enemy/rat.png" id="1_ku5lw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6w6ra"]
-radius = 16.0
+radius = 40.0
 
 [node name="ScrapEnemyCorpse" type="RigidBody2D" unique_id=333085797 node_paths=PackedStringArray("drag_area")]
 collision_layer = 128
 collision_mask = 128
 input_pickable = true
 script = ExtResource("1_dt337")
-drag_area = NodePath("DragArea")
+drag_area = NodePath("Texture")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=340417561]
-scale = Vector2(0.5, 0.5)
+[node name="Texture" type="TextureRect" parent="." unique_id=1322790737]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -41.5
+offset_right = 87.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+offset_transform_enabled = true
+offset_transform_pivot_ratio = Vector2(0, 0)
 texture = ExtResource("1_ku5lw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1737552035]
 shape = SubResource("CircleShape2D_6w6ra")
-
-[node name="DragArea" type="TextureRect" parent="." unique_id=1322790737]
-offset_left = -40.0
-offset_top = -24.0
-offset_right = 40.0
-offset_bottom = 24.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

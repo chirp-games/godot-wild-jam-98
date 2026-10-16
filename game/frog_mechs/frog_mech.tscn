@@ -52,6 +52,8 @@ max_value = 1.0
 show_percentage = false
 
 [node name="DragArea" type="PanelContainer" parent="." unique_id=898136738]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 offset_left = -52.0
 offset_top = -31.0
 offset_right = 86.0

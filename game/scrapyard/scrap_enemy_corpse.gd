@@ -5,9 +5,9 @@ class_name ScrapEnemyCorpse
 signal on_click
 
 func set_enemy(e: EnemyResource):
-	$Sprite2D.texture = e.texture
-	$Sprite2D.scale = e.texture_scale * .5
-
+	$Texture.texture = e.texture
+	$Texture.size = e.texture.get_size()
+	$Texture.scale = e.texture_scale
 
 func _on_right_click() -> void:
 	on_click.emit()

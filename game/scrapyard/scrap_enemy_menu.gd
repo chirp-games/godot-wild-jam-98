@@ -66,6 +66,7 @@ func _on_scrap_button_pressed() -> void:
 		# And reset the UI
 		c.amount_in_storage = game.enemy_corpses_collected[k]
 		c.scrap_quantity = 0
+		scrap_pit.empty_pit()
 
 	
 	scrap_pressed.emit()
