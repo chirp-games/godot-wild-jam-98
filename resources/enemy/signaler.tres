@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_doeyv")
 name = "Signaler"
+health = 50
 movement_speed = 0
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"

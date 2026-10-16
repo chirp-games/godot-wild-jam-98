@@ -12,6 +12,9 @@ enum MechClass {
 @export var mech_class: MechClass = MechClass.Recruit
 @export_multiline var description: String = ""
 
+@export_category("Pathfinding")
+@export var pathfinding: PathfindingResource
+
 @export_category("Effects")
 ## Cooldown in scales of .1
 @export var cooldown_ratio: int

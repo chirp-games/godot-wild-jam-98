@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="MechResource" format=3 uid="uid://b4andh72n12pq"]
 
+[ext_resource type="Script" uid="uid://cstle5vylkwia" path="res://resources/mechs/pathfinding/follow_captain.gd" id="2_hvljw"]
 [ext_resource type="Script" uid="uid://d011ch803a1me" path="res://resources/mechs/effects/damage_effect.gd" id="3_dkixk"]
 [ext_resource type="Script" uid="uid://w1r7li8jtpq7" path="res://resources/mechs/mech_resource.gd" id="5_k2ayt"]
 
@@ -8,10 +9,15 @@ script = ExtResource("3_dkixk")
 damage = 2
 metadata/_custom_type_script = "uid://d011ch803a1me"
 
+[sub_resource type="Resource" id="Resource_ivohm"]
+script = ExtResource("2_hvljw")
+metadata/_custom_type_script = "uid://cstle5vylkwia"
+
 [resource]
 script = ExtResource("5_k2ayt")
 name = "Big Bullet"
 description = "Deal 2 extra damage."
+pathfinding = SubResource("Resource_ivohm")
 cooldown_ratio = 1
 effect = SubResource("Resource_ue73u")
 metadata/_custom_type_script = "uid://w1r7li8jtpq7"

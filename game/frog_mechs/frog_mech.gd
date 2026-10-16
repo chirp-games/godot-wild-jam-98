@@ -83,16 +83,7 @@ func _physics_process(delta: float) -> void:
 	if dragging:
 		return
 
-	# AI
-	if get_connected_commander() != null:
-		ai()
-
-func ai():
-	if resource.mech_class == MechResource.MechClass.Recruit:
-		direction = -sign(global_position.x - get_connected_commander().global_position.x)
-	if on_floor:
-		apply_central_impulse(Vector2(direction * 200., -200.))
-		direction *= -1
+	resource.pathfinding.pathfind(game, self)
 
 func get_receptacle() -> WireReceptacle:
 	return wire_recpetacle

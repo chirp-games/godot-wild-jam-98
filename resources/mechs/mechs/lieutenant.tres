@@ -2,14 +2,20 @@
 
 [ext_resource type="Script" uid="uid://w1r7li8jtpq7" path="res://resources/mechs/mech_resource.gd" id="1_5ybgx"]
 [ext_resource type="Script" uid="uid://bamu2x08qd63l" path="res://resources/mechs/effects/noop_effect.gd" id="1_yi8i0"]
+[ext_resource type="Script" uid="uid://cstle5vylkwia" path="res://resources/mechs/pathfinding/follow_captain.gd" id="2_555co"]
 
 [sub_resource type="Resource" id="Resource_b2mth"]
 script = ExtResource("1_yi8i0")
 metadata/_custom_type_script = "uid://bamu2x08qd63l"
 
+[sub_resource type="Resource" id="Resource_xpdnb"]
+script = ExtResource("2_555co")
+metadata/_custom_type_script = "uid://cstle5vylkwia"
+
 [resource]
 script = ExtResource("1_5ybgx")
 name = "Baisc Lieutenant"
 description = "Does nothing, but in the future will buff Recruits."
+pathfinding = SubResource("Resource_xpdnb")
 effect = SubResource("Resource_b2mth")
 metadata/_custom_type_script = "uid://w1r7li8jtpq7"
