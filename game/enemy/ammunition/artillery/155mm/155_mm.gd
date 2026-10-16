@@ -10,4 +10,5 @@ func _physics_process(delta: float) -> void:
 			bomblet.velocity = velocity + Vector2(randf_range(-500,500),0)
 	
 	velocity.y += get_gravity().y * delta
+	self.rotation = atan(velocity.y / velocity.x) # Idk which way this faces so I'll leave the correction for later.
 	move_and_slide()
