@@ -29,9 +29,11 @@ text = "<"
 
 [node name="EnemyName" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=1653174794]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Enemy Scrap"
+horizontal_alignment = 1
 
 [node name="UnitSellAmount" type="Label" parent="HBoxContainer/HBoxContainer" unique_id=480875673]
 unique_name_in_owner = true

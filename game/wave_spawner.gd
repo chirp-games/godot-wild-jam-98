@@ -16,7 +16,6 @@ func start_wave():
 		var e: Enemy = signaler.instantiate()
 		spawn_enemy.emit(e, null)
 		e.summon_reinforcements.connect(func(): await _summon_reinforcements(e))
-
 		await get_tree().create_timer(2).timeout
 	wave_finished_spawning = true
 

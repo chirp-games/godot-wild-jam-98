@@ -31,6 +31,7 @@ func calculate_reward_percent(points: int) -> Array[float]:
 func create_instances_for_all_enemies():
 	for e in Resources.enemies:
 		var s: ScrapEnemyComponent = scrap_enemy_component.create_instance()
+		s.enemy = e
 		scrap_enemy_components[e] = s
 
 func get_total_points() -> int:
