@@ -20,7 +20,7 @@ const MAX_CONNECTION_DIST = 300
 @onready var health_label: Label = %Health
 @onready var material_label: Label = %Material
 
-var frogs_to_closest_commander: Dictionary[FrogMech, FrogMech] = {}
+var frogs_to_closest_commander: Dictionary = {}
 var enemy_corpses_collected: Dictionary[EnemyResource, int] = {}
 var currently_building_wire: Wire
 var material_currency = 0
@@ -32,20 +32,22 @@ func find_wires():
 	return get_tree().get_nodes_in_group("wire")
 
 func find_commanders():
-	return get_tree().get_nodes_in_group("mini_frog").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Commander)
+	# The player is a commander now...
+	return get_tree().get_nodes_in_group("frog_mech").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Commander) + [player]
 
 func find_recruits():
-	return get_tree().get_nodes_in_group("mini_frog").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Recruit)
+	return get_tree().get_nodes_in_group("frog_mech").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Recruit)
 
-func find_mini_frogs():
-	return get_tree().get_nodes_in_group("mini_frog")
+func find_frog_mechs():
+	return get_tree().get_nodes_in_group("frog_mech")
 
 func _ready() -> void:
-	for frog: FrogMech in find_mini_frogs():
+	for frog: FrogMech in find_frog_mechs():
 		frog.create_attack.connect(func(bullet_spawner: BulletSpawner): await _create_attack(frog, bullet_spawner))
 
-	for commander: FrogMech in find_commanders():
+	for commander in find_commanders():
 		commander.enemy_detected.connect(func(e: Enemy): _enemy_detected(commander, e))
+		pass
 
 	player_camera.make_current()
 
@@ -53,9 +55,9 @@ func _ready() -> void:
 		enemy_corpses_collected.get_or_add(e, 0)
 
 func _process(_delta: float) -> void:
-	for frog: FrogMech in find_mini_frogs():
+	for frog: FrogMech in find_frog_mechs():
 		var closest_commander = frogs_to_closest_commander.get(frog)
-		var new_closest_commander := get_closest_commander(frog)
+		var new_closest_commander = get_closest_commander(frog)
 		
 		var in_range = frog.global_position.distance_to(new_closest_commander.global_position) <= MAX_CONNECTION_DIST
 
@@ -83,12 +85,12 @@ func _create_attack(frog: FrogMech, bullet_spawner: BulletSpawner):
 	bullet_spawner.global_position = frog.global_position + Vector2(20, -10)
 	await bullet_spawner.fire_bullets()
 
-func get_closest_commander(frog: FrogMech) -> FrogMech:
+func get_closest_commander(frog: FrogMech):
 	var commanders = find_commanders()
-	commanders.sort_custom(func(x: FrogMech, y: FrogMech): return x.global_position.distance_squared_to(frog.global_position) < y.global_position.distance_squared_to(frog.global_position))
+	commanders.sort_custom(func(x, y): return x.global_position.distance_squared_to(frog.global_position) < y.global_position.distance_squared_to(frog.global_position))
 	return commanders.get(0)
 
-func create_wire(frog: FrogMech, commander: FrogMech):
+func create_wire(frog, commander):
 	var w: Wire = wire_scene.instantiate()
 	w.a = frog.get_receptacle()
 	w.b = commander.get_receptacle()
@@ -100,7 +102,7 @@ func closest_commander_lost(frog: FrogMech):
 		if wire.a == frog.get_receptacle() or wire.b == frog.get_receptacle():
 			wire.queue_free()
 
-func closest_commander_found(frog: FrogMech, commander: FrogMech):
+func closest_commander_found(frog, commander):
 	create_wire(frog, commander)
 
 func enter_scrapyard():

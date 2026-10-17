@@ -50,7 +50,6 @@ wire=""
 wire_receptacle=""
 enemy=""
 tower=""
-mini_frog=""
 player=""
 game=""
 bullet=""
@@ -58,6 +57,7 @@ ally=""
 player_attack=""
 enemy_attack=""
 flare=""
+frog_mech=""
 
 [gui]
 
