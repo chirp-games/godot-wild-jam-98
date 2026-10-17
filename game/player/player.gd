@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 		apply_central_impulse(Vector2(0, -700))
 		($Player/AnimationPlayer as AnimationPlayer).play("jump")
 	elif on_floor and direction != 0:
-		apply_central_impulse(Vector2(300 * walk_dir,-200))
+		apply_central_impulse(Vector2(200 * walk_dir,-100))
 		($Player/AnimationPlayer as AnimationPlayer).play(
 			"jump_left" if walk_dir < 0 else "jump"
 		)
