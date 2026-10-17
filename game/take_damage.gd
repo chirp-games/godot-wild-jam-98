@@ -23,3 +23,5 @@ func _damage(body: CollisionObject2D):
 	
 	if health <= 0:
 		death.emit()
+		collision_layer = 0
+		collision_mask = 0

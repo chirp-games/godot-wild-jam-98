@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c3r5sf1ub7eyg" path="res://game/enemy/enemy.gd" id="1_2c8go"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="2_4fyss"]
+[ext_resource type="Shader" uid="uid://dsslb28dealca" path="res://shaders/whiteout.gdshader" id="3_5foko"]
 [ext_resource type="Script" uid="uid://s2gywk4it0w5" path="res://game/take_damage.gd" id="3_kaq3b"]
 [ext_resource type="Texture2D" uid="uid://b6jhkuqrsicis" path="res://assets/enemy/parachute.png" id="4_jaqe3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvtgv"]
+shader = ExtResource("3_5foko")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4v1xc"]
 size = Vector2(66, 65)
@@ -13,6 +17,96 @@ radius = 400.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
 size = Vector2(68, 66)
+
+[sub_resource type="Animation" id="Animation_bihia"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:instance_shader_parameters/intensity")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_5foko"]
+resource_name = "death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j4mtl"]
+resource_name = "hit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:instance_shader_parameters/intensity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.999999977648, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bihia"]
+_data = {
+&"RESET": SubResource("Animation_bihia"),
+&"death": SubResource("Animation_5foko"),
+&"hit": SubResource("Animation_j4mtl")
+}
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1388627917 groups=["enemy", "enemy_attack"]]
 collision_layer = 4
@@ -27,6 +121,9 @@ scale = Vector2(0.5969388, 0.6707068)
 texture = ExtResource("4_jaqe3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=705184273]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_gvtgv")
+instance_shader_parameters/intensity = 0.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_4fyss")
 
@@ -71,5 +168,14 @@ offset_right = 29.0
 offset_bottom = -38.0
 text = "Stunned"
 
+[node name="OnHitAnimation" type="AnimationPlayer" parent="." unique_id=609795352]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_bihia")
+
+[node name="DeathAnimation" type="AnimationPlayer" parent="." unique_id=1525387586]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_bihia")
+
 [connection signal="area_entered" from="AggroDetection" to="." method="_on_aggro_detected"]
+[connection signal="damage_taken" from="TakeDamage" to="." method="_on_take_damage_damage_taken"]
 [connection signal="death" from="TakeDamage" to="." method="_on_take_damage_death"]
