@@ -30,17 +30,19 @@ func _physics_process(_delta: float) -> void:
 	if direction and direction != 0 and on_floor and walking <= 0:
 		if sign(direction) != walk_dir:
 			walk_dir = sign(direction)
+	
+	# Air mobility
+	if direction:
+		apply_central_force(Vector2(800 * direction, 0))
 
-	if on_floor and direction != 0:
+	if Input.is_action_just_pressed("move_up") and on_floor:
+		apply_central_impulse(Vector2(0, -700))
+		($Player/AnimationPlayer as AnimationPlayer).play("jump")
+	elif on_floor and direction != 0:
 		apply_central_impulse(Vector2(300 * walk_dir,-200))
 		($Player/AnimationPlayer as AnimationPlayer).play(
 			"jump_left" if walk_dir < 0 else "jump"
 		)
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("move_up") and on_floor:
-		apply_central_impulse(Vector2(0, -700))
-		($Player/AnimationPlayer as AnimationPlayer).play("jump")
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3
