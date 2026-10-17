@@ -14,6 +14,7 @@ var grounded
 @onready var stun_timer: Timer = %StunTimer
 @onready var stun_label: Label = %Stunned
 
+var player_x: float
 var target: Node2D = null
 var attack_cooldown: float = 0
 
@@ -31,6 +32,7 @@ func _ready() -> void:
 	speed = resource.movement_speed
 	attack_interval = resource.attack_interval
 	grounded = resource.grounded
+	player_x = 0 # FOR NOW, THE PLAYER DOESN"T EXIST
 
 func _physics_process(delta: float) -> void:
 	health = ($TakeDamage as TakeDamage).health
@@ -60,9 +62,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func pathfind(_delta: float):
-	# Walk torwards the center of the map, that is where the home base is
-	var x_vel: float = -sign(position.x) * speed
-	velocity = Vector2(x_vel, 0)
+	if not target:
+		if not grounded or not parachute.visible:
+			velocity.x = -sign(global_position.x - player_x) * speed
+	else:
+		velocity.x = 0
+		if attack_cooldown <= 0:
+			attack()
 
 func apply_central_impulse(impulse):
 	velocity += impulse
