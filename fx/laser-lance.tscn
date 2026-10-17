@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://bemng5adh7k3"]
 
 [ext_resource type="Texture2D" uid="uid://djpho40thmuie" path="res://assets/fx/laser-lance.png" id="1_sheet"]
+[ext_resource type="Shader" uid="uid://dm5vkb6xep81b" path="res://shaders/hsv_control.gdshader" id="1_yyjlp"]
 
-[sub_resource type="CanvasItemMaterial" id="mat"]
-blend_mode = 1
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc0y7"]
+shader = ExtResource("1_yyjlp")
+shader_parameter/hue_shift = 0.4440000685900001
+shader_parameter/saturation_mult = 1.200000057
+shader_parameter/value_mult = 1.02000004845
+shader_parameter/brightness_add = 0.200000057
+shader_parameter/contrast_mult = 1.0
 
 [sub_resource type="AtlasTexture" id="f3"]
 atlas = ExtResource("1_sheet")
@@ -167,6 +173,7 @@ animations = [{
 
 [node name="laser-lance" type="AnimatedSprite2D" unique_id=178111438]
 texture_filter = 2
-material = SubResource("mat")
+material = SubResource("ShaderMaterial_xc0y7")
 sprite_frames = SubResource("frames")
+animation = &"fade_out"
 autoplay = "default"
