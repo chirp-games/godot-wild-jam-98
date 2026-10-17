@@ -650,7 +650,7 @@ expand_mode = 1
 
 [node name="LeftPortal" type="Marker2D" parent="World/Portals" unique_id=1596849403]
 unique_name_in_owner = true
-position = Vector2(-1263, -670)
+position = Vector2(-827, -740)
 
 [node name="RightPortal" type="Marker2D" parent="World/Portals" unique_id=967867649]
 unique_name_in_owner = true
