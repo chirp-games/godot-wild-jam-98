@@ -35,13 +35,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	health = ($TakeDamage as TakeDamage).health
 	($Health as Label).text = str(health)
-
-	# gravity
-	if not parachute.visible:
-		velocity.y += 9.81
-	else:
-		# enemies with a parachute should fall slower
-		velocity.y += 4.0
+	
+	if grounded:
+		# gravity
+		if not parachute.visible:
+			velocity.y += 9.81
+		else:
+			# enemies with a parachute should fall slower
+			velocity.y += 4.0
 	
 	if is_stunned():
 		stun_label.show()
@@ -60,9 +61,8 @@ func _physics_process(delta: float) -> void:
 
 func pathfind(_delta: float):
 	# Walk torwards the center of the map, that is where the home base is
-	speed = 5
 	var x_vel: float = -sign(position.x) * speed
-	velocity += Vector2(x_vel, 0)
+	velocity = Vector2(x_vel, 0)
 
 func apply_central_impulse(impulse):
 	velocity += impulse
@@ -86,12 +86,8 @@ func damage(d: int):
 func attack():
 	attack_cooldown += attack_interval
 
-func entity_detected(body: Node2D):
-	body
-
 func set_target(player: Node):
 	target = player
-
 
 func _on_take_damage_death() -> void:
 	on_death.emit()

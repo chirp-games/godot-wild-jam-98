@@ -7,6 +7,6 @@ script = ExtResource("1_yyhlb")
 name = "Kamikaze Drone"
 scrap_value = 15
 health = 35
-movement_speed = 1500
+movement_speed = 3000
 grounded = false
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"

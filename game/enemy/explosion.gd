@@ -2,7 +2,7 @@ extends DealDamage
 class_name Explosion
 
 var lifetime: float
-var timer: float = 0.
+var timer: float
 
 var damaged: Array = []
 
