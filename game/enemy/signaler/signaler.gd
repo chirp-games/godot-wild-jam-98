@@ -25,5 +25,10 @@ func stun():
 	if flare_instance:
 		flare_instance.queue_free()
 
+func _on_take_damage_death() -> void:
+	if flare_instance:
+		flare_instance.fade_out()
+	super._on_take_damage_death()
+
 func _on_stun_timer_timeout() -> void:
 	pass
