@@ -8,5 +8,5 @@ script = ExtResource("1_1tgnk")
 name = "Bomb Rat"
 texture = ExtResource("2_716fj")
 scrap_value = 5
-movement_speed = 600
+movement_speed = 800
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"

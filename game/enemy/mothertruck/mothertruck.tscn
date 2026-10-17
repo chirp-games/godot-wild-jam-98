@@ -9,17 +9,12 @@
 size = Vector2(170, 150)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ok16d"]
-radius = 1500.0
+radius = 525.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3870k"]
 size = Vector2(170, 150)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(170, 6)
-
 [node name="Mothertruck" unique_id=1736390898 instance=ExtResource("1_via3p")]
-collision_layer = 1
-collision_mask = 1
 script = ExtResource("2_ok16d")
 resource = ExtResource("3_ok16d")
 
@@ -39,7 +34,3 @@ position = Vector2(0, -10)
 
 [node name="CollisionShape2D" parent="TakeDamage" index="0" unique_id=1340069219]
 shape = SubResource("RectangleShape2D_3870k")
-
-[node name="Floor" type="CollisionShape2D" parent="." index="8" unique_id=1237720811]
-position = Vector2(0, 24)
-shape = SubResource("RectangleShape2D_g4v7s")

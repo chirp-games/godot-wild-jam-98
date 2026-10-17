@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://cmydjlgt0dgs2"]
 
 [ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="1_yyhlb"]
+[ext_resource type="Texture2D" uid="uid://388ng2ur1tyq" path="res://assets/enemy/kamikaze_drone.png" id="2_hchrh"]
 
 [resource]
 script = ExtResource("1_yyhlb")
 name = "Kamikaze Drone"
+texture = ExtResource("2_hchrh")
 scrap_value = 15
 health = 35
 movement_speed = 3000

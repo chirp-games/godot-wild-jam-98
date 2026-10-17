@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		stun_label.hide()
 	
-	if not is_stunned():
+	if not is_stunned() and target:
 		attack_cooldown -= delta
 
 	if parachute.visible and is_on_floor():

@@ -2,18 +2,15 @@
 
 [ext_resource type="Script" uid="uid://m7dprylwsk0w" path="res://game/enemy/enemy_test.gd" id="1_rbnm8"]
 [ext_resource type="PackedScene" uid="uid://yttymwbco8y" path="res://game/frog_mechs/frog_mech.tscn" id="2_2yu6c"]
-[ext_resource type="PackedScene" uid="uid://duqi7gslxeegg" path="res://game/enemy/mothertruck/rat.tscn" id="2_rbnm8"]
 [ext_resource type="Resource" uid="uid://ccom41f5d1mrp" path="res://resources/mechs/mechs/commander.tres" id="3_kjgsc"]
 [ext_resource type="Resource" uid="uid://cy4llnahlcc3g" path="res://resources/mechs/mechs/recruit.tres" id="4_buw6m"]
 [ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="5_buw6m"]
+[ext_resource type="PackedScene" uid="uid://7fkuy7vtw8y8" path="res://game/enemy/howitzer/howitzer.tscn" id="6_rbnm8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rbnm8"]
 
 [node name="EnemyTest" type="Node2D" unique_id=1024668122]
 script = ExtResource("1_rbnm8")
-
-[node name="Rat" parent="." unique_id=1736390898 instance=ExtResource("2_rbnm8")]
-position = Vector2(-565, -85)
 
 [node name="MiniFrog" parent="." unique_id=637464119 instance=ExtResource("2_2yu6c")]
 position = Vector2(-126, -70)
@@ -34,3 +31,7 @@ position = Vector2(2340, -63)
 texture = ExtResource("5_buw6m")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=535097523]
+zoom = Vector2(0.4, 0.4)
+
+[node name="Howitzer" parent="." unique_id=1388627917 instance=ExtResource("6_rbnm8")]
+position = Vector2(2247, -104)

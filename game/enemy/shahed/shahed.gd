@@ -18,7 +18,6 @@ func pathfind(delta: float):
 		
 		if locked:
 			var Δθ: float = ω * delta * sign(θ) * min(1, 300 / global_position.distance_to(target.global_position))
-			print([θ, rotation, Δθ])
 			self.rotate(Δθ)
 			velocity = velocity.length() * Vector2(cos(θv+rotation), sin(θv+rotation))
 		else:
@@ -35,4 +34,6 @@ func _physics_process(delta: float):
 func attack():
 	var explosion: Explosion = EXPLOSION.instantiate()
 	explosion.setup(0.5, 300)
+	explosion.global_position = global_position
+	get_parent().add_child(explosion)
 	queue_free()

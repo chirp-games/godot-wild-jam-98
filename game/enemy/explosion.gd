@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if timer <= 0:
 		queue_free()
 	var ratio: float = timer / lifetime
-	self_modulate = Color(ratio, ratio, sqrt(ratio), ratio)
+	$Sprite2D.self_modulate = Color(ratio, ratio, sqrt(ratio), ratio)
 	timer -= delta
 
 func calculate_damage(body: Node2D) -> int:

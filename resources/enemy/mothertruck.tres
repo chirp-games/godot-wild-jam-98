@@ -1,11 +1,13 @@
 [gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://d2rc28d0ttaiy"]
 
 [ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="1_kupov"]
+[ext_resource type="Texture2D" uid="uid://sg4nwseyem58" path="res://assets/enemy/mothertruck.png" id="2_l5ps3"]
 
 [resource]
 script = ExtResource("1_kupov")
 name = "Mothertruck"
+texture = ExtResource("2_l5ps3")
 health = 250
-movement_speed = 1000
-attack_interval = 0.6
+movement_speed = 500
+attack_interval = 0.4
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"

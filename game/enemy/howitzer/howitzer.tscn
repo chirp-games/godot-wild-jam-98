@@ -4,6 +4,12 @@
 [ext_resource type="Script" uid="uid://3ywc1v5rrx62" path="res://game/enemy/howitzer/howitzer.gd" id="2_elsyq"]
 [ext_resource type="Resource" uid="uid://dfjc68kwj1hwl" path="res://resources/enemy/howitzer.tres" id="3_ibkle"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_elsyq"]
+radius = 2000.0
+
 [node name="Howitzer" unique_id=1388627917 instance=ExtResource("1_ffw6u")]
 script = ExtResource("2_elsyq")
 resource = ExtResource("3_ibkle")
+
+[node name="CollisionShape2D" parent="AggroDetection" parent_id_path=PackedInt32Array(248274435) index="0" unique_id=1626251780]
+shape = SubResource("CircleShape2D_elsyq")

@@ -10,6 +10,7 @@ func attack():
 	var ammo: CharacterBody2D = AMMO.instantiate()
 	ammo.position += BARRELS[step] * ($Sprite2D as Sprite2D).scale.x
 	ammo.velocity = ammo.global_position.direction_to(target.global_position) * 4800
+	get_parent().add_child(ammo)
 	step += 1
 	step %= 4
 	super.attack()

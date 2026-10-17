@@ -1,16 +1,18 @@
 extends Enemy
 
-var cargo = 7
+var cargo = 8
 var rat = preload("res://game/enemy/mothertruck/rat.tscn")
 
 func _physics_process(delta: float) -> void:
 	if cargo > 0:
 		super(delta)
 	else:
-		velocity.x = sign(position.x) * speed
+		velocity.x = sign(global_position.x - player_x) * speed
+		move_and_slide()
 
 func attack():
 	var spawn: Enemy = rat.instantiate()
-	spawn.position = position
-	spawn.set_target(target)
+	spawn.global_position = global_position
+	get_parent().add_child(spawn)
+	cargo -= 1
 	super.attack()
