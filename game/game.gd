@@ -42,6 +42,8 @@ func find_frog_mechs():
 	return get_tree().get_nodes_in_group("frog_mech")
 
 func _ready() -> void:
+	Vfx.reparent.call_deferred(self)
+	
 	for frog: FrogMech in find_frog_mechs():
 		frog.create_attack.connect(func(bullet_spawner: BulletSpawner): await _create_attack(frog, bullet_spawner))
 
