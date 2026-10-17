@@ -18,13 +18,15 @@ size = Vector2(115, 15)
 script = ExtResource("2_6ltfo")
 resource = ExtResource("2_y76ss")
 
-[node name="Sprite2D" parent="." index="0" unique_id=705184273]
+[node name="Parachute" parent="." index="0" unique_id=537602416]
+visible = false
+
+[node name="Sprite2D" parent="." index="1" unique_id=705184273]
 position = Vector2(0, 2)
 scale = Vector2(1, 1)
 texture = ExtResource("4_8j8wt")
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=522520049]
-position = Vector2(0, 0)
+[node name="CollisionShape2D" parent="." index="2" unique_id=522520049]
 shape = SubResource("RectangleShape2D_y76ss")
 
 [node name="CollisionShape2D" parent="AggroDetection" parent_id_path=PackedInt32Array(248274435) index="0" unique_id=1626251780]

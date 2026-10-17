@@ -5,3 +5,4 @@ extends Enemy
 func attack():
 	var explosion: Explosion = EXPLOSION.instantiate()
 	explosion.setup(0.15, 50)
+	queue_free()
