@@ -11,4 +11,5 @@ scrap_value = 15
 health = 35
 movement_speed = 3000
 grounded = false
+has_parachute = false
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"

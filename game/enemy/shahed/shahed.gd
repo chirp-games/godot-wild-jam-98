@@ -37,3 +37,7 @@ func attack():
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)
 	queue_free()
+
+func target_select(area: Area2D) -> void:
+	if !target or area.parent_resource.mech_class > target.parent_resource.mech_class:
+		target = area

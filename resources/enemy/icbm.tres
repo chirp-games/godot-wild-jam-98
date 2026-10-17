@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyResource" format=3 uid="uid://c4aa2aq6npm0l"]
+
+[ext_resource type="Script" uid="uid://c3hxujw0yjsue" path="res://resources/enemy/enemy_resource.gd" id="1_sxidv"]
+
+[resource]
+script = ExtResource("1_sxidv")
+name = "Intercontinental Ballistic Missile"
+scrap_value = 50
+health = 50
+movement_speed = 6600
+grounded = false
+has_parachute = false
+metadata/_custom_type_script = "uid://c3hxujw0yjsue"
