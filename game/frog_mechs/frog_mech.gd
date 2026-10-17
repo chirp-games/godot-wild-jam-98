@@ -21,6 +21,17 @@ var cooldown = 0.0
 @onready var wire_recpetacle: WireReceptacle = %WireReceptacle
 @onready var cooldown_bar: ProgressBar = %Cooldown
 
+func jump(jump_direction: int) -> void:
+	apply_central_impulse(Vector2(jump_direction * 200., -200.))
+	var animation: String
+	if direction > 0:
+		animation = "jump_right"
+	elif direction < 0:
+		animation = "jump_left"
+	else:
+		animation = "jump"
+	$MiniFrog/AnimationPlayer.play(animation)
+
 func _ready() -> void:
 	if resource.mech_class == MechResource.MechClass.Commander:
 		cooldown_bar.show()
