@@ -31,4 +31,4 @@ func _process(delta: float) -> void:
 			continue
 		total_scrap_value += c.scrap_value
 
-	%ProgressBar.value = total_scrap_value / 200.
+	%ProgressBar.value = total_scrap_value / 100.

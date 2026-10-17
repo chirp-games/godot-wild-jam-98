@@ -8,6 +8,13 @@ script = ExtResource("1_wvw0o")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1477808955]
 layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=532528302]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Scrapyard"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1776188812]
 layout_mode = 2
@@ -16,11 +23,6 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=532528302]
-layout_mode = 2
-text = "Enemy Scraps"
-horizontal_alignment = 1
 
 [node name="HFlowContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/Scrap Menu" unique_id=833846490]
 layout_mode = 2
@@ -47,9 +49,13 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ScrapButton" type="Button" parent="VBoxContainer" unique_id=2108309080]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=2019012536]
 layout_mode = 2
-text = "Scrap!"
+
+[node name="ScrapButton" type="Button" parent="VBoxContainer/CenterContainer" unique_id=2108309080]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Meld"
 
 [connection signal="remove_enemy" from="VBoxContainer/HBoxContainer/Rewards/ScrapPit" to="." method="_on_scrap_pit_remove_enemy"]
-[connection signal="pressed" from="VBoxContainer/ScrapButton" to="." method="_on_scrap_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/ScrapButton" to="." method="_on_scrap_button_pressed"]

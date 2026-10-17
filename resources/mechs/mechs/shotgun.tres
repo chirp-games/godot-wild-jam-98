@@ -29,6 +29,7 @@ metadata/_custom_type_script = "uid://cstle5vylkwia"
 [resource]
 script = ExtResource("2_8srmr")
 name = "Shotgun"
+rarity = 1
 description = "Shoots 3 bullets that deal 1 less damage."
 pathfinding = SubResource("Resource_ox2mw")
 cooldown_ratio = 1

@@ -7,6 +7,8 @@
 custom_minimum_size = Vector2(320, 512)
 offset_right = 320.0
 offset_bottom = 512.0
+split_offsets = PackedInt32Array(320, 386)
+split_offset = 320
 script = ExtResource("1_8gr11")
 
 [node name="ScrapPitContainer" type="Container" parent="." unique_id=2004589141]
@@ -28,7 +30,7 @@ position = Vector2(160, 48)
 
 [node name="ScrapEnemyCorpse" parent="ScrapPitContainer" unique_id=333085797 instance_placeholder="res://game/scrapyard/scrap_enemy_corpse.tscn"]
 unique_name_in_owner = true
-position = Vector2(-32, -40)
+position = Vector2(160, 200)
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=964290593]
 unique_name_in_owner = true
@@ -38,3 +40,27 @@ size_flags_horizontal = 4
 size_flags_vertical = 1
 max_value = 1.0
 fill_mode = 3
+show_percentage = false
+
+[node name="VSplitContainer" type="VFlowContainer" parent="." unique_id=344547476]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VSplitContainer" unique_id=712923224]
+layout_mode = 2
+size_flags_vertical = 6
+text = " - Four Rewards"
+
+[node name="Label3" type="Label" parent="VSplitContainer" unique_id=328639850]
+layout_mode = 2
+size_flags_vertical = 6
+text = " - Three Rewards"
+
+[node name="Label2" type="Label" parent="VSplitContainer" unique_id=1081157313]
+layout_mode = 2
+size_flags_vertical = 6
+text = " - Two Rewards"
+
+[node name="Label4" type="Label" parent="VSplitContainer" unique_id=782068647]
+layout_mode = 2
+size_flags_vertical = 6
+text = " - One Reward"

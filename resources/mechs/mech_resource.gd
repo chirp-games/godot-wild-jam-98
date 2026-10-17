@@ -8,8 +8,15 @@ enum MechClass {
 	Commander,
 }
 
+enum Rarity {
+	Common,
+	Uncommon,
+	Rare,
+}
+
 @export var name: String = "Mech"
 @export var mech_class: MechClass = MechClass.Recruit
+@export var rarity: Rarity = Rarity.Common
 @export_multiline var description: String = ""
 
 @export_category("Pathfinding")

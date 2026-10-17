@@ -26,3 +26,4 @@ func load_folder(folder: String) -> Array:
 	return o
 
 @onready var enemies = load_folder("enemy")
+@onready var mechs = load_folder("mechs/mechs")
