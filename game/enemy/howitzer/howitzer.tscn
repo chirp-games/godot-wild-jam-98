@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://dfjc68kwj1hwl" path="res://resources/enemy/howitzer.tres" id="3_ibkle"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_elsyq"]
-radius = 2000.0
+radius = 5760.0
 
 [node name="Howitzer" unique_id=1388627917 instance=ExtResource("1_ffw6u")]
 script = ExtResource("2_elsyq")

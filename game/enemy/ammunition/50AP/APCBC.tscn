@@ -10,6 +10,7 @@ radius = 0.63
 height = 5.0
 
 [node name="Apcbc" type="CharacterBody2D" unique_id=561317559 groups=["bullet", "enemy_attack"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_ggxnk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956352831]

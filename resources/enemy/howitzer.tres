@@ -8,5 +8,5 @@ name = "Howitzer"
 scrap_value = 40
 health = 200
 movement_speed = 75
-attack_interval = 5.0
+attack_interval = 10.0
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"

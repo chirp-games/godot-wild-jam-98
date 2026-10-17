@@ -12,11 +12,11 @@
 [node name="EnemyTest" type="Node2D" unique_id=1024668122]
 script = ExtResource("1_rbnm8")
 
-[node name="MiniFrog" parent="." unique_id=637464119 instance=ExtResource("2_2yu6c")]
+[node name="MiniFrog" parent="." unique_id=637464119 groups=["mini_frog"] instance=ExtResource("2_2yu6c")]
 position = Vector2(-126, -70)
 resource = ExtResource("3_kjgsc")
 
-[node name="MiniFrog2" parent="." unique_id=1218751387 instance=ExtResource("2_2yu6c")]
+[node name="MiniFrog2" parent="." unique_id=1218751387 groups=["mini_frog"] instance=ExtResource("2_2yu6c")]
 position = Vector2(79, -70)
 resource = ExtResource("4_buw6m")
 
@@ -31,7 +31,7 @@ position = Vector2(2340, -63)
 texture = ExtResource("5_buw6m")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=535097523]
-zoom = Vector2(0.4, 0.4)
+position = Vector2(0, -400)
 
 [node name="Howitzer" parent="." unique_id=1388627917 instance=ExtResource("6_rbnm8")]
-position = Vector2(2247, -104)
+position = Vector2(-6095, -99)

@@ -8,8 +8,8 @@ var cooldown = 0
 
 func attack():
 	var ammo: CharacterBody2D = AMMO.instantiate()
-	ammo.position += BARRELS[step] * ($Sprite2D as Sprite2D).scale.x
-	ammo.velocity = ammo.global_position.direction_to(target.global_position) * 4800
+	ammo.global_position = global_position + BARRELS[step] * ($Sprite2D as Sprite2D).scale.x
+	ammo.velocity = ammo.global_position.direction_to(target.global_position) * 3600
 	get_parent().add_child(ammo)
 	step += 1
 	step %= 4
