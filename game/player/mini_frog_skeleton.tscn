@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ceaf3u7d30hr3" path="res://assets/small_mech/head.png" id="12_sq0w3"]
 [ext_resource type="Texture2D" uid="uid://eyd8o5w015u8" path="res://assets/small_mech/assembly.png" id="13_i5hfl"]
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_i5hfl"]
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_1vhjx"]
 target_nodepath = NodePath("../FrontTarget")
 tip_nodepath = NodePath("Torso/FrontLegUpper/FrontLegLower/FrontFoot/Tip")
 ccdik_data_chain_length = 3
@@ -22,7 +22,7 @@ joint_data/0/bone_index = 1
 joint_data/0/bone2d_node = NodePath("Torso/FrontLegUpper")
 joint_data/0/rotate_from_joint = false
 joint_data/0/enable_constraint = true
-joint_data/0/constraint_angle_min = 299.99997
+joint_data/0/constraint_angle_min = 299.9999
 joint_data/0/constraint_angle_max = 360.0
 joint_data/0/constraint_angle_invert = false
 joint_data/0/constraint_in_localspace = true
@@ -45,8 +45,9 @@ joint_data/2/constraint_angle_max = 60.0
 joint_data/2/constraint_angle_invert = false
 joint_data/2/constraint_in_localspace = true
 joint_data/2/editor_draw_gizmo = true
+editor/draw_gizmo = false
 
-[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_k0wx2"]
+[sub_resource type="SkeletonModification2DCCDIK" id="SkeletonModification2DCCDIK_i5hfl"]
 target_nodepath = NodePath("../BackTarget")
 tip_nodepath = NodePath("Torso/Hip/BackLegUpper/BackLegLower/BackFoot/Tip")
 ccdik_data_chain_length = 4
@@ -55,7 +56,7 @@ joint_data/0/bone2d_node = NodePath("Torso/Hip")
 joint_data/0/rotate_from_joint = false
 joint_data/0/enable_constraint = true
 joint_data/0/constraint_angle_min = 0.0
-joint_data/0/constraint_angle_max = 49.999996
+joint_data/0/constraint_angle_max = 49.999992
 joint_data/0/constraint_angle_invert = false
 joint_data/0/constraint_in_localspace = true
 joint_data/0/editor_draw_gizmo = true
@@ -63,7 +64,7 @@ joint_data/1/bone_index = 5
 joint_data/1/bone2d_node = NodePath("Torso/Hip/BackLegUpper")
 joint_data/1/rotate_from_joint = false
 joint_data/1/enable_constraint = true
-joint_data/1/constraint_angle_min = 349.99997
+joint_data/1/constraint_angle_min = 349.99982
 joint_data/1/constraint_angle_max = 360.0
 joint_data/1/constraint_angle_invert = false
 joint_data/1/constraint_in_localspace = true
@@ -73,7 +74,7 @@ joint_data/2/bone2d_node = NodePath("Torso/Hip/BackLegUpper/BackLegLower")
 joint_data/2/rotate_from_joint = false
 joint_data/2/enable_constraint = true
 joint_data/2/constraint_angle_min = 0.0
-joint_data/2/constraint_angle_max = 79.99999
+joint_data/2/constraint_angle_max = 79.99997
 joint_data/2/constraint_angle_invert = false
 joint_data/2/constraint_in_localspace = true
 joint_data/2/editor_draw_gizmo = true
@@ -87,7 +88,7 @@ joint_data/3/constraint_angle_invert = false
 joint_data/3/constraint_in_localspace = true
 joint_data/3/editor_draw_gizmo = true
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_1vhjx"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_k0wx2"]
 enabled = false
 bone_index = 3
 bone2d_node = NodePath("Torso/FrontLegUpper/FrontLegLower/FrontFoot")
@@ -98,7 +99,7 @@ constraint_angle_max = 360.0
 constraint_angle_invert = false
 constraint_in_localspace = true
 
-[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_i5hfl"]
+[sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_qx8dy"]
 enabled = false
 bone_index = 7
 bone2d_node = NodePath("Torso/Hip/BackLegUpper/BackLegLower/BackFoot")
@@ -109,13 +110,14 @@ constraint_angle_max = 360.0
 constraint_angle_invert = false
 constraint_in_localspace = true
 
-[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_1vhjx"]
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_4nr5l"]
+resource_local_to_scene = true
 enabled = true
 modification_count = 4
-modifications/0 = SubResource("SkeletonModification2DCCDIK_i5hfl")
-modifications/1 = SubResource("SkeletonModification2DCCDIK_k0wx2")
-modifications/2 = SubResource("SkeletonModification2DLookAt_1vhjx")
-modifications/3 = SubResource("SkeletonModification2DLookAt_i5hfl")
+modifications/0 = SubResource("SkeletonModification2DCCDIK_1vhjx")
+modifications/1 = SubResource("SkeletonModification2DCCDIK_i5hfl")
+modifications/2 = SubResource("SkeletonModification2DLookAt_k0wx2")
+modifications/3 = SubResource("SkeletonModification2DLookAt_qx8dy")
 
 [sub_resource type="Animation" id="Animation_mfhbq"]
 length = 0.001
@@ -356,13 +358,14 @@ _data = {
 
 [node name="Skeleton" type="Skeleton2D" parent="." unique_id=1596045150]
 position = Vector2(0, 7)
-modification_stack = SubResource("SkeletonModificationStack2D_1vhjx")
+modification_stack = SubResource("SkeletonModificationStack2D_4nr5l")
 script = ExtResource("1_1vhjx")
 
 [node name="Torso" type="Bone2D" parent="Skeleton" unique_id=2070471373]
 position = Vector2(41.000004, -16.000002)
 scale = Vector2(0.9998356, 0.9998356)
 rest = Transform2D(0.9998356, 0, 0, 0.9998356, 41.000004, -16.000002)
+editor_settings/show_bone_gizmo = false
 
 [node name="Body" type="Sprite2D" parent="Skeleton/Torso" unique_id=2058301463]
 position = Vector2(-26.004276, 8.001317)
@@ -373,6 +376,7 @@ texture = ExtResource("1_pu5cg")
 position = Vector2(14.002298, 12.001975)
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(0.9999999, 0, 0, 0.9999999, 14.002298, 12.001975)
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="FrontShoulder" type="Sprite2D" parent="Skeleton/Torso/FrontLegUpper" unique_id=1962787919]
@@ -388,6 +392,7 @@ texture = ExtResource("3_i5hfl")
 position = Vector2(-23.003784, 4.000658)
 scale = Vector2(1.0000002, 1.0000002)
 rest = Transform2D(1.0000002, 0, 0, 1.0000002, -23.003784, 4.000658)
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="FrontLegBottom" type="Sprite2D" parent="Skeleton/Torso/FrontLegUpper/FrontLegLower" unique_id=1258087424]
@@ -405,6 +410,7 @@ rest = Transform2D(1, 0, 0, 1, 19.00312, 21.003448)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Foot" type="Sprite2D" parent="Skeleton/Torso/FrontLegUpper/FrontLegLower/FrontFoot" unique_id=328721209]
@@ -418,6 +424,7 @@ position = Vector2(25, 0)
 position = Vector2(-58.009537, 7.0011516)
 scale = Vector2(0.99988, 0.99988)
 rest = Transform2D(0.99988, 0, 0, 0.99988, -58.009537, 7.0011516)
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Hip" type="Sprite2D" parent="Skeleton/Torso/Hip" unique_id=432285746]
@@ -429,6 +436,7 @@ texture = ExtResource("8_4w7i1")
 position = Vector2(33.009384, 16.004553)
 scale = Vector2(0.99991316, 0.99991316)
 rest = Transform2D(0.99991316, 0, 0, 0.99991316, 33.009384, 16.004553)
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="BackLegKneeOne" type="Sprite2D" parent="Skeleton/Torso/Hip/BackLegUpper" unique_id=878219773]
@@ -444,6 +452,7 @@ texture = ExtResource("10_kjbad")
 position = Vector2(-41.015224, 8.002971)
 scale = Vector2(0.9998925, 0.9998925)
 rest = Transform2D(0.9998925, 0, 0, 0.9998925, -41.015224, 8.002971)
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="BackLegKnee2" type="Sprite2D" parent="Skeleton/Torso/Hip/BackLegUpper/BackLegLower" unique_id=447493427]
@@ -461,6 +470,7 @@ rest = Transform2D(1, 0, 0, 1, 32.015327, 7.003353)
 auto_calculate_length_and_angle = false
 length = 25.0
 bone_angle = 0.0
+editor_settings/show_bone_gizmo = false
 metadata/_local_pose_override_enabled_ = true
 
 [node name="Foot" type="Sprite2D" parent="Skeleton/Torso/Hip/BackLegUpper/BackLegLower/BackFoot" unique_id=1515564493]
@@ -476,6 +486,7 @@ rest = Transform2D(1, 0, 0, 1, 9.143257, 2.5358086)
 auto_calculate_length_and_angle = false
 length = 30.098
 bone_angle = -4.999998
+editor_settings/show_bone_gizmo = false
 
 [node name="Head" type="Sprite2D" parent="Skeleton/Torso/Head" unique_id=545627947]
 position = Vector2(21.718805, -6.120529)
