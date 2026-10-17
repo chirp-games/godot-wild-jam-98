@@ -1,27 +1,40 @@
 [gd_scene format=3 uid="uid://c4wos5po7vd15"]
 
 [ext_resource type="Script" uid="uid://b6pswjy1ns4ru" path="res://game/scrapyard/scrap_pit.gd" id="1_8gr11"]
+[ext_resource type="Script" uid="uid://k6hopk4qboo8" path="res://game/scrapyard/scrap_pit_container.gd" id="2_bvltx"]
 
-[node name="ScrapPit" type="Container" unique_id=625930550]
+[node name="ScrapPit" type="HSplitContainer" unique_id=208716514]
 custom_minimum_size = Vector2(320, 512)
+offset_right = 320.0
+offset_bottom = 512.0
 script = ExtResource("1_8gr11")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=794439188]
+[node name="ScrapPitContainer" type="Container" parent="." unique_id=2004589141]
+custom_minimum_size = Vector2(320, 512)
+layout_mode = 2
+script = ExtResource("2_bvltx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ScrapPitContainer" unique_id=794439188]
 collision_layer = 128
 collision_mask = 128
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1282481832]
-position = Vector2(16, 0)
-polygon = PackedVector2Array(0, 488, 288, 488, 288, 0, 304, 0, 304, 512, -16, 512, -16, 0, 0, 0, 0, 0)
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="ScrapPitContainer/StaticBody2D" unique_id=1282481832]
+position = Vector2(16, 8)
+polygon = PackedVector2Array(0, 488, 288, 488, 288, -512, 304, -512, 304, 512, -16, 512, -16, -504, 0, -504, 0, 0)
 
-[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1031464734]
-position = Vector2(16, 0)
-polygon = PackedVector2Array(-16, 0, 304, 0, 304, -40, -16, -40)
-
-[node name="AddCorpse" type="Marker2D" parent="." unique_id=2008720924]
+[node name="AddCorpse" type="Marker2D" parent="ScrapPitContainer" unique_id=2008720924]
 unique_name_in_owner = true
 position = Vector2(160, 48)
 
-[node name="ScrapEnemyCorpse" parent="." unique_id=333085797 instance_placeholder="res://game/scrapyard/scrap_enemy_corpse.tscn"]
+[node name="ScrapEnemyCorpse" parent="ScrapPitContainer" unique_id=333085797 instance_placeholder="res://game/scrapyard/scrap_enemy_corpse.tscn"]
 unique_name_in_owner = true
 position = Vector2(-32, -40)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=964290593]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+max_value = 1.0
+fill_mode = 3

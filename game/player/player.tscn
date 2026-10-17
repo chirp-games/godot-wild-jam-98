@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://7qbhbxttbpqk" path="res://game/player/player.gd" id="1_2mv0n"]
 [ext_resource type="PackedScene" uid="uid://croela4nh3klu" path="res://game/player/skeleton.tscn" id="2_8soms"]
+[ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/frog_mechs/WireReceptacle.tscn" id="3_8soms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(73, 55)
@@ -19,5 +20,13 @@ scale = Vector2(0.5, 0.5)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135713207]
 position = Vector2(-2.5, 5.5)
 shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="WireReceptacle" parent="." unique_id=21922453 instance=ExtResource("3_8soms")]
+unique_name_in_owner = true
+visible = false
+offset_left = -22.0
+offset_top = -17.0
+offset_right = -6.0
+offset_bottom = -1.0
 
 [connection signal="landed" from="." to="." method="on_landed"]

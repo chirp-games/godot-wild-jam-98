@@ -11,8 +11,9 @@ var can_enter_command_center_mode = false
 var in_command_center_mode = false
 var walking = 0.
 var walk_dir: float = 0.
-
 var just_landed = true
+
+signal enemy_detected(e: Enemy)
 
 func on_landed() -> void:
 	pass
@@ -65,6 +66,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 				landed.emit()
 			return
 		i += 1
+
+func get_receptacle() -> WireReceptacle:
+	return %WireReceptacle
 
 func attack():
 	## Attacks deal damage to enemies and apply knockback to them
