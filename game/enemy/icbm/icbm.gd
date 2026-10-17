@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 	var Δθ: float = ω * delta * sign(θ)
 	self.rotate(Δθ)
 	
-	if target:
+	if target or $AggroDetection.position.distance_to(last_pos) <= $AggroDetection/CollisionShape2D.shape.radius:
 		attack()
 	
 	velocity = Vector2.from_angle(rotation) * speed

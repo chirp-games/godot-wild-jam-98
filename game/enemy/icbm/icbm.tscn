@@ -2,21 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_cre33"]
 [ext_resource type="Script" uid="uid://cadjw0rpbmgh4" path="res://game/enemy/icbm/icbm.gd" id="2_2wic8"]
-[ext_resource type="Texture2D" uid="uid://c8o38o30vq1wj" path="res://icon.svg" id="3_le3q1"]
 [ext_resource type="Resource" uid="uid://c4aa2aq6npm0l" path="res://resources/enemy/icbm.tres" id="3_ui6fe"]
-[ext_resource type="Texture2D" uid="uid://dp6tseykdfxw1" path="res://assets/mech/front_leg_knee.png" id="4_ui6fe"]
+[ext_resource type="Texture2D" uid="uid://b23s3ulvxl2c" path="res://assets/enemy/icbm.png" id="4_le3q1"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1ji8c"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui6fe"]
+size = Vector2(280, 42)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cre33"]
-radius = 25.0
+radius = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wic8"]
-size = Vector2(320, 40)
+size = Vector2(280, 42)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yf5fn"]
-radius = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wrysh"]
+size = Vector2(30, 10)
 
 [node name="ICBM" unique_id=1388627917 instance=ExtResource("1_cre33")]
 script = ExtResource("2_2wic8")
@@ -26,32 +25,27 @@ resource = ExtResource("3_ui6fe")
 visible = false
 
 [node name="Sprite2D" parent="." index="1" unique_id=705184273]
-texture = SubResource("CompressedTexture2D_1ji8c")
+position = Vector2(125, 0)
+texture = ExtResource("4_le3q1")
 
-[node name="Sprite2D2" type="Sprite2D" parent="." index="2" unique_id=1003964363]
-position = Vector2(120, 0)
-scale = Vector2(2.5, 0.313)
-texture = ExtResource("3_le3q1")
+[node name="CollisionShape2D" parent="." index="2" unique_id=522520049]
+position = Vector2(100, 0)
+shape = SubResource("RectangleShape2D_ui6fe")
 
-[node name="Sprite2D3" type="Sprite2D" parent="." index="3" unique_id=1542928834]
-position = Vector2(280, 0)
-scale = Vector2(2.666, 1.333)
-texture = ExtResource("4_ui6fe")
-
-[node name="AggroDetection" parent="." index="6" unique_id=248274435]
-position = Vector2(300, 0)
+[node name="AggroDetection" parent="." index="4" unique_id=248274435]
+position = Vector2(270, 0)
 
 [node name="CollisionShape2D" parent="AggroDetection" index="0" unique_id=1626251780]
 shape = SubResource("CircleShape2D_cre33")
 
 [node name="CollisionShape2D" parent="TakeDamage" parent_id_path=PackedInt32Array(1976776874) index="0" unique_id=1340069219]
-position = Vector2(120, 0)
+position = Vector2(100, 0)
 shape = SubResource("RectangleShape2D_2wic8")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TakeDamage" parent_id_path=PackedInt32Array(1976776874) index="1" unique_id=29762030]
-position = Vector2(280, 0)
+position = Vector2(270, 0)
 scale = Vector2(2, 1)
-shape = SubResource("CircleShape2D_yf5fn")
+shape = SubResource("RectangleShape2D_wrysh")
 
-[node name="Warhead" type="Marker2D" parent="." index="12" unique_id=1460013178]
+[node name="Warhead" type="Marker2D" parent="." index="10" unique_id=1460013178]
 position = Vector2(300, 0)
