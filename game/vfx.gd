@@ -3,6 +3,7 @@ extends Node
 var VFX_FIREBALL_IMPACT = preload("res://fx/fireball-impact.tscn")
 var VFX_METAL_SPARK = preload("res://fx/metal-spark.tscn")
 var VFX_STOMP_RING = preload("res://fx/stomp-ring.tscn")
+var VFX_EMBER_FOUNTAIN = preload("res://fx/ember-fountain.tscn")
 
 func create_vfx_at_node2D(fx: PackedScene, at: Node2D):
 	create_vfx(fx, at.global_position, at.global_rotation)
