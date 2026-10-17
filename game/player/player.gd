@@ -16,7 +16,8 @@ var just_landed = true
 signal enemy_detected(e: Enemy)
 
 func on_landed() -> void:
-	pass
+	attack()
+	Vfx.create_vfx(Vfx.VFX_STOMP_RING, self.position + Vector2(0, 50))
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,13 +30,6 @@ func _physics_process(_delta: float) -> void:
 	if direction and direction != 0 and on_floor and walking <= 0:
 		if sign(direction) != walk_dir:
 			walk_dir = sign(direction)
-
-	if not on_floor:
-		just_landed = true
-	
-	if on_floor and just_landed:
-		attack()
-		just_landed = false
 
 	if on_floor and direction != 0:
 		apply_central_impulse(Vector2(300 * walk_dir,-200))

@@ -19,5 +19,5 @@ func _ready() -> void:
 	apply_central_impulse(1000 * direction)
 
 func _on_area_2d_deal_damage(_body: Node2D) -> void:
-	Vfx.create_vfx_at_node2D(Vfx.VFX_METAL_SPARK, self)
+	Vfx.create_vfx(Vfx.VFX_METAL_SPARK, self.global_position, self.linear_velocity.angle())
 	queue_free()
