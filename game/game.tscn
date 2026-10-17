@@ -26,7 +26,7 @@
 [ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="17_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://oxo860p4axb" path="res://assets/parallax/vine_1.png" id="17_ln7ps"]
 [ext_resource type="Texture2D" uid="uid://dgtmj0aqja482" path="res://assets/parallax/vine_2.png" id="17_pxxsx"]
-[ext_resource type="PackedScene" uid="uid://06c0brfsvj6n" path="res://game/player/player.tscn" id="18_cf130"]
+[ext_resource type="PackedScene" uid="uid://bcqcmbu10gh4t" path="res://game/player/player.tscn" id="19_posua"]
 [ext_resource type="Texture2D" uid="uid://c4o24aopopcv" path="res://assets/parallax/big_vine_1.png" id="19_u8s88"]
 [ext_resource type="Resource" uid="uid://b4andh72n12pq" path="res://resources/mechs/mechs/big_bullet.tres" id="20_cf130"]
 [ext_resource type="Texture2D" uid="uid://b2o5swy44dkpi" path="res://assets/parallax/vine_3.png" id="20_mhvfb"]
@@ -685,13 +685,13 @@ shape = SubResource("WorldBoundaryShape2D_6w6ra")
 [node name="Wires" type="Node2D" parent="World" unique_id=1126853350]
 unique_name_in_owner = true
 
-[node name="Player" parent="World" unique_id=1381983228 instance=ExtResource("18_cf130")]
+[node name="Player" parent="World" unique_id=1271694453 instance=ExtResource("19_posua")]
 unique_name_in_owner = true
-position = Vector2(1, 0)
+position = Vector2(0, -40)
 
 [node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
 unique_name_in_owner = true
-position = Vector2(2, -429)
+position = Vector2(3, -429)
 limit_left = -3180
 limit_top = -350
 limit_right = 3180

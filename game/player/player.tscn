@@ -1,31 +1,33 @@
-[gd_scene format=3 uid="uid://bopph1pdoh7y8"]
+[gd_scene format=3 uid="uid://bcqcmbu10gh4t"]
 
 [ext_resource type="Script" uid="uid://7qbhbxttbpqk" path="res://game/player/player.gd" id="1_2mv0n"]
 [ext_resource type="PackedScene" uid="uid://bopph1pdoh7y8" path="res://game/player/skeleton.tscn" id="2_8soms"]
 [ext_resource type="PackedScene" uid="uid://xcfjxblbj421" path="res://game/frog_mechs/WireReceptacle.tscn" id="3_8soms"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
-size = Vector2(73, 55)
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_posua"]
+friction = 0.98
 
-[node name="Player" type="RigidBody2D" unique_id=1271694453]
-collision_mask = 9
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
+size = Vector2(64, 52.5)
+
+[node name="Player" type="RigidBody2D" unique_id=1441360006]
+collision_mask = 8
+physics_material_override = SubResource("PhysicsMaterial_posua")
 lock_rotation = true
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_2mv0n")
 
-[node name="Skeleton" parent="." unique_id=1202274876 instance=ExtResource("2_8soms")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2135713207]
-position = Vector2(-2.5, 5.5)
-shape = SubResource("RectangleShape2D_g4v7s")
-
 [node name="WireReceptacle" parent="." unique_id=21922453 instance=ExtResource("3_8soms")]
 unique_name_in_owner = true
-visible = false
-offset_left = -22.0
-offset_top = -17.0
-offset_right = -6.0
-offset_bottom = -1.0
+offset_left = -40.0
+offset_top = -31.0
+offset_right = -24.0
+offset_bottom = -15.0
 
-[connection signal="landed" from="." to="." method="on_landed"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=401217283]
+position = Vector2(-4, 4.75)
+shape = SubResource("RectangleShape2D_6w6ra")
+
+[node name="Skeleton" parent="." unique_id=1202274876 instance=ExtResource("2_8soms")]
+scale = Vector2(0.5, 0.5)
