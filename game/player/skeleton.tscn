@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://croela4nh3klu"]
+[gd_scene format=3 uid="uid://bopph1pdoh7y8"]
 
 [ext_resource type="Texture2D" uid="uid://bxytylnqpxasj" path="res://assets/mech/head.png" id="1_2mv0n"]
 [ext_resource type="Script" uid="uid://dki8ryurtdjvw" path="res://game/player/skeleton_helper.gd" id="1_mfhbq"]
@@ -34,7 +34,7 @@ joint_data/1/bone_index = 5
 joint_data/1/bone2d_node = NodePath("Torso/Hip/BackLegUpper")
 joint_data/1/rotate_from_joint = false
 joint_data/1/enable_constraint = true
-joint_data/1/constraint_angle_min = 349.9999
+joint_data/1/constraint_angle_min = 349.99988
 joint_data/1/constraint_angle_max = 360.0
 joint_data/1/constraint_angle_invert = false
 joint_data/1/constraint_in_localspace = true
@@ -66,7 +66,7 @@ joint_data/0/bone_index = 1
 joint_data/0/bone2d_node = NodePath("Torso/FrontLegUpper")
 joint_data/0/rotate_from_joint = false
 joint_data/0/enable_constraint = true
-joint_data/0/constraint_angle_min = 299.99994
+joint_data/0/constraint_angle_min = 299.9999
 joint_data/0/constraint_angle_max = 360.0
 joint_data/0/constraint_angle_invert = false
 joint_data/0/constraint_in_localspace = true
@@ -345,7 +345,7 @@ _data = {
 &"jump_left": SubResource("Animation_heo5q")
 }
 
-[node name="Player" type="Node2D" unique_id=1202274876]
+[node name="Skeleton" type="Node2D" unique_id=1202274876]
 z_index = 90
 
 [node name="Skeleton" type="Skeleton2D" parent="." unique_id=634421146]
