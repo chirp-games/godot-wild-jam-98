@@ -33,7 +33,6 @@ texture = ExtResource("5_buw6m")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=535097523]
 position = Vector2(0, -400)
-zoom = Vector2(0.09, 0.09)
 
 [node name="ICBM" parent="." unique_id=1388627917 instance=ExtResource("6_rbnm8")]
 position = Vector2(9430, -646)
