@@ -803,31 +803,31 @@ script = ExtResource("17_5e03w")
 
 [node name="Vine2" type="Sprite2D" parent="Front" unique_id=790063900]
 material = SubResource("ShaderMaterial_q52ks")
-position = Vector2(1385.0001, 303)
+position = Vector2(1384.7688, 244.83202)
 scale = Vector2(0.28294104, 0.28294104)
 texture = ExtResource("17_pxxsx")
 
 [node name="Vine1" type="Sprite2D" parent="Front" unique_id=2034039916]
 material = SubResource("ShaderMaterial_q52ks")
-position = Vector2(673.00024, 215)
+position = Vector2(672.7689, 156.83202)
 scale = Vector2(0.28749996, 0.28749996)
 texture = ExtResource("17_ln7ps")
 
 [node name="Vine4" type="Sprite2D" parent="Front" unique_id=1709811218]
 material = SubResource("ShaderMaterial_q52ks")
-position = Vector2(-813, 227)
+position = Vector2(-813.2313, 168.83202)
 scale = Vector2(0.28749996, 0.28749996)
 texture = ExtResource("17_ln7ps")
 
 [node name="Vine3" type="Sprite2D" parent="Front" unique_id=1577538606]
 material = SubResource("ShaderMaterial_jdpby")
-position = Vector2(1940.0001, 232)
+position = Vector2(1939.7688, 173.83202)
 scale = Vector2(0.27654886, 0.27654886)
 texture = ExtResource("20_mhvfb")
 
 [node name="Vine5" type="Sprite2D" parent="Front" unique_id=460992920]
 material = SubResource("ShaderMaterial_jdpby")
-position = Vector2(399.00003, 219)
+position = Vector2(398.7687, 160.83202)
 scale = Vector2(0.27654886, 0.27654886)
 texture = ExtResource("20_mhvfb")
 
@@ -873,7 +873,7 @@ repeat_size = Vector2(1500, 0)
 repeat_times = 3
 
 [node name="BigVine1" type="Sprite2D" parent="SuperFront" unique_id=479671152]
-position = Vector2(948.00006, 263)
+position = Vector2(952.00006, 104.000046)
 scale = Vector2(0.25719416, 0.25719416)
 texture = ExtResource("19_u8s88")
 
