@@ -26,7 +26,7 @@ texture = ExtResource("4_7eyeo")
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_7eyeo")
 
-[node name="CollisionShape2D" parent="AggroDetection" parent_id_path=PackedInt32Array(248274435) index="0" unique_id=1626251780]
+[node name="Range" parent="AggroDetection" parent_id_path=PackedInt32Array(248274435) index="0" unique_id=1626251780]
 shape = SubResource("CircleShape2D_ok16d")
 
 [node name="TakeDamage" parent="." index="5" unique_id=1976776874]
@@ -34,3 +34,5 @@ position = Vector2(0, -10)
 
 [node name="CollisionShape2D" parent="TakeDamage" index="0" unique_id=1340069219]
 shape = SubResource("RectangleShape2D_3870k")
+
+[connection signal="area_entered" from="TakeDamage" to="." method="_on_take_damage_area_entered"]

@@ -20,14 +20,14 @@ shader_parameter/invert = false
 size = Vector2(224, 233.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
-size = Vector2(27, 560)
+size = Vector2(50, 560)
 
 [node name="CommandCenter" type="Node2D" unique_id=1062672150 groups=["ally"]]
 script = ExtResource("1_l4tar")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=210705085]
 material = SubResource("ShaderMaterial_xeen4")
-position = Vector2(0, -447)
+position = Vector2(-1, -447)
 texture = ExtResource("2_l4tar")
 
 [node name="EnterCommandMode" type="Area2D" parent="." unique_id=1192137931]

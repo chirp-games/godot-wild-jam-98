@@ -902,4 +902,4 @@ shape = SubResource("RectangleShape2D_g4v7s")
 [connection signal="spawn_enemy" from="WaveSpawner" to="." method="_on_wave_spawner_spawn_enemy"]
 [connection signal="pressed" from="UI/StartWaveButton" to="WaveSpawner" method="_on_start_wave_button_pressed"]
 [connection signal="mech_built" from="UI/Scrapyard" to="." method="_on_scrapyard_mech_built"]
-[connection signal="body_entered" from="Retreat" to="WaveSpawner" method="_on_retreat"]
+[connection signal="area_entered" from="Retreat" to="WaveSpawner" method="_on_retreat"]

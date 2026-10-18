@@ -6,18 +6,17 @@ extends Enemy
 @onready var flare: InstancePlaceholder = %Flare
 
 var flare_instance: Flare = null
-var reinforcements_summoned = false
+var flare_cd: float = 0.5
 
 ## They don't move at all for now
-func pathfind(_delta: float):
-	if reinforcements_summoned:
-		return
-	if not flare_instance and not is_stunned():
+func pathfind(delta: float):
+	flare_cd -= delta
+	if not flare_instance and not is_stunned() and flare_cd <= 0 and not parachute.visible:
+		flare_cd = 37
 		flare_instance = flare.create_instance()
 		flare_instance.decayed.connect(func():
 			summon_reinforcements.emit()
 			flare_instance = null
-			reinforcements_summoned = true
 			)
 
 func stun():

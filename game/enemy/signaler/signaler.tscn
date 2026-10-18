@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bpsxdjujmbs0q" path="res://resources/enemy/signaler.tres" id="3_ivohm"]
 [ext_resource type="Texture2D" uid="uid://ciw2ulqqhuy77" path="res://assets/enemy/signaler.png" id="4_rq3vk"]
 
-[node name="Enemy" unique_id=1388627917 instance=ExtResource("1_60swe")]
+[node name="Signaler" unique_id=1388627917 instance=ExtResource("1_60swe")]
 script = ExtResource("2_15cit")
 resource = ExtResource("3_ivohm")
 
