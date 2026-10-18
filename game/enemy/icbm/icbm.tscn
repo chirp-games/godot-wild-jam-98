@@ -8,6 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ui6fe"]
 size = Vector2(280, 42)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le3q1"]
+size = Vector2(30, 10)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cre33"]
 radius = 40.0
 
@@ -32,7 +35,12 @@ texture = ExtResource("4_le3q1")
 position = Vector2(100, 0)
 shape = SubResource("RectangleShape2D_ui6fe")
 
-[node name="AggroDetection" parent="." index="4" unique_id=248274435]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="3" unique_id=23197084]
+position = Vector2(270, 0)
+scale = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_le3q1")
+
+[node name="AggroDetection" parent="." index="5" unique_id=248274435]
 position = Vector2(270, 0)
 
 [node name="CollisionShape2D" parent="AggroDetection" index="0" unique_id=1626251780]
@@ -47,5 +55,5 @@ position = Vector2(270, 0)
 scale = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_wrysh")
 
-[node name="Warhead" type="Marker2D" parent="." index="10" unique_id=1460013178]
+[node name="Warhead" type="Marker2D" parent="." index="11" unique_id=1460013178]
 position = Vector2(300, 0)

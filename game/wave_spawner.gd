@@ -3,6 +3,7 @@ extends Node2D
 const rat := preload("res://game/enemy/mothertruck/rat.tscn")
 const signaler := preload("res://game/enemy/signaler/signaler.tscn")
 
+var stock: Array[Enemy] = []
 var wave_finished_spawning = false
 
 signal spawn_enemy(e: PackedScene, near_enemy: Enemy)

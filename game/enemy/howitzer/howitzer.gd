@@ -2,7 +2,7 @@ extends Enemy
 
 @onready var AMMO = preload("res://game/enemy/ammunition/artillery/155mm/155mm.tscn")
 
-const MUZZLE: Vector2 = Vector2(0, -100)
+const MUZZLE: Vector2 = Vector2(-80, -13)
 const MUZZLE_V: float = 2700
 
 var whim = [-1, 1].pick_random()

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bwurhutirk8nn"]
+[gd_scene format=3 uid="uid://croela4nh3klu"]
 
 [ext_resource type="Texture2D" uid="uid://bxytylnqpxasj" path="res://assets/mech/head.png" id="1_2mv0n"]
 [ext_resource type="Script" uid="uid://dki8ryurtdjvw" path="res://game/player/skeleton_helper.gd" id="1_mfhbq"]
@@ -44,7 +44,7 @@ joint_data/2/bone2d_node = NodePath("Torso/Hip/BackLegUpper/BackLegLower")
 joint_data/2/rotate_from_joint = false
 joint_data/2/enable_constraint = true
 joint_data/2/constraint_angle_min = 0.0
-joint_data/2/constraint_angle_max = 79.99998
+joint_data/2/constraint_angle_max = 79.99997
 joint_data/2/constraint_angle_invert = false
 joint_data/2/constraint_in_localspace = true
 joint_data/2/editor_draw_gizmo = true

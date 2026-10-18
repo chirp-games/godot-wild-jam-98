@@ -3,13 +3,30 @@
 [ext_resource type="PackedScene" uid="uid://b22k0k0k652xu" path="res://game/enemy/Enemy.tscn" id="1_ffw6u"]
 [ext_resource type="Script" uid="uid://3ywc1v5rrx62" path="res://game/enemy/howitzer/howitzer.gd" id="2_elsyq"]
 [ext_resource type="Resource" uid="uid://dfjc68kwj1hwl" path="res://resources/enemy/howitzer.tres" id="3_ibkle"]
+[ext_resource type="Texture2D" uid="uid://djpjn4phtq5wk" path="res://assets/enemy/howitzer_bot.png" id="4_ibkle"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1oecc"]
+size = Vector2(100, 82)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_elsyq"]
 radius = 5760.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibkle"]
+size = Vector2(100, 82)
 
 [node name="Howitzer" unique_id=1388627917 instance=ExtResource("1_ffw6u")]
 script = ExtResource("2_elsyq")
 resource = ExtResource("3_ibkle")
 
+[node name="Sprite2D" parent="." index="1" unique_id=705184273]
+position = Vector2(-13, -10)
+texture = ExtResource("4_ibkle")
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=522520049]
+shape = SubResource("RectangleShape2D_1oecc")
+
 [node name="CollisionShape2D" parent="AggroDetection" parent_id_path=PackedInt32Array(248274435) index="0" unique_id=1626251780]
 shape = SubResource("CircleShape2D_elsyq")
+
+[node name="CollisionShape2D" parent="TakeDamage" parent_id_path=PackedInt32Array(1976776874) index="0" unique_id=1340069219]
+shape = SubResource("RectangleShape2D_ibkle")
