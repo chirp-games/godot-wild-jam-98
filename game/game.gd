@@ -52,6 +52,11 @@ func find_recruits():
 
 func find_frog_mechs():
 	return get_tree().get_nodes_in_group("frog_mech")
+	
+func play_music():
+	$Music.play()
+	await get_tree().create_timer($Music.stream.get_length()).timeout
+	play_music()
 
 func _ready() -> void:
 	Vfx.reparent.call_deferred(self)
@@ -65,6 +70,8 @@ func _ready() -> void:
 
 	for e in Resources.enemies:
 		enemy_corpses_collected.get_or_add(e, 0)
+	
+	play_music()
 
 func _process(_delta: float) -> void:
 	for frog: FrogMech in find_frog_mechs():
