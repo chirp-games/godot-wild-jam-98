@@ -8,6 +8,6 @@ script = ExtResource("1_doeyv")
 name = "Signaler"
 texture = ExtResource("2_tnryh")
 scrap_value = 20
-health = 50
+health = 40
 movement_speed = 0
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"

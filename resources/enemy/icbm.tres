@@ -6,7 +6,7 @@
 script = ExtResource("1_sxidv")
 name = "ICBM"
 scrap_value = 90
-health = 50
+health = 35
 movement_speed = 6600
 grounded = false
 has_parachute = false

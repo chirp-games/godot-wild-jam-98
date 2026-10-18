@@ -6,7 +6,7 @@
 script = ExtResource("1_ytabn")
 name = "Howitzer"
 scrap_value = 75
-health = 200
+health = 60
 movement_speed = 75
 attack_interval = 10.0
 metadata/_custom_type_script = "uid://c3hxujw0yjsue"
