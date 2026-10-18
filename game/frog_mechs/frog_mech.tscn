@@ -63,6 +63,7 @@ offset_bottom = 35.0
 [node name="TakeDamage" type="Area2D" parent="." unique_id=795559934]
 script = ExtResource("4_pnbhl")
 max_health = 100
+healing_per_tick = 10
 damaged_by_group = &"enemy_attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamage" unique_id=1429971710]

@@ -6,7 +6,7 @@ signal damage_taken(amount: int)
 signal death
 
 @export var max_health: int = 0
-@export var healing_per_tick: int = 10
+@export var healing_per_tick: int = 0
 @export var damaged_by_group: StringName
 
 var parent_resource: Resource
@@ -22,7 +22,7 @@ func heal_tick() -> void:
 		damage_taken_since_last_tick = false
 		return
 	
-	health += parent_resource.healing if ("healing" in parent_resource) else 0
+	health += healing_per_tick
 	health = min(health, max_health)
 
 func _damage(body: CollisionObject2D):

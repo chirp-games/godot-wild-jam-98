@@ -21,3 +21,6 @@ func _ready() -> void:
 func _on_area_2d_deal_damage(_body: Node2D) -> void:
 	Vfx.create_vfx(Vfx.VFX_METAL_SPARK, self.global_position, self.linear_velocity.angle())
 	queue_free()
+
+func disintegrate() -> void:
+	queue_free()

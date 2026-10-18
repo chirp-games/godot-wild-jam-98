@@ -37,4 +37,10 @@ texture = ExtResource("1_ufnsw")
 shape = SubResource("CircleShape2D_600de")
 debug_color = Color(0.80487096, 0.41028404, 0.20617199, 0.41960785)
 
+[node name="Timer" type="Timer" parent="." unique_id=598296292]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [connection signal="deal_damage" from="Area2D" to="." method="_on_area_2d_deal_damage"]
+[connection signal="timeout" from="Timer" to="." method="disintegrate"]
