@@ -23,7 +23,7 @@ func heal_tick() -> void:
 		return
 	
 	health += parent_resource.healing if ("healing" in parent_resource) else 0
-	health = max(health, max_health)
+	health = min(health, max_health)
 
 func _damage(body: CollisionObject2D):
 	print([damaged_by_group, body, body.get_groups()])
