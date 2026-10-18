@@ -15,6 +15,6 @@ func set_rewards(rewards: Array[MechResource]):
 		var m: MechInfoButton = mech_info_button.create_instance()
 		m.resource = r
 		m.pressed.connect(func():
-			option_selected.emit(mech_info_button.resource)
+			option_selected.emit(m.resource)
 			)
 		buttons.push_back(m)
