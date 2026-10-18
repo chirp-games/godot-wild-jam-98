@@ -15,10 +15,6 @@ var just_landed = true
 
 signal enemy_detected(e: Enemy)
 
-func on_landed() -> void:
-	attack()
-	Vfx.create_vfx(Vfx.VFX_STOMP_RING, self.position + Vector2(0, 50))
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -35,14 +31,17 @@ func _physics_process(_delta: float) -> void:
 	if direction:
 		apply_central_force(Vector2(800 * direction, 0))
 
+	if direction == 1:
+		%SubViewportContainer.scale.x = 1
+	elif direction == -1:
+		%SubViewportContainer.scale.x = -1
+
 	if Input.is_action_just_pressed("move_up") and on_floor:
 		apply_central_impulse(Vector2(0, -700))
-		($Skeleton/AnimationPlayer as AnimationPlayer).play("jump")
+		(%Skeleton/AnimationPlayer as AnimationPlayer).play("jump")
 	elif on_floor and direction != 0:
 		apply_central_impulse(Vector2(200 * walk_dir,-100))
-		($Skeleton/AnimationPlayer as AnimationPlayer).play(
-			"jump_left" if walk_dir < 0 else "jump"
-		)
+		(%Skeleton/AnimationPlayer as AnimationPlayer).play("small_jump")
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3
@@ -77,3 +76,9 @@ func attack():
 			var d: float = sign((e.global_position - global_position).x)
 			e.apply_central_impulse(Vector2(force * d, -force / 3.))
 			
+
+
+func _on_landed() -> void:
+	attack()
+	%Skeleton/AnimationPlayer.play("RESET")
+	Vfx.create_vfx(Vfx.VFX_STOMP_RING, self.position + Vector2(0, 50))
