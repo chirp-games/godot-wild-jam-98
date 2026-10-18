@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="MechResource" format=3 uid="uid://drm1b4acgylb8"]
+
+[ext_resource type="Script" uid="uid://c2sbuewcb0enh" path="res://resources/mechs/mech_detection_software.gd" id="1_8dijh"]
+[ext_resource type="Script" uid="uid://bxikynugca5gt" path="res://resources/mechs/detection_software/detect_range.gd" id="2_d3twa"]
+[ext_resource type="Script" uid="uid://cxkdmrston01e" path="res://resources/mechs/detection_software/detect_closest.gd" id="3_qjb8o"]
+[ext_resource type="Script" uid="uid://3tfn1o3rboam" path="res://resources/mechs/detection_software/detect_compose.gd" id="4_l2avn"]
+[ext_resource type="Script" uid="uid://bamu2x08qd63l" path="res://resources/mechs/effects/noop_effect.gd" id="5_tblbw"]
+[ext_resource type="Script" uid="uid://c08gxx1umifd8" path="res://resources/mechs/pathfinding/follow_closest_enemy.gd" id="6_mxtnt"]
+[ext_resource type="Script" uid="uid://w1r7li8jtpq7" path="res://resources/mechs/mech_resource.gd" id="7_6jhsb"]
+
+[sub_resource type="Resource" id="Resource_1dod3"]
+script = ExtResource("2_d3twa")
+range_radius = 1000
+metadata/_custom_type_script = "uid://bxikynugca5gt"
+
+[sub_resource type="Resource" id="Resource_posua"]
+script = ExtResource("3_qjb8o")
+metadata/_custom_type_script = "uid://cxkdmrston01e"
+
+[sub_resource type="Resource" id="Resource_eyl2h"]
+script = ExtResource("4_l2avn")
+detectors = Array[ExtResource("1_8dijh")]([SubResource("Resource_1dod3"), SubResource("Resource_posua")])
+metadata/_custom_type_script = "uid://3tfn1o3rboam"
+
+[sub_resource type="Resource" id="Resource_b2mth"]
+script = ExtResource("5_tblbw")
+metadata/_custom_type_script = "uid://bamu2x08qd63l"
+
+[sub_resource type="Resource" id="Resource_5ywmu"]
+script = ExtResource("6_mxtnt")
+metadata/_custom_type_script = "uid://c08gxx1umifd8"
+
+[resource]
+script = ExtResource("7_6jhsb")
+name = "Tracking Commander"
+mech_class = 2
+description = "Runs torwards the closest enemy"
+pathfinding = SubResource("Resource_5ywmu")
+cooldown_ratio = 1
+effect = SubResource("Resource_b2mth")
+detection_software = SubResource("Resource_eyl2h")
+metadata/_custom_type_script = "uid://w1r7li8jtpq7"
