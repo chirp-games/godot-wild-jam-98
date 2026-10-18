@@ -75,10 +75,12 @@ func attack():
 			var force: float = lerp(500.,0., dist / 500)
 			var d: float = sign((e.global_position - global_position).x)
 			e.apply_central_impulse(Vector2(force * d, -force / 3.))
-			
-
 
 func _on_landed() -> void:
 	attack()
 	%Skeleton/AnimationPlayer.play("RESET")
 	Vfx.create_vfx(Vfx.VFX_STOMP_RING, self.position + Vector2(0, 50))
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("signal_guys"):
+		Vfx.create_vfx(Vfx.VFX_PRESSURE_RING, global_position)

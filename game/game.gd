@@ -57,22 +57,22 @@ func _ready() -> void:
 		enemy_corpses_collected.get_or_add(e, 0)
 
 func _process(_delta: float) -> void:
-	for frog: FrogMech in find_frog_mechs():
-		var closest_commander = frogs_to_closest_commander.get(frog)
-		var new_closest_commander = get_closest_commander(frog)
-		
-		var in_range = frog.global_position.distance_to(new_closest_commander.global_position) <= MAX_CONNECTION_DIST
-
-		if closest_commander != new_closest_commander and in_range:
-			frogs_to_closest_commander[frog] = new_closest_commander
-
-		if frog.dragging and not in_range:
-			closest_commander_lost(frog)
-			frogs_to_closest_commander[frog] = null
-
-		if frogs_to_closest_commander.get(frog) and frogs_to_closest_commander[frog] != closest_commander and (frog.dragging or frog.get_connected_commander() == null):
-			closest_commander_lost(frog)
-			closest_commander_found(frog, new_closest_commander)
+	#for frog: FrogMech in find_frog_mechs():
+		#var closest_commander = frogs_to_closest_commander.get(frog)
+		#var new_closest_commander = get_closest_commander(frog)
+		#
+		#var in_range = frog.global_position.distance_to(new_closest_commander.global_position) <= MAX_CONNECTION_DIST
+#
+		#if closest_commander != new_closest_commander and in_range:
+			#frogs_to_closest_commander[frog] = new_closest_commander
+#
+		#if frog.dragging and not in_range:
+			#closest_commander_lost(frog)
+			#frogs_to_closest_commander[frog] = null
+#
+		#if frogs_to_closest_commander.get(frog) and frogs_to_closest_commander[frog] != closest_commander and (frog.dragging or frog.get_connected_commander() == null):
+			#closest_commander_lost(frog)
+			#closest_commander_found(frog, new_closest_commander)
 
 	health_label.text = "Health: " + str(command_center.get_health())
 	material_label.text = "Material: " + str(material_currency)
