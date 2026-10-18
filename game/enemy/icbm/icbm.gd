@@ -4,7 +4,7 @@ extends Enemy
 
 var last_pos
 
-const ω = PI/16
+const ω = PI/4
 
 func _ready():
 	super()
@@ -17,10 +17,10 @@ func _physics_process(delta: float) -> void:
 	var Δθ: float = ω * delta * sign(θ)
 	self.rotate(Δθ)
 	
-	if target or $AggroDetection.position.distance_to(last_pos) <= $AggroDetection/CollisionShape2D.shape.radius:
+	if target or is_on_floor() or $AggroDetection.position.distance_to(last_pos) <= $AggroDetection/Range.shape.radius:
 		attack()
 	
-	velocity = Vector2.from_angle(head.angle_to(Vector2.RIGHT)) * speed
+	velocity = Vector2.from_angle(Vector2.RIGHT.angle_to(head)) * speed
 	move_and_slide()
 
 func attack():

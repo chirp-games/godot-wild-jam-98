@@ -104,3 +104,6 @@ func try_attack(enemy: Enemy):
 	resource.effect.apply(b)
 	b.target_enemy = enemy
 	create_attack.emit(b)
+
+func die() -> void:
+	queue_free()

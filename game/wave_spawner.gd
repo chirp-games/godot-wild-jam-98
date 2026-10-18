@@ -1,46 +1,78 @@
 extends Node2D
 
-const signaler := preload("res://game/enemy/signaler/signaler.tscn")
-const kddv := preload("res://game/enemy/mothertruck/mothertruck.tscn")
+enum Spawns {
+	L1,
+	L2,
+	L3,
+	R1,
+	R2,
+	R3,
+}
 
-var valid_enemies = [
-	preload("res://game/enemy/mothertruck/mothertruck.tscn"),
-	preload("res://game/enemy/gunbot/gunbot.tscn"),
-	preload("res://game/enemy/howitzer/howitzer.tscn"),
-	preload("res://game/enemy/icbm/icbm.tscn"),
+const signaler := preload("res://game/enemy/signaler/signaler.tscn")
+const gunbot := preload("res://game/enemy/gunbot/gunbot.tscn")
+const kddv := preload("res://game/enemy/mothertruck/mothertruck.tscn")
+const shahed := preload("res://game/enemy/shahed/shahed.tscn")
+const icbm := preload("res://game/enemy/icbm/icbm.tscn")
+
+const spawns = [
+	Spawns.L1,
+	Spawns.L2,
+	Spawns.L3,
+	Spawns.R1,
+	Spawns.R2,
+	Spawns.R3,
+]
+const early_spawns = [
+	Spawns.L1,
+	Spawns.R1,
+]
+const midgame_spawns = [
+	Spawns.L1,
+	Spawns.R1,
+	Spawns.L2,
+	Spawns.R2
 ]
 
-var timer: float = 0.
+var valid_enemies: Dictionary = {
+	shahed: 1
+}
+
+var wave: int = 0
+var signal_cd: float = 30.
 var stock: Array[Enemy] = []
-var wave_finished_spawning = false
 
 signal spawn_enemy(e: PackedScene, near_enemy: Enemy)
-signal wave_started
-signal wave_ended
 
 func start_wave():
-	wave_finished_spawning = false
-	wave_started.emit()
+	signal_cd = 30
+	var spot: Spawns
+	if wave < 4:
+		spot = early_spawns.pick_random()
+	elif wave < 12:
+		spot = midgame_spawns.pick_random()
+	else:
+		spot = spawns.pick_random()
+		
 	for i in range(1):
 		var e: Enemy = signaler.instantiate()
-		spawn_enemy.emit(e, null)
-		e.summon_reinforcements.connect(func(): await _summon_reinforcements(e))
+		spawn_enemy.emit(e, null, spot)
+		e.summon_reinforcements.connect(func(): await _summon_reinforcements(e, spot))
 		await get_tree().create_timer(2).timeout
-	wave_finished_spawning = true
 
-func _summon_reinforcements(around_enemy: Enemy):
+func _summon_reinforcements(around_enemy: Enemy, location: Spawns):
+	wave += 1
 	for i in range(5):
-		spawn_enemy.emit(valid_enemies.pick_random().instantiate(), around_enemy)
+		spawn_enemy.emit(valid_enemies[location].pick_random().instantiate(), around_enemy)
 		await get_tree().create_timer(.3).timeout
 	while len(stock) > 0:
 		spawn_enemy.emit(stock.pop_front().instantiate(), around_enemy)
 		await get_tree().create_timer(.3).timeout
 
 func _process(delta: float) -> void:
-	timer += delta
-	if wave_finished_spawning and len(get_tree().get_nodes_in_group("enemy")) == 0:
-		wave_ended.emit()
-		wave_finished_spawning = false
+	signal_cd += delta
+	if signal_cd <= 0:
+		await start_wave()
 
 func _on_start_wave_button_pressed() -> void:
 	await start_wave()

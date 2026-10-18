@@ -16,8 +16,8 @@ var grounded
 @onready var on_hit_animation: AnimationPlayer =  %OnHitAnimation
 @onready var death_animation: AnimationPlayer =  %DeathAnimation
 
-var player_x: float
 var target: Node2D = null
+var has_target: bool = false
 var attack_cooldown: float = 0
 
 ## Summon reinforcements for a given wave
@@ -34,7 +34,6 @@ func _ready() -> void:
 	speed = resource.movement_speed
 	attack_interval = resource.attack_interval
 	grounded = resource.grounded
-	player_x = 0 # FOR NOW, THE PLAYER DOESN"T EXIST
 
 func _process(delta: float) -> void:
 	health = ($TakeDamage as TakeDamage).health
@@ -56,19 +55,26 @@ func _physics_process(delta: float) -> void:
 	
 	if not is_stunned() and target:
 		attack_cooldown -= delta
-
+	
 	if parachute.visible and is_on_floor():
 		parachute.hide()
-
-	if not is_stunned():
+	
+	if not $AggroDetection.monitoring:
+		$AggroDetection.monitoring = true
+	
+	if not target and has_target:
+		has_target = false
+		$AggroDetection.monitoring = false
+	
+	if not is_stunned() and $AggroDetection.monitoring:
 		pathfind(delta)
 	move_and_slide()
 
 func pathfind(_delta: float):
 	if not target:
 		if not grounded or not parachute.visible:
-			velocity.x = -sign(global_position.x - player_x) * speed
-	elif target.global_position.distance_to($AggroDetection.global_position) > $Aggrodetection/Range.shape.radius + 100:
+			velocity.x = -sign(global_position.x) * speed
+	elif target.global_position.distance_to($AggroDetection.global_position) > $AggroDetection/Range.shape.radius + 100:
 		velocity.x = -sign(global_position.x - target.global_position.x) * speed
 	else:
 		velocity.x = 0
@@ -111,6 +117,7 @@ func stun():
 func target_select(area: Area2D) -> void:
 	if !target:
 		target = area
+		has_target = true
 
 func _on_take_damage_damage_taken(_amount: int) -> void:
 	on_hit_animation.play("hit")

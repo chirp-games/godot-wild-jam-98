@@ -652,7 +652,7 @@ expand_mode = 1
 
 [node name="Portals" type="Node2D" parent="World" unique_id=1540646284]
 
-[node name="LeftPortal" type="Marker2D" parent="World/Portals" unique_id=1596849403]
+[node name="LeftPortal1" type="Marker2D" parent="World/Portals" unique_id=1596849403]
 unique_name_in_owner = true
 position = Vector2(-829, -768)
 
@@ -664,7 +664,7 @@ position = Vector2(-2090, -764)
 unique_name_in_owner = true
 position = Vector2(-2812, -765)
 
-[node name="RightPortal" type="Marker2D" parent="World/Portals" unique_id=967867649]
+[node name="RightPortal1" type="Marker2D" parent="World/Portals" unique_id=967867649]
 unique_name_in_owner = true
 position = Vector2(904, -763)
 
@@ -900,8 +900,6 @@ position = Vector2(3102, -135)
 shape = SubResource("RectangleShape2D_g4v7s")
 
 [connection signal="spawn_enemy" from="WaveSpawner" to="." method="_on_wave_spawner_spawn_enemy"]
-[connection signal="wave_ended" from="WaveSpawner" to="." method="_on_wave_spawner_wave_ended"]
-[connection signal="wave_started" from="WaveSpawner" to="." method="_on_wave_spawner_wave_started"]
 [connection signal="pressed" from="UI/StartWaveButton" to="WaveSpawner" method="_on_start_wave_button_pressed"]
 [connection signal="mech_built" from="UI/Scrapyard" to="." method="_on_scrapyard_mech_built"]
 [connection signal="body_entered" from="Retreat" to="WaveSpawner" method="_on_retreat"]

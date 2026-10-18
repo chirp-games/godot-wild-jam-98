@@ -12,10 +12,16 @@ const MAX_CONNECTION_DIST = 300
 @onready var command_center: CommandCenter = %CommandCenter
 @onready var scrapyard: Control = %Scrapyard
 @onready var start_wave_button: Button = %StartWaveButton
-@onready var left_portal: Marker2D = %LeftPortal
-@onready var right_portal: Marker2D = %RightPortal
 @onready var health_label: Label = %Health
 @onready var material_label: Label = %Material
+@onready var portals = [
+	%LeftPortal1,
+	%LeftPortal2,
+	%LeftPortal3,
+	%RightPortal1,
+	%RightPortal2,
+	%RightPortal3,
+]
 
 var frogs_to_closest_commander: Dictionary = {}
 var enemy_corpses_collected: Dictionary[EnemyResource, int] = {}
@@ -108,10 +114,10 @@ func enter_scrapyard():
 func exit_scrapyard():
 	scrapyard.hide()
 
-func _on_wave_spawner_spawn_enemy(new_enemy: Enemy, around_enemy: Enemy) -> void:
+func _on_wave_spawner_spawn_enemy(new_enemy: Enemy, around_enemy: Enemy, portal: int) -> void:
 	# Enemies are scenes with a resource assigned to them
 	if not around_enemy:
-		new_enemy.global_position = [left_portal, right_portal].pick_random().global_position
+		new_enemy.global_position = portals[portal].global_position
 	else:
 		new_enemy.global_position = Vector2(around_enemy.global_position.x + randi_range(-200, 200), -700)
 	
@@ -121,14 +127,6 @@ func _on_wave_spawner_spawn_enemy(new_enemy: Enemy, around_enemy: Enemy) -> void
 	)
 	# probably make a better place to add this as a child
 	add_child(new_enemy)
-
-func _on_wave_spawner_wave_ended() -> void:
-	start_wave_button.show()
-	scrapyard.show()
-
-func _on_wave_spawner_wave_started() -> void:
-	start_wave_button.hide()
-	scrapyard.hide()
 
 func _on_scrapyard_mech_built(mech_resource: MechResource) -> void:
 	var m: FrogMech = player_mech_scene.instantiate()

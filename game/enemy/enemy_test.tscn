@@ -38,11 +38,10 @@ texture = ExtResource("5_buw6m")
 position = Vector2(0, -400)
 
 [node name="ICBM" parent="." unique_id=1388627917 instance=ExtResource("6_rbnm8")]
-position = Vector2(9430, -646)
-rotation = 3.1415927
+position = Vector2(-4999, -932)
 
 [node name="KD" parent="." unique_id=1736390898 instance=ExtResource("7_abswq")]
-position = Vector2(-5688, -618)
+position = Vector2(6657, -475)
 
 [node name="Mothertruck" parent="." unique_id=1514348257 instance=ExtResource("8_jdd7n")]
 position = Vector2(789, -98)
