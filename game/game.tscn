@@ -34,6 +34,12 @@
 [ext_resource type="Texture2D" uid="uid://by6pa8mytt1b1" path="res://assets/parallax/front_leaves_4.png" id="22_q52ks"]
 [ext_resource type="Texture2D" uid="uid://2vj2ql3stxk2" path="res://assets/parallax/front_leaves_2.png" id="23_8bboj"]
 [ext_resource type="Texture2D" uid="uid://lv0ldkh6ow3v" path="res://assets/parallax/front_leaves_3.png" id="24_q52ks"]
+[ext_resource type="Texture2D" uid="uid://0ed2yfo01br5" path="res://assets/parallax/bottom_cattail.png" id="35_cieqw"]
+[ext_resource type="Texture2D" uid="uid://n8nkevkd5s3s" path="res://assets/parallax/bottom_lily_1.png" id="36_ta815"]
+[ext_resource type="Texture2D" uid="uid://bfrxacswkq3bi" path="res://assets/parallax/bottom_lily_2.png" id="37_64wtb"]
+[ext_resource type="Texture2D" uid="uid://w17hek0vwwj5" path="res://assets/parallax/bottom_plant_1.png" id="38_0rekh"]
+[ext_resource type="Texture2D" uid="uid://ce2om7wiei1fh" path="res://assets/parallax/bottom_plant_2.png" id="39_281ou"]
+[ext_resource type="Texture2D" uid="uid://dnxfgfly5mdim" path="res://assets/parallax/bottom_reeds_1.png" id="40_nrbry"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mhvfb"]
 noise_type = 3
@@ -404,7 +410,7 @@ shader_parameter/invert = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u8s88"]
 shader = ExtResource("16_4cobl")
 shader_parameter/bloom_spread = 0.34065932
-shader_parameter/bloom_intensity = 0.30884612560272195
+shader_parameter/bloom_intensity = 0.473681315779686
 
 [node name="Game" type="Control" unique_id=59364628 groups=["game"]]
 layout_mode = 3
@@ -831,6 +837,72 @@ position = Vector2(398.7687, 160.83202)
 scale = Vector2(0.27654886, 0.27654886)
 texture = ExtResource("20_mhvfb")
 
+[node name="Vine6" type="Sprite2D" parent="Front" unique_id=699255928]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(3252.7688, 254.83202)
+scale = Vector2(0.28294104, 0.28294104)
+texture = ExtResource("17_pxxsx")
+
+[node name="Vine7" type="Sprite2D" parent="Front" unique_id=667179091]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(2540.769, 166.83202)
+scale = Vector2(0.28749996, 0.28749996)
+texture = ExtResource("17_ln7ps")
+
+[node name="Vine8" type="Sprite2D" parent="Front" unique_id=528418129]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(1054.7687, 178.83202)
+scale = Vector2(0.28749996, 0.28749996)
+texture = ExtResource("17_ln7ps")
+
+[node name="Vine9" type="Sprite2D" parent="Front" unique_id=1741722483]
+material = SubResource("ShaderMaterial_jdpby")
+position = Vector2(3807.7688, 183.83202)
+scale = Vector2(0.27654886, 0.27654886)
+texture = ExtResource("20_mhvfb")
+
+[node name="Vine10" type="Sprite2D" parent="Front" unique_id=133652907]
+material = SubResource("ShaderMaterial_jdpby")
+position = Vector2(2266.7688, 170.83202)
+scale = Vector2(0.27654886, 0.27654886)
+texture = ExtResource("20_mhvfb")
+
+[node name="Vine11" type="Sprite2D" parent="Front" unique_id=1343895364]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(-3319.2312, 222.83202)
+scale = Vector2(0.28294104, 0.28294104)
+texture = ExtResource("17_pxxsx")
+
+[node name="Vine13" type="Sprite2D" parent="Front" unique_id=280477382]
+material = SubResource("ShaderMaterial_jdpby")
+position = Vector2(-2764.2312, 151.83202)
+scale = Vector2(0.27654886, 0.27654886)
+texture = ExtResource("20_mhvfb")
+
+[node name="Vine15" type="Sprite2D" parent="Front" unique_id=114043607]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(-1451.2312, 232.83202)
+scale = Vector2(0.28294104, 0.28294104)
+texture = ExtResource("17_pxxsx")
+
+[node name="Vine16" type="Sprite2D" parent="Front" unique_id=1206274198]
+material = SubResource("ShaderMaterial_q52ks")
+position = Vector2(-2163.231, 144.83202)
+scale = Vector2(0.28749996, 0.28749996)
+texture = ExtResource("17_ln7ps")
+
+[node name="Vine18" type="Sprite2D" parent="Front" unique_id=1753504680]
+material = SubResource("ShaderMaterial_jdpby")
+position = Vector2(-896.2312, 161.83202)
+scale = Vector2(0.27654886, 0.27654886)
+texture = ExtResource("20_mhvfb")
+
+[node name="Vine19" type="Sprite2D" parent="Front" unique_id=1764142918]
+material = SubResource("ShaderMaterial_jdpby")
+position = Vector2(-2437.2312, 148.83202)
+scale = Vector2(0.27654886, 0.27654886)
+texture = ExtResource("20_mhvfb")
+
 [node name="FrontLeaves" type="Parallax2D" parent="." unique_id=546151895]
 scroll_scale = Vector2(1.2, 0)
 scroll_offset = Vector2(0, 1)
@@ -867,6 +939,102 @@ rotation = -0.11778388
 scale = Vector2(0.92162156, 0.9216216)
 texture = ExtResource("23_8bboj")
 
+[node name="FrontLeaves7" type="Sprite2D" parent="FrontLeaves" unique_id=171200023]
+position = Vector2(2229, 86)
+texture = ExtResource("22_q52ks")
+
+[node name="FrontLeaves9" type="Sprite2D" parent="FrontLeaves" unique_id=33634320]
+position = Vector2(3170.5093, 96.09326)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves10" type="Sprite2D" parent="FrontLeaves" unique_id=1760593781]
+position = Vector2(2719.5093, 94.09325)
+rotation = -0.11778388
+scale = Vector2(0.92162156, 0.9216216)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves11" type="Sprite2D" parent="FrontLeaves" unique_id=957610603]
+position = Vector2(2969.5093, 46.09326)
+texture = ExtResource("24_q52ks")
+
+[node name="FrontLeaves12" type="Sprite2D" parent="FrontLeaves" unique_id=1097172186]
+position = Vector2(2565, 64)
+texture = ExtResource("24_q52ks")
+
+[node name="FrontLeaves13" type="Sprite2D" parent="FrontLeaves" unique_id=1782836476]
+position = Vector2(3517, 89.00001)
+texture = ExtResource("22_q52ks")
+
+[node name="FrontLeaves14" type="Sprite2D" parent="FrontLeaves" unique_id=1967453154]
+position = Vector2(3742, 99.00001)
+rotation = -0.11778388
+scale = Vector2(0.92162156, 0.9216216)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves15" type="Sprite2D" parent="FrontLeaves" unique_id=41171300]
+position = Vector2(-3775, 70.99997)
+texture = ExtResource("22_q52ks")
+
+[node name="FrontLeaves16" type="Sprite2D" parent="FrontLeaves" unique_id=512746584]
+position = Vector2(-2833.4907, 81.09323)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves17" type="Sprite2D" parent="FrontLeaves" unique_id=235256564]
+position = Vector2(-3284.4912, 79.09326)
+rotation = -0.11778388
+scale = Vector2(0.92162156, 0.9216216)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves18" type="Sprite2D" parent="FrontLeaves" unique_id=1149437353]
+position = Vector2(-3205.4907, 31.093231)
+texture = ExtResource("24_q52ks")
+
+[node name="FrontLeaves19" type="Sprite2D" parent="FrontLeaves" unique_id=1333679985]
+position = Vector2(-3439, 48.99997)
+texture = ExtResource("24_q52ks")
+
+[node name="FrontLeaves20" type="Sprite2D" parent="FrontLeaves" unique_id=853453741]
+position = Vector2(-2487, 73.99998)
+texture = ExtResource("22_q52ks")
+
+[node name="FrontLeaves21" type="Sprite2D" parent="FrontLeaves" unique_id=44669036]
+position = Vector2(-2262, 84.00002)
+rotation = -0.11778388
+scale = Vector2(0.92162156, 0.9216216)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves22" type="Sprite2D" parent="FrontLeaves" unique_id=844332656]
+position = Vector2(-1907, 73.99997)
+texture = ExtResource("22_q52ks")
+
+[node name="FrontLeaves23" type="Sprite2D" parent="FrontLeaves" unique_id=36109841]
+position = Vector2(-1136.4907, 84.09323)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves24" type="Sprite2D" parent="FrontLeaves" unique_id=926286134]
+position = Vector2(-1587.4907, 82.09325)
+rotation = -0.11778388
+scale = Vector2(0.92162156, 0.9216216)
+texture = ExtResource("23_8bboj")
+
+[node name="FrontLeaves25" type="Sprite2D" parent="FrontLeaves" unique_id=161350558]
+position = Vector2(-1337.4907, 34.09323)
+texture = ExtResource("24_q52ks")
+
+[node name="FrontLeaves26" type="Sprite2D" parent="FrontLeaves" unique_id=982520987]
+position = Vector2(-1742, 51.99997)
+texture = ExtResource("24_q52ks")
+
+[node name="FrontLeaves27" type="Sprite2D" parent="FrontLeaves" unique_id=318195981]
+position = Vector2(-790, 76.99998)
+texture = ExtResource("22_q52ks")
+
+[node name="FrontLeaves28" type="Sprite2D" parent="FrontLeaves" unique_id=599404146]
+position = Vector2(-565, 87.00001)
+rotation = -0.11778388
+scale = Vector2(0.92162156, 0.9216216)
+texture = ExtResource("23_8bboj")
+
 [node name="SuperFront" type="Parallax2D" parent="." unique_id=2060727534]
 scroll_scale = Vector2(1.7, 0)
 repeat_size = Vector2(1500, 0)
@@ -876,6 +1044,44 @@ repeat_times = 3
 position = Vector2(952.00006, 104.000046)
 scale = Vector2(0.25719416, 0.25719416)
 texture = ExtResource("19_u8s88")
+
+[node name="FrontFlowers1" type="Parallax2D" parent="." unique_id=937518925]
+scroll_scale = Vector2(1.2, 0)
+
+[node name="BottomCattail" type="Sprite2D" parent="FrontFlowers1" unique_id=534352771]
+position = Vector2(2901.1875, 994.0105)
+scale = Vector2(0.20072614, 0.20072615)
+texture = ExtResource("35_cieqw")
+
+[node name="BottomLily1" type="Sprite2D" parent="FrontFlowers1" unique_id=1087026079]
+position = Vector2(3491.1875, 1059.0104)
+scale = Vector2(0.22412783, 0.22412783)
+texture = ExtResource("36_ta815")
+
+[node name="BottomLily2" type="Sprite2D" parent="FrontFlowers1" unique_id=7752683]
+position = Vector2(3349.1875, 1062.0104)
+scale = Vector2(0.24567473, 0.24567473)
+texture = ExtResource("37_64wtb")
+
+[node name="BottomPlant1" type="Sprite2D" parent="FrontFlowers1" unique_id=2044445896]
+position = Vector2(3231.1877, 1015.0103)
+scale = Vector2(0.25709778, 0.25709778)
+texture = ExtResource("38_0rekh")
+
+[node name="BottomPlant2" type="Sprite2D" parent="FrontFlowers1" unique_id=39424981]
+position = Vector2(2985.1882, 996.0104)
+scale = Vector2(0.18199857, 0.1819986)
+texture = ExtResource("39_281ou")
+
+[node name="BottomReeds1" type="Sprite2D" parent="FrontFlowers1" unique_id=1450170044]
+position = Vector2(3139.1877, 974.0104)
+scale = Vector2(0.22350231, 0.2235023)
+texture = ExtResource("40_nrbry")
+
+[node name="BottomReeds2" type="Sprite2D" parent="FrontFlowers1" unique_id=391775454]
+position = Vector2(3536.1877, 1008.0105)
+scale = Vector2(0.22350231, 0.2235023)
+texture = ExtResource("40_nrbry")
 
 [node name="BackBufferCopy2" type="BackBufferCopy" parent="." unique_id=75376384]
 copy_mode = 2
@@ -890,6 +1096,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [connection signal="spawn_enemy" from="WaveSpawner" to="." method="_on_wave_spawner_spawn_enemy"]
 [connection signal="wave_ended" from="WaveSpawner" to="." method="_on_wave_spawner_wave_ended"]
