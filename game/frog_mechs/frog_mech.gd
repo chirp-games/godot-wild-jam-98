@@ -30,7 +30,7 @@ func jump(jump_direction: int) -> void:
 		animation = "jump_left"
 	else:
 		animation = "jump"
-	$MiniFrog/AnimationPlayer.play(animation)
+	#$MiniFrog/AnimationPlayer.play(animation)
 
 func _ready() -> void:
 	if resource.mech_class == MechResource.MechClass.Commander:
