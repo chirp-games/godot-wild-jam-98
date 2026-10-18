@@ -1,6 +1,7 @@
 extends Node2D
 
 const rat := preload("res://game/enemy/mothertruck/rat.tscn")
+const kddv := preload("res://game/enemy/mothertruck/mothertruck.tscn")
 const signaler := preload("res://game/enemy/signaler/signaler.tscn")
 
 var stock: Array[Enemy] = []
@@ -24,6 +25,9 @@ func _summon_reinforcements(around_enemy: Enemy):
 	for i in range(5):
 		spawn_enemy.emit(rat.instantiate(), around_enemy)
 		await get_tree().create_timer(.1).timeout
+	while len(stock) > 0:
+		spawn_enemy.emit(stock.pop_front().instantiate(), around_enemy)
+		await get_tree().create_timer(.1).timeout
 
 func _process(_delta: float) -> void:
 	if wave_finished_spawning and len(get_tree().get_nodes_in_group("enemy")) == 0:
@@ -32,3 +36,9 @@ func _process(_delta: float) -> void:
 
 func _on_start_wave_button_pressed() -> void:
 	await start_wave()
+
+
+func _on_retreat(body: Node2D) -> void:
+	if body is KDDV:
+		stock.push_back(kddv)
+		body.queue_free()

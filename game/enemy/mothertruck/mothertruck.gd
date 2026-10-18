@@ -1,5 +1,7 @@
 extends Enemy
 
+class_name KDDV
+
 var cargo = 8
 var rat = preload("res://game/enemy/mothertruck/rat.tscn")
 
