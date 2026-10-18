@@ -15,3 +15,4 @@ func _process(delta: float) -> void:
 			var v: float = mouse_position_on_canvas.x - 1920 + 600
 			position.x += lerp(0, camera_speed, v /480) * delta * u
 	
+	position.x = clamp(position.x, -2300, 2300)
