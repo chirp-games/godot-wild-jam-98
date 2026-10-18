@@ -17,7 +17,7 @@ const retreats = ["Mothertruck", "Bomber Drone"]
 @onready var scrapyard: Control = %Scrapyard
 @onready var start_wave_button: Button = %StartWaveButton
 @onready var health_label: Label = %Health
-@onready var material_label: Label = %Material
+@onready var score_label: Label = %Score
 @onready var portals = [
 	%LeftPortal1,
 	%LeftPortal2,
@@ -34,7 +34,8 @@ const retreats = ["Mothertruck", "Bomber Drone"]
 var frogs_to_closest_commander: Dictionary = {}
 var enemy_corpses_collected: Dictionary[EnemyResource, int] = {}
 var currently_building_wire: Wire
-var material_currency = 0
+
+var score = 0
 
 func find_wire_receptacles():
 	return get_tree().get_nodes_in_group("wire_receptacle")
@@ -87,7 +88,7 @@ func _process(_delta: float) -> void:
 			closest_commander_found(frog, new_closest_commander)
 	
 	health_label.text = "Health: " + str(command_center.get_health())
-	material_label.text = "Material: " + str(material_currency)
+	score_label.text = "Score: " + str(score)
 
 func _enemy_detected(commander: FrogMech, enemy: Enemy):
 	var frogs = commander.get_connected_frogs()
@@ -139,6 +140,7 @@ func _on_wave_spawner_spawn_enemy(new_enemy: Enemy, around_enemy: Enemy, portal:
 	new_enemy.on_death.connect(func(): 
 		enemy_corpses_collected[new_enemy.resource] += 1
 		enemy_corpse_amount_updated.emit(enemy_corpses_collected)
+		score += new_enemy.resource.scrap_value
 	)
 	# probably make a better place to add this as a child
 	add_child(new_enemy)
