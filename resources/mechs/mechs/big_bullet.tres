@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_ue73u"]
 script = ExtResource("3_dkixk")
-damage = 2
+damage = 3
 metadata/_custom_type_script = "uid://d011ch803a1me"
 
 [sub_resource type="Resource" id="Resource_ivohm"]
@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://cstle5vylkwia"
 [resource]
 script = ExtResource("5_k2ayt")
 name = "Big Bullet"
-description = "Deal 2 extra damage."
+description = "Deal 3 extra damage."
 pathfinding = SubResource("Resource_ivohm")
 cooldown_ratio = 1
 effect = SubResource("Resource_ue73u")

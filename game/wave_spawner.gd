@@ -1,9 +1,16 @@
 extends Node2D
 
-const rat := preload("res://game/enemy/mothertruck/rat.tscn")
-const kddv := preload("res://game/enemy/mothertruck/mothertruck.tscn")
 const signaler := preload("res://game/enemy/signaler/signaler.tscn")
+const kddv := preload("res://game/enemy/mothertruck/mothertruck.tscn")
 
+var valid_enemies = [
+	preload("res://game/enemy/mothertruck/mothertruck.tscn"),
+	preload("res://game/enemy/gunbot/gunbot.tscn"),
+	preload("res://game/enemy/howitzer/howitzer.tscn"),
+	preload("res://game/enemy/icbm/icbm.tscn"),
+]
+
+var timer: float = 0.
 var stock: Array[Enemy] = []
 var wave_finished_spawning = false
 
@@ -23,13 +30,14 @@ func start_wave():
 
 func _summon_reinforcements(around_enemy: Enemy):
 	for i in range(5):
-		spawn_enemy.emit(rat.instantiate(), around_enemy)
-		await get_tree().create_timer(.1).timeout
+		spawn_enemy.emit(valid_enemies.pick_random().instantiate(), around_enemy)
+		await get_tree().create_timer(.3).timeout
 	while len(stock) > 0:
 		spawn_enemy.emit(stock.pop_front().instantiate(), around_enemy)
-		await get_tree().create_timer(.1).timeout
+		await get_tree().create_timer(.3).timeout
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	timer += delta
 	if wave_finished_spawning and len(get_tree().get_nodes_in_group("enemy")) == 0:
 		wave_ended.emit()
 		wave_finished_spawning = false

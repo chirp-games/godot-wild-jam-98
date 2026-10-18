@@ -68,6 +68,8 @@ func pathfind(_delta: float):
 	if not target:
 		if not grounded or not parachute.visible:
 			velocity.x = -sign(global_position.x - player_x) * speed
+	elif target.global_position.distance_to($AggroDetection.global_position) > $Aggrodetection/Range.shape.radius + 100:
+		velocity.x = -sign(global_position.x - target.global_position.x) * speed
 	else:
 		velocity.x = 0
 		if attack_cooldown <= 0:
@@ -110,7 +112,9 @@ func target_select(area: Area2D) -> void:
 	if !target:
 		target = area
 
-
 func _on_take_damage_damage_taken(_amount: int) -> void:
 	on_hit_animation.play("hit")
 	on_hit_animation.reset_section()
+
+func disable_parachute() -> void:
+	%Parachute.visible = false

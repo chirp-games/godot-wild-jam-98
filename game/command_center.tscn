@@ -20,7 +20,7 @@ shader_parameter/invert = false
 size = Vector2(224, 233.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6w6ra"]
-size = Vector2(27, 565.5)
+size = Vector2(27, 560)
 
 [node name="CommandCenter" type="Node2D" unique_id=1062672150 groups=["ally"]]
 script = ExtResource("1_l4tar")
@@ -40,11 +40,13 @@ debug_color = Color(0.94628114, 0.19923896, 0.31826422, 0.41960785)
 
 [node name="TakeDamage" type="Area2D" parent="." unique_id=967084313]
 unique_name_in_owner = true
+position = Vector2(0, -40)
 script = ExtResource("4_8b62g")
+health = 1000
 damaged_by_group = &"enemy_attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamage" unique_id=502094763]
-position = Vector2(-1, -283)
+position = Vector2(0, -240)
 shape = SubResource("RectangleShape2D_6w6ra")
 
 [connection signal="body_entered" from="EnterCommandMode" to="." method="_on_enter_command_mode_body_entered"]

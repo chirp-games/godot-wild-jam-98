@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 	if target or $AggroDetection.position.distance_to(last_pos) <= $AggroDetection/CollisionShape2D.shape.radius:
 		attack()
 	
-	velocity = Vector2.from_angle(rotation) * speed
+	velocity = Vector2.from_angle(head.angle_to(Vector2.RIGHT)) * speed
 	move_and_slide()
 
 func attack():
