@@ -10,7 +10,7 @@ func setup(size: float, damage: int):
 	self.scale = Vector2.ONE * size
 	self.base_damage = damage
 	self.lifetime = damage / 60.
-	self.timer = lifetime
+	self.timer = 0.01
 
 func _process(delta: float) -> void:
 	if timer <= 0:

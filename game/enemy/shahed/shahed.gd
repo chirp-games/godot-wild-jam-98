@@ -35,7 +35,7 @@ func attack():
 	var explosion: Explosion = EXPLOSION.instantiate()
 	explosion.setup(0.5, 300)
 	explosion.global_position = global_position
-	Vfx.create_vfx(Vfx.VFX_EMBER_FOUNTAIN, global_position + Vector2(0, 45))
+	Vfx.create_vfx(Vfx.VFX_SHAHED_IMPACT, global_position + Vector2(0, 75))
 	get_parent().add_child(explosion)
 	queue_free()
 

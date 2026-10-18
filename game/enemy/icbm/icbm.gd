@@ -27,6 +27,6 @@ func attack():
 	var explosion: Explosion = EXPLOSION.instantiate()
 	explosion.setup(1., 750)
 	explosion.global_position = $Warhead.global_position
-	Vfx.create_vfx(Vfx.VFX_EMBER_FOUNTAIN, $Warhead.global_position + Vector2(0, 45))
+	Vfx.create_vfx(Vfx.VFX_ICBM_IMPACT, $Warhead.global_position + Vector2(0, 120))
 	get_parent().add_child(explosion)
 	queue_free()
