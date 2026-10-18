@@ -50,7 +50,7 @@ shape = SubResource("RectangleShape2D_le3q1")
 [node name="AggroDetection" parent="." index="6" unique_id=248274435]
 position = Vector2(270, 0)
 
-[node name="CollisionShape2D" parent="AggroDetection" index="0" unique_id=1626251780]
+[node name="Range" parent="AggroDetection" index="0" unique_id=1626251780]
 shape = SubResource("CircleShape2D_cre33")
 
 [node name="CollisionShape2D" parent="TakeDamage" parent_id_path=PackedInt32Array(1976776874) index="0" unique_id=1340069219]
