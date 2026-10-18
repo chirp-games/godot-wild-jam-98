@@ -7,7 +7,7 @@
 script = ExtResource("1_yyhlb")
 name = "Kamikaze Drone"
 texture = ExtResource("2_hchrh")
-scrap_value = 15
+scrap_value = 20
 health = 35
 movement_speed = 3000
 grounded = false

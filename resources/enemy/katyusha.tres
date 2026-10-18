@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_2ou2v")
 name = "Katyusha"
-scrap_value = 40
+scrap_value = 60
 health = 200
 movement_speed = 75
 attack_interval = 0.2

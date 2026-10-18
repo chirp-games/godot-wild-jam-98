@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ytabn")
 name = "Howitzer"
-scrap_value = 40
+scrap_value = 75
 health = 200
 movement_speed = 75
 attack_interval = 10.0

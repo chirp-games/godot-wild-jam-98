@@ -6,6 +6,7 @@ var side: int
 var θv: float
 var ω = PI
 var locked = false
+var target_priority
 
 func pathfind(delta: float):
 	if not target:
@@ -40,5 +41,7 @@ func attack():
 	queue_free()
 
 func target_select(area: Area2D) -> void:
-	if !target or area.parent_resource.mech_class > target.parent_resource.mech_class:
+	var priority: int = area.parent_resource.mech_class if area.parent_resource else -1
+	if !target or priority > target_priority:
 		target = area
+		target_priority = priority

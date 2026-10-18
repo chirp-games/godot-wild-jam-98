@@ -3,7 +3,7 @@ extends Enemy
 var cargo = 8
 var rat = preload("res://game/enemy/mothertruck/rat.tscn")
 
-func _physics_process(delta: float) -> void:
+func pathfind(delta: float) -> void:
 	if cargo > 0:
 		super(delta)
 	else:

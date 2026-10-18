@@ -36,7 +36,7 @@ const midgame_spawns = [
 ]
 
 const retreats = {
-	"kddv": kddv,
+	"Mothertruck": kddv,
 }
 
 var valid_enemies: Dictionary = {
@@ -49,13 +49,13 @@ var valid_enemies: Dictionary = {
 }
 
 var wave: int = 0
-var signal_cd: float = 5.
-var stock: Array[Enemy] = []
+var signal_cd: float = 2.
+var stock: Array = []
 
 signal spawn_enemy(e: PackedScene, near_enemy: Enemy, spot: Spawns)
 
 func start_wave():
-	signal_cd = 30
+	signal_cd = 20
 	var spot: Spawns
 	if wave < 4:
 		spot = early_spawns.pick_random()
@@ -72,15 +72,20 @@ func start_wave():
 
 func _summon_reinforcements(around_enemy: Enemy, location: Spawns):
 	wave += 1
-	for i in range(5):
-		spawn_enemy.emit(valid_enemies[location].pick_random().instantiate(), around_enemy, 0)
-		await get_tree().create_timer(.3).timeout
+	var budget: int = 30 * sqrt(wave)
+	while budget >= 10:
+		var pick: Enemy = valid_enemies[location].pick_random().instantiate()
+		var cost = pick.resource.scrap_value
+		if cost <= budget:
+			budget -= cost
+			spawn_enemy.emit(pick, around_enemy, -1)
+			await get_tree().create_timer(.3).timeout
 	while len(stock) > 0:
-		spawn_enemy.emit(stock.pop_front().instantiate(), around_enemy, 0)
+		spawn_enemy.emit(stock.pop_front().instantiate(), around_enemy, -1)
 		await get_tree().create_timer(.3).timeout
 
 func _process(delta: float) -> void:
-	signal_cd += delta
+	signal_cd -= delta
 	if signal_cd <= 0:
 		start_wave()
 
@@ -88,8 +93,5 @@ func _on_start_wave_button_pressed() -> void:
 	await start_wave()
 
 
-func _on_retreat(area: Area2D) -> void:
-	var unit = area.get_parent()
-	if unit.name == "Mothertruck":
-		stock.append(kddv)
-		unit.queue_free()
+func _on_retreat(unit: String) -> void:
+	stock.append(retreats[unit])

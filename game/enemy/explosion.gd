@@ -22,5 +22,5 @@ func _process(delta: float) -> void:
 func calculate_damage(body: Node2D) -> int:
 	if not damaged.has(body):
 		damaged.append(body)
-		return mini(base_damage, (100 * base_damage / body.global_position.distance_squared_to(self.global_position)))
+		return mini(base_damage, (2500 * base_damage / body.global_position.distance_to(self.global_position)))
 	return 0

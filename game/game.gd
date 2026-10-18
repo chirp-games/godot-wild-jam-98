@@ -3,11 +3,14 @@ extends Control
 class_name Game
 
 signal enemy_corpse_amount_updated(new_amount: Dictionary[EnemyResource, int])
+signal retreated(unit: String)
 
 const wire_scene = preload("res://game/frog_mechs/Wire.tscn")
 const player_mech_scene = preload("res://game/frog_mechs/frog_mech.tscn")
 const enemy_scene = preload("res://game/enemy/Enemy.tscn")
 const MAX_CONNECTION_DIST = 300
+
+const retreats = ["Mothertruck", "Bomber Drone"]
 
 @onready var command_center: CommandCenter = %CommandCenter
 @onready var scrapyard: Control = %Scrapyard
@@ -61,6 +64,9 @@ func _process(_delta: float) -> void:
 	for frog: FrogMech in find_frog_mechs():
 		var closest_commander = frogs_to_closest_commander.get(frog)
 		var new_closest_commander = get_closest_commander(frog)
+		
+		if !new_closest_commander:
+			continue # Probably one lose condition here.
 		
 		var in_range = frog.global_position.distance_to(new_closest_commander.global_position) <= MAX_CONNECTION_DIST
 		
@@ -139,3 +145,11 @@ func _input(event: InputEvent) -> void:
 			exit_scrapyard()
 		else:
 			enter_scrapyard()
+
+func _on_retreat_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
+	if body is Enemy:
+		var res_name = body.resource.name
+		if retreats.has(res_name):
+			retreated.emit(res_name)
+			body.queue_free()

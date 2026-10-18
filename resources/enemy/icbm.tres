@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_sxidv")
-name = "Intercontinental Ballistic Missile"
-scrap_value = 50
+name = "ICBM"
+scrap_value = 90
 health = 50
 movement_speed = 6600
 grounded = false
