@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends DragableRgidBody
 
 class_name FrogMech
 
@@ -21,9 +21,6 @@ var cooldown = 0.0
 @onready var wire_recpetacle: WireReceptacle = %WireReceptacle
 @onready var cooldown_bar: ProgressBar = %Cooldown
 
-var on_floor
-var floor
-
 func jump(jump_direction: int) -> void:
 	apply_central_impulse(Vector2(jump_direction * 200., -200.))
 	var animation: String
@@ -41,7 +38,7 @@ func _ready() -> void:
 	($RankLabel as Label).text = resource.name
 	($TakeDamage as TakeDamage).parent_resource = resource
 
-	#super._ready()
+	super._ready()
 
 func get_connected_commander():
 	var w := wire_recpetacle.get_wires()
@@ -82,7 +79,7 @@ func _process(delta: float) -> void:
 		else:
 			cooldown = 0
 
-	#super._process(delta)
+	super._process(delta)
 
 func get_total_cooldown():
 	var total = 0.0
@@ -91,11 +88,11 @@ func get_total_cooldown():
 	return total * .25
 
 func _physics_process(delta: float) -> void:
-	#super._physics_process(delta)
+	super._physics_process(delta)
 
 	# Do not do anything when being dragged
-	#if dragging:
-	#	return
+	if dragging:
+		return
 
 	resource.pathfinding.pathfind(game, self)
 
@@ -107,18 +104,3 @@ func try_attack(enemy: Enemy):
 	resource.effect.apply(b)
 	b.target_enemy = enemy
 	create_attack.emit(b)
-
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	# https://forum.godotengine.org/t/how-to-check-if-rigid-body-is-on-floor/65679/3
-	var i := 0
-	on_floor = false
-	floor = null
-	while i < state.get_contact_count():
-		var normal := state.get_contact_local_normal(i)
-		#  1.0 would be perfectly straight up
-		#  0.0 is a wall
-		# -1.0 is a ceiling
-		if normal.dot(Vector2.UP) > 0.3: # this can be dialed in
-			floor = state.get_contact_collider_object(i)
-			on_floor = true
-		i += 1

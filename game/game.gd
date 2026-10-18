@@ -9,11 +9,8 @@ const player_mech_scene = preload("res://game/frog_mechs/frog_mech.tscn")
 const enemy_scene = preload("res://game/enemy/Enemy.tscn")
 const MAX_CONNECTION_DIST = 300
 
-@onready var player: Player = %Player
 @onready var command_center: CommandCenter = %CommandCenter
 @onready var scrapyard: Control = %Scrapyard
-@onready var command_center_camera: Camera2D = %CommandCenterCamera
-@onready var player_camera: Camera2D = %PlayerCamera
 @onready var start_wave_button: Button = %StartWaveButton
 @onready var left_portal: Marker2D = %LeftPortal
 @onready var right_portal: Marker2D = %RightPortal
@@ -33,7 +30,7 @@ func find_wires():
 
 func find_commanders():
 	# The player is a commander now...
-	return get_tree().get_nodes_in_group("frog_mech").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Commander) + [player]
+	return get_tree().get_nodes_in_group("frog_mech").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Commander)
 
 func find_recruits():
 	return get_tree().get_nodes_in_group("frog_mech").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Recruit)
@@ -51,28 +48,26 @@ func _ready() -> void:
 		commander.enemy_detected.connect(func(e: Enemy): _enemy_detected(commander, e))
 		pass
 
-	player_camera.make_current()
-
 	for e in Resources.enemies:
 		enemy_corpses_collected.get_or_add(e, 0)
 
 func _process(_delta: float) -> void:
-	#for frog: FrogMech in find_frog_mechs():
-		#var closest_commander = frogs_to_closest_commander.get(frog)
-		#var new_closest_commander = get_closest_commander(frog)
-		#
-		#var in_range = frog.global_position.distance_to(new_closest_commander.global_position) <= MAX_CONNECTION_DIST
-#
-		#if closest_commander != new_closest_commander and in_range:
-			#frogs_to_closest_commander[frog] = new_closest_commander
-#
-		#if frog.dragging and not in_range:
-			#closest_commander_lost(frog)
-			#frogs_to_closest_commander[frog] = null
-#
-		#if frogs_to_closest_commander.get(frog) and frogs_to_closest_commander[frog] != closest_commander and (frog.dragging or frog.get_connected_commander() == null):
-			#closest_commander_lost(frog)
-			#closest_commander_found(frog, new_closest_commander)
+	for frog: FrogMech in find_frog_mechs():
+		var closest_commander = frogs_to_closest_commander.get(frog)
+		var new_closest_commander = get_closest_commander(frog)
+		
+		var in_range = frog.global_position.distance_to(new_closest_commander.global_position) <= MAX_CONNECTION_DIST
+
+		if closest_commander != new_closest_commander and in_range:
+			frogs_to_closest_commander[frog] = new_closest_commander
+
+		if frog.dragging and not in_range:
+			closest_commander_lost(frog)
+			frogs_to_closest_commander[frog] = null
+
+		if frogs_to_closest_commander.get(frog) and frogs_to_closest_commander[frog] != closest_commander and (frog.dragging or frog.get_connected_commander() == null):
+			closest_commander_lost(frog)
+			closest_commander_found(frog, new_closest_commander)
 
 	health_label.text = "Health: " + str(command_center.get_health())
 	material_label.text = "Material: " + str(material_currency)
