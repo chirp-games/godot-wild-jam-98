@@ -93,6 +93,7 @@ func _process(_delta: float) -> void:
 	
 	if health <= 0:
 		%GameOver.show()
+		%GameOver.update(score)
 		get_tree().paused = true
 
 func _enemy_detected(commander: FrogMech, enemy: Enemy):

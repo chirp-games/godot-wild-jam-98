@@ -1,6 +1,18 @@
 [gd_scene format=3 uid="uid://1q0d76vi5xaw"]
 
+[ext_resource type="Script" uid="uid://b37e3yb6l38b6" path="res://game/end/loss.gd" id="1_f3fhe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5s0r"]
+font_size = 150
+
+[sub_resource type="LabelSettings" id="LabelSettings_15rk5"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3fhe"]
+font_size = 60
+
 [node name="GameEnd" type="Control" unique_id=114396276]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -8,3 +20,54 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_force_pass_scroll_events = false
+script = ExtResource("1_f3fhe")
+
+[node name="CenterContainer" type="MarginContainer" parent="." unique_id=294565040]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 250
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=552956048]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=2102319555]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1178328057]
+layout_mode = 2
+text = "Frog down"
+label_settings = SubResource("LabelSettings_m5s0r")
+horizontal_alignment = 1
+
+[node name="Descriptor" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2062636319]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "The rogue mechs have invaded and taken over your village.
+Your "
+label_settings = SubResource("LabelSettings_15rk5")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1706979920]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Your score: "
+label_settings = SubResource("LabelSettings_f3fhe")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1442294405]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Back to main menu"
+
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/Button" to="." method="main_menu_pressed"]

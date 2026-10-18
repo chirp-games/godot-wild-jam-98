@@ -6,6 +6,7 @@ extends Control
 @onready var title = %Title
 
 func _ready() -> void:
+	get_tree().paused = false
 	title.text = ProjectSettings.get_setting("application/config/name")
 	if OS.has_feature("web"):
 		(%WebAlert as Control).show()
