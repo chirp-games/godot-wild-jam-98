@@ -179,7 +179,10 @@ animations = [{
 }]
 
 [node name="stomp-ring" type="AnimatedSprite2D" unique_id=725846512]
+modulate = Color(0.62, 0.62, 0.62, 1)
 texture_filter = 2
 sprite_frames = SubResource("frames")
 autoplay = "default"
+frame = 23
+frame_progress = 1.0
 offset = Vector2(0, -92.16)
