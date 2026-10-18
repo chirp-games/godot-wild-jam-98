@@ -1,9 +1,183 @@
 [gd_scene format=3 uid="uid://bb7q8gqd4vjsm"]
 
 [ext_resource type="Script" uid="uid://bqm22m7vq1t3h" path="res://menu/menu.gd" id="1_6nwqt"]
+[ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="2_juveg"]
+[ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="2_o0hb3"]
 [ext_resource type="Texture2D" uid="uid://dqd5uy0vkmxhq" path="res://assets/mech/assembly.png" id="2_pbjm4"]
 [ext_resource type="Script" uid="uid://lfjkc5ltahax" path="res://menu/volume.gd" id="3_6nwqt"]
+[ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="3_f5xy8"]
 [ext_resource type="PackedScene" uid="uid://j7rarfx4dtlc" path="res://ui/button.tscn" id="3_svuvw"]
+[ext_resource type="Texture2D" uid="uid://ceq120ettmjpo" path="res://assets/parallax/tree_1.png" id="4_p0n8t"]
+[ext_resource type="Texture2D" uid="uid://dwkt1ifewfb64" path="res://assets/parallax/tree_3.png" id="5_tmd6c"]
+[ext_resource type="Texture2D" uid="uid://txtuancv088" path="res://assets/parallax/small_vine_2.png" id="6_h81yq"]
+[ext_resource type="Texture2D" uid="uid://ntm0pkw30y7j" path="res://assets/parallax/small_vine_1.png" id="7_eorms"]
+[ext_resource type="Texture2D" uid="uid://dh2qb6o85tc3q" path="res://assets/parallax/small_vine_3.png" id="8_t2dg8"]
+[ext_resource type="Texture2D" uid="uid://fmnba5nkkk33" path="res://assets/parallax/small_shrub.svg" id="9_b4h5o"]
+[ext_resource type="Texture2D" uid="uid://brnrvjslkxknd" path="res://assets/parallax/tree2.png" id="10_dbvex"]
+[ext_resource type="Texture2D" uid="uid://c286ner6dmm2i" path="res://assets/parallax/tree_4.png" id="11_uysh8"]
+[ext_resource type="Shader" uid="uid://dyu60a6tlb610" path="res://game/darken.gdshader" id="12_pm5mm"]
+[ext_resource type="Shader" uid="uid://bboijlrah86rm" path="res://game/haze.gdshader" id="14_dxffa"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e0uss"]
+noise_type = 3
+seed = 10
+frequency = 0.0162
+fractal_octaves = 6
+fractal_lacunarity = 8.0
+fractal_weighted_strength = 0.25
+domain_warp_amplitude = 30.555
+domain_warp_frequency = 0.56
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f17yu"]
+noise = SubResource("FastNoiseLite_e0uss")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42cyn"]
+shader = ExtResource("2_o0hb3")
+shader_parameter/noise = SubResource("NoiseTexture2D_f17yu")
+shader_parameter/debanding_intensity = 0.0730000034675
+
+[sub_resource type="Gradient" id="Gradient_1rw7n"]
+offsets = PackedFloat32Array(0.24698795, 0.4759036, 0.6506024)
+colors = PackedColorArray(0.08235294, 0.12156863, 0.11372549, 1, 0.27299997, 0.35, 0.33588332, 1, 0.1932, 0.28, 0.26408666, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6s3j4"]
+gradient = SubResource("Gradient_1rw7n")
+
+[sub_resource type="Shader" id="Shader_4cobl"]
+code = "//https://godotshaders.com/shader/2d-wind-sway-tree-grass-motion-shader-2/
+shader_type canvas_item;
+
+
+uniform float wind_start_threshold : hint_range(0,1) = 0.1;
+uniform float wind_end_threshold : hint_range(0,10) = 2;
+uniform float wind_end_threshold_2 : hint_range(0,2) = .1;
+uniform float wind_strength : hint_range(0,1.5) = .2;
+uniform float wind_speed  : hint_range(.2,5) = 1;
+uniform float brightness: hint_range(0.,1.,0.01) = 1.0;
+uniform float scale = 2.0;
+
+void vertex() {
+	VERTEX *= scale;
+}
+
+void fragment() {
+    vec2 uv = (UV - REGION_RECT.xy) / REGION_RECT.zw * scale;
+	uv -= (scale - 1.) / scale;
+	
+	float dist_amount = smoothstep(wind_start_threshold * pow((1.0 - uv.y), wind_end_threshold), wind_end_threshold_2, 1.-uv.y);
+    uv.x += sin(TIME * wind_speed) * pow((1.0 - uv.y), wind_end_threshold) * dist_amount  * wind_strength ;
+    
+	COLOR = texture(TEXTURE, uv * REGION_RECT.zw + REGION_RECT.xy);
+    vec2 border = step(vec2(0.0), uv) * step(uv, vec2(1.0));
+    COLOR.a *= border.x * border.y;
+	COLOR.rgb *= brightness;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndece"]
+shader = SubResource("Shader_4cobl")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 7.2750003455625
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0190000009025
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 1.0
+shader_parameter/scale = 2.0
+
+[sub_resource type="Shader" id="Shader_ln7ps"]
+code = "//https://godotshaders.com/shader/2d-wind-sway-tree-grass-motion-shader-2/
+shader_type canvas_item;
+
+
+uniform float wind_start_threshold : hint_range(0,1) = 0.1;
+uniform float wind_end_threshold : hint_range(0,10) = 2;
+uniform float wind_end_threshold_2 : hint_range(0,2) = .1;
+uniform float wind_strength : hint_range(0,1.5) = .2;
+uniform float wind_speed  : hint_range(.2,5) = 1;
+uniform float brightness: hint_range(0.,1.,0.01) = 1.0;
+uniform float scale = 2.0;
+
+void vertex() {
+	VERTEX *= scale;
+}
+
+void fragment() {
+    vec2 uv = (UV - REGION_RECT.xy) / REGION_RECT.zw * scale;
+	uv -= (scale - 1.) / scale;
+	
+	float dist_amount = smoothstep(wind_start_threshold * pow((1.0 - uv.y), wind_end_threshold), wind_end_threshold_2, 1.-uv.y);
+    uv.x += sin(TIME * wind_speed) * pow((1.0 - uv.y), wind_end_threshold) * dist_amount  * wind_strength ;
+    
+	COLOR = texture(TEXTURE, uv * REGION_RECT.zw + REGION_RECT.xy);
+    vec2 border = step(vec2(0.0), uv) * step(uv, vec2(1.0));
+    COLOR.a *= border.x * border.y;
+	COLOR.rgb *= brightness;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6q5d0"]
+shader = SubResource("Shader_ln7ps")
+shader_parameter/wind_start_threshold = 0.0230000010925
+shader_parameter/wind_end_threshold = 0.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0190000009025
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 0.5499999877064
+shader_parameter/scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrfri"]
+shader = SubResource("Shader_ln7ps")
+shader_parameter/wind_start_threshold = 0.0230000010925
+shader_parameter/wind_end_threshold = 0.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.01600000076
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 0.5499999877064
+shader_parameter/scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bu6d0"]
+shader = SubResource("Shader_ln7ps")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 7.2750003455625
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0190000009025
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 0.5499999877064
+shader_parameter/scale = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s34wi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sy1yj"]
+shader = ExtResource("12_pm5mm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2kxn"]
+shader = ExtResource("2_juveg")
+shader_parameter/wind_start_threshold = 0.1
+shader_parameter/wind_end_threshold = 2.0
+shader_parameter/wind_end_threshold_2 = 0.1
+shader_parameter/wind_strength = 0.0350000016625
+shader_parameter/wind_speed = 1.0
+shader_parameter/brightness = 0.51999998837696
+shader_parameter/scale = 2.0
+shader_parameter/invert = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u50j4"]
+noise_type = 2
+seed = 22
+frequency = 0.0241
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dpies"]
+width = 200
+height = 100
+noise = SubResource("FastNoiseLite_u50j4")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibpco"]
+shader = ExtResource("14_dxffa")
+shader_parameter/haze_color = Color(0.96, 0.92192, 0.63359994, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_dpies")
+shader_parameter/noise_intensity = 0.1
+shader_parameter/noise_2_intensity = 0.1
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6fv63"]
 
 [node name="Menu" type="HBoxContainer" unique_id=1858154579]
 anchors_preset = 15
@@ -14,6 +188,206 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 script = ExtResource("1_6nwqt")
+
+[node name="CompleteBack" type="Parallax2D" parent="." unique_id=1818654733]
+scroll_scale = Vector2(0, 0)
+
+[node name="BGColor" type="TextureRect" parent="CompleteBack" unique_id=591707437]
+material = SubResource("ShaderMaterial_42cyn")
+offset_left = 4.4408833e-05
+offset_top = 1079.9557
+offset_right = 1079.9557
+offset_bottom = 2999.8608
+rotation = -1.5707964
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_6s3j4")
+metadata/_edit_lock_ = true
+
+[node name="FarBack" type="Parallax2D" parent="." unique_id=1177826623]
+scroll_scale = Vector2(0.2, 0)
+repeat_times = 3
+
+[node name="Rock" type="Sprite2D" parent="FarBack" unique_id=1202929394]
+position = Vector2(489.00003, 576)
+scale = Vector2(0.40745986, 0.40745986)
+texture = ExtResource("3_f5xy8")
+
+[node name="Rock2" type="Sprite2D" parent="FarBack" unique_id=376941289]
+position = Vector2(1210, 538)
+scale = Vector2(0.40745986, 0.40745986)
+texture = ExtResource("3_f5xy8")
+
+[node name="CloseTree1" type="Parallax2D" parent="." unique_id=1978533547]
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(-599, 0)
+repeat_size = Vector2(1000, 0)
+repeat_times = 5
+
+[node name="Tree1" type="Sprite2D" parent="CloseTree1" unique_id=1795069245]
+material = SubResource("ShaderMaterial_ndece")
+position = Vector2(253.5, 598.6251)
+scale = Vector2(-1, 0.8378911)
+texture = ExtResource("4_p0n8t")
+
+[node name="Tree3" type="Sprite2D" parent="CloseTree1" unique_id=1956468367]
+material = SubResource("ShaderMaterial_ndece")
+position = Vector2(692.5, 601.5)
+scale = Vector2(1, 0.8346582)
+texture = ExtResource("5_tmd6c")
+
+[node name="Tree5" type="Sprite2D" parent="CloseTree1" unique_id=1863426716]
+material = SubResource("ShaderMaterial_ndece")
+position = Vector2(863.5, 589.75)
+scale = Vector2(1, 0.8414062)
+texture = ExtResource("4_p0n8t")
+
+[node name="Tree7" type="Sprite2D" parent="CloseTree1" unique_id=2042407201]
+material = SubResource("ShaderMaterial_ndece")
+position = Vector2(1359.5, 595.699)
+scale = Vector2(-1, 0.8575484)
+texture = ExtResource("5_tmd6c")
+
+[node name="SmallVine2" type="Sprite2D" parent="CloseTree1" unique_id=1838416758]
+position = Vector2(-1047, 595)
+rotation = 3.1415927
+scale = Vector2(1, -0.8575484)
+texture = ExtResource("6_h81yq")
+
+[node name="SmallVine1" type="Sprite2D" parent="CloseTree1" unique_id=1674118861]
+position = Vector2(-955, 655)
+texture = ExtResource("7_eorms")
+
+[node name="ColorRect" type="ColorRect" parent="CloseTree1" unique_id=702976416]
+offset_right = 1919.0
+offset_bottom = 330.0
+mouse_filter = 2
+color = Color(0.078431375, 0.10980392, 0.105882354, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CloseTree1" unique_id=600270330]
+offset_left = 4.0
+offset_top = 858.0
+offset_right = 1921.0
+offset_bottom = 1170.0
+mouse_filter = 2
+color = Color(0.078431375, 0.10980392, 0.105882354, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CloseTree1" unique_id=448218345]
+offset_left = 1077.0
+offset_top = 300.0
+offset_right = 1666.0
+offset_bottom = 347.0
+mouse_filter = 2
+color = Color(0.078431375, 0.10980392, 0.105882354, 1)
+
+[node name="SmallVine3" type="Sprite2D" parent="CloseTree1" unique_id=1255286009]
+position = Vector2(-482, 634)
+rotation = -2.4269783
+texture = ExtResource("8_t2dg8")
+
+[node name="SmallVine4" type="Sprite2D" parent="CloseTree1" unique_id=1489440247]
+position = Vector2(-454, 548)
+texture = ExtResource("7_eorms")
+
+[node name="CloseTree2" type="Parallax2D" parent="." unique_id=812351957]
+scroll_scale = Vector2(0.6, 0.5)
+scroll_offset = Vector2(-634, 0)
+repeat_size = Vector2(1200, 0)
+repeat_times = 5
+
+[node name="Shrub" type="Sprite2D" parent="CloseTree2" unique_id=537507520]
+material = SubResource("ShaderMaterial_6q5d0")
+position = Vector2(699, 841)
+texture = ExtResource("9_b4h5o")
+
+[node name="Shrub2" type="Sprite2D" parent="CloseTree2" unique_id=1285681217]
+material = SubResource("ShaderMaterial_6q5d0")
+position = Vector2(943, 835)
+texture = ExtResource("9_b4h5o")
+
+[node name="Shrub3" type="Sprite2D" parent="CloseTree2" unique_id=1843246546]
+material = SubResource("ShaderMaterial_6q5d0")
+position = Vector2(250, 854)
+texture = ExtResource("9_b4h5o")
+
+[node name="Shrub4" type="Sprite2D" parent="CloseTree2" unique_id=1802300147]
+material = SubResource("ShaderMaterial_lrfri")
+position = Vector2(734, 291)
+rotation = -2.6179938
+texture = ExtResource("9_b4h5o")
+
+[node name="Shrub5" type="Sprite2D" parent="CloseTree2" unique_id=1617676917]
+material = SubResource("ShaderMaterial_lrfri")
+position = Vector2(871.00006, 258.00003)
+rotation = -2.6179938
+texture = ExtResource("9_b4h5o")
+
+[node name="Tree2" type="Sprite2D" parent="CloseTree2" unique_id=1689968008]
+material = SubResource("ShaderMaterial_bu6d0")
+position = Vector2(582.5, 588.5)
+texture = ExtResource("10_dbvex")
+
+[node name="Tree4" type="Sprite2D" parent="CloseTree2" unique_id=1181962705]
+material = SubResource("ShaderMaterial_bu6d0")
+position = Vector2(100.5, 590.5)
+texture = ExtResource("11_uysh8")
+
+[node name="Tree6" type="Sprite2D" parent="CloseTree2" unique_id=560704374]
+material = SubResource("ShaderMaterial_bu6d0")
+position = Vector2(1583.5, 591.5)
+texture = ExtResource("4_p0n8t")
+
+[node name="Tree8" type="Sprite2D" parent="CloseTree2" unique_id=1387578537]
+material = SubResource("ShaderMaterial_bu6d0")
+position = Vector2(1152, 578)
+texture = ExtResource("5_tmd6c")
+
+[node name="ColorRect" type="ColorRect" parent="CloseTree2" unique_id=1611856041]
+material = SubResource("ShaderMaterial_s34wi")
+offset_top = -195.0
+offset_right = 1220.0
+offset_bottom = 284.0
+color = Color(0.042600002, 0.06, 0.057680003, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CloseTree2" unique_id=518885773]
+material = SubResource("ShaderMaterial_s34wi")
+offset_left = 37.0
+offset_top = 884.0
+offset_right = 1257.0
+offset_bottom = 1297.0
+color = Color(0.042600002, 0.06, 0.057680003, 1)
+
+[node name="SmallVine1" type="Sprite2D" parent="CloseTree2" unique_id=181872021]
+material = SubResource("ShaderMaterial_sy1yj")
+position = Vector2(-917, 493)
+rotation = 0.120663226
+texture = ExtResource("7_eorms")
+
+[node name="SmallVine4" type="Sprite2D" parent="CloseTree2" unique_id=566779619]
+material = SubResource("ShaderMaterial_x2kxn")
+position = Vector2(-515, 353.99997)
+rotation = -1.5146699
+texture = ExtResource("8_t2dg8")
+
+[node name="SmallVine5" type="Sprite2D" parent="CloseTree2" unique_id=587337050]
+material = SubResource("ShaderMaterial_x2kxn")
+position = Vector2(-360, 266)
+rotation = -1.2331008
+texture = ExtResource("8_t2dg8")
+
+[node name="Haze" type="Parallax2D" parent="." unique_id=1067366704]
+scroll_scale = Vector2(0, 1)
+scroll_offset = Vector2(0, -72.64)
+
+[node name="Haze" type="TextureRect" parent="Haze" unique_id=1033504850]
+material = SubResource("ShaderMaterial_ibpco")
+offset_left = 2.0
+offset_top = 605.0
+offset_right = 1943.6694
+offset_bottom = 884.0
+scale = Vector2(0.98883986, 1.3644013)
+mouse_filter = 2
+texture = SubResource("PlaceholderTexture2D_6fv63")
+expand_mode = 1
 
 [node name="MainMenuContainer" type="MarginContainer" parent="." unique_id=1895535117]
 layout_mode = 2
@@ -89,6 +463,7 @@ columns = 2
 script = ExtResource("3_6nwqt")
 
 [node name="CenterContainer" type="CenterContainer" parent="OptionsContainer/Options" unique_id=1867961415]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -96,6 +471,9 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Show Tutorial"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1581070463]
+anchor_mode = 0
 
 [connection signal="pressed" from="MainMenuContainer/MainMenu/Start" to="." method="start_pressed"]
 [connection signal="pressed" from="MainMenuContainer/MainMenu/Quit" to="." method="quit_pressed"]

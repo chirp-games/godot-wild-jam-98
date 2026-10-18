@@ -18,8 +18,11 @@ func start_pressed() -> void:
 		).from_current(
 		).set_ease(Tween.EASE_OUT
 		).set_trans(Tween.TRANS_EXPO)
-	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://game/game.tscn")
+	ResourceLoader.load_threaded_request("res://game/game.tscn")
 
 func quit_pressed() -> void:
 	get_tree().quit()
+
+func _process(_delta: float) -> void:
+	if ResourceLoader.load_threaded_get_status("res://game/game.tscn") == ResourceLoader.THREAD_LOAD_LOADED:
+		get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get("res://game/game.tscn"))

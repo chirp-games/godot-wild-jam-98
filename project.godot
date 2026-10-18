@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="MechaFrog"
-run/main_scene="uid://b7bl66hkxa4if"
+run/main_scene="uid://bb7q8gqd4vjsm"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

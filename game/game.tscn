@@ -46,22 +46,22 @@ fractal_weighted_strength = 0.25
 domain_warp_amplitude = 30.555
 domain_warp_frequency = 0.56
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f17yu"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gvtgv"]
 noise = SubResource("FastNoiseLite_mhvfb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5e03w"]
 shader = ExtResource("3_b686c")
-shader_parameter/noise = SubResource("NoiseTexture2D_f17yu")
+shader_parameter/noise = SubResource("NoiseTexture2D_gvtgv")
 shader_parameter/debanding_intensity = 0.0730000034675
 
-[sub_resource type="Gradient" id="Gradient_1rw7n"]
+[sub_resource type="Gradient" id="Gradient_5ywmu"]
 offsets = PackedFloat32Array(0.24698795, 0.4759036, 0.6506024)
 colors = PackedColorArray(0.08235294, 0.12156863, 0.11372549, 1, 0.27299997, 0.35, 0.33588332, 1, 0.1932, 0.28, 0.26408666, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_leid8"]
-gradient = SubResource("Gradient_1rw7n")
+gradient = SubResource("Gradient_5ywmu")
 
-[sub_resource type="Shader" id="Shader_4cobl"]
+[sub_resource type="Shader" id="Shader_mhp6k"]
 code = "//https://godotshaders.com/shader/2d-wind-sway-tree-grass-motion-shader-2/
 shader_type canvas_item;
 
@@ -92,7 +92,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8bboj"]
-shader = SubResource("Shader_4cobl")
+shader = SubResource("Shader_mhp6k")
 shader_parameter/wind_start_threshold = 0.1
 shader_parameter/wind_end_threshold = 7.2750003455625
 shader_parameter/wind_end_threshold_2 = 0.1
@@ -101,7 +101,7 @@ shader_parameter/wind_speed = 1.0
 shader_parameter/brightness = 1.0
 shader_parameter/scale = 2.0
 
-[sub_resource type="Shader" id="Shader_ln7ps"]
+[sub_resource type="Shader" id="Shader_vkvnp"]
 code = "//https://godotshaders.com/shader/2d-wind-sway-tree-grass-motion-shader-2/
 shader_type canvas_item;
 
@@ -132,7 +132,7 @@ void fragment() {
 }"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dxwpq"]
-shader = SubResource("Shader_ln7ps")
+shader = SubResource("Shader_vkvnp")
 shader_parameter/wind_start_threshold = 0.0230000010925
 shader_parameter/wind_end_threshold = 0.0
 shader_parameter/wind_end_threshold_2 = 0.1
@@ -142,7 +142,7 @@ shader_parameter/brightness = 0.5499999877064
 shader_parameter/scale = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mhvfb"]
-shader = SubResource("Shader_ln7ps")
+shader = SubResource("Shader_vkvnp")
 shader_parameter/wind_start_threshold = 0.0230000010925
 shader_parameter/wind_end_threshold = 0.0
 shader_parameter/wind_end_threshold_2 = 0.1
@@ -152,7 +152,7 @@ shader_parameter/brightness = 0.5499999877064
 shader_parameter/scale = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pxxsx"]
-shader = SubResource("Shader_ln7ps")
+shader = SubResource("Shader_vkvnp")
 shader_parameter/wind_start_threshold = 0.1
 shader_parameter/wind_end_threshold = 7.2750003455625
 shader_parameter/wind_end_threshold_2 = 0.1
@@ -182,7 +182,7 @@ noise_type = 2
 seed = 22
 frequency = 0.0241
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dpies"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_urpib"]
 width = 200
 height = 100
 noise = SubResource("FastNoiseLite_q52ks")
@@ -191,7 +191,7 @@ seamless = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jucfl"]
 shader = ExtResource("10_dxwpq")
 shader_parameter/haze_color = Color(0.96, 0.92192, 0.63359994, 1)
-shader_parameter/noise = SubResource("NoiseTexture2D_dpies")
+shader_parameter/noise = SubResource("NoiseTexture2D_urpib")
 shader_parameter/noise_intensity = 0.1
 shader_parameter/noise_2_intensity = 0.1
 
