@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="MechResource" format=3 uid="uid://du616vi4usard"]
+
+[ext_resource type="Script" uid="uid://b25werxv3cmv" path="res://resources/mechs/mech_effect_resource.gd" id="1_p5hxp"]
+[ext_resource type="Script" uid="uid://d011ch803a1me" path="res://resources/mechs/effects/damage_effect.gd" id="3_cmst1"]
+[ext_resource type="Script" uid="uid://dqksy70y60ug4" path="res://resources/mechs/effects/exploder_effect.gd" id="3_p5hxp"]
+[ext_resource type="Script" uid="uid://jycidc5wc3a0" path="res://resources/mechs/effects/effect_list.gd" id="4_2cm6f"]
+[ext_resource type="Script" uid="uid://cstle5vylkwia" path="res://resources/mechs/pathfinding/follow_captain.gd" id="5_tk3nt"]
+[ext_resource type="Script" uid="uid://w1r7li8jtpq7" path="res://resources/mechs/mech_resource.gd" id="6_piqyx"]
+
+[sub_resource type="Resource" id="Resource_gvtgv"]
+script = ExtResource("3_cmst1")
+damage = 5
+metadata/_custom_type_script = "uid://d011ch803a1me"
+
+[sub_resource type="Resource" id="Resource_5ci2x"]
+script = ExtResource("3_p5hxp")
+metadata/_custom_type_script = "uid://dqksy70y60ug4"
+
+[sub_resource type="Resource" id="Resource_cf130"]
+script = ExtResource("4_2cm6f")
+effects = Array[ExtResource("1_p5hxp")]([SubResource("Resource_gvtgv"), SubResource("Resource_5ci2x")])
+metadata/_custom_type_script = "uid://jycidc5wc3a0"
+
+[sub_resource type="Resource" id="Resource_5ywmu"]
+script = ExtResource("5_tk3nt")
+metadata/_custom_type_script = "uid://cstle5vylkwia"
+
+[resource]
+script = ExtResource("6_piqyx")
+name = "Exploder"
+rarity = 1
+description = "Shoots an explosive bullet"
+pathfinding = SubResource("Resource_5ywmu")
+cooldown_ratio = 1
+effect = SubResource("Resource_cf130")
+metadata/_custom_type_script = "uid://w1r7li8jtpq7"

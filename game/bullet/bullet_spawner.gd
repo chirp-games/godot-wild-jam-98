@@ -10,6 +10,7 @@ var amount := 1
 var damage := 1
 var fire_mode = false
 var target_enemy: Enemy
+var explosive = false
 
 func fire_bullets():
 	for i in range(amount):
@@ -18,6 +19,7 @@ func fire_bullets():
 			b.target_enemy = target_enemy
 		b.damage = damage
 		b.scale = Vector2.ONE * damage
+		b.explosive = explosive
 
 		# This should be done not like this
 		add_child(b)

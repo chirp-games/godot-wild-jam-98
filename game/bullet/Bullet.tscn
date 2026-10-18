@@ -11,9 +11,13 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_87drx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_600de"]
-radius = 8.062258
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f41rn"]
+radius = 50.01
 
 [node name="Bullet" type="RigidBody2D" unique_id=2124296293]
+self_modulate = Color(0, 0, 0, 1)
 collision_layer = 0
 collision_mask = 8
 physics_material_override = SubResource("PhysicsMaterial_600de")
@@ -30,6 +34,7 @@ shape = SubResource("CircleShape2D_87drx")
 debug_color = Color(0.9843137, 0, 0, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1545504594]
+self_modulate = Color(0, 0, 0, 1)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ufnsw")
 
@@ -41,6 +46,15 @@ debug_color = Color(0.80487096, 0.41028404, 0.20617199, 0.41960785)
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="ExplosiveDamage" type="Area2D" parent="." unique_id=1520964030]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("2_600de")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosiveDamage" unique_id=1707732935]
+shape = SubResource("CircleShape2D_f41rn")
+debug_color = Color(0.7385733, 0.4553131, 0.303266, 0.41960785)
 
 [connection signal="deal_damage" from="Area2D" to="." method="_on_area_2d_deal_damage"]
 [connection signal="timeout" from="Timer" to="." method="disintegrate"]
