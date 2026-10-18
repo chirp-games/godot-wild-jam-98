@@ -424,6 +424,7 @@ script = ExtResource("2_y36n6")
 
 [node name="StartWaveButton" type="Button" parent="UI" unique_id=883903241]
 unique_name_in_owner = true
+visible = false
 offset_right = 92.0
 offset_bottom = 31.0
 text = "Start Wave"
