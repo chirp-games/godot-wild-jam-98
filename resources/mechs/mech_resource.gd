@@ -19,8 +19,6 @@ enum Rarity {
 @export var rarity: Rarity = Rarity.Common
 @export_multiline var description: String = ""
 
-@export var healing: int = 0
-
 @export_category("Pathfinding")
 @export var pathfinding: PathfindingResource
 

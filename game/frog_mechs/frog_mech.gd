@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 	
 	hp_label.text = str($TakeDamage.health)
 	
-	if resource.detection_software != null:
+	if resource.detection_software != null and not dragging:
 		var enemies: Array[Enemy] = []
 		for e: Enemy in get_tree().get_nodes_in_group("enemy"):
 			enemies.push_back(e)
@@ -103,6 +103,8 @@ func get_receptacle() -> WireReceptacle:
 	return wire_recpetacle
 
 func try_attack(enemy: Enemy):
+	if dragging:
+		return
 	var b := BulletSpawner.new()
 	resource.effect.apply(b)
 	b.target_enemy = enemy

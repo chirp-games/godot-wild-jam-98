@@ -36,6 +36,7 @@ name = "Basic Commander"
 mech_class = 2
 description = "Attacks the closest enemy in range"
 pathfinding = SubResource("Resource_qdab3")
+cooldown_ratio = 1
 effect = SubResource("Resource_b2mth")
 detection_software = SubResource("Resource_eyl2h")
 metadata/_custom_type_script = "uid://w1r7li8jtpq7"
