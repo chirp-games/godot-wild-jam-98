@@ -12,7 +12,7 @@ signal death
 var parent_resource: Resource
 var damage_taken_since_last_tick := false
 
-@onready var health = max_health
+@onready var health: int = max_health
 
 func _ready() -> void:
 	area_entered.connect(_damage)

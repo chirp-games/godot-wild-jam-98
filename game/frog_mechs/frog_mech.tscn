@@ -59,6 +59,7 @@ offset_left = -52.0
 offset_top = -31.0
 offset_right = 86.0
 offset_bottom = 35.0
+mouse_default_cursor_shape = 6
 
 [node name="TakeDamage" type="Area2D" parent="." unique_id=795559934]
 script = ExtResource("4_pnbhl")

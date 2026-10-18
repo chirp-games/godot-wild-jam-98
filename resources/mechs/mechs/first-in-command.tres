@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://bwgqb0itecati"
 
 [resource]
 script = ExtResource("6_0443n")
-name = "Bodyguard"
+name = "Right Hand Mech"
 mech_class = 2
 description = "Follows You"
 pathfinding = SubResource("Resource_6bdf0")

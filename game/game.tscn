@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://rpoy2rwaecgm" path="res://game/command_center.tscn" id="2_u5opy"]
 [ext_resource type="Script" uid="uid://j2mrqcd0rruy" path="res://game/wave_spawner.gd" id="2_y36n6"]
 [ext_resource type="PackedScene" uid="uid://b2cah2f4royhc" path="res://game/scrapyard/scrapyard.tscn" id="3_4cobl"]
+[ext_resource type="PackedScene" uid="uid://1q0d76vi5xaw" path="res://game/end/loss.tscn" id="3_5ywmu"]
 [ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="3_b686c"]
 [ext_resource type="PackedScene" uid="uid://2uosi0lfnj5h" path="res://game/offscreen_flare_display/display_offscreen_flares.tscn" id="4_gvtgv"]
 [ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="4_hb504"]
@@ -441,6 +442,10 @@ offset_top = 2.0
 offset_right = 284.0
 offset_bottom = 25.0
 text = "Material: 0"
+
+[node name="GameOver" parent="UI" unique_id=114396276 instance=ExtResource("3_5ywmu")]
+unique_name_in_owner = true
+visible = false
 
 [node name="Scrapyard" parent="UI" unique_id=601508854 instance=ExtResource("3_4cobl")]
 unique_name_in_owner = true

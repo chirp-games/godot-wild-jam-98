@@ -87,8 +87,13 @@ func _process(_delta: float) -> void:
 			closest_commander_lost(frog)
 			closest_commander_found(frog, new_closest_commander)
 	
-	health_label.text = "Health: " + str(command_center.get_health())
+	var health := command_center.get_health()
+	health_label.text = "Health: " + str(health)
 	score_label.text = "Score: " + str(score)
+	
+	if health <= 0:
+		%GameOver.show()
+		get_tree().paused = true
 
 func _enemy_detected(commander: FrogMech, enemy: Enemy):
 	var frogs = commander.get_connected_frogs()
@@ -130,12 +135,15 @@ func exit_scrapyard():
 
 func _on_wave_spawner_spawn_enemy(new_enemy: Enemy, around_enemy: Enemy, portal: int) -> void:
 	# Enemies are scenes with a resource assigned to them
+	var jiggle = Vector2.RIGHT * randf_range(-50, 50)
 	if not new_enemy.resource.grounded:
 		new_enemy.global_position = flyins[roundi(portal/6.)].global_position + Vector2(randi_range(-100, 100), 0)
 	elif not around_enemy:
 		new_enemy.global_position = portals[portal].global_position
 	else:
 		new_enemy.global_position = Vector2(around_enemy.global_position.x + randi_range(-200, 200), -700)
+	
+	new_enemy.global_position += jiggle
 	
 	new_enemy.on_death.connect(func(): 
 		enemy_corpses_collected[new_enemy.resource] += 1

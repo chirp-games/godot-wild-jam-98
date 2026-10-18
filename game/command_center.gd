@@ -19,5 +19,5 @@ func _on_enter_command_mode_body_shape_exited(_body_rid: RID, body: Node2D, _bod
 	if body.is_in_group("player"):
 		(body as Player).can_enter_command_center_mode = false
 
-func get_health():
+func get_health() -> int:
 	return take_damage.health
