@@ -16,6 +16,7 @@ func fade_out():
 func _process(delta: float) -> void:
 	time += delta
 
-	if time > .5:
+	if time > 1.:
 		Vfx.create_vfx(Vfx.VFX_PRESSURE_RING, global_position)
+		%SignalBeep.play()
 		time = 0

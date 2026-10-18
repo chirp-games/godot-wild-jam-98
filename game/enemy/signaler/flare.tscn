@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dfmrpqkgx67y"]
 
 [ext_resource type="Script" uid="uid://bgs62r7o2uooj" path="res://game/enemy/signaler/flare.gd" id="1_urnf3"]
+[ext_resource type="AudioStream" uid="uid://d4jguu43qs6qs" path="res://assets/sound/signaler.mp3" id="2_urnf3"]
 
 [node name="Flare" type="Node2D" unique_id=1536752728 groups=["flare"]]
 script = ExtResource("1_urnf3")
@@ -9,5 +10,10 @@ script = ExtResource("1_urnf3")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="SignalBeep" type="AudioStreamPlayer2D" parent="." unique_id=816503224]
+unique_name_in_owner = true
+stream = ExtResource("2_urnf3")
+max_polyphony = 5
 
 [connection signal="timeout" from="DecayTimer" to="." method="_on_decay_timer_timeout"]

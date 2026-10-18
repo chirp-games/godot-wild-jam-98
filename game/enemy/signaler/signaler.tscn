@@ -14,5 +14,6 @@ texture = ExtResource("4_rq3vk")
 
 [node name="Flare" parent="." index="5" unique_id=1536752728 instance_placeholder="res://game/enemy/signaler/flare.tscn"]
 unique_name_in_owner = true
+position = Vector2(-4, -33)
 
 [connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
