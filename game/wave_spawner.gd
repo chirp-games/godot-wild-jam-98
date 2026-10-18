@@ -40,12 +40,12 @@ const retreats = {
 }
 
 var valid_enemies: Dictionary = {
-	Spawns.L1: [gunbot],
-	Spawns.L2: [gunbot, kddv],
-	Spawns.L3: [gunbot, kddv, howitzer],
-	Spawns.R1: [gunbot],
-	Spawns.R2: [gunbot, kddv],
-	Spawns.R3: [gunbot, kddv, howitzer],
+	Spawns.L1: [gunbot, icbm],
+	Spawns.L2: [gunbot, kddv, shahed],
+	Spawns.L3: [gunbot, kddv, howitzer, shahed],
+	Spawns.R1: [gunbot, icbm],
+	Spawns.R2: [gunbot, kddv, shahed],
+	Spawns.R3: [gunbot, kddv, howitzer, shahed],
 }
 
 var wave: int = 0
@@ -75,6 +75,8 @@ func _summon_reinforcements(around_enemy: Enemy, location: Spawns):
 	var budget: int = 30 * sqrt(wave)
 	while budget >= 10:
 		var pick: Enemy = valid_enemies[location].pick_random().instantiate()
+		if pick.resource.name == "Kamikaze Drone" and wave < 12:
+			continue
 		var cost = pick.resource.scrap_value
 		if cost <= budget:
 			budget -= cost
