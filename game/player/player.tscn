@@ -20,10 +20,10 @@ script = ExtResource("1_2mv0n")
 
 [node name="WireReceptacle" parent="." unique_id=21922453 instance=ExtResource("3_8soms")]
 unique_name_in_owner = true
-offset_left = -40.0
-offset_top = -31.0
-offset_right = -24.0
-offset_bottom = -15.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=401217283]
 position = Vector2(-4, 4.75)

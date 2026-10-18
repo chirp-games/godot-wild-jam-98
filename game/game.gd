@@ -9,11 +9,8 @@ const player_mech_scene = preload("res://game/frog_mechs/frog_mech.tscn")
 const enemy_scene = preload("res://game/enemy/Enemy.tscn")
 const MAX_CONNECTION_DIST = 300
 
-@onready var player: Player = %Player
 @onready var command_center: CommandCenter = %CommandCenter
 @onready var scrapyard: Control = %Scrapyard
-@onready var command_center_camera: Camera2D = %CommandCenterCamera
-@onready var player_camera: Camera2D = %PlayerCamera
 @onready var start_wave_button: Button = %StartWaveButton
 @onready var left_portal: Marker2D = %LeftPortal
 @onready var right_portal: Marker2D = %RightPortal
@@ -33,7 +30,7 @@ func find_wires():
 
 func find_commanders():
 	# The player is a commander now...
-	return get_tree().get_nodes_in_group("frog_mech").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Commander) + [player]
+	return get_tree().get_nodes_in_group("frog_mech").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Commander)
 
 func find_recruits():
 	return get_tree().get_nodes_in_group("frog_mech").filter(func(x): return x.resource.mech_class == MechResource.MechClass.Recruit)
@@ -50,8 +47,6 @@ func _ready() -> void:
 	for commander in find_commanders():
 		commander.enemy_detected.connect(func(e: Enemy): _enemy_detected(commander, e))
 		pass
-
-	player_camera.make_current()
 
 	for e in Resources.enemies:
 		enemy_corpses_collected.get_or_add(e, 0)

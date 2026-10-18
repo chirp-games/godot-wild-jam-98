@@ -4,18 +4,18 @@ class_name Flare
 
 signal decayed
 
+var time = 0.0
+
 func _on_decay_timer_timeout() -> void:
 	decayed.emit()
 	queue_free()
 
 func fade_out():
-	$laser.play("fade_out")
-	$laser2.play("fade_out")
-	$laser3.play("fade_out")
-	$laser4.play("fade_out")
+	pass
+ 
+func _process(delta: float) -> void:
+	time += delta
 
-func loop():
-	$laser.play("loop")
-	$laser2.play("loop")
-	$laser3.play("loop")
-	$laser4.play("loop")
+	if time > .5:
+		Vfx.create_vfx(Vfx.VFX_PRESSURE_RING, global_position)
+		time = 0

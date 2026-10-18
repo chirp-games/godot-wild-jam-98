@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dfmrpqkgx67y"]
 
 [ext_resource type="Script" uid="uid://bgs62r7o2uooj" path="res://game/enemy/signaler/flare.gd" id="1_urnf3"]
-[ext_resource type="PackedScene" uid="uid://bemng5adh7k3" path="res://fx/laser-lance.tscn" id="2_urnf3"]
 
 [node name="Flare" type="Node2D" unique_id=1536752728 groups=["flare"]]
 script = ExtResource("1_urnf3")
@@ -10,25 +9,5 @@ script = ExtResource("1_urnf3")
 wait_time = 5.0
 one_shot = true
 autostart = true
-
-[node name="laser" parent="." unique_id=405417061 instance=ExtResource("2_urnf3")]
-unique_name_in_owner = true
-position = Vector2(0, -128)
-rotation = 1.5707964
-
-[node name="laser2" parent="." unique_id=901637577 instance=ExtResource("2_urnf3")]
-unique_name_in_owner = true
-position = Vector2(0, -384)
-rotation = 1.5707964
-
-[node name="laser3" parent="." unique_id=420112413 instance=ExtResource("2_urnf3")]
-unique_name_in_owner = true
-position = Vector2(0, -640)
-rotation = 1.5707964
-
-[node name="laser4" parent="." unique_id=1605271170 instance=ExtResource("2_urnf3")]
-unique_name_in_owner = true
-position = Vector2(0, -896)
-rotation = 1.5707964
 
 [connection signal="timeout" from="DecayTimer" to="." method="_on_decay_timer_timeout"]

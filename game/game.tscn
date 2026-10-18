@@ -26,10 +26,11 @@
 [ext_resource type="Shader" uid="uid://d3kfn2f4w6hxh" path="res://shaders/wind-sway.gdshader" id="17_dxwpq"]
 [ext_resource type="Texture2D" uid="uid://oxo860p4axb" path="res://assets/parallax/vine_1.png" id="17_ln7ps"]
 [ext_resource type="Texture2D" uid="uid://dgtmj0aqja482" path="res://assets/parallax/vine_2.png" id="17_pxxsx"]
-[ext_resource type="PackedScene" uid="uid://bcqcmbu10gh4t" path="res://game/player/player.tscn" id="19_posua"]
+[ext_resource type="Script" uid="uid://bdm1npjepd0ni" path="res://game/player_camera.gd" id="19_posua"]
 [ext_resource type="Texture2D" uid="uid://c4o24aopopcv" path="res://assets/parallax/big_vine_1.png" id="19_u8s88"]
 [ext_resource type="Resource" uid="uid://b4andh72n12pq" path="res://resources/mechs/mechs/big_bullet.tres" id="20_cf130"]
 [ext_resource type="Texture2D" uid="uid://b2o5swy44dkpi" path="res://assets/parallax/vine_3.png" id="20_mhvfb"]
+[ext_resource type="Resource" uid="uid://ccom41f5d1mrp" path="res://resources/mechs/mechs/commander.tres" id="21_gvtgv"]
 [ext_resource type="Resource" uid="uid://difal6ueki7a0" path="res://resources/mechs/mechs/shotgun.tres" id="21_posua"]
 [ext_resource type="Texture2D" uid="uid://by6pa8mytt1b1" path="res://assets/parallax/front_leaves_4.png" id="22_q52ks"]
 [ext_resource type="Texture2D" uid="uid://2vj2ql3stxk2" path="res://assets/parallax/front_leaves_2.png" id="23_8bboj"]
@@ -689,27 +690,19 @@ shape = SubResource("WorldBoundaryShape2D_6w6ra")
 [node name="Wires" type="Node2D" parent="World" unique_id=1126853350]
 unique_name_in_owner = true
 
-[node name="Player" parent="World" unique_id=1271694453 instance=ExtResource("19_posua")]
-unique_name_in_owner = true
-position = Vector2(0, -40)
+[node name="PlayerCamera" type="Camera2D" parent="World" unique_id=1534139166]
+position = Vector2(0, -300)
+script = ExtResource("19_posua")
 
-[node name="PlayerCamera" type="Camera2D" parent="World/Player" unique_id=1479909743]
-unique_name_in_owner = true
-position = Vector2(3, -429)
-limit_left = -3180
-limit_top = -350
-limit_right = 3180
-limit_bottom = -350
-position_smoothing_enabled = true
-drag_vertical_enabled = true
-drag_top_margin = 1.0
-drag_bottom_margin = 1.0
+[node name="Commander" parent="World" unique_id=637464119 instance=ExtResource("6_3vho3")]
+position = Vector2(-78, -210)
+resource = ExtResource("21_gvtgv")
 
 [node name="FrogRecruit" parent="World" unique_id=1967870937 instance=ExtResource("6_3vho3")]
 position = Vector2(-78, -210)
 resource = ExtResource("20_cf130")
 
-[node name="FrogRecruit2" parent="World" unique_id=637464119 instance=ExtResource("6_3vho3")]
+[node name="FrogRecruit2" parent="World" unique_id=1983549222 instance=ExtResource("6_3vho3")]
 position = Vector2(118, -174)
 resource = ExtResource("21_posua")
 
