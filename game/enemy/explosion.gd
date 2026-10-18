@@ -1,26 +1,23 @@
 extends DealDamage
 class_name Explosion
 
-var lifetime: float
 var timer: float
 
 var damaged: Array = []
 
 func setup(size: float, damage: int):
-	self.scale = Vector2.ONE * size
+	$Radius.shape.radius *= size
 	self.base_damage = damage
-	self.lifetime = damage / 60.
 	self.timer = 0.01
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if timer <= 0:
 		queue_free()
-	var ratio: float = timer / lifetime
-	$Sprite2D.self_modulate = Color(ratio, ratio, sqrt(ratio), ratio)
 	timer -= delta
 
 func calculate_damage(body: Node2D) -> int:
 	if not damaged.has(body):
 		damaged.append(body)
-		return mini(base_damage, (2500 * base_damage / body.global_position.distance_to(self.global_position)))
+		deal_damage.emit(body)
+		return mini(base_damage, (2500 * base_damage / body.global_position.distance_squared_to(self.global_position)))
 	return 0

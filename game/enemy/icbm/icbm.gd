@@ -8,7 +8,9 @@ const ω = PI/4
 
 func _ready():
 	super()
-	last_pos = Vector2(0,0) # Temporary line for testing
+	last_pos = Vector2(0,0)
+	rotation = PI if sign(global_position.x) > 0 else 0.
+	
 
 func _physics_process(delta: float) -> void:
 	var head = $Warhead.global_position - global_position

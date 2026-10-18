@@ -20,6 +20,7 @@ var cooldown = 0.0
 @onready var game: Game = get_tree().get_first_node_in_group("game")
 @onready var wire_recpetacle: WireReceptacle = %WireReceptacle
 @onready var cooldown_bar: ProgressBar = %Cooldown
+@onready var hp_label: Label = %Health
 
 func jump(jump_direction: int) -> void:
 	apply_central_impulse(Vector2(jump_direction * 200., -200.))
@@ -61,7 +62,9 @@ func get_connected_frogs():
 func _process(delta: float) -> void:
 	if resource.mech_class == MechResource.MechClass.Commander:
 		cooldown_bar.value = cooldown / get_total_cooldown()
-
+	
+	hp_label.text = str($TakeDamage.health)
+	
 	if resource.detection_software != null:
 		var enemies: Array[Enemy] = []
 		for e: Enemy in get_tree().get_nodes_in_group("enemy"):

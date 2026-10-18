@@ -25,6 +25,10 @@ const retreats = ["Mothertruck", "Bomber Drone"]
 	%RightPortal2,
 	%RightPortal3,
 ]
+@onready var flyins = [
+	%LeftFlyin,
+	%RightFlyin,
+]
 
 var frogs_to_closest_commander: Dictionary = {}
 var enemy_corpses_collected: Dictionary[EnemyResource, int] = {}
@@ -122,7 +126,9 @@ func exit_scrapyard():
 
 func _on_wave_spawner_spawn_enemy(new_enemy: Enemy, around_enemy: Enemy, portal: int) -> void:
 	# Enemies are scenes with a resource assigned to them
-	if not around_enemy:
+	if not new_enemy.resource.grounded:
+		new_enemy.global_position = flyins[roundi(portal/6.)].global_position + Vector2(randi_range(-100, 100), 0)
+	elif not around_enemy:
 		new_enemy.global_position = portals[portal].global_position
 	else:
 		new_enemy.global_position = Vector2(around_enemy.global_position.x + randi_range(-200, 200), -700)

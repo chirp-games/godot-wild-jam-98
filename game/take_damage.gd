@@ -14,6 +14,7 @@ func _ready() -> void:
 	area_entered.connect(_damage)
 
 func _damage(body: CollisionObject2D):
+	print([damaged_by_group, body, body.get_groups()])
 	if damaged_by_group != null:
 		if not body.is_in_group(damaged_by_group):
 			return

@@ -70,4 +70,13 @@ position = Vector2(17.5, 1)
 shape = SubResource("RectangleShape2D_sqdhb")
 debug_color = Color(1, 0.5120321, 0.42882767, 0.41960785)
 
+[node name="Health" type="Label" parent="." unique_id=1519398122]
+unique_name_in_owner = true
+offset_left = -1.0
+offset_top = -84.0
+offset_right = 39.0
+offset_bottom = -64.0
+text = "HP"
+horizontal_alignment = 1
+
 [connection signal="death" from="TakeDamage" to="." method="die"]

@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dx1hymwkw060t" path="res://game/enemy/shahed/shahed.tscn" id="7_abswq"]
 [ext_resource type="PackedScene" uid="uid://b5sp57cl6uwgw" path="res://game/enemy/mothertruck/mothertruck.tscn" id="8_jdd7n"]
 [ext_resource type="PackedScene" uid="uid://7fkuy7vtw8y8" path="res://game/enemy/howitzer/howitzer.tscn" id="9_n5bdk"]
-[ext_resource type="PackedScene" uid="uid://cninfngmt3d3k" path="res://game/enemy/gunbot/gunbot.tscn" id="10_5pskf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rbnm8"]
 
@@ -37,17 +36,14 @@ texture = ExtResource("5_buw6m")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=535097523]
 position = Vector2(0, -400)
 
-[node name="ICBM" parent="." unique_id=1388627917 instance=ExtResource("6_rbnm8")]
-position = Vector2(-4999, -932)
-
 [node name="KD" parent="." unique_id=1736390898 instance=ExtResource("7_abswq")]
-position = Vector2(6657, -475)
+position = Vector2(4373, -530)
 
-[node name="Mothertruck" parent="." unique_id=1514348257 instance=ExtResource("8_jdd7n")]
-position = Vector2(789, -98)
+[node name="Mothertruck" parent="." unique_id=277802278 instance=ExtResource("8_jdd7n")]
+position = Vector2(-799, -79)
 
-[node name="Howitzer" parent="." unique_id=1083884101 instance=ExtResource("9_n5bdk")]
-position = Vector2(924, -75)
+[node name="ICBM" parent="." unique_id=1388627917 instance=ExtResource("6_rbnm8")]
+position = Vector2(-4799, -678)
 
-[node name="Gunbot" parent="." unique_id=418513932 instance=ExtResource("10_5pskf")]
-position = Vector2(-595, -38)
+[node name="Howitzer" parent="." unique_id=679700020 instance=ExtResource("9_n5bdk")]
+position = Vector2(688, -45)
