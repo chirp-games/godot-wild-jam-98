@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://c4o24aopopcv" path="res://assets/parallax/big_vine_1.png" id="19_u8s88"]
 [ext_resource type="Resource" uid="uid://b4andh72n12pq" path="res://resources/mechs/mechs/big_bullet.tres" id="20_cf130"]
 [ext_resource type="Texture2D" uid="uid://b2o5swy44dkpi" path="res://assets/parallax/vine_3.png" id="20_mhvfb"]
-[ext_resource type="Resource" uid="uid://ccom41f5d1mrp" path="res://resources/mechs/mechs/commander.tres" id="21_gvtgv"]
+[ext_resource type="Resource" uid="uid://coeuujasn6dkg" path="res://resources/mechs/mechs/first-in-command.tres" id="21_gvtgv"]
 [ext_resource type="Resource" uid="uid://difal6ueki7a0" path="res://resources/mechs/mechs/shotgun.tres" id="21_posua"]
 [ext_resource type="Texture2D" uid="uid://by6pa8mytt1b1" path="res://assets/parallax/front_leaves_4.png" id="22_q52ks"]
 [ext_resource type="Texture2D" uid="uid://2vj2ql3stxk2" path="res://assets/parallax/front_leaves_2.png" id="23_8bboj"]
@@ -699,6 +699,7 @@ shape = SubResource("WorldBoundaryShape2D_6w6ra")
 unique_name_in_owner = true
 
 [node name="PlayerCamera" type="Camera2D" parent="World" unique_id=1534139166]
+unique_name_in_owner = true
 position = Vector2(0, -300)
 script = ExtResource("19_posua")
 

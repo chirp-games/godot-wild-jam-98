@@ -13,6 +13,7 @@ const MAX_CONNECTION_DIST = 300
 const retreats = ["Mothertruck", "Bomber Drone"]
 
 @onready var command_center: CommandCenter = %CommandCenter
+@onready var player: Camera2D = %PlayerCamera
 @onready var scrapyard: Control = %Scrapyard
 @onready var start_wave_button: Button = %StartWaveButton
 @onready var health_label: Label = %Health
