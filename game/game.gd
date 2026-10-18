@@ -100,6 +100,8 @@ func _create_attack(frog: FrogMech, bullet_spawner: BulletSpawner):
 
 func get_closest_commander(frog: FrogMech):
 	var commanders = find_commanders()
+	if len(commanders) == 0:
+		return
 	commanders.sort_custom(func(x, y): return x.global_position.distance_squared_to(frog.global_position) < y.global_position.distance_squared_to(frog.global_position))
 	return commanders.get(0)
 

@@ -29,6 +29,7 @@ func _ready() -> void:
 	if not resource.has_parachute:
 		parachute.hide()
 	($TakeDamage as TakeDamage).parent_resource = resource
+	($TakeDamage as TakeDamage).max_health = health
 	($TakeDamage as TakeDamage).health = health
 	value = resource.scrap_value
 	speed = resource.movement_speed

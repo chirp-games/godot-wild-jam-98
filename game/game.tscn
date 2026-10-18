@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://chcx47tvajonj" path="res://game/game.gd" id="1_dakft"]
 [ext_resource type="PackedScene" uid="uid://rpoy2rwaecgm" path="res://game/command_center.tscn" id="2_u5opy"]
 [ext_resource type="Script" uid="uid://j2mrqcd0rruy" path="res://game/wave_spawner.gd" id="2_y36n6"]
-[ext_resource type="PackedScene" uid="uid://bxsqhcwlse41p" path="res://game/scrapyard/scrapyard.tscn" id="3_4cobl"]
+[ext_resource type="PackedScene" uid="uid://b2cah2f4royhc" path="res://game/scrapyard/scrapyard.tscn" id="3_4cobl"]
 [ext_resource type="Shader" uid="uid://b4gtlu22jmbfn" path="res://shaders/gradient_noise.gdshader" id="3_b686c"]
 [ext_resource type="PackedScene" uid="uid://2uosi0lfnj5h" path="res://game/offscreen_flare_display/display_offscreen_flares.tscn" id="4_gvtgv"]
 [ext_resource type="Texture2D" uid="uid://dvme311w46ux2" path="res://assets/parallax/rock.png" id="4_hb504"]

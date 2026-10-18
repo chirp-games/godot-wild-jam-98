@@ -62,13 +62,16 @@ offset_bottom = 35.0
 
 [node name="TakeDamage" type="Area2D" parent="." unique_id=795559934]
 script = ExtResource("4_pnbhl")
-health = 100
+max_health = 100
 damaged_by_group = &"enemy_attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamage" unique_id=1429971710]
 position = Vector2(17.5, 1)
 shape = SubResource("RectangleShape2D_sqdhb")
 debug_color = Color(1, 0.5120321, 0.42882767, 0.41960785)
+
+[node name="Timer" type="Timer" parent="TakeDamage" unique_id=1805719140]
+autostart = true
 
 [node name="Health" type="Label" parent="." unique_id=1519398122]
 unique_name_in_owner = true
@@ -80,3 +83,4 @@ text = "HP"
 horizontal_alignment = 1
 
 [connection signal="death" from="TakeDamage" to="." method="die"]
+[connection signal="timeout" from="TakeDamage/Timer" to="TakeDamage" method="heal_tick"]
